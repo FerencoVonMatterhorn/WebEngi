@@ -1,6 +1,11 @@
 /build/
-*.classpath
-*.project
-.idea/
+
+# Eclipse
 .settings/
-*.iml
+.project
+.classpath
+.metadata/
+
+# IntelliJ
+.idea
+*/.iml

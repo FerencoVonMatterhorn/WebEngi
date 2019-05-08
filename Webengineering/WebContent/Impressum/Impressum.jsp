@@ -7,7 +7,27 @@
 <title>Impressum</title>
 </head>
 <body>
-<div class='impressum'><h1>Impressum</h1><p>Angaben gem‰ﬂ ß 5 TMG</p><p>Max Muster <br> 
+<div class='Selfmade'>
+<h1>Impressum</h1>
+<p>Developer: Christian, Bengt, Ferenc</p>
+<p>Ziel des Projekts:</p>
+<p>Wie wir auf die Idee gekommen sind</p>
+<p>
+	Welche Technologien wir benutzt haben:
+	<ol>
+		<li>Apache Tomcat</li>
+		<li>Java Server Pages</li>
+		<li>Eclipse Neon IDE</li>
+		<li>IntelliJ Ultimate IDE</li>
+	</ol>
+</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+<div class='impressum'><p>Angaben gem‰ﬂ ß 5 TMG</p><p>Max Muster <br> 
 Musterweg<br> 
 12345 Musterstadt <br> 
 </p><p> <strong>Vertreten durch: </strong><br>

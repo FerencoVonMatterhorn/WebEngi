@@ -1,0 +1,10 @@
+.footer {
+    overflow: hidden;
+    background: lightgray;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.footer h4 {
+    text-decoration: underline;
+}

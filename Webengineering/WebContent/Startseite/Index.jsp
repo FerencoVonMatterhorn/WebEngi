@@ -77,12 +77,12 @@
         <div class="backgroundMid">
             <div class="row">
                 <div class="col-7 mt-5 ml-5">
-                    <h1>MyWG Wir sammeln Ihre Rechnungen.</h1>
-                    <p>Hier werden weiter Kurz informationen stehen.</p>
-                    <p>Hier werden weiter Kurz informationen stehen.</p>
-                    <p>Hier werden weiter Kurz informationen stehen.</p>
-                    <p>Hier werden weiter Kurz informationen stehen.</p>
-                    <p>Hier werden weiter Kurz informationen stehen.</p>
+                    <h1 class="myWGHeadline1">MyWG Wir sammeln Ihre Rechnungen.</h1>
+                    <p class="myWGParagraph">Hier werden weiter Kurz informationen stehen.</p>
+                    <p class="myWGParagraph">Hier werden weiter Kurz informationen stehen.</p>
+                    <p class="myWGParagraph">Hier werden weiter Kurz informationen stehen.</p>
+                    <p class="myWGParagraph">Hier werden weiter Kurz informationen stehen.</p>
+                    <p class="myWGParagraph">Hier werden weiter Kurz informationen stehen.</p>
                 </div>
                 <!-- Login Form -->
                 <div class="col-3 card shadow mb-4 mt-4">
@@ -166,7 +166,7 @@
 
 <!-- Footer -->
 <div class="container-fluid footer">
-    <div class="footerCompany col-xs-6 mt-2">
+    <div class="footerCompany col-xs-6 mt-3">
         <p>
             <a href="#impressum">Impressum</a>
         </p>

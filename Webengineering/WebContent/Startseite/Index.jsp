@@ -65,9 +65,82 @@
 <!-- Navigationbar END-->
 
 <!-- BODY -->
-<div class="container">
+<div class="background1">
+    <div class="container-fluid">
+        <div class="row ml-4 mr-4">
+            <div class="col-7 mt-5 ml-5">
+                <h1>MyWG Wir sammeln Ihre Rechnungen.</h1>
+                <p>Hier werden weiter Kurz informationen stehen.</p>
+            </div>
+            <!-- Login Form -->
+            <div class="col-3 card shadow mb-4 mt-4">
+                <article class="card-body">
+                    <h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
+                    <hr>
+                    <%--                <p class="text-success text-center">Status</p>--%>
+
+                    <form>
+                        <!-- First input -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                </div>
+                                <input name="" class="form-control" placeholder="Email or Username" type="email">
+                            </div>
+                        </div>
+                        <!-- Second input -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input class="form-control" placeholder="********" type="password">
+                            </div>
+                        </div>
+                        <!-- Actions -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block"> Login</button>
+                        </div>
+                        <p class="text-center"><a href="#" class="btn">Forgot password?</a></p>
+                    </form>
+                </article>
+            </div>
+            <!-- Login Form ENDE -->
+        </div>
+    </div>
 
 
+    <!-- Carousel Preview -->
+    <div id="myCarousel" class="carousel slide container" data-ride="carousel" style="">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="test.jpg" alt="Los Angeles" width="1100" height="500">
+            </div>
+            <div class="carousel-item">
+                <img src="test1.jpg" alt="Chicago" width="1100" height="500">
+            </div>
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    <!-- Carousel Preview ENDE -->
+    <div class="placeholder mb-4"></div>
 </div>
 <!-- BODY  ENDE-->
 

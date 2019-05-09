@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -6,27 +7,8 @@
     <title>Impressum</title>
 </head>
 <body>
-<div class='Selfmade'>
-    <h1>Impressum</h1>
-    <p>Developer: Christian, Bengt, Ferenc</p>
-    <p>Ziel des Projekts:</p>
-    <p>Wie wir auf die Idee gekommen sind</p>
-    <p>
-        Welche Technologien wir benutzt haben:
-    <ol>
-        <li>Apache Tomcat</li>
-        <li>Java Server Pages</li>
-        <li>Eclipse Neon IDE</li>
-        <li>IntelliJ Ultimate IDE</li>
-    </ol>
-    </p>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-</div>
-<div class='impressum'><p>Angaben gemï¿½ï¿½ ï¿½ 5 TMG</p>
+<div class='impressum'><h1>Impressum</h1>
+    <p>Angaben gemäß § 5 TMG</p>
     <p>Max Muster <br>
         Musterweg<br>
         12345 Musterstadt <br>
@@ -40,84 +22,84 @@
         Fax: 1234-56789<br>
         E-Mail: <a href='mailto:max@muster.de'>max@muster.de</a><br></p>
     <p><strong>Umsatzsteuer-ID: </strong> <br>
-        Umsatzsteuer-Identifikationsnummer gemÃ¤ÃŸ Â§27a Umsatzsteuergesetz: Musterustid.<br><br>
+        Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: Musterustid.<br><br>
         <strong>Wirtschafts-ID: </strong><br>
         Musterwirtschaftsid<br>
     </p>
-    <p><strong>AufsichtsbehÃ¶rde:</strong><br>
+    <p><strong>Aufsichtsbehörde:</strong><br>
         Musteraufsicht Musterstadt<br></p>
-    <p><strong>Haftungsausschluss: </strong><br><br><strong>Haftung fÃ¼r Inhalte</strong><br><br>
-        Die Inhalte unserer Seiten wurden mit grÃ¶ÃŸter Sorgfalt erstellt. FÃ¼r die Richtigkeit, VollstÃ¤ndigkeit und
-        AktualitÃ¤t der Inhalte kÃ¶nnen wir jedoch keine GewÃ¤hr Ã¼bernehmen. Als Diensteanbieter sind wir gemÃ¤ÃŸ Â§ 7 Abs.1
-        TMG fÃ¼r eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach Â§Â§ 8 bis 10 TMG sind
-        wir als Diensteanbieter jedoch nicht verpflichtet, Ã¼bermittelte oder gespeicherte fremde Informationen zu
-        Ã¼berwachen oder nach UmstÃ¤nden zu forschen, die auf eine rechtswidrige TÃ¤tigkeit hinweisen. Verpflichtungen zur
-        Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberÃ¼hrt.
-        Eine diesbezÃ¼gliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung
-        mÃ¶glich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend
-        entfernen.<br><br><strong>Haftung fÃ¼r Links</strong><br><br>
-        Unser Angebot enthÃ¤lt Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb
-        kÃ¶nnen wir fÃ¼r diese fremden Inhalte auch keine GewÃ¤hr Ã¼bernehmen. FÃ¼r die Inhalte der verlinkten Seiten ist
+    <p><strong>Haftungsausschluss: </strong><br><br><strong>Haftung für Inhalte</strong><br><br>
+        Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und
+        Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1
+        TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind
+        wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
+        überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur
+        Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.
+        Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung
+        möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend
+        entfernen.<br><br><strong>Haftung für Links</strong><br><br>
+        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb
+        können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist
         stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum
-        Zeitpunkt der Verlinkung auf mÃ¶gliche RechtsverstÃ¶ÃŸe Ã¼berprÃ¼ft. Rechtswidrige Inhalte waren zum Zeitpunkt der
+        Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der
         Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete
         Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir
         derartige Links umgehend entfernen.<br><br><strong>Urheberrecht</strong><br><br>
         Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
-        Urheberrecht. Die VervielfÃ¤ltigung, Bearbeitung, Verbreitung und jede Art der Verwertung auÃŸerhalb der Grenzen
-        des Urheberrechtes bedÃ¼rfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und
-        Kopien dieser Seite sind nur fÃ¼r den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf
+        Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen
+        des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und
+        Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf
         dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden
         Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam
         werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir
         derartige Inhalte umgehend entfernen.<br><br><strong>Datenschutz</strong><br><br>
-        Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten mÃ¶glich. Soweit auf unseren
+        Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren
         Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies,
-        soweit mÃ¶glich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrÃ¼ckliche Zustimmung nicht an
+        soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an
         Dritte weitergegeben. <br>
-        Wir weisen darauf hin, dass die DatenÃ¼bertragung im Internet (z.B. bei der Kommunikation per E-Mail)
-        SicherheitslÃ¼cken aufweisen kann. Ein lÃ¼ckenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht
-        mÃ¶glich. <br>
-        Der Nutzung von im Rahmen der Impressumspflicht verÃ¶ffentlichten Kontaktdaten durch Dritte zur Ãœbersendung von
-        nicht ausdrÃ¼cklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrÃ¼cklich widersprochen.
-        Die Betreiber der Seiten behalten sich ausdrÃ¼cklich rechtliche Schritte im Falle der unverlangten Zusendung von
+        Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail)
+        Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht
+        möglich. <br>
+        Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von
+        nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen.
+        Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von
         Werbeinformationen, etwa durch Spam-Mails, vor.<br>
         <br><br><strong>Google Analytics</strong><br><br>
         Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. (''Google''). Google Analytics
         verwendet sog. ''Cookies'', Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der
-        Benutzung der Website durch Sie ermÃ¶glicht. Die durch den Cookie erzeugten Informationen Ã¼ber Ihre Benutzung
-        dieser Website (einschlieÃŸlich Ihrer IP-Adresse) wird an einen Server von Google in den USA Ã¼bertragen und dort
-        gespeichert. Google wird diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports Ã¼ber
-        die WebsiteaktivitÃ¤ten fÃ¼r die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung und der
+        Benutzung der Website durch Sie ermöglicht. Die durch den Cookie erzeugten Informationen über Ihre Benutzung
+        dieser Website (einschließlich Ihrer IP-Adresse) wird an einen Server von Google in den USA übertragen und dort
+        gespeichert. Google wird diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über
+        die Websiteaktivitäten für die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung und der
         Internetnutzung verbundene Dienstleistungen zu erbringen. Auch wird Google diese Informationen gegebenenfalls an
-        Dritte Ã¼bertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im Auftrag von Google
+        Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im Auftrag von Google
         verarbeiten. Google wird in keinem Fall Ihre IP-Adresse mit anderen Daten der Google in Verbindung bringen. Sie
-        kÃ¶nnen die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern; wir
-        weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sÃ¤mtliche Funktionen dieser Website
-        voll umfÃ¤nglich nutzen kÃ¶nnen. Durch die Nutzung dieser Website erklÃ¤ren Sie sich mit der Bearbeitung der Ã¼ber
+        können die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern; wir
+        weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website
+        voll umfänglich nutzen können. Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über
         Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck
         einverstanden.<br><br><strong>Google AdSense</strong><br><br>
         Diese Website benutzt Google Adsense, einen Webanzeigendienst der Google Inc., USA (''Google''). Google Adsense
         verwendet sog. ''Cookies'' (Textdateien), die auf Ihrem Computer gespeichert werden und die eine Analyse der
-        Benutzung der Website durch Sie ermÃ¶glicht. Google Adsense verwendet auch sog. ''Web Beacons'' (kleine
-        unsichtbare Grafiken) zur Sammlung von Informationen. Durch die Verwendung des Web Beacons kÃ¶nnen einfache
+        Benutzung der Website durch Sie ermöglicht. Google Adsense verwendet auch sog. ''Web Beacons'' (kleine
+        unsichtbare Grafiken) zur Sammlung von Informationen. Durch die Verwendung des Web Beacons können einfache
         Aktionen wie der Besucherverkehr auf der Webseite aufgezeichnet und gesammelt werden. Die durch den Cookie
-        und/oder Web Beacon erzeugten Informationen Ã¼ber Ihre Benutzung dieser Website (einschlieÃŸlich Ihrer IP-Adresse)
-        werden an einen Server von Google in den USA Ã¼bertragen und dort gespeichert. Google wird diese Informationen
-        benutzen, um Ihre Nutzung der Website im Hinblick auf die Anzeigen auszuwerten, um Reports Ã¼ber die
-        WebsiteaktivitÃ¤ten und Anzeigen fÃ¼r die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung
+        und/oder Web Beacon erzeugten Informationen über Ihre Benutzung dieser Website (einschließlich Ihrer IP-Adresse)
+        werden an einen Server von Google in den USA übertragen und dort gespeichert. Google wird diese Informationen
+        benutzen, um Ihre Nutzung der Website im Hinblick auf die Anzeigen auszuwerten, um Reports über die
+        Websiteaktivitäten und Anzeigen für die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung
         und der Internetnutzung verbundene Dienstleistungen zu erbringen. Auch wird Google diese Informationen
-        gegebenenfalls an Dritte Ã¼bertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im
+        gegebenenfalls an Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im
         Auftrag von Google verarbeiten. Google wird in keinem Fall Ihre IP-Adresse mit anderen Daten der Google in
-        Verbindung bringen. Das Speichern von Cookies auf Ihrer Festplatte und die Anzeige von Web Beacons kÃ¶nnen Sie
-        verhindern, indem Sie in Ihren Browser-Einstellungen ''keine Cookies akzeptieren'' wÃ¤hlen (Im MS
+        Verbindung bringen. Das Speichern von Cookies auf Ihrer Festplatte und die Anzeige von Web Beacons können Sie
+        verhindern, indem Sie in Ihren Browser-Einstellungen ''keine Cookies akzeptieren'' wählen (Im MS
         Internet-Explorer unter ''Extras > Internetoptionen > Datenschutz > Einstellung''; im Firefox unter ''Extras >
         Einstellungen > Datenschutz > Cookies''); wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall
-        gegebenenfalls nicht sÃ¤mtliche Funktionen dieser Website voll umfÃ¤nglich nutzen kÃ¶nnen. Durch die Nutzung dieser
-        Website erklÃ¤ren Sie sich mit der Bearbeitung der Ã¼ber Sie erhobenen Daten durch Google in der zuvor
+        gegebenenfalls nicht sämtliche Funktionen dieser Website voll umfänglich nutzen können. Durch die Nutzung dieser
+        Website erklären Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor
         beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.</p><br>
     Impressum vom <a href="https://www.impressum-generator.de">Impressum Generator</a> der <a
-            href="https://www.kanzlei-hasselbach.de/">Kanzlei Hasselbach, RechtsanwÃ¤lte fÃ¼r Arbeitsrecht und
+            href="https://www.kanzlei-hasselbach.de/">Kanzlei Hasselbach, Rechtsanwälte für Arbeitsrecht und
         Familienrecht</a>
 </div>
 

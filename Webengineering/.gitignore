@@ -1,5 +1,4 @@
 /build/
-/out/
 
 # Eclipse
 .settings/
@@ -8,5 +7,6 @@
 .metadata/
 
 # IntelliJ
-.idea
+.idea/
 **/*.iml
+out/*

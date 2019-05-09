@@ -71,6 +71,10 @@
             <div class="col-7 mt-5 ml-5">
                 <h1>MyWG Wir sammeln Ihre Rechnungen.</h1>
                 <p>Hier werden weiter Kurz informationen stehen.</p>
+                <p>Hier werden weiter Kurz informationen stehen.</p>
+                <p>Hier werden weiter Kurz informationen stehen.</p>
+                <p>Hier werden weiter Kurz informationen stehen.</p>
+                <p>Hier werden weiter Kurz informationen stehen.</p>
             </div>
             <!-- Login Form -->
             <div class="col-3 card shadow mb-4 mt-4">
@@ -123,10 +127,10 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="test.jpg" alt="Los Angeles" width="1100" height="500">
+                <img src="../Resources/test1.jpg" alt="Los Angeles" width="1100" height="500">
             </div>
             <div class="carousel-item">
-                <img src="test1.jpg" alt="Chicago" width="1100" height="500">
+                <img src="../Resources/test2.jpg" alt="Chicago" width="1100" height="500">
             </div>
 
         </div>
@@ -149,7 +153,7 @@
     <div class="footerCompany col-xs-6">
         <p><a href="#about">Home</a></p>
         <p><a href="#impressum">Impressum</a></p>
-        <p>Ⓒ 2019 YourCompName</p>
+        <p>Ⓒ 2019 MyCompName</p>
     </div>
 </div>
 <!-- Footer ENDE-->

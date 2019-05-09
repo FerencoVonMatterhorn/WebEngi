@@ -6,7 +6,7 @@
 <head>
 <title>MyComp - Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../mainStyle.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script
@@ -70,10 +70,10 @@
 	<!-- Navigationbar END-->
 
 	<!-- BODY -->
-	<div class="background1 pl-5 pr-5">
+	<div class="backgroundSide">
 		<div class="container-fluid">
-			<div class="background2">
-				<div class="row ml-4 mr-4">
+			<div class="backgroundMid">
+				<div class="row">
 					<div class="col-7 mt-5 ml-5">
 						<h1>MyWG Wir sammeln Ihre Rechnungen.</h1>
 						<p>Hier werden weiter Kurz informationen stehen.</p>
@@ -98,7 +98,7 @@
 										</span>
 									</div>
 									<input name="" class="form-control"
-										placeholder="Email or Username" type="email">
+										placeholder="Email or Username" type="text">
 								</div>
 							</div>
 							<!-- Second input -->
@@ -127,10 +127,8 @@
 				</div>
 
 
-
 				<!-- Carousel Preview -->
-				<div id="myCarousel" class="carousel slide" data-ride="carousel"
-					style="">
+				<div id="myCarousel" class="carousel slide container" data-ride="carousel">
 
 					<!-- Indicators -->
 					<ul class="carousel-indicators">
@@ -141,11 +139,11 @@
 					<!-- The slideshow -->
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="../Resources/test1.jpg" alt="Los Angeles" width="1100"
+							<img src="../Resources/test1.jpg" alt="Test1" width="1100"
 								height="500">
 						</div>
 						<div class="carousel-item">
-							<img src="../Resources/test2.jpg" alt="Chicago" width="1100"
+							<img src="../Resources/test2.jpg" alt="Test2" width="1100"
 								height="500">
 						</div>
 

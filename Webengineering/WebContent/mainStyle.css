@@ -1,11 +1,23 @@
-.background1 {
-    /* The image used */
-    background-color: cornflowerblue;
-
-    /* Full height */
+.backgroundSide {
+    /* thing displayed*/
+    background-color: #fafafa;
+    /* full page size*/
     height: 100%;
+    /* center and scale*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-    /* Center and scale the image nicely */
+.backgroundMid {
+    /* thing displayed*/
+    background-color: #74b9ff;
+    /*background-color: cornflowerblue;*/
+    /* full page size*/
+    height: 100%;
+    width: 80%  ;
+    /* center and scale*/
+    margin: auto;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,10 +26,14 @@
 
 .footer {
     overflow: hidden;
-    background: lightgray;
+    background: #ededed;
     text-align: center;
 }
 
 .footer h4 {
     text-decoration: underline;
+}
+
+.footerCompany {
+    line-height: 0.8em;
 }

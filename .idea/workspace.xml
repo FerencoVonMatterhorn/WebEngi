@@ -3,32 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="20552531-1dce-49c2-8afa-d724a0c212b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Anmelden/Anmelden.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Anmelden/Anmelden.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Einzelne Gruppen/SingleGroup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Einzelne Gruppen/SingleGroup.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Einzelne Zahlung/SingleZahlung.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Einzelne Zahlung/SingleZahlung.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Gruppenuebersicht/Gruppenuebersicht.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Gruppenuebersicht/Gruppenuebersicht.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Profil/Profil.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Profil/Profil.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Registrieren/Registrieren.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Registrieren/Registrieren.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Startseite Loggedin/IndexLoggedIn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Startseite Loggedin/IndexLoggedIn.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Startseite/Index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Startseite/Index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Startseite/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Startseite/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Zahlungsuebersicht/Zahlungsuebersicht.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Zahlungsuebersicht/Zahlungsuebersicht.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Anmelden/Anmelden.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Anmelden/Anmelden.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Einzelne Gruppen/SingleGroup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Einzelne Gruppen/SingleGroup.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Einzelne Zahlung/SingleZahlung.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Einzelne Zahlung/SingleZahlung.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Gruppenuebersicht/Gruppenuebersicht.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Gruppenuebersicht/Gruppenuebersicht.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Impressum/Impressum.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Impressum/Impressum.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Profil/Profil.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Profil/Profil.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Registrieren/Registrieren.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Registrieren/Registrieren.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Startseite Loggedin/IndexLoggedIn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Startseite Loggedin/IndexLoggedIn.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Startseite/Index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Startseite/Index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Startseite/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Startseite/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Zahlungsuebersicht/Zahlungsuebersicht.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Zahlungsuebersicht/Zahlungsuebersicht.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Webengineering/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
-    <list id="a704880f-e67a-4893-9898-018e23c57406" name="Revert &quot;Minor changes at Impressum&quot;" comment="Revert &quot;Minor changes at Impressum&quot;&#10;&#10;This reverts commit 429c5a8e">
-      <change beforePath="$PROJECT_DIR$/Webengineering/WebContent/Impressum/Impressum.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Webengineering/WebContent/Impressum/Impressum.jsp" afterDir="false" />
-    </list>
+    <list id="a704880f-e67a-4893-9898-018e23c57406" name="Revert &quot;Minor changes at Impressum&quot;" comment="Revert &quot;Minor changes at Impressum&quot;&#10;&#10;This reverts commit 429c5a8e" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,17 +21,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Startseite/Index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="67" column="18" lean-forward="true" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
+            <state relative-caret-position="170">
+              <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Startseite/styles.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
               <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Registrieren/Registrieren.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -99,9 +94,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="240" />
+    <option name="y" value="130" />
+    <option name="width" value="1440" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -110,6 +106,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -128,81 +125,10 @@
               <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
               <item name="WebContent" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="WebEngi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebEngi" type="462c0819:PsiDirectoryNode" />
-              <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="Anmelden" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebEngi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebEngi" type="462c0819:PsiDirectoryNode" />
-              <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="Einzelne Gruppen" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebEngi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebEngi" type="462c0819:PsiDirectoryNode" />
-              <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="Einzelne Zahlung" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebEngi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebEngi" type="462c0819:PsiDirectoryNode" />
-              <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="Gruppenuebersicht" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebEngi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebEngi" type="462c0819:PsiDirectoryNode" />
-              <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="Impressum" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebEngi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebEngi" type="462c0819:PsiDirectoryNode" />
-              <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="Profil" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebEngi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebEngi" type="462c0819:PsiDirectoryNode" />
-              <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="Registrieren" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebEngi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebEngi" type="462c0819:PsiDirectoryNode" />
-              <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="Startseite" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebEngi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebEngi" type="462c0819:PsiDirectoryNode" />
-              <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="Startseite Loggedin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebEngi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebEngi" type="462c0819:PsiDirectoryNode" />
-              <item name="Webengineering" type="462c0819:PsiDirectoryNode" />
-              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
-              <item name="Zahlungsuebersicht" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -220,10 +146,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\joachimb\Desktop\Projects\WebEngi" />
       <recent name="C:\Users\joachimb\Desktop\Projects\WebEngi\Webengineering\WebContent\Startseite" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\joachimb\Desktop\Projects\WebEngi\Webengineering\WebContent\Startseite" />
     </key>
   </component>
@@ -325,17 +252,18 @@
       <updated>1557329329098</updated>
       <workItem from="1557329331916" duration="583000" />
       <workItem from="1557329934707" duration="10238000" />
+      <workItem from="1557382215673" duration="1026000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10821000" />
+    <option name="totallyTimeSpent" value="11847000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -346,13 +274,13 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27410617" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5146262" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.35102925" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" />
@@ -398,6 +326,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/artifacts/Web_Engineering.xml" />
@@ -415,9 +357,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Startseite/styles.xsl">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Startseite/styles.xsl" />
     <entry file="file://$PROJECT_DIR$/out/artifacts/WebEngi_Web_exploded/Impressum/Impressum.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -429,13 +369,6 @@
         <state split_layout="SPLIT">
           <first_editor />
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Webengineering/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -484,13 +417,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Registrieren/Registrieren.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Startseite Loggedin/IndexLoggedIn.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -505,20 +431,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Startseite/styles1.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Startseite/Index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="67" column="18" lean-forward="true" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Startseite/styles1.css" />
     <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Startseite/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Registrieren/Registrieren.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Webengineering/WebContent/Startseite/Index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>

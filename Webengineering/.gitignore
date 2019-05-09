@@ -9,4 +9,4 @@
 # IntelliJ
 .idea/
 **/*.iml
-out/*
+out/

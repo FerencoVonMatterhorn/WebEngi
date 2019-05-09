@@ -11,6 +11,19 @@
     background-size: cover;
 }
 
+.background2 {
+    /* The image used */
+    background-color: black;
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 .footer {
     overflow: hidden;
@@ -20,4 +33,9 @@
 
 .footer h4 {
     text-decoration: underline;
+}
+
+
+.footerCompany {
+	line-height: 0.8em;
 }

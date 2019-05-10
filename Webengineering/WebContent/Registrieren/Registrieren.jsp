@@ -16,7 +16,7 @@
           integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
           crossorigin="anonymous">
 </head>
-<body>
+<body style="min-width: 100%; min-height: 70%; overflow-x: hidden;">
 <!-- Navigationbar -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!-- Navbar Toggle -->
     <button class="navbar-toggler" type="button" data-toggle="collapse"

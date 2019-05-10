@@ -2,11 +2,22 @@
     /* thing displayed*/
     background-color: #fafafa;
     /* full page size*/
-    height: 100%;
+    height: 100vh;
     /* center and scale*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.input-length {
+    justify-content: center;
+    width: 9rem;
+}
+
+body{
+    min-width: 100%;
+    min-height: 70%;
+    overflow-x: hidden;
 }
 
 .backgroundMid {
@@ -14,8 +25,8 @@
     background-color: #74b9ff;
     /*background-color: cornflowerblue;*/
     /* full page size*/
-    height: 100%;
-    width: 90%;
+    height: 100vh;
+    width: 90vw;
     /* center and scale*/
     margin: auto;
     background-position: center;
@@ -23,18 +34,16 @@
     background-size: cover;
 }
 
-.myWGHeadline1 {
+.myWGHeadline {
     font-size: 3rem;
     font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
     font-weight: bold;
-
 }
 
 .myWGParagraph {
     font-size: 1rem;
     font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
 }
-
 
 .footer {
     overflow: hidden;

@@ -29,21 +29,21 @@
         <ul class="navbar-nav">
             <!-- Home -->
             <li class="nav-item active">
-                <a class="nav-link" href="#asd">Home <i class="fas fa-home"></i></a>
+                <a class="nav-link" href="#">Home <i class="fas fa-home"></i></a>
             </li>
             <!--c:if test="${loggedin}"  JSP SCRIPT TO HIDE ELEMENTS-->
             <!-- Gruppen Dropdown-->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#asd" id="navbardrop1"
+                <a class="nav-link dropdown-toggle" href="../Gruppenuebersicht/Gruppenuebersicht.jsp" id="navbardrop1"
                    data-toggle="dropdown">Gruppen <i class="fas fa-users"></i></a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="asd">Gruppe 1</a>
-                    <a class="dropdown-item" href="asd">Gruppe 2</a>
-                    <a class="dropdown-item" href="asd">Gruppe 3</a>
+                    <a class="dropdown-item" href="#asd">Gruppe 1</a>
+                    <a class="dropdown-item" href="#asd">Gruppe 2</a>
+                    <a class="dropdown-item" href="#asd">Gruppe 3</a>
                 </div>
             </li>
             <!-- Zahlungen -->
-            <li class="nav-item"><a class="nav-link" href="#asd">Zahlungen
+            <li class="nav-item"><a class="nav-link" href="../Zahlungsuebersicht/Zahlungsuebersicht.jsp">Zahlungen
                 <i class="fas fa-receipt"></i>
             </a></li>
         </ul>
@@ -51,7 +51,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Profil -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#asd" id="navbardrop2"
+                <a class="nav-link dropdown-toggle" href="../Profil/Profil.jsp" id="navbardrop2"
                    data-toggle="dropdown">Benutzer <i class="fas fa-user"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="#asd">Profil bearbeiten <i
@@ -62,7 +62,8 @@
             </li>
             <!-- /c:if -->
             <li class="nav-item">
-                <a class="nav-link" href="#asd">Registrieren <i class="fas fa-sign-in-alt"></i></a>
+                <a class="nav-link" href="../Registrieren/Registrieren.jsp">Registrieren <i
+                        class="fas fa-sign-in-alt"></i></a>
             </li>
         </ul>
         <!-- Navbar Items END -->
@@ -74,14 +75,17 @@
 <div class="backgroundSide">
     <div class="container-fluid">
         <div class="backgroundMid">
-            <div class="row">
+            <!-- Erste ROW -->
+            <div class="row center-block">
                 <div class="col-7 mt-5 ml-5">
-                    <h1 class="myWGHeadline1">MyWG Wir sammeln Ihre Rechnungen.</h1>
-                    <p class="myWGParagraph">Hier werden weiter Kurz informationen stehen.</p>
-                    <p class="myWGParagraph">Hier werden weiter Kurz informationen stehen.</p>
-                    <p class="myWGParagraph">Hier werden weiter Kurz informationen stehen.</p>
-                    <p class="myWGParagraph">Hier werden weiter Kurz informationen stehen.</p>
-                    <p class="myWGParagraph">Hier werden weiter Kurz informationen stehen.</p>
+                    <h1 class="myWGHeadline">MyWG - Was machen wir?</h1>
+                    <div class="ml-5 mt-4">
+                        <p class="myWGParagraph">Wir verschaffen Ihnen einen überblick im Chaos.</p>
+                        <p class="myWGParagraph">Monatliche Abrechnungen im Überblick.</p>
+                        <p class="myWGParagraph">Rechnung abfotografieren, hochladen und sagen wer dir Geld
+                            schuldet.</p>
+                        <p class="myWGParagraph">Ab jetzt zurücklehnen, denn den Rest übernehmen wir!</p>
+                    </div>
                 </div>
                 <!-- Login Form -->
                 <div class="col-3 card shadow mb-4 mt-4">
@@ -90,7 +94,7 @@
                         <hr>
                         <%--                <p class="text-success text-center">Status</p>--%>
 
-                        <form>
+                        <form action="" method="">
                             <!-- First input -->
                             <div class="form-group">
                                 <div class="input-group">
@@ -99,7 +103,7 @@
 										</span>
                                     </div>
                                     <input name="" class="form-control"
-                                           placeholder="Email or Username" type="text">
+                                           placeholder="Email or Username" type="text" required>
                                 </div>
                             </div>
                             <!-- Second input -->
@@ -110,7 +114,7 @@
 										</span>
                                     </div>
                                     <input class="form-control" placeholder="********"
-                                           type="password">
+                                           type="password" required>
                                 </div>
                             </div>
                             <!-- Actions -->
@@ -127,6 +131,7 @@
                 </div>
                 <!-- Login Form ENDE -->
             </div>
+            <!-- Erste ROW ENDE-->
 
 
             <!-- Carousel Preview -->
@@ -157,6 +162,7 @@
                 </a>
             </div>
             <!-- Carousel Preview ENDE -->
+            <!-- SPACE HOLDER TO FOOTER-->
             <div class="placeholder mb-4"></div>
         </div>
     </div>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- META-DATA -->
@@ -76,10 +77,11 @@
     <div class="container-fluid">
         <div class="backgroundMid">
             <!-- Register Form -->
-            <div class="row pt-5">
+            <div class="row pt-5 pb-5">
                 <div class="card mx-auto shadow mb-4 mt-4" style="border-radius: 8px;">
                     <article class="card-body">
                         <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
+                        <!-- Status message here -->
                         <hr class="myWGHR">
                         <!-- <p class="text-success text-center">Status</p> -->
                         <form action="" method="POST">
@@ -132,7 +134,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-length input-group-text"> Retype password:</span>
+                                        <span class="input-length input-group-text"> Repeat password:</span>
                                     </div>
                                     <input type="password" class="form-control" id="password2" required>
                                 </div>

@@ -31,7 +31,6 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <i class="fas fa-home"></i></a>
             </li>
-            <!--c:if test="${loggedin}"  JSP SCRIPT TO HIDE ELEMENTS-->
             <!-- Gruppen Dropdown-->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="../Gruppenuebersicht/Gruppenuebersicht.jsp" id="navbardrop1"
@@ -60,7 +59,6 @@
                 </a>
                 </div>
             </li>
-            <!-- /c:if -->
             <li class="nav-item">
                 <a class="nav-link" href="../Registrieren/Registrieren.jsp">Registrieren <i
                         class="fas fa-sign-in-alt"></i></a>
@@ -78,13 +76,12 @@
             <!-- Erste ROW -->
             <div class="row center-block">
                 <div class="col-7 mt-5 ml-5">
-                    <h1 class="myWGHeadline">MyWG - Was machen wir?</h1>
+                    <h1>MyWG - Was machen wir?</h1>
                     <div class="ml-5 mt-4">
-                        <p class="myWGParagraph">Wir verschaffen Ihnen einen überblick im Chaos.</p>
-                        <p class="myWGParagraph">Monatliche Abrechnungen im Überblick.</p>
-                        <p class="myWGParagraph">Rechnung abfotografieren, hochladen und sagen wer dir Geld
-                            schuldet.</p>
-                        <p class="myWGParagraph">Ab jetzt zurücklehnen, denn den Rest übernehmen wir!</p>
+                        <p>Wir verschaffen Ihnen einen überblick im Chaos.</p>
+                        <p>Monatliche Abrechnungen im Überblick.</p>
+                        <p>Rechnung abfotografieren, hochladen und sagen wer dir Geld schuldet.</p>
+                        <p>Ab jetzt zurücklehnen, denn den Rest übernehmen wir!</p>
                     </div>
                 </div>
                 <!-- Login Form -->
@@ -94,7 +91,7 @@
                         <hr>
                         <%--                <p class="text-success text-center">Status</p>--%>
 
-                        <form action="" method="">
+                        <form action="" method="POST">
                             <!-- First input -->
                             <div class="form-group">
                                 <div class="input-group">

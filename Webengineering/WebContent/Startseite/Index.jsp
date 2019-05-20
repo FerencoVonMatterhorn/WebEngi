@@ -31,34 +31,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <i class="fas fa-home"></i></a>
             </li>
-            <!-- Gruppen Dropdown-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="../Gruppenuebersicht/Gruppenuebersicht.jsp" id="navbardrop1"
-                   data-toggle="dropdown">Gruppen <i class="fas fa-users"></i></a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#asd">Gruppe 1</a>
-                    <a class="dropdown-item" href="#asd">Gruppe 2</a>
-                    <a class="dropdown-item" href="#asd">Gruppe 3</a>
-                </div>
-            </li>
-            <!-- Zahlungen -->
-            <li class="nav-item"><a class="nav-link" href="../Zahlungsuebersicht/Zahlungsuebersicht.jsp">Zahlungen
-                <i class="fas fa-receipt"></i>
-            </a></li>
         </ul>
         <!-- Navbar Items Rechts-->
         <ul class="navbar-nav ml-auto">
-            <!-- Profil -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="../Profil/Profil.jsp" id="navbardrop2"
-                   data-toggle="dropdown">Benutzer <i class="fas fa-user"></i></a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#asd">Profil bearbeiten <i
-                            class="fas fa-user-edit"></i>
-                    </a> <a class="dropdown-item" href="#asd">Abmelden <i class="fas fa-sign-in-alt"></i>
-                </a>
-                </div>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="../Registrieren/Registrieren.jsp">Registrieren <i
                         class="fas fa-sign-in-alt"></i></a>

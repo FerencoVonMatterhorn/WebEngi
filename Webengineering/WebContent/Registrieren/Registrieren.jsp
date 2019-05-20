@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- META-DATA -->
 <head>
-    <title>MyComp - Registrieren</title>
+    <title>MyWG - Registrieren</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../mainStyle.css">
     <link rel="stylesheet" href="registrieren.css">
@@ -33,36 +32,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="../Startseite/Index.jsp">Home <i class="fas fa-home"></i></a>
             </li>
-            <!--c:if test="${loggedin}"  JSP SCRIPT TO HIDE ELEMENTS-->
-            <!-- Gruppen Dropdown-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="../Gruppenuebersicht/Gruppenuebersicht.jsp" id="navbardrop1"
-                   data-toggle="dropdown">Gruppen <i class="fas fa-users"></i></a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="asd">Gruppe 1</a>
-                    <a class="dropdown-item" href="asd">Gruppe 2</a>
-                    <a class="dropdown-item" href="asd">Gruppe 3</a>
-                </div>
-            </li>
-            <!-- Zahlungen -->
-            <li class="nav-item"><a class="nav-link" href="../Zahlungsuebersicht/Zahlungsuebersicht.jsp">Zahlungen
-                <i class="fas fa-receipt"></i>
-            </a></li>
         </ul>
         <!-- Navbar Items Rechts-->
         <ul class="navbar-nav ml-auto">
-            <!-- Profil -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="../Profil/Profil.jsp" id="navbardrop2"
-                   data-toggle="dropdown">Benutzer <i class="fas fa-user"></i></a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#asd">Profil bearbeiten <i
-                            class="fas fa-user-edit"></i>
-                    </a> <a class="dropdown-item" href="#asd">Abmelden <i class="fas fa-sign-in-alt"></i>
-                </a>
-                </div>
-            </li>
-            <!-- /c:if -->
             <li class="nav-item">
                 <a class="nav-link active" href="#">Registrieren <i class="fas fa-sign-in-alt"></i></a>
             </li>

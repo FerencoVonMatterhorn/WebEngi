@@ -3,7 +3,7 @@
 <html>
 <!-- META-DATA -->
 <head>
-    <title>MyComp - Zahlung</title>
+    <title>MyWG - Zahlung</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../mainStyle.css">
     <link rel="stylesheet"
@@ -31,17 +31,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="../Startseite/Index.jsp">Home <i class="fas fa-home"></i></a>
             </li>
-            <!-- Gruppen Dropdown -->
-            <li class="nav-item dropdown">
-                <span class="nav-link">
-                    <a href="#yourlink">Gruppen </a>
-                    <i class="fas fa-users dropdown-toggle" href="#" id="navbardrop1" data-toggle="dropdown"></i>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#gruppe1">Gruppe 1</a>
-                        <a class="dropdown-item" href="#gruppe2">Gruppe 2</a>
-                        <a class="dropdown-item" href="#gruppe3">Gruppe 3</a>
-                    </div>
-                </span>
+            <!-- Gruppen -->
+            <li class="nav-item">
+                <a class="nav-link" href="../Gruppenuebersicht/Gruppenuebersicht.jsp">Gruppen <i class="fas fa-users"></i></a>
             </li>
             <!-- Zahlungen -->
             <li class="nav-item">
@@ -50,19 +42,13 @@
         </ul>
         <!-- Navbar Items Rechts-->
         <ul class="navbar-nav ml-auto">
-            <!-- Profil -->
-            <li class="nav-item dropdown">
-                <span class="nav-link">
-                    <a href="#yourlink">Profil </a>
-                    <i class="fas fa-user dropdown-toggle" href="#" id="navbardrop2" data-toggle="dropdown"></i>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#asd">Profil bearbeiten <i class="fas fa-user-edit"></i></a>
-                        <a class="dropdown-item" href="#asd">Abmelden <i class="fas fa-sign-in-alt"></i></a>
-                    </div>
-                </span>
-            </li>
+            <!--  Profil  -->
             <li class="nav-item">
-                <a class="nav-link" href="../Registrieren/Registrieren.jsp">Registrieren <i class="fas fa-sign-in-alt"></i></a>
+                <a class="nav-link" href="../Profil/Profil.jsp">Profil <i class="fas fa-user"></i></a>
+            </li>
+            <!--  Abmelden; TODO: abmelden.jsp erstellen  -->
+            <li class="nav-item">
+                <a class="nav-link" href="#abmelden">Abmelden <i class="fas fa-sign-in-alt"></i></a>
             </li>
         </ul>
         <!-- Navbar Items END -->

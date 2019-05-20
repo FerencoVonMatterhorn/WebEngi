@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- META-DATA -->
+<!--  META-DATA  -->
 <head>
     <title>MyComp - Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,38 +17,39 @@
           crossorigin="anonymous">
 </head>
 <body>
-<!-- Navigationbar -->
-<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!-- Navbar Toggle -->
+<!--  Navigationbar  -->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!--  Navbar Toggle  -->
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- Navbar Toggle END -->
+    <!--  Navbar Toggle END  -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <!-- Navbar Items Links-->
+        <!--  Navbar Items Links  -->
         <ul class="navbar-nav">
-            <!-- Home -->
+            <!--  Home  -->
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <i class="fas fa-home"></i></a>
             </li>
         </ul>
-        <!-- Navbar Items Rechts-->
+        <!--  Navbar Items Rechts  -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="../Registrieren/Registrieren.jsp">Registrieren <i
                         class="fas fa-sign-in-alt"></i></a>
             </li>
         </ul>
-        <!-- Navbar Items END -->
+        <!--  Navbar Items END  -->
     </div>
 </nav>
-<!-- Navigationbar END-->
+<!--  Navigationbar END  -->
 
-<!-- BODY -->
+<!--  BODY  -->
 <div class="backgroundSide">
     <div class="container-fluid">
         <div class="backgroundMid">
-            <!-- Erste ROW -->
+            <!--  Erste ROW  -->
             <div class="row center-block">
                 <div class="col-7 mt-5 ml-5">
                     <h1>MyWG - Was machen wir?</h1>
@@ -59,37 +60,33 @@
                         <p>Ab jetzt zurücklehnen, denn den Rest übernehmen wir!</p>
                     </div>
                 </div>
-                <!-- Login Form -->
-                <div class="col-3 card shadow mb-4 mt-4">
+                <!--  Login Form  -->
+                <div class="col-3 card shadow mb-5 mt-5">
                     <article class="card-body">
                         <h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
                         <hr>
                         <%--                <p class="text-success text-center">Status</p>--%>
 
                         <form action="" method="POST">
-                            <!-- First input -->
+                            <!--  First input  -->
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-										<span class="input-group-text"> <i class="fa fa-user"></i>
-										</span>
+                                        <span class="input-group-text"> <i class="fa fa-user"></i></span>
                                     </div>
-                                    <input name="" class="form-control"
-                                           placeholder="Email or Username" type="text" required>
+                                    <input name="" class="form-control" placeholder="Email or Username" type="text" required>
                                 </div>
                             </div>
-                            <!-- Second input -->
+                            <!--  Second input  -->
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-										<span class="input-group-text"> <i class="fa fa-lock"></i>
-										</span>
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="********"
-                                           type="password" required>
+                                    <input class="form-control" placeholder="********" type="password" required>
                                 </div>
                             </div>
-                            <!-- Actions -->
+                            <!--  Actions  -->
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block">
                                     Login
@@ -101,21 +98,21 @@
                         </form>
                     </article>
                 </div>
-                <!-- Login Form ENDE -->
+                <!--  Login Form END  -->
             </div>
-            <!-- Erste ROW ENDE-->
+            <!--  Erste ROW END  -->
 
 
-            <!-- Carousel Preview -->
+            <!--  Carousel Preview  -->
             <div id="myCarousel" class="carousel slide container" data-ride="carousel">
 
-                <!-- Indicators -->
+                <!--  Indicators  -->
                 <ul class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                 </ul>
 
-                <!-- The slideshow -->
+                <!--  The slideshow  -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="../Resources/test1.jpg" width="1100" height="500">
@@ -125,7 +122,7 @@
                     </div>
                 </div>
 
-                <!-- Left and right controls -->
+                <!--  Left and right controls  -->
                 <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
@@ -133,23 +130,21 @@
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>
-            <!-- Carousel Preview ENDE -->
-            <!-- SPACE HOLDER TO FOOTER-->
-            <div class="placeholder mb-4"></div>
+            <!--  Carousel Preview END  -->
+            <!--  SPACE TO FOOTER  -->
+            <div class="placeholder mb-5"></div>
         </div>
     </div>
 </div>
-<!-- BODY  ENDE-->
+<!--  BODY END  -->
 
-<!-- Footer -->
+<!--  Footer  -->
 <div class="container-fluid footer">
-    <div class="footerCompany col-xs-6 mt-3">
-        <p>
-            <a href="#impressum">Impressum</a>
-        </p>
+    <div class="footerCompany col-xs-6 mt-5">
+        <p><a href="#impressum">Impressum</a></p>
         <p>Ⓒ 2019 MyCompName</p>
     </div>
 </div>
-<!-- Footer ENDE-->
+<!--  Footer END  -->
 </body>
 </html>

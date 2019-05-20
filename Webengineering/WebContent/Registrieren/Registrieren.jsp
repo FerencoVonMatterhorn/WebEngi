@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- META-DATA -->
+<!--  META-DATA  -->
 <head>
     <title>MyWG - Registrieren</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,46 +18,44 @@
           crossorigin="anonymous">
 </head>
 <body style="min-width: 100%; min-height: 70%; overflow-x: hidden;">
-<!-- Navigationbar -->
-<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!-- Navbar Toggle -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#collapsibleNavbar">
+<!--  Navigationbar  -->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!--  Navbar Toggle  -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- Navbar Toggle END -->
+    <!--  Navbar Toggle END  -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <!-- Navbar Items Links-->
+        <!--  Navbar Items Links  -->
         <ul class="navbar-nav">
-            <!-- Home -->
+            <!--  Home  -->
             <li class="nav-item">
                 <a class="nav-link" href="../Startseite/Index.jsp">Home <i class="fas fa-home"></i></a>
             </li>
         </ul>
-        <!-- Navbar Items Rechts-->
+        <!--  Navbar Items Rechts  -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link active" href="#">Registrieren <i class="fas fa-sign-in-alt"></i></a>
             </li>
         </ul>
-        <!-- Navbar Items END -->
+        <!--  Navbar Items END  -->
     </div>
 </nav>
-<!-- Navigationbar END-->
+<!--  Navigationbar END  -->
 
-<!-- BODY -->
+<!--  BODY  -->
 <div class="backgroundSide">
     <div class="container-fluid">
         <div class="backgroundMid">
-            <!-- Register Form -->
-            <div class="row pt-5 pb-5">
-                <div class="card mx-auto shadow mb-4 mt-4" style="border-radius: 8px;">
+            <!--  Register Form  -->
+            <div class="row">
+                <div class="card mx-auto shadow mb-5 mt-5" style="border-radius: 8px;">
                     <article class="card-body">
                         <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
-                        <!-- Status message here -->
-                        <hr class="myWGHR">
-                        <!-- <p class="text-success text-center">Status</p> -->
+                        <hr>
                         <form action="" method="POST">
-                            <!-- First input -->
+                            <!--  First input  -->
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -66,7 +64,7 @@
                                     <input type="text" class="form-control" id="fname" required>
                                 </div>
                             </div>
-                            <!-- Second input -->
+                            <!--  Second input  -->
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -75,7 +73,7 @@
                                     <input type="text" class="form-control" id="lname" required>
                                 </div>
                             </div>
-                            <!-- Third input -->
+                            <!--  Third input  -->
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -84,7 +82,7 @@
                                     <input type="text" class="form-control" id="uname" required>
                                 </div>
                             </div>
-                            <!-- Fourth input -->
+                            <!--  Fourth input  -->
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -93,7 +91,7 @@
                                     <input type="email" class="form-control" id="email" required>
                                 </div>
                             </div>
-                            <!-- Fifth input -->
+                            <!--  Fifth input  -->
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -102,7 +100,7 @@
                                     <input type="password" class="form-control" id="password1" required>
                                 </div>
                             </div>
-                            <!-- Sixth input -->
+                            <!--  Sixth input  -->
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -111,31 +109,29 @@
                                     <input type="password" class="form-control" id="password2" required>
                                 </div>
                             </div>
-                            <hr class="MyWGHR">
-                            <!-- Actions -->
+                            <hr>
+                            <!--  Actions  -->
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block">Register</button>
                             </div>
                         </form>
                     </article>
-                    <!-- Register Form ENDE -->
+                    <!--  Register Form END  -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- BODY ENDE -->
+<!--  BODY END  -->
 
 
-<!-- Footer -->
+<!--  Footer  -->
 <div class="container-fluid footer">
     <div class="footerCompany col-xs-6 mt-3">
-        <p>
-            <a href="#impressum">Impressum</a>
-        </p>
+        <p><a href="#impressum">Impressum</a></p>
         <p>Ⓒ 2019 MyCompName</p>
     </div>
 </div>
-<!-- Footer ENDE-->
+<!--  Footer END  -->
 </body>
 </html>

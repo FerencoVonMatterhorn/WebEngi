@@ -21,31 +21,44 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<!-- Navigationbar -->
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!-- Navbar Toggle -->
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#collapsibleNavbar">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<!-- Navbar Toggle END -->
-	<div class="collapse navbar-collapse" id="collapsibleNavbar">
-		<!-- Navbar Items Links-->
-		<ul class="navbar-nav">
-			<!-- Home -->
-			<li class="nav-item active"><a class="nav-link" href="#asd">Home
-					<i class="fas fa-home"></i>
-			</a></li>
-		</ul>
-		<!-- Navbar Items Rechts-->
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link" href="#asd">Registrieren
-					<i class="fas fa-sign-in-alt"></i>
-			</a></li>
-		</ul>
-		<!-- Navbar Items END -->
-	</div>
-	</nav>
-	<!-- Navigationbar END-->
+	<!--  Navigationbar  -->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!--  Navbar Toggle  -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--  Navbar Toggle END  -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <!--  Navbar Items Links  -->
+        <ul class="navbar-nav">
+            <!--  Home  -->
+            <li class="nav-item">
+                <a class="nav-link" href="../Startseite/Index.jsp">Home <i class="fas fa-home"></i></a>
+            </li>
+            <!--  Gruppen  -->
+            <li class="nav-item">
+                <a class="nav-link" href="../Gruppenuebersicht/Gruppenuebersicht.jsp">Gruppen <i class="fas fa-users"></i></a>
+            </li>
+            <!--  Zahlungen  -->
+            <li class="nav-item">
+                <a class="nav-link" href="../Zahlungsuebersicht/Zahlungsuebersicht.jsp">Zahlungen <i class="fas fa-receipt"></i></a>
+            </li>
+        </ul>
+        <!--  Navbar Items Rechts  -->
+        <ul class="navbar-nav ml-auto">
+            <!--  Profil  -->
+            <li class="nav-item">
+                <a class="nav-link" href="../Profil/Profil.jsp">Profil <i class="fas fa-user"></i></a>
+            </li>
+            <!--  Abmelden; TODO: abmelden.jsp erstellen  -->
+            <li class="nav-item">
+                <a class="nav-link" href="#abmelden">Abmelden <i class="fas fa-sign-in-alt"></i></a>
+            </li>
+        </ul>
+        <!--  Navbar Items END  -->
+    </div>
+</nav>
+<!-- Navigationbar END-->
 
 	<!-- BODY -->
 	<div class="backgroundSide">
@@ -55,11 +68,7 @@
 					<h1>Impressum</h1>
 					<p>Angaben gemäß § 5 TMG</p>
 					<p>
-						Max Muster <br> Musterweg<br> 12345 Musterstadt <br>
-					</p>
-					<p>
-						<strong>Vertreten durch: </strong><br> Max Muster<br>
-						Christian idk<br>
+						Bengt Joachimson <br> Ferenc Horvay<br> Christian Koller<br>
 					</p>
 					<p>
 						<strong>Kontakt:</strong> <br> Telefon: 01234-789456<br>
@@ -133,68 +142,7 @@
 						ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich
 						ausdrücklich rechtliche Schritte im Falle der unverlangten
 						Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.<br>
-						<br> <br> <strong>Google Analytics</strong><br> <br>
-						Diese Website benutzt Google Analytics, einen Webanalysedienst der
-						Google Inc. (''Google''). Google Analytics verwendet sog.
-						''Cookies'', Textdateien, die auf Ihrem Computer gespeichert
-						werden und die eine Analyse der Benutzung der Website durch Sie
-						ermöglicht. Die durch den Cookie erzeugten Informationen über Ihre
-						Benutzung dieser Website (einschließlich Ihrer IP-Adresse) wird an
-						einen Server von Google in den USA übertragen und dort
-						gespeichert. Google wird diese Informationen benutzen, um Ihre
-						Nutzung der Website auszuwerten, um Reports über die
-						Websiteaktivitäten für die Websitebetreiber zusammenzustellen und
-						um weitere mit der Websitenutzung und der Internetnutzung
-						verbundene Dienstleistungen zu erbringen. Auch wird Google diese
-						Informationen gegebenenfalls an Dritte übertragen, sofern dies
-						gesetzlich vorgeschrieben oder soweit Dritte diese Daten im
-						Auftrag von Google verarbeiten. Google wird in keinem Fall Ihre
-						IP-Adresse mit anderen Daten der Google in Verbindung bringen. Sie
-						können die Installation der Cookies durch eine entsprechende
-						Einstellung Ihrer Browser Software verhindern; wir weisen Sie
-						jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht
-						sämtliche Funktionen dieser Website voll umfänglich nutzen können.
-						Durch die Nutzung dieser Website erklären Sie sich mit der
-						Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor
-						beschriebenen Art und Weise und zu dem zuvor benannten Zweck
-						einverstanden.<br> <br> <strong>Google AdSense</strong><br>
-						<br> Diese Website benutzt Google Adsense, einen
-						Webanzeigendienst der Google Inc., USA (''Google''). Google
-						Adsense verwendet sog. ''Cookies'' (Textdateien), die auf Ihrem
-						Computer gespeichert werden und die eine Analyse der Benutzung der
-						Website durch Sie ermöglicht. Google Adsense verwendet auch sog.
-						''Web Beacons'' (kleine unsichtbare Grafiken) zur Sammlung von
-						Informationen. Durch die Verwendung des Web Beacons können
-						einfache Aktionen wie der Besucherverkehr auf der Webseite
-						aufgezeichnet und gesammelt werden. Die durch den Cookie und/oder
-						Web Beacon erzeugten Informationen über Ihre Benutzung dieser
-						Website (einschließlich Ihrer IP-Adresse) werden an einen Server
-						von Google in den USA übertragen und dort gespeichert. Google wird
-						diese Informationen benutzen, um Ihre Nutzung der Website im
-						Hinblick auf die Anzeigen auszuwerten, um Reports über die
-						Websiteaktivitäten und Anzeigen für die Websitebetreiber
-						zusammenzustellen und um weitere mit der Websitenutzung und der
-						Internetnutzung verbundene Dienstleistungen zu erbringen. Auch
-						wird Google diese Informationen gegebenenfalls an Dritte
-						übertragen, sofern dies gesetzlich vorgeschrieben oder soweit
-						Dritte diese Daten im Auftrag von Google verarbeiten. Google wird
-						in keinem Fall Ihre IP-Adresse mit anderen Daten der Google in
-						Verbindung bringen. Das Speichern von Cookies auf Ihrer Festplatte
-						und die Anzeige von Web Beacons können Sie verhindern, indem Sie
-						in Ihren Browser-Einstellungen ''keine Cookies akzeptieren''
-						wählen (Im MS Internet-Explorer unter ''Extras > Internetoptionen
-						> Datenschutz > Einstellung''; im Firefox unter ''Extras >
-						Einstellungen > Datenschutz > Cookies''); wir weisen Sie jedoch
-						darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche
-						Funktionen dieser Website voll umfänglich nutzen können. Durch die
-						Nutzung dieser Website erklären Sie sich mit der Bearbeitung der
-						über Sie erhobenen Daten durch Google in der zuvor beschriebenen
-						Art und Weise und zu dem zuvor benannten Zweck einverstanden.
 					</p>
-					<br> Impressum vom <a
-						href="https://www.impressum-generator.de">Impressum Generator</a>
-					der <a href="https://www.kanzlei-hasselbach.de/">Kanzlei
-						Hasselbach, Rechtsanwälte für Arbeitsrecht und Familienrecht</a>
 				</div>
 			</div>
 		</div>

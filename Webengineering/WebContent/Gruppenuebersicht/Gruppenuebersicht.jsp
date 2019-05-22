@@ -21,57 +21,44 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<!-- Navigationbar -->
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!-- Navbar Toggle -->
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#collapsibleNavbar">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<!-- Navbar Toggle END -->
-	<div class="collapse navbar-collapse" id="collapsibleNavbar">
-		<!-- Navbar Items Links-->
-		<ul class="navbar-nav">
-			<!-- Home -->
-			<li class="nav-item active"><a class="nav-link" href="#asd">Home
-					<i class="fas fa-home"></i>
-			</a></li>
-			<!--c:if test="${loggedin}"  JSP SCRIPT TO HIDE ELEMENTS-->
-			<!-- Gruppen Dropdown-->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#asd" id="navbardrop1"
-				data-toggle="dropdown">Gruppen <i class="fas fa-users"></i></a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="asd">Gruppe 1</a> <a
-						class="dropdown-item" href="asd">Gruppe 2</a> <a
-						class="dropdown-item" href="asd">Gruppe 3</a>
-				</div></li>
-			<!-- Zahlungen -->
-			<li class="nav-item"><a class="nav-link" href="#asd">Zahlungen
-					<i class="fas fa-receipt"></i>
-			</a></li>
-		</ul>
-		<!-- Navbar Items Rechts-->
-		<ul class="navbar-nav ml-auto">
-			<!-- Profil -->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#asd" id="navbardrop2"
-				data-toggle="dropdown">Benutzer <i class="fas fa-user"></i></a>
-				<div class="dropdown-menu dropdown-menu-right">
-					<a class="dropdown-item" href="#asd">Profil bearbeiten <i
-						class="fas fa-user-edit"></i>
-					</a> <a class="dropdown-item" href="#asd">Abmelden <i
-						class="fas fa-sign-in-alt"></i>
-					</a>
-				</div></li>
-			<!-- /c:if -->
-			<li class="nav-item"><a class="nav-link" href="#asd">Registrieren
-					<i class="fas fa-sign-in-alt"></i>
-			</a></li>
-		</ul>
-		<!-- Navbar Items END -->
-	</div>
-	</nav>
-	<!-- Navigationbar END-->
+	<!--  Navigationbar  -->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!--  Navbar Toggle  -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--  Navbar Toggle END  -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <!--  Navbar Items Links  -->
+        <ul class="navbar-nav">
+            <!--  Home  -->
+            <li class="nav-item">
+                <a class="nav-link" href="../Startseite/Index.jsp">Home <i class="fas fa-home"></i></a>
+            </li>
+            <!--  Gruppen  -->
+            <li class="nav-item">
+                <a class="nav-link active" href="../Gruppenuebersicht/Gruppenuebersicht.jsp">Gruppen <i class="fas fa-users"></i></a>
+            </li>
+            <!--  Zahlungen  -->
+            <li class="nav-item">
+                <a class="nav-link" href="../Zahlungsuebersicht/Zahlungsuebersicht.jsp">Zahlungen <i class="fas fa-receipt"></i></a>
+            </li>
+        </ul>
+        <!--  Navbar Items Rechts  -->
+        <ul class="navbar-nav ml-auto">
+            <!--  Profil  -->
+            <li class="nav-item">
+                <a class="nav-link" href="../Profil/Profil.jsp">Profil <i class="fas fa-user"></i></a>
+            </li>
+            <!--  Abmelden; TODO: abmelden.jsp erstellen  -->
+            <li class="nav-item">
+                <a class="nav-link" href="#abmelden">Abmelden <i class="fas fa-sign-in-alt"></i></a>
+            </li>
+        </ul>
+        <!--  Navbar Items END  -->
+    </div>
+</nav>
+<!-- Navigationbar END-->
 
 	<!-- BODY -->
 	<div class="backgroundSide">
@@ -127,13 +114,6 @@
 						</div>
 					</div>
 					<!--/row-->
-
-					<hr>
-
-					<footer>
-					<p>&copy; Company 2017</p>
-					</footer>
-
 				</div>
 				<!--/.container-->
 

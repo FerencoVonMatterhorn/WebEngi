@@ -75,16 +75,6 @@
 						Fax: 1234-56789<br> E-Mail: <a href='mailto:max@muster.de'>max@muster.de</a><br>
 					</p>
 					<p>
-						<strong>Umsatzsteuer-ID: </strong> <br>
-						Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz:
-						Musterustid.<br> <br> <strong>Wirtschafts-ID: </strong><br>
-						Musterwirtschaftsid<br>
-					</p>
-					<p>
-						<strong>Aufsichtsbehörde:</strong><br> Musteraufsicht
-						Musterstadt<br>
-					</p>
-					<p>
 						<strong>Haftungsausschluss: </strong><br> <br> <strong>Haftung
 							für Inhalte</strong><br> <br> Die Inhalte unserer Seiten wurden
 						mit größter Sorgfalt erstellt. Für die Richtigkeit,

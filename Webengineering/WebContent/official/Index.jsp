@@ -5,7 +5,7 @@
 <head>
     <title>MyComp - Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../mainStyle.css">
+    <link rel="stylesheet" href="../mainstyle.css">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -115,10 +115,10 @@
                 <!--  The slideshow  -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../Resources/test1.jpg" width="1100" height="500">
+                        <img src="../resources/test1.jpg" width="1100" height="500">
                     </div>
                     <div class="carousel-item">
-                        <img src="../Resources/test2.jpg" width="1100" height="500">
+                        <img src="../resources/test2.jpg" width="1100" height="500">
                     </div>
                 </div>
 

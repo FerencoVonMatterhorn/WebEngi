@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- META-DATA -->
@@ -8,67 +7,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-	crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 	<!--  Navigationbar  -->
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!--  Navbar Toggle  -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <!--  Navbar Toggle END  -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <!--  Navbar Items Links  -->
-        <ul class="navbar-nav">
-            <!--  Home  -->
-            <li class="nav-item">
-                <a class="nav-link" href="../Startseite/Index.jsp">Home <i class="fas fa-home"></i></a>
-            </li>
-            <!--  Gruppen  -->
-            <li class="nav-item">
-                <a class="nav-link" href="../Gruppenuebersicht/Gruppenuebersicht.jsp">Gruppen <i class="fas fa-users"></i></a>
-            </li>
-            <!--  Zahlungen  -->
-            <li class="nav-item">
-                <a class="nav-link" href="../Zahlungsuebersicht/Zahlungsuebersicht.jsp">Zahlungen <i class="fas fa-receipt"></i></a>
-            </li>
-        </ul>
-        <!--  Navbar Items Rechts  -->
-        <ul class="navbar-nav ml-auto">
-            <!--  Profil  -->
-            <li class="nav-item">
-                <a class="nav-link active" href="../Profil/Profil.jsp">Profil <i class="fas fa-user"></i></a>
-            </li>
-            <!--  Abmelden; TODO: abmelden.jsp erstellen  -->
-            <li class="nav-item">
-                <a class="nav-link" href="#abmelden">Abmelden <i class="fas fa-sign-in-alt"></i></a>
-            </li>
-        </ul>
-        <!--  Navbar Items END  -->
-    </div>
-</nav>
-<!-- Navigationbar END-->
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!--  Navbar Toggle  -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<!--  Navbar Toggle END  -->
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<!--  Navbar Items Links  -->
+		<ul class="navbar-nav">
+			<!--  Home  -->
+			<li class="nav-item"><a class="nav-link" href="../Startseite/Index.jsp">Home <i class="fas fa-home"></i></a></li>
+			<!--  Gruppen  -->
+			<li class="nav-item"><a class="nav-link" href="../Gruppenuebersicht/Gruppenuebersicht.jsp">Gruppen <i
+					class="fas fa-users"></i></a></li>
+			<!--  Zahlungen  -->
+			<li class="nav-item"><a class="nav-link" href="../Zahlungsuebersicht/Zahlungsuebersicht.jsp">Zahlungen <i
+					class="fas fa-receipt"></i></a></li>
+		</ul>
+		<!--  Navbar Items Rechts  -->
+		<ul class="navbar-nav ml-auto">
+			<!--  Profil  -->
+			<li class="nav-item"><a class="nav-link active" href="../Profil/Profil.jsp">Profil <i class="fas fa-user"></i></a></li>
+			<!--  Abmelden; TODO: abmelden.jsp erstellen  -->
+			<li class="nav-item"><a class="nav-link" href="#abmelden">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+		</ul>
+		<!--  Navbar Items END  -->
+	</div>
+	</nav>
+	<!-- Navigationbar END-->
 
 	<!-- BODY -->
 
@@ -82,8 +62,7 @@
 								<div class="row">
 									<div class="col-md-4">
 										<div class="profile-img mb-4">
-											<img
-												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+											<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
 												alt="" />
 										</div>
 									</div>
@@ -92,13 +71,10 @@
 											<h5>Kshiti Ghelani</h5>
 											<h6>Web Developer and Designer</h6>
 											<ul class="nav nav-tabs" id="myTab" role="tablist">
-												<li class="nav-item"><a class="nav-link active"
-													id="home-tab" data-toggle="tab" href="#home" role="tab"
+												<li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
 													aria-controls="home" aria-selected="true">About</a></li>
-												<li class="nav-item"><a class="nav-link"
-													id="profile-tab" data-toggle="tab" href="#profile"
-													role="tab" aria-controls="profile" aria-selected="false">Edit
-														Profile</a></li>
+												<li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+													aria-controls="profile" aria-selected="false">Edit Profile</a></li>
 											</ul>
 										</div>
 									</div>
@@ -107,14 +83,12 @@
 									<div class="col-md-4">
 										<div class="profile-work">
 											<p>WORK LINK</p>
-											<a href="">Website Link</a><br /> <a href="">Bootsnipp
-												Profile</a><br /> <a href="">Bootply Profile</a>
+											<a href="">Website Link</a><br /> <a href="">Bootsnipp Profile</a><br /> <a href="">Bootply Profile</a>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="tab-content profile-tab" id="myTabContent">
-											<div class="tab-pane fade show active" id="home"
-												role="tabpanel" aria-labelledby="home-tab">
+											<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 												<div class="row">
 													<div class="col-md-6">
 														<label>Username</label>
@@ -140,8 +114,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="tab-pane fade" id="profile" role="tabpanel"
-												aria-labelledby="profile-tab">
+											<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 												<div class="col md-6">
 													<form action="" method="POST">
 														<div class="row">

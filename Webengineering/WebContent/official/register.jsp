@@ -1,0 +1,131 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--  META-DATA  -->
+<head>
+<title>MyWG - Registrieren</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../mainstyle.css">
+<link rel="stylesheet" href="registrieren.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body style="min-width: 100%; min-height: 70%; overflow-x: hidden;">
+	<!--  Navigationbar  -->
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!--  Navbar Toggle  -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<!--  Navbar Toggle END  -->
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<!--  Navbar Items Links  -->
+		<ul class="navbar-nav">
+			<!--  Home  -->
+			<li class="nav-item"><a class="nav-link" href="../Startseite/Index.jsp">Home <i class="fas fa-home"></i></a></li>
+		</ul>
+		<!--  Navbar Items Rechts  -->
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a class="nav-link active" href="#">Registrieren <i class="fas fa-sign-in-alt"></i></a></li>
+		</ul>
+		<!--  Navbar Items END  -->
+	</div>
+	</nav>
+	<!--  Navigationbar END  -->
+
+	<!--  BODY  -->
+	<div class="backgroundSide">
+		<div class="container-fluid">
+			<div class="backgroundMid">
+				<!--  Register Form  -->
+				<div class="row">
+					<div class="card mx-auto shadow mb-5 mt-5" style="border-radius: 8px;">
+						<article class="card-body">
+						<h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
+						<hr>
+						<form action="" method="POST">
+							<!--  First input  -->
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-length input-group-text"> First name:</span>
+									</div>
+									<input type="text" class="form-control" id="fname" required>
+								</div>
+							</div>
+							<!--  Second input  -->
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-length input-group-text"> Last name:</span>
+									</div>
+									<input type="text" class="form-control" id="lname" required>
+								</div>
+							</div>
+							<!--  Third input  -->
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-length input-group-text"> Username:</span>
+									</div>
+									<input type="text" class="form-control" id="uname" required>
+								</div>
+							</div>
+							<!--  Fourth input  -->
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-length input-group-text"> Email address:</span>
+									</div>
+									<input type="email" class="form-control" id="email" required>
+								</div>
+							</div>
+							<!--  Fifth input  -->
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-length input-group-text"> Password:</span>
+									</div>
+									<input type="password" class="form-control" id="password1" required>
+								</div>
+							</div>
+							<!--  Sixth input  -->
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-length input-group-text"> Repeat password:</span>
+									</div>
+									<input type="password" class="form-control" id="password2" required>
+								</div>
+							</div>
+							<hr>
+							<!--  Actions  -->
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-block">Register</button>
+							</div>
+						</form>
+						</article>
+						<!--  Register Form END  -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  BODY END  -->
+
+
+	<!--  Footer  -->
+	<div class="container-fluid footer">
+		<div class="footerCompany col-xs-6 mt-3">
+			<p>
+				<a href="#impressum">Impressum</a>
+			</p>
+			<p>Ⓒ 2019 MyCompName</p>
+		</div>
+	</div>
+	<!--  Footer END  -->
+</body>
+</html>

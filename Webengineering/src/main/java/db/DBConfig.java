@@ -4,9 +4,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class dbConfig {
+public class DBConfig {
 
-	public dbConfig() {
+	public DBConfig() {
 		// Constructor may be empty
 	}
 
@@ -17,7 +17,7 @@ public class dbConfig {
 			// Create the SessionFactory from hibernate.cfg.xml
 			return new Configuration().configure().buildSessionFactory();
 		} catch (HibernateException ex) {
-			// Make sure you log the exception, as it might be swallowed
+			// TODO: add logger.
 			throw new ExceptionInInitializerError(ex);
 		}
 	}

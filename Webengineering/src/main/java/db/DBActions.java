@@ -7,36 +7,36 @@ import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import main.java.Util.PasswordUtil;
 import main.java.beans.UserBean;
+import main.java.util.PasswordUtil;
 
-public class dbActions {
+public class DBActions {
 
 	Session session;
 
-	private dbActions() {
+	private DBActions() {
 		// Constructor may be empty
 	}
 
 	public static void register() {
-		// TODO: register user
+		// TODO: empty method stub.
 	}
 
 	public static Optional<UserBean> login(String inUsername, String inPassword) {
-		Session session = dbConfig.getSessionFactory().openSession();
+		Session session = DBConfig.getSessionFactory().openSession();
 		Optional<UserBean> user = findUser(session, inUsername);
 		if (user.isPresent()) {
 			try {
 				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
-					// TODO: anmeldung war erfolgreich
+					return user;
 				} else {
+					return Optional.empty();
 				}
 			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-				// TODO: Add Logger to project.
 				e.printStackTrace();
 			}
 		}
-		return user;
+		return Optional.empty();
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class dbActions {
 		session.beginTransaction();
 		Query<?> query = session.createQuery("from USER where USERNAME := username");
 		query.setParameter("username", inUsername);
-		return (Optional<UserBean>) query.uniqueResultOptional();
+		return (Optional<UserBean>) query.uniqueResultOptional().orElse(null);
 	}
 
 }

@@ -12,7 +12,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-</head>
 <body>
 	<!--  Navigationbar  -->
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!--  Navbar Toggle  -->
@@ -28,7 +27,7 @@
 		</ul>
 		<!--  Navbar Items Rechts  -->
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link" href="../Registrieren/Registrieren.jsp">Registrieren <i
+			<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i
 					class="fas fa-sign-in-alt"></i></a></li>
 		</ul>
 		<!--  Navbar Items END  -->

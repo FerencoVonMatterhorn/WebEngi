@@ -13,6 +13,9 @@ import javax.persistence.Table;
 @Table(name = "USERS")
 public class UserBean {
 
+	// TODO: remove getter & setter with lombok
+	// TODO: other attributes needed?
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "USERID")
@@ -41,16 +44,16 @@ public class UserBean {
 
 	private boolean loggedIn;
 
+	public UserBean() {
+		// Constructor may be empty.
+	}
+
 	public boolean isLoggedIn() {
 		return loggedIn;
 	}
 
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
-	}
-
-	public UserBean() {
-
 	}
 
 	public String getUsername() {

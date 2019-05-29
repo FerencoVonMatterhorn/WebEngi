@@ -25,7 +25,7 @@
 		<!--  Navbar Items Links  -->
 		<ul class="navbar-nav">
 			<!--  Home  -->
-			<li class="nav-item"><a class="nav-link" href="../Startseite/Index.jsp">Home <i class="fas fa-home"></i></a></li>
+			<li class="nav-item"><a class="nav-link" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
 		</ul>
 		<!--  Navbar Items Rechts  -->
 		<ul class="navbar-nav ml-auto">

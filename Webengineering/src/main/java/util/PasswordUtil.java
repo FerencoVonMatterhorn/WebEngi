@@ -1,4 +1,4 @@
-package main.java.Util;
+package main.java.util;
 
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
@@ -15,7 +15,7 @@ public class PasswordUtil {
 	}
 
 	public static String generateHashedPassword(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-		int iterations = 1000;
+		int iterations = 1000; // TODO: iterations should be random.
 		char[] chars = password.toCharArray();
 		byte[] salt = getSalt().getBytes();
 
@@ -54,6 +54,7 @@ public class PasswordUtil {
 		String hex = bi.toString(16);
 		int paddingLength = (array.length * 2) - hex.length();
 		if (paddingLength > 0) {
+			// DONOT: Change this part.
 			return String.format("%0" + paddingLength + "d", 0) + hex;
 		} else {
 			return hex;
@@ -64,7 +65,7 @@ public class PasswordUtil {
 		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
 		byte[] salt = new byte[16];
 		sr.nextBytes(salt);
-		return salt.toString();
+		return salt.toString(); // May not be Arrays.toString() - Doesn't work.
 	}
 
 }

@@ -17,7 +17,6 @@ public class DBConfig {
 			// Create the SessionFactory from hibernate.cfg.xml
 			return new Configuration().configure().buildSessionFactory();
 		} catch (HibernateException ex) {
-			// TODO: add logger.
 			throw new ExceptionInInitializerError(ex);
 		}
 	}

@@ -1,5 +1,6 @@
 package main.java.beans;
 
+import java.awt.image.BufferedImage;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -9,12 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "USERS")
+@Getter
+@Setter
+@Builder
 public class UserBean {
-
-	// TODO: remove getter & setter with lombok
-	// TODO: other attributes needed?
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,49 +47,9 @@ public class UserBean {
 	@Column(name = "EMAIL")
 	private String email;
 
+	@Column(name = "PROFILEPICTURE")
+	BufferedImage proilePicture;
+
 	private boolean loggedIn;
 
-	public UserBean() {
-		// Constructor may be empty.
-	}
-
-	public boolean isLoggedIn() {
-		return loggedIn;
-	}
-
-	public void setLoggedIn(boolean loggedIn) {
-		this.loggedIn = loggedIn;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
-
-	public int getIterations() {
-		return iterations;
-	}
-
-	public void setIterations(int iterations) {
-		this.iterations = iterations;
-	}
 }

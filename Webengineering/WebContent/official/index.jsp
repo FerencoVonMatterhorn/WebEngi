@@ -27,8 +27,7 @@
 		</ul>
 		<!--  Navbar Items Rechts  -->
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i
-					class="fas fa-sign-in-alt"></i></a></li>
+			<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i class="fas fa-sign-in-alt"></i></a></li>
 		</ul>
 		<!--  Navbar Items END  -->
 	</div>
@@ -104,6 +103,10 @@
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<img src="../resources/test1.jpg" width="1100" height="500">
+							<div class="carousel-caption">
+								<h3>Wir haben die richtige Lösung!</h3>
+								<p>Auf einen Blick haben Sie alle ihre Rehcnungen, die diesen Monat anstehen!</p>
+							</div>
 						</div>
 						<div class="carousel-item">
 							<img src="../resources/test2.jpg" width="1100" height="500">
@@ -127,7 +130,7 @@
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-5">
 			<p>
-				<a href="#impressum">Impressum</a>
+				<a href="imprint.jsp">Impressum</a>
 			</p>
 			<p>Ⓒ 2019 MyCompName</p>
 		</div>

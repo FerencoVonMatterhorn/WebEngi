@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		log("TEST");
 		Optional<UserBean> user = DBActions.login(request.getParameter("username"), request.getParameter("password"));
 		RequestDispatcher rd;
 		if (user.isPresent() && user.get().isLoggedIn()) {

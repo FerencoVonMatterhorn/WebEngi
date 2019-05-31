@@ -14,10 +14,6 @@ public class DBActions {
 
 	Session session;
 
-	private DBActions() {
-		// Constructor may be empty
-	}
-
 	public static void register() {
 		// TODO: empty method stub.
 	}
@@ -28,6 +24,7 @@ public class DBActions {
 		if (user.isPresent()) {
 			try {
 				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
+					user.get().setLoggedIn(true);
 					return user;
 				} else {
 					return Optional.empty();

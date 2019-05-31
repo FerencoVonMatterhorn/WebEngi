@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 		Optional<UserBean> user = DBActions.login(request.getParameter("username"), request.getParameter("password"));
 		RequestDispatcher rd;
 		if (user.isPresent() && user.get().isLoggedIn()) {
+			// TODO: add bean to jsp
 			rd = request.getRequestDispatcher("indexLoggedIn.jsp");
 		} else {
 			rd = request.getRequestDispatcher("index.jsp");

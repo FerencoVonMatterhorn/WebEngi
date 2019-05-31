@@ -128,7 +128,7 @@
 
 	<!--  Footer  -->
 	<div class="container-fluid footer">
-		<div class="footerCompany col-xs-6 mt-5">
+		<div class="footerCompany col-xs-6 mt-3">
 			<p>
 				<a href="imprint.jsp">Impressum</a>
 			</p>

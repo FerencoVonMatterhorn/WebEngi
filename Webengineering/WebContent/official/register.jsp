@@ -121,7 +121,7 @@
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a href="#impressum">Impressum</a>
+				<a href="imprint.jsp">Impressum</a>
 			</p>
 			<p>Ⓒ 2019 MyCompName</p>
 		</div>

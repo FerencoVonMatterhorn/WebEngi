@@ -1,0 +1,36 @@
+.page {
+    display: none;
+}
+
+.default {
+    display: block;
+}
+
+:target {
+    display: block;
+}
+
+:target ~ .default {
+    display: none;
+}
+
+.singlePaymentInOverview {
+	border-style: solid;
+	border-radius: 4em;
+	text-align: center;
+	margin-top: 4em;
+	padding: 2em;
+	color: white;
+	display: inline-block;
+	position: relative;
+	left: 13em;
+}
+
+button{
+	background-color: #4CAF50;
+	border: hidden;
+  	color: white;
+  	text-align: center;
+  	text-decoration: none;
+  	border-radius: 20em;
+}

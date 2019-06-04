@@ -1,0 +1,40 @@
+.overView {
+	background-color: Gainsboro;
+	border-style: solid;
+	border-radius: 4em;
+	text-align: center;
+	margin-top: 4em;
+	padding: 2em;
+	color: white;
+	display: inline-block;
+}
+
+h5{
+	text-decoration: underline;
+}
+
+.group{
+	position: relative;
+	bottom: 21.5em;
+	left: 9em;
+}
+
+.payment{
+	position: relative;
+	left:9em;
+}
+
+.singlePaymentFromOverview {
+	border-bottom-style: solid;
+	text-align: center;
+}
+
+button{
+	background-color: #4CAF50;
+	border: hidden;
+  	color: white;
+  	text-align: center;
+  	text-decoration: none;
+ 	display: inline-block;
+  	border-radius: 20em;
+}

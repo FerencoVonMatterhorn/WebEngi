@@ -95,6 +95,11 @@
 								<br>
 								Betrag:${paymentOverview.test.get(index)}
 								<br>
+								Typ:
+								<br>
+								Erstellt am:
+								<br>
+								<!-- if für Typ=Monatsabrechnung wenn -> Bezahlen bis -->
 								<button type="button">Zur Zahlung</button>
 							</p>
 							

@@ -1,0 +1,28 @@
+Benutzer:
+
+	UserID (Key), Username, Password, Name, Email, UserDescription/Bio
+	
+Gruppe:
+
+	GroupID(Key), GroupName, GroupDescription
+	
+Gruppe-User-Relation:
+
+	ID, GroupID(foreignKey), UserID(foreignKey)
+Zahlung:
+
+	Amount, PaymentID(Key), Typ, Datum, Datum-bis
+	
+	(Evtl. für Monatszahkung eigene DB)
+	
+Zahlung-Benutzer-Relation:
+
+	ID, PaymentID(foreignKey), UserID(foreignKey)
+	
+Zahlung-Gruppe-Relation:
+
+	ID, PaymentID(foreignKey), GroupID(foreignKey)
+	
+Monatszahlung-Zahlung-Relation:
+
+	ID, IDMonatszahlung, IDZahlung

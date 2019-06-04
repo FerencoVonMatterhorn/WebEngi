@@ -2,27 +2,21 @@ package main.java.beans;
 
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class SingleGroupBean {
 
+	@Setter
+	@Getter
 	private String name;
+
+	@Setter
+	@Getter
 	private String description;
+
+	@Setter
 	private List<String> users;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public String getUsers() {
 		StringBuilder builder = new StringBuilder();
@@ -32,10 +26,6 @@ public class SingleGroupBean {
 		}
 		builder.delete(builder.length() - 3, builder.length() - 1);
 		return builder.toString();
-	}
-
-	public void setUsers(List<String> users) {
-		this.users = users;
 	}
 
 }

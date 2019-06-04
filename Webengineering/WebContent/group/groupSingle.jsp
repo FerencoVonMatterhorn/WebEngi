@@ -128,13 +128,14 @@
 				<button type="Button">Zur Zahlung</button>
 				<br>
 			</p>
-			<p>
+			<p class="singlePaymentFromOverview">
 				Beteiligte:CK, CK2, CK3, CK4, CK5, CK6
 				<br>
 				Betrag:500€
 				<br>
 				<button type="Button">Zur Zahlung</button>
 			</p>
+			<button type="button">Neue Zahlung hinzufügen</button>
 		</div>
        </div>
    </div>

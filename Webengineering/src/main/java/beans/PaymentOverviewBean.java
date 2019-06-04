@@ -3,6 +3,11 @@ package main.java.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class PaymentOverviewBean {
 
 	private List<Integer> test = new ArrayList<>();
@@ -15,30 +20,6 @@ public class PaymentOverviewBean {
 		}
 		pageSize = test.size() / 5;
 		listSize = test.size();
-	}
-
-	public int getListSize() {
-		return listSize;
-	}
-
-	public void setListSize(int listSize) {
-		this.listSize = listSize;
-	}
-
-	public List<Integer> getTest() {
-		return test;
-	}
-
-	public void setTest(List<Integer> test) {
-		this.test = test;
-	}
-
-	public int getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
 	}
 
 }

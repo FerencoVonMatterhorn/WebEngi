@@ -12,7 +12,7 @@ Benutzer:
      Firstname varchar(255) NOT NULL,
      Lastname varchar(255) NOT NULL,
      Bio varchar(255),
-     Image longblob
+     PROFILEPICTURE blob
 )
 	
 Gruppe:

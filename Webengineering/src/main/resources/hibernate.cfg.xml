@@ -16,8 +16,9 @@
 		<property name="hbm2ddl.auto">update</property>
 		<property name="connection.pool_size">1</property>
 		
-		
+		<!-- Mapping for all POJOs -->
 		<mapping class="main.java.pojos.GroupPojo" />
+		<mapping class="main.java.pojos.UserPojo" />
 		
 	</session-factory>
 </hibernate-configuration>

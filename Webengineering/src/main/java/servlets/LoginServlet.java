@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.beans.UserBean;
 import main.java.db.DBActions;
+import main.java.pojos.UserPojo;
 
 @SuppressWarnings("serial")
 @WebServlet("/official/Login")
@@ -28,13 +28,13 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log("TEST");
-		Optional<UserBean> user = DBActions.login(request.getParameter("username"), request.getParameter("password"));
+		Optional<UserPojo> user = DBActions.login(request.getParameter("username"), request.getParameter("password"));
 		RequestDispatcher rd;
 		if (user.isPresent() && user.get().isLoggedIn()) {
 			// TODO: add bean to jsp
 			rd = request.getRequestDispatcher("indexLoggedIn.jsp");
 		} else {
+			// TODO: add mesage login was NOT successfull
 			rd = request.getRequestDispatcher("index.jsp");
 		}
 		rd.forward(request, response);

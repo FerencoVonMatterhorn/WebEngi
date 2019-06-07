@@ -1,6 +1,5 @@
-package main.java.beans;
+package main.java.pojos;
 
-import java.awt.image.BufferedImage;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -8,21 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.Lob;
+import javax.persistence.Transient;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name = "USERS")
+@Entity(name = "USERS")
 @Getter
 @Setter
 @Builder
-public class UserBean {
+public class UserPojo {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "USERID")
 	private UUID id;
 
@@ -47,9 +46,13 @@ public class UserBean {
 	@Column(name = "EMAIL")
 	private String email;
 
+	@Lob
 	@Column(name = "PROFILEPICTURE")
-	BufferedImage proilePicture;
+	private byte[] proilePicture;
 
+	@Column(name = "BIO")
+	private String bio;
+
+	@Transient
 	private boolean loggedIn;
-
 }

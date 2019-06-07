@@ -15,7 +15,7 @@ public class PasswordUtil {
 	}
 
 	public static String generateHashedPassword(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-		int iterations = 1000; // TODO: iterations should be random.
+		int iterations = ((int) Math.random() * 500 + 1000);
 		char[] chars = password.toCharArray();
 		byte[] salt = getSalt().getBytes();
 

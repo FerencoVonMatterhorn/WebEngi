@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import main.java.pojos.UserPojo;
 
 @Entity
 @Getter
@@ -17,7 +18,7 @@ import lombok.Setter;
 public class RechnungBean {
 
 	UUID rechnungsID;
-	Map<UserBean, Double> participants; // Benutzer + Betrag
+	Map<UserPojo, Double> participants; // Benutzer + Betrag
 	BufferedImage image;
 
 }

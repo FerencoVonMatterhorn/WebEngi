@@ -1,72 +1,71 @@
 /*  Schriftarten  */
 h1 {
-    font-size: 3rem;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-    font-weight: bold;
+	font-size: 3rem;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
+	font-weight: bold;
 }
 
 h2 {
-    font-size: 2.5rem;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-    font-weight: bold;
+	font-size: 2.5rem;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
+	font-weight: bold;
 }
 
 h5 {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
-    font-weight: bold;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
+	font-weight: bold;
 }
 
 p {
-    font-size: 1rem;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
+	font-size: 1rem;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
 }
 
 /*  StandardLayout  */
 
 /*  Hintergrund  */
 .backgroundSide {
-    /* thing displayed*/
-    background-color: #fafafa;
-    /* full page size*/
-    height: 100%;
-    /* center and scale*/
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+	/* thing displayed*/
+	background-color: #fafafa;
+	/* full page size*/
+	height: 100%;
+	/* center and scale*/
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .backgroundMid {
-    /* thing displayed*/
-    background-color: #74b9ff;
-    /*background-color: cornflowerblue;*/
-    /* full page size*/
-    height: 100%;
-    width: 90%;
-    /* center and scale*/
-    margin: auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+	/* thing displayed*/
+	background-color: #74b9ff;
+	/*background-color: cornflowerblue;*/
+	/* full page size*/
+	height: 100%;
+	width: 90%;
+	/* center and scale*/
+	margin: auto;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 /*  Footer  */
-
 .footer {
-    overflow: hidden;
-    background: #ededed;
-    text-align: center;
+	overflow: hidden;
+	background: #ededed;
+	text-align: center;
 }
 
 .footerCompany {
-    line-height: 0.8em;
+	line-height: 0.8em;
 }
 
 .footer h4 {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .footer p {
-    letter-spacing: normal;
-    font-size: 0.9rem;
-    font-weight: normal;
+	letter-spacing: normal;
+	font-size: 0.9rem;
+	font-weight: normal;
 }

@@ -88,7 +88,7 @@ Monatszahlung-Zahlung-Relation:
      ID int NOT NULL,
      MonthlyPaymentID int NOT NULL,
      PaymentID int NOT NULL,
-     FOREIGN KEY (MonthlyPaymentID) REFERENCES MonthlyPaymnets(MonthlyPaymentID),
+     FOREIGN KEY (MonthlyPaymentID) REFERENCES MonthlyPayments(MonthlyPaymentID),
      FOREIGN KEY (PaymentID) REFERENCES Payments(PaymentID)
 )
 
@@ -101,3 +101,13 @@ MonatsZahlung-Gruppe Relation:
      FOREIGN KEY (MonthlyPaymentID) REFERENCES MonthlyPayments(MonthlyPaymentID),
      FOREIGN KEY (GroupID) REFERENCES Groups(GroupID)
 )
+
+NonthlyPayment to User:
+
+CREATE TABLE UserToMonthlyPayment(
+     ID int NOT NULL,
+     UserID int NOT NULL,
+     MonthlyPaymentID int NOT NULL,
+     FOREIGN KEY (UserID) REFERENCES Users(UserID),
+     FOREIGN KEY (MonthlyPaymentID) REFERENCES MonthlyPayments(MonthlyPaymentID)
+)	

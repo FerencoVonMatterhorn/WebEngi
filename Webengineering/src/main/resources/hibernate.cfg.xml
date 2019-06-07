@@ -7,14 +7,17 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">org.h2.Driver</property>
-		<property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/test</property>
+		<property name="hibernate.connection.url">jdbc:h2:~/test</property>
 		<property name="hibernate.connection.username">sa</property>
-		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.password"> </property>
 		<property name="dialect">org.hibernate.dialect.H2Dialect</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 		<property name="hbm2ddl.auto">update</property>
 		<property name="connection.pool_size">1</property>
-		<mapping class="beans.UserBean" />
+		
+		
+		<mapping class="main.java.pojos.GroupPojo" />
+		
 	</session-factory>
 </hibernate-configuration>

@@ -13,6 +13,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<script type="text/javascript">
+	function check_pass() {
+		if (document.getElementById('password1').value == document
+				.getElementById('password2').value) {
+			document.getElementById('submit').disabled = false;
+		} else {
+			document.getElementById('submit').disabled = true;
+		}
+	}
+</script>
 </head>
 <body style="min-width: 100%; min-height: 70%; overflow-x: hidden;">
 	<!--  Navigationbar  -->
@@ -53,7 +63,7 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> First name:</span>
 									</div>
-									<input type="text" class="form-control" name="fname"required>
+									<input type="text" class="form-control" name="fname" required>
 								</div>
 							</div>
 							<!--  Second input  -->
@@ -89,7 +99,7 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> Password:</span>
 									</div>
-									<input type="password" class="form-control" name="password1" required>
+									<input type="password" class="form-control" name="password1" id="password1" onkeyup='check_pass();' required>
 								</div>
 							</div>
 							<!--  Sixth input  -->
@@ -98,13 +108,14 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> Repeat password:</span>
 									</div>
-									<input type="password" class="form-control" name="password2" required>
+									<input type="password" class="form-control" name="password2" id="password2" onkeyup='check_pass();' required>
 								</div>
 							</div>
+							<span id="message"></span>
 							<hr>
 							<!--  Actions  -->
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block">Register</button>
+								<button id="submit" type="submit" class="btn btn-primary btn-block">Register</button>
 							</div>
 						</form>
 						</article>

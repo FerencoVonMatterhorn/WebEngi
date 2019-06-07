@@ -54,7 +54,7 @@
 						<article class="card-body">
 						<h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
 						<hr>
-						<%--                <p class="text-success text-center">Status</p>--%>
+						<span id="message"></span>
 
 						<form action="Login" method="POST">
 							<!--  First input  -->

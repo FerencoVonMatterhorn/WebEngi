@@ -12,24 +12,23 @@ import main.java.pojos.UserPojo;
 import main.java.util.PasswordUtil;
 
 public class DBActions {
-	static SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
-	public static boolean register(String inFName, String inLName, String inUsername, String inEmail,
-			String inPassword) {
+	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
+
+	public static boolean register(String inFName, String inLName, String inUsername, String inEmail, String inPassword) {
 		if (!usernameOrEmailisPresent(inUsername, inEmail)) {
 			String iterationsSaltPassword[] = null;
 			try {
 				iterationsSaltPassword = PasswordUtil.generateHashedPassword(inPassword).split(":");
-
-				UserPojo user = UserPojo.builder() //
-						.firstName(inFName) //
-						.lastName(inLName) //
-						.username(inUsername) //
-						.email(inEmail) //
-						.iterations(Integer.valueOf(iterationsSaltPassword[0])) //
-						.salt(iterationsSaltPassword[1]) //
-						.password(iterationsSaltPassword[2]) //
-						.build();
+				UserPojo user = new UserPojo();
+				user.setUsername(inUsername);
+				user.setFirstName(inFName);
+				user.setLastName(inLName);
+				user.setUsername(inUsername);
+				user.setEmail(inEmail);
+				user.setIterations(Integer.valueOf(iterationsSaltPassword[0]));
+				user.setSalt(iterationsSaltPassword[1]);
+				user.setPassword(iterationsSaltPassword[2]);
 				registerUser(user);
 
 				return true;
@@ -46,8 +45,7 @@ public class DBActions {
 		Optional<UserPojo> user = findUser(inUsername);
 		if (user.isPresent()) {
 			try {
-				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(),
-						user.get().getIterations())) {
+				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
 					user.get().setLoggedIn(true);
 					return user;
 				} else {
@@ -66,6 +64,8 @@ public class DBActions {
 	 *******************/
 
 	private static void registerUser(UserPojo inUser) {
+		System.out.println(inUser.toString());
+		System.out.println(inUser.hashCode());
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(inUser);
@@ -76,7 +76,7 @@ public class DBActions {
 	private static Optional<UserPojo> findUser(String inUsername) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Query<?> query = session.createQuery("from USER where USERNAME = :username");
+		Query<?> query = session.createQuery("from USERS where USERNAME = :username");
 		query.setParameter("username", inUsername);
 		Optional<UserPojo> user = (Optional<UserPojo>) query.uniqueResultOptional();
 		session.close();
@@ -86,7 +86,7 @@ public class DBActions {
 	private static Optional<UserPojo> findEmail(String inEmail) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Query<?> query = session.createQuery("from USER where EMAIL = :email");
+		Query<?> query = session.createQuery("from USERS where EMAIL = :email");
 		query.setParameter("email", inEmail);
 		Optional<UserPojo> user = (Optional<UserPojo>) query.uniqueResultOptional();
 		session.close();

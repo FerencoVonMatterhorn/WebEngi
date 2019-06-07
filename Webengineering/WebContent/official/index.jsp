@@ -63,7 +63,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"> <i class="fa fa-user"></i></span>
 									</div>
-									<input name="" class="form-control" placeholder="Email or Username" type="text" required>
+									<input class="form-control" placeholder="Email or Username" type="text" name="emailOrName" required>
 								</div>
 							</div>
 							<!--  Second input  -->
@@ -72,7 +72,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"> <i class="fa fa-lock"></i></span>
 									</div>
-									<input class="form-control" placeholder="********" type="password" required>
+									<input class="form-control" placeholder="********" type="password" name="password" required>
 								</div>
 							</div>
 							<!--  Actions  -->

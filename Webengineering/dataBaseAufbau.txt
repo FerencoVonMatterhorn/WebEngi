@@ -5,8 +5,8 @@ Benutzer:
 	CREATE TABLE Users(
      UserID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
      Username varchar(255) NOT NULL,
-     Password varchar(255) NOT NULL,
-     Salt varchar(255) NOT NULL,
+     Password CHAR(128) NOT NULL,
+     Salt CHAR(22) NOT NULL,
      Iterations int NOT NULL,
      EMail varchar(255) NOT NULL,  
      Firstname varchar(255) NOT NULL,
@@ -14,6 +14,7 @@ Benutzer:
      Bio varchar(255),
      PROFILEPICTURE blob
 )
+
 	
 Gruppe:
 

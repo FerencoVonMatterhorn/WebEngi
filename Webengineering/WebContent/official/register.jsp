@@ -53,7 +53,7 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> First name:</span>
 									</div>
-									<input type="text" class="form-control" id="fname" required>
+									<input type="text" class="form-control" name="fname"required>
 								</div>
 							</div>
 							<!--  Second input  -->
@@ -62,7 +62,7 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> Last name:</span>
 									</div>
-									<input type="text" class="form-control" id="lname" required>
+									<input type="text" class="form-control" name="lname" required>
 								</div>
 							</div>
 							<!--  Third input  -->
@@ -71,7 +71,7 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> Username:</span>
 									</div>
-									<input type="text" class="form-control" id="uname" required>
+									<input type="text" class="form-control" name="uname" required>
 								</div>
 							</div>
 							<!--  Fourth input  -->
@@ -80,7 +80,7 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> Email address:</span>
 									</div>
-									<input type="email" class="form-control" id="email" required>
+									<input type="email" class="form-control" name="email" required>
 								</div>
 							</div>
 							<!--  Fifth input  -->
@@ -89,7 +89,7 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> Password:</span>
 									</div>
-									<input type="password" class="form-control" id="password1" required>
+									<input type="password" class="form-control" name="password1" required>
 								</div>
 							</div>
 							<!--  Sixth input  -->
@@ -98,7 +98,7 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> Repeat password:</span>
 									</div>
-									<input type="password" class="form-control" id="password2" required>
+									<input type="password" class="form-control" name="password2" required>
 								</div>
 							</div>
 							<hr>

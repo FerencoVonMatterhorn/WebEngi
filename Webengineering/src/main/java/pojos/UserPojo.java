@@ -1,29 +1,28 @@
 package main.java.pojos;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Transient;
 
-import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity(name = "USERS")
 @Getter
 @Setter
-@Builder
+@ToString
+@NoArgsConstructor
 public class UserPojo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "USERID")
-	private UUID id;
+	private int id;
 
 	@Column(name = "USERNAME")
 	private String username;
@@ -45,13 +44,13 @@ public class UserPojo {
 
 	@Column(name = "EMAIL")
 	private String email;
-
-	@Lob
-	@Column(name = "PROFILEPICTURE")
-	private byte[] proilePicture;
-
-	@Column(name = "BIO")
-	private String bio;
+	//
+	// @Lob
+	// @Column(name = "PROFILEPICTURE")
+	// private byte[] proilePicture;
+	//
+	// @Column(name = "BIO")
+	// private String bio;
 
 	@Transient
 	private boolean loggedIn;

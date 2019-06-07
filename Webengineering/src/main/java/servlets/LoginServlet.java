@@ -28,11 +28,11 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Optional<UserPojo> user = DBActions.login(request.getParameter("username"), request.getParameter("password"));
+		Optional<UserPojo> user = DBActions.login(request.getParameter("emailOrName"), request.getParameter("password"));
 		RequestDispatcher rd;
 		if (user.isPresent() && user.get().isLoggedIn()) {
-			// TODO: add bean to jsp
-			rd = request.getRequestDispatcher("indexLoggedIn.jsp");
+			request.setAttribute("userBean", user);
+			rd = request.getRequestDispatcher("IndexLoggedIn.jsp");
 		} else {
 			// TODO: add mesage login was NOT successfull
 			rd = request.getRequestDispatcher("index.jsp");

@@ -46,7 +46,7 @@
 						<article class="card-body">
 						<h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
 						<hr>
-						<form action="" method="POST">
+						<form action="Register" method="POST">
 							<!--  First input  -->
 							<div class="form-group">
 								<div class="input-group">

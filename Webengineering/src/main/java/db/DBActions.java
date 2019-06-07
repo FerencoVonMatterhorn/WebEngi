@@ -14,26 +14,30 @@ import main.java.util.PasswordUtil;
 public class DBActions {
 	static SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
-	public static boolean register(String inFName, String inLName, String inUsername, String inEmail, String inPassword) {
+	public static boolean register(String inFName, String inLName, String inUsername, String inEmail,
+			String inPassword) {
 		if (!usernameOrEmailisPresent(inUsername, inEmail)) {
 			String iterationsSaltPassword[] = null;
 			try {
 				iterationsSaltPassword = PasswordUtil.generateHashedPassword(inPassword).split(":");
+
+				UserPojo user = UserPojo.builder() //
+						.firstName(inFName) //
+						.lastName(inLName) //
+						.username(inUsername) //
+						.email(inEmail) //
+						.iterations(Integer.valueOf(iterationsSaltPassword[0])) //
+						.salt(iterationsSaltPassword[1]) //
+						.password(iterationsSaltPassword[2]) //
+						.build();
+				registerUser(user);
+
+				return true;
 			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
 				e.printStackTrace();
 				// TODO: Log this
+				return false;
 			}
-			UserPojo user = UserPojo.builder() //
-					.firstName(inFName) //
-					.lastName(inLName) //
-					.username(inUsername) //
-					.email(inEmail) //
-					.iterations(Integer.valueOf(iterationsSaltPassword[0])) //
-					.salt(iterationsSaltPassword[1]) //
-					.password(iterationsSaltPassword[2]) //
-					.build();
-			registerUser(user);
-			return true;
 		}
 		return false;
 	}
@@ -42,7 +46,8 @@ public class DBActions {
 		Optional<UserPojo> user = findUser(inUsername);
 		if (user.isPresent()) {
 			try {
-				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
+				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(),
+						user.get().getIterations())) {
 					user.get().setLoggedIn(true);
 					return user;
 				} else {

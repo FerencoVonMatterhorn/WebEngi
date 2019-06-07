@@ -24,6 +24,7 @@ public class InsertTestData {
 		session.save(testGroup);
 
 		session.getTransaction().commit();
+		session.close();
 	}
 
 }

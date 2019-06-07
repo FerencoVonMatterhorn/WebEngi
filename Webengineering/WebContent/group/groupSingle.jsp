@@ -7,7 +7,7 @@
 <head>
    <title>MyComp - einzelneGruppe</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="../mainStyle.css">
+   <link rel="stylesheet" href="../mainstyle.css">
    <link rel="stylesheet" href="singleGroupStyle.css">
    <link rel="stylesheet"
          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">

@@ -32,7 +32,7 @@
 				</c:when>
 				<c:otherwise>
 					<!-- Home LoggedIn -->
-					<li class="nav-item"><a class="nav-link" href="indexLoggedin.jsp">Home <i class="fas fa-home"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="indexLoggedIn.jsp">Home <i class="fas fa-home"></i></a></li>
 					<!--  Gruppen  -->
 					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
 					<!--  Zahlungen  -->
@@ -50,8 +50,7 @@
 				<c:otherwise>
 					<!--  Profil  -->
 					<li class="nav-item"><a class="nav-link" href="../user/profile.jsp">Profil <i class="fas fa-user"></i></a></li>
-					<!-- Abmelden TODO: abmelden Servlet-->
-					<li class="nav-item"><a class="nav-link" href="signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

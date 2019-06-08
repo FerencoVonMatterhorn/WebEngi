@@ -52,7 +52,7 @@
 					<!--  Profil  -->
 					<li class="nav-item"><a class="nav-link" href="../user/profile.jsp">Profil <i class="fas fa-user"></i></a></li>
 					<!-- Abmelden TODO: abmelden Servlet-->
-					<li class="nav-item"><a class="nav-link" href="signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -101,19 +101,14 @@
 			</div>
 		</div>
 	</div>
-	<!-- BODY ENDE -->
-
-
-	<!--  Footer  -->
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a href="../official/imprint.jsp">Impressum</a>
+				<a class="m-2" href="../official/imprint.jsp">Impressum</a> <a class="m-2" href="../official/privacyPolicy.jsp">Privace Policy</a>
 			</p>
-			<p>Ⓒ 2019 MyCompName</p>
+			<p>Ⓒ 2019 MyWG</p>
 		</div>
 	</div>
-	<!--  Footer END  -->
 </body>
 </html>
 

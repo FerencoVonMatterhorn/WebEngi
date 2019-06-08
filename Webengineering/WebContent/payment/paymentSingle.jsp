@@ -25,12 +25,12 @@
 		<!--  Navbar Items Links  -->
 		<ul class="navbar-nav">
 			<c:choose>
-				<c:when test="${cookie.user.value == 'false' || cookie.user == null}">
+				<c:when test="${empty userID}">
 					<!--  Home  -->
-					<li class="nav-item"><a class="nav-link" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
+					<li class="nav-item"><a class="nav-link active" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
 				</c:when>
 				<c:otherwise>
-					<!-- Home LoggedIn -->
+					<!-- Home -->
 					<li class="nav-item"><a class="nav-link" href="indexLoggedin.jsp">Home <i class="fas fa-home"></i></a></li>
 					<!--  Gruppen  -->
 					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
@@ -42,7 +42,7 @@
 		<!--  Navbar Items Rechts  -->
 		<ul class="navbar-nav ml-auto">
 			<c:choose>
-				<c:when test="${cookie.user.value == 'false' || cookie.user == null}">
+				<c:when test="${empty userID}">
 					<!-- Registrieren -->
 					<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:when>
@@ -50,7 +50,7 @@
 					<!--  Profil  -->
 					<li class="nav-item"><a class="nav-link" href="../user/profile.jsp">Profil <i class="fas fa-user"></i></a></li>
 					<!-- Abmelden TODO: abmelden Servlet-->
-					<li class="nav-item"><a class="nav-link" href="signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -89,18 +89,13 @@
 			</div>
 		</div>
 	</div>
-	<!--  BODY END  -->
-
-
-	<!--  Footer  -->
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a href="#impressum">Impressum</a>
+				<a class="m-2" href="imprint.jsp">Impressum</a> <a class="m-2" href="privacyPolicy.jsp">Privace Policy</a>
 			</p>
-			<p>Ⓒ 2019 MyCompName</p>
+			<p>Ⓒ 2019 MyWG</p>
 		</div>
 	</div>
-	<!--  Footer END  -->
 </body>
 </html>

@@ -27,12 +27,12 @@
 		<!--  Navbar Items Links  -->
 		<ul class="navbar-nav">
 			<c:choose>
-				<c:when test="${cookie.user.value == 'false' || cookie.user == null}">
+				<c:when test="${empty userID}">
 					<!--  Home  -->
-					<li class="nav-item"><a class="nav-link" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
+					<li class="nav-item"><a class="nav-link active" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
 				</c:when>
 				<c:otherwise>
-					<!-- Home LoggedIn -->
+					<!-- Home -->
 					<li class="nav-item"><a class="nav-link" href="indexLoggedin.jsp">Home <i class="fas fa-home"></i></a></li>
 					<!--  Gruppen  -->
 					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
@@ -44,7 +44,7 @@
 		<!--  Navbar Items Rechts  -->
 		<ul class="navbar-nav ml-auto">
 			<c:choose>
-				<c:when test="${cookie.user.value == 'false' || cookie.user == null}">
+				<c:when test="${empty userID}">
 					<!-- Registrieren -->
 					<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:when>
@@ -52,7 +52,7 @@
 					<!--  Profil  -->
 					<li class="nav-item"><a class="nav-link" href="../user/profile.jsp">Profil <i class="fas fa-user"></i></a></li>
 					<!-- Abmelden TODO: abmelden Servlet-->
-					<li class="nav-item"><a class="nav-link" href="signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -107,24 +107,20 @@
 						Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
 						<button type="Button">Zur Zahlung</button>
 					</p>
-					<button type="button">Neue Zahlung hinzufügen</button>
+					<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#paymentModal">Neue Zahlung
+						hinzufügen</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- BODY ENDE -->
-
-
-	<!--  Footer  -->
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a href="imprint.jsp">Impressum</a>
+				<a class="m-2" href="imprint.jsp">Impressum</a> <a class="m-2" href="privacyPolicy.jsp">Privace Policy</a>
 			</p>
-			<p>Ⓒ 2019 MyCompName</p>
+			<p>Ⓒ 2019 MyWG</p>
 		</div>
 	</div>
-	<!--  Footer END  -->
 </body>
 </html>
 

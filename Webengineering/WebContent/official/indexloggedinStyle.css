@@ -8,21 +8,6 @@
 	color: white;
 	display: inline-block;
 	vertical-align: 2em;
-	position: relative;
-	left: 13em;
-}
-
-p{
-	text-align: center;
-}
-
-h5{
-	text-decoration: underline;
-}
-
-h2{
-	text-align: center;
-	text-decoration: underline;
 }
 
 button{
@@ -31,7 +16,4 @@ button{
   	text-decoration: none;
  	display: inline-block;
   	border-radius: 20em;
-	position: relative;
-  	right:9em;
-  	bottom: 13em;
 }

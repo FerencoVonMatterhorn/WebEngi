@@ -8,3 +8,7 @@ HTML-Tags:
 `<h1>, <p>`: werden nun nach unserem Format festegelegt.  
 
 Weitere können im [mainStyle.css](webContent/mainStyle.css) geschrieben werden.
+
+
+Wenn der Benutzer nicht angemeldet ist und eine andere Seite als die Startseite aufzurufen dann wird er zur startseite geleitet
+https://krazytech.com/programs/session-role-based-java-login-example

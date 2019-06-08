@@ -46,7 +46,6 @@ public class DBActions {
 		if (user.isPresent()) {
 			try {
 				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
-					user.get().setLoggedIn(true);
 					return user;
 				} else {
 					return Optional.empty();

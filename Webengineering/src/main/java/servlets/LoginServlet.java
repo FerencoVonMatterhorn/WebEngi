@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import main.java.db.DBActions;
 import main.java.pojos.UserPojo;
@@ -22,22 +23,30 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Optional<UserPojo> user = DBActions.login(request.getParameter("emailOrName"), request.getParameter("password"));
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Optional<UserPojo> user = DBActions.login(req.getParameter("emailOrName"), req.getParameter("password"));
 		RequestDispatcher rd;
-		if (user.isPresent() && user.get().isLoggedIn()) {
-			request.setAttribute("userBean", user);
-			rd = request.getRequestDispatcher("IndexLoggedIn.jsp");
+		if (user.isPresent()) {
+			HttpSession oldSession = req.getSession(false);
+			if (oldSession != null) {
+				oldSession.invalidate();
+			}
+			HttpSession newSession = req.getSession(true);
+			newSession.setMaxInactiveInterval(10 * 60);
+			newSession.setAttribute("userID", user.get().getId());
+
+			req.setAttribute("userPojo", user.get());
+			rd = req.getRequestDispatcher("indexLoggedIn.jsp");
 		} else {
 			// TODO: add mesage login was NOT successfull
-			rd = request.getRequestDispatcher("index.jsp");
+			rd = req.getRequestDispatcher("index.jsp");
 		}
-		rd.forward(request, response);
+		rd.forward(req, resp);
 	}
 
 }

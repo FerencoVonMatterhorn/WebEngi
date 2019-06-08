@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.Lob;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -44,14 +44,12 @@ public class UserPojo {
 
 	@Column(name = "EMAIL")
 	private String email;
-	//
-	// @Lob
-	// @Column(name = "PROFILEPICTURE")
-	// private byte[] proilePicture;
-	//
-	// @Column(name = "BIO")
-	// private String bio;
 
-	@Transient
-	private boolean loggedIn;
+	@Lob
+	@Column(name = "PROFILEPICTURE")
+	private byte[] proilePicture;
+
+	@Column(name = "BIO")
+	private String bio;
+
 }

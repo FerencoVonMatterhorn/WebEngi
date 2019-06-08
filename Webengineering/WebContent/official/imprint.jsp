@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="userPojo" class="main.java.pojos.UserPojo" scope="session"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- META-DATA -->
 <head>
-<title>MyComp - Home</title>
+<title>MyWG - Impressum</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -23,21 +25,35 @@
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
 		<!--  Navbar Items Links  -->
 		<ul class="navbar-nav">
-			<!--  Home  -->
-			<li class="nav-item"><a class="nav-link" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
-			<!--  Gruppen  -->
-			<li class="nav-item"><a class="nav-link" href="../Gruppenuebersicht/Gruppenuebersicht.jsp">Gruppen <i
-					class="fas fa-users"></i></a></li>
-			<!--  Zahlungen  -->
-			<li class="nav-item"><a class="nav-link" href="../Zahlungsuebersicht/Zahlungsuebersicht.jsp">Zahlungen <i
-					class="fas fa-receipt"></i></a></li>
+			<c:choose>
+				<c:when test="${empty userID}">
+					<!--  Home  -->
+					<li class="nav-item"><a class="nav-link" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
+				</c:when>
+				<c:otherwise>
+					<!-- Home LoggedIn -->
+					<li class="nav-item"><a class="nav-link" href="indexLoggedin.jsp">Home <i class="fas fa-home"></i></a></li>
+					<!--  Gruppen  -->
+					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
+					<!--  Zahlungen  -->
+					<li class="nav-item"><a class="nav-link" href="../payment/paymentOverview.jsp">Zahlungen <i class="fas fa-receipt"></i></a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 		<!--  Navbar Items Rechts  -->
 		<ul class="navbar-nav ml-auto">
-			<!--  Profil  -->
-			<li class="nav-item"><a class="nav-link" href="../Profil/Profil.jsp">Profil <i class="fas fa-user"></i></a></li>
-			<!--  Abmelden; TODO: abmelden.jsp erstellen  -->
-			<li class="nav-item"><a class="nav-link" href="#abmelden">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+			<c:choose>
+				<c:when test="${empty userID}">
+					<!-- Registrieren -->
+					<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i class="fas fa-sign-in-alt"></i></a></li>
+				</c:when>
+				<c:otherwise>
+					<!--  Profil  -->
+					<li class="nav-item"><a class="nav-link" href="../user/profile.jsp">Profil <i class="fas fa-user"></i></a></li>
+					<!-- Abmelden TODO: abmelden Servlet-->
+					<li class="nav-item"><a class="nav-link" href="signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 		<!--  Navbar Items END  -->
 	</div>
@@ -48,103 +64,96 @@
 	<div class="backgroundSide">
 		<div class="container-fluid">
 			<div class="backgroundMid">
-				<div class='impressum'>
-					<div class="row mx-auto justify-content-center">
-						<h1>Impressum</h1>
-					</div>
-					<div class="row mx-auto justify-content-center mb-5">
-						<!-- Bengt Joachimsohn -->
-						<div class="card" style="width: 400px">
-							<img class="card-img-top" src="img_avatar1.png" alt="Card image">
-							<div class="card-body">
-								<h4 class="card-title">Bengt Joachimsohn</h4>
-								<p class="card-text">Some example text.</p>
-								<a href="mailto:bengt@joachimsohn.de" class="btn btn-primary">Contact</a>
-							</div>
-						</div>
-						<!-- Ferenc Horvay FIXME: Email einfüge, Text einfügen-->
-						<div class="card" style="width: 400px">
-							<img class="card-img-top" src="img_avatar1.png" alt="Card image">
-							<div class="card-body">
-								<h4 class="card-title">Ferenc Horvay</h4>
-								<p class="card-text">Some example text.</p>
-								<a href="#" class="btn btn-primary">Contact</a>
-							</div>
-						</div>
-						<!-- Christian Koller FIXME: Email einfügen, Text einfügen-->
-						<div class="card" style="width: 400px">
-							<img class="card-img-top" src="img_avatar1.png" alt="Card image">
-							<div class="card-body">
-								<h4 class="card-title">Christian Koller</h4>
-								<p class="card-text">Some example text.</p>
-								<a href="mailto:" class="btn btn-primary">Contact</a>
-							</div>
-						</div>
-					</div>
-					<div class="row mx-auto justify-content-center">
-						<h1>Haftungsausschluss:</h1>
-					</div>
-					<div class="row mx-auto justify-content-center" style="width: 60%">
-						<h2>Haftung für Inhalte</h2>
-						<p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität
-							der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte
-							auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch
-							nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die
-							auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach
-							den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
-							Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese
-							Inhalte umgehend entfernen.</p>
-					</div>
-					<div class="row mx-auto justify-content-center" style="width: 60%">
-						<h2>Haftung für Links</h2>
-						<p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb
-							können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der
-							jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf
-							mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine
-							permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht
-							zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
-					</div>
-					<div class="row mx-auto justify-content-center" style="width: 60%">
-						<h2>Urheberrecht</h2>
-						<p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.
-							Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes
-							bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für
-							den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt
-							wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten
-							Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei
-							Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
-					</div>
-					<div class="row mx-auto justify-content-center" style="width: 60%">
-						<h2>Datenschutz</h2>
-						<p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten
-							personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich,
-							stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p>
-						<p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail)
-							Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
-						<p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht
-							ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der
-							Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa
-							durch Spam-Mails, vor.</p>
-					</div>
-					<!-- FIXME: WO KOMME ICH HIN?! -->
-					<p>Angaben gemäß § 5 TMG</p>
+				<div class="row mx-auto justify-content-center">
+					<h1 class="mt-5 mb-3">Impressum</h1>
 				</div>
+				<div class="row mx-auto justify-content-center mb-5">
+					<div class="card m-3" style="width: 400px">
+						<img class="card-img-top" src="../resources/p1.jpeg">
+						<div class="card-body">
+							<h4 class="card-title">Bengt Joachimsohn</h4>
+							<p class="card-text">
+								Adresse: Kiefernweg 11, 76149 Karlsruhe <br>Tlf. Nr.:+0049 157-789-948 32<br>Role: Frontend-Management x)
+							</p>
+							<a href="mailto:bengt@joachimsohn.de" class="btn btn-primary">Email me</a>
+						</div>
+					</div>
+					<!-- Ferenc Horvay FIXME: Email einfüge, Text einfügen-->
+					<div class="card m-3" style="width: 400px">
+						<img class="card-img-top" src="../resources/p2.png">
+						<div class="card-body">
+							<h4 class="card-title">Ferenc Horvay</h4>
+							<p class="card-text">Some example text.</p>
+							<a href="#" class="btn btn-primary">Contact</a>
+						</div>
+					</div>
+					<!-- Christian Koller FIXME: Email einfügen, Text einfügen-->
+					<div class="card m-3" style="width: 400px">
+						<img class="card-img-top" src="../resources/p3.jpeg">
+						<div class="card-body">
+							<h4 class="card-title">Christian Koller</h4>
+							<p class="card-text">Some example text.</p>
+							<a href="mailto:" class="btn btn-primary">Contact</a>
+						</div>
+					</div>
+				</div>
+				<div class="row mx-auto justify-content-center">
+					<h1>Haftungsausschluss:</h1>
+				</div>
+				<div class="row mx-auto justify-content-center" style="width: 60%">
+					<h2>Haftung für Inhalte</h2>
+					<p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität
+						der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte
+						auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch
+						nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die
+						auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach
+						den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
+						Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese
+						Inhalte umgehend entfernen.</p>
+				</div>
+				<div class="row mx-auto justify-content-center" style="width: 60%">
+					<h2>Haftung für Links</h2>
+					<p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können
+						wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige
+						Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche
+						Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente
+						inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.
+						Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+				</div>
+				<div class="row mx-auto justify-content-center" style="width: 60%">
+					<h2>Urheberrecht</h2>
+					<p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.
+						Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen
+						der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den
+						privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden,
+						werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie
+						trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden
+						von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+				</div>
+				<div class="row mx-auto justify-content-center" style="width: 60%">
+					<h2>Datenschutz</h2>
+					<p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten
+						personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich,
+						stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p>
+					<p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken
+						aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+					<p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht
+						ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der
+						Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch
+						Spam-Mails, vor.</p>
+				</div>
+				<!-- FIXME: WO KOMME ICH HIN?! -->
+				<p>Angaben gemäß § 5 TMG</p>
 			</div>
 		</div>
 	</div>
-	<!-- BODY ENDE -->
-
-
-
-	<!-- Footer -->
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a href="#impressum">Impressum</a>
+				<a class="m-2" href="imprint.jsp">Impressum</a> <a class="m-2" href="privacyPolicy.jsp">Privace Policy</a>
 			</p>
-			<p>Ⓒ 2019 MyCompName</p>
+			<p>Ⓒ 2019 MyWG</p>
 		</div>
 	</div>
-	<!-- Footer ENDE-->
 </body>
 </html>

@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="userPojo" class="main.java.pojos.UserPojo" scope="session"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!--  META-DATA  -->
+<!-- META-DATA -->
 <head>
-<title>MyWG - Zahlung</title>
+<title>MyWG - Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
+<link rel="stylesheet" href="indexloggedinStyle.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -25,13 +27,13 @@
 		<!--  Navbar Items Links  -->
 		<ul class="navbar-nav">
 			<c:choose>
-				<c:when test="${cookie.user.value == 'false' || cookie.user == null}">
+				<c:when test="${empty userID}">
 					<!--  Home  -->
 					<li class="nav-item"><a class="nav-link" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
 				</c:when>
 				<c:otherwise>
 					<!-- Home LoggedIn -->
-					<li class="nav-item"><a class="nav-link" href="indexLoggedin.jsp">Home <i class="fas fa-home"></i></a></li>
+					<li class="nav-item"><a class="nav-link active" href="#">Home <i class="fas fa-home"></i></a></li>
 					<!--  Gruppen  -->
 					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
 					<!--  Zahlungen  -->
@@ -42,7 +44,7 @@
 		<!--  Navbar Items Rechts  -->
 		<ul class="navbar-nav ml-auto">
 			<c:choose>
-				<c:when test="${cookie.user.value == 'false' || cookie.user == null}">
+				<c:when test="${empty userID}">
 					<!-- Registrieren -->
 					<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:when>
@@ -50,7 +52,7 @@
 					<!--  Profil  -->
 					<li class="nav-item"><a class="nav-link" href="../user/profile.jsp">Profil <i class="fas fa-user"></i></a></li>
 					<!-- Abmelden TODO: abmelden Servlet-->
-					<li class="nav-item"><a class="nav-link" href="signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -63,44 +65,43 @@
 	<div class="backgroundSide">
 		<div class="container-fluid">
 			<div class="backgroundMid">
-				<div class="container">
-					<!--  row Überschrift  -->
-					<div class="row justify-content-center">
-						<h1 class="pt-5 text-center">Hier kommt die Zahlungsüberschrift mit JSP hin</h1>
+				<div class="row">
+					<div class="text-center mx-auto">
+						<h2 class="mt-5 mb-2">
+							Willkommen zurück,
+							<c:out value="${userPojo.username}"></c:out>
+						</h2>
+						<p>Hier ist ein überblick über deine letzte Zahlung, sowie Top-Gruppe.</p>
+						<p>Du kannst hier auch eine Zahlung erstellen.</p>
 					</div>
-					<!--  row Überschrift END  -->
-					<!--  row Table  -->
-					<div class="row col-10 mx-auto mt-5 mb-5">
-						<table class="table table-hover table-striped">
-							<thead>
-								<tr>
-									<th>Beteiligter</th>
-									<th>% Anteil</th>
-									<th>Betrag</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!--  ENDE DER DYNAMISCHEN ERSTELLUNG  -->
-							</tbody>
-						</table>
-					</div>
-					<!--  row Table END  -->
 				</div>
+				<div class="row">
+					<div class="bg-dark littleOverview">
+						<h5>Top-Gruppe:</h5>
+						<p>
+							GroupName <br> GroupDescription <br> GroupMembers <br>
+						</p>
+					</div>
+					<div class="bg-dark littleOverview">
+						<h5>Deine Letzte Zahlung:</h5>
+						<p>
+							Gruppe: <br> Beteiligte: <br> Betrag:
+						</p>
+					</div>
+					<button class="bg-dark" type="button">Neue Gruppe erstellen</button>
+				</div>
+				<div class="placeholder mb-5"></div>
 			</div>
 		</div>
 	</div>
-	<!--  BODY END  -->
-
-
-	<!--  Footer  -->
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a href="#impressum">Impressum</a>
+				<a class="m-2" href="imprint.jsp">Impressum</a> <a class="m-2" href="privacyPolicy.jsp">Privace Policy</a>
 			</p>
-			<p>Ⓒ 2019 MyCompName</p>
+			<p>Ⓒ 2019 MyWG</p>
 		</div>
 	</div>
-	<!--  Footer END  -->
 </body>
 </html>
+

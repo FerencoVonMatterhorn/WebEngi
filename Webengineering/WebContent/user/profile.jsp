@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- META-DATA -->
 <head>
-<title>MyComp - Profile</title>
+<title>MyComp - Profil</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
 <link rel="stylesheet" href="style.css">
@@ -27,21 +28,35 @@
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
 		<!--  Navbar Items Links  -->
 		<ul class="navbar-nav">
-			<!--  Home  -->
-			<li class="nav-item"><a class="nav-link" href="../Startseite/Index.jsp">Home <i class="fas fa-home"></i></a></li>
-			<!--  Gruppen  -->
-			<li class="nav-item"><a class="nav-link" href="../Gruppenuebersicht/Gruppenuebersicht.jsp">Gruppen <i
-					class="fas fa-users"></i></a></li>
-			<!--  Zahlungen  -->
-			<li class="nav-item"><a class="nav-link" href="../Zahlungsuebersicht/Zahlungsuebersicht.jsp">Zahlungen <i
-					class="fas fa-receipt"></i></a></li>
+			<c:choose>
+				<c:when test="${empty userID}">
+					<!--  Home  -->
+					<li class="nav-item"><a class="nav-link" href="../official/index.jsp">Home <i class="fas fa-home"></i></a></li>
+				</c:when>
+				<c:otherwise>
+					<!-- Home LoggedIn -->
+					<li class="nav-item"><a class="nav-link" href="../official/indexLoggedIn.jsp">Home <i class="fas fa-home"></i></a></li>
+					<!--  Gruppen  -->
+					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
+					<!--  Zahlungen  -->
+					<li class="nav-item"><a class="nav-link" href="../payment/paymentOverview.jsp">Zahlungen <i class="fas fa-receipt"></i></a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 		<!--  Navbar Items Rechts  -->
 		<ul class="navbar-nav ml-auto">
-			<!--  Profil  -->
-			<li class="nav-item"><a class="nav-link active" href="../Profil/Profil.jsp">Profil <i class="fas fa-user"></i></a></li>
-			<!--  Abmelden; TODO: abmelden.jsp erstellen  -->
-			<li class="nav-item"><a class="nav-link" href="#abmelden">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+			<c:choose>
+				<c:when test="${empty userID}">
+					<!-- Registrieren -->
+					<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i class="fas fa-sign-in-alt"></i></a></li>
+				</c:when>
+				<c:otherwise>
+					<!--  Profil  -->
+					<li class="nav-item"><a class="nav-link" href="../user/profile.jsp">Profil <i class="fas fa-user"></i></a></li>
+					<!-- Abmelden TODO: abmelden Servlet-->
+					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 		<!--  Navbar Items END  -->
 	</div>
@@ -49,7 +64,6 @@
 	<!-- Navigationbar END-->
 
 	<!-- BODY -->
-
 	<div class="backgroundSide">
 		<div class="container-fluid">
 			<div class="backgroundMid">
@@ -169,19 +183,13 @@
 			</div>
 		</div>
 	</div>
-	<!-- BODY ENDE -->
-
-
-
-	<!-- Footer -->
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a href="#impressum">Impressum</a>
+				<a class="m-2" href="../official/imprint.jsp">Impressum</a> <a class="m-2" href="../official/privacyPolicy.jsp">Privace Policy</a>
 			</p>
-			<p>Ⓒ 2019 MyCompName</p>
+			<p>Ⓒ 2019 MyWG</p>
 		</div>
 	</div>
-	<!-- Footer ENDE-->
 </body>
 </html>

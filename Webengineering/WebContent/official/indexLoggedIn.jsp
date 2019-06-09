@@ -8,7 +8,7 @@
 <title>MyWG - Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
-<link rel="stylesheet" href="indexloggedinStyle.css">
+<script type="text/javascript" src="../scripts.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -65,54 +65,119 @@
 	<div class="backgroundSide">
 		<div class="container-fluid">
 			<div class="backgroundMid">
-				<div class="row">
+				<div class="row mb-4">
 					<div class="text-center mx-auto">
-						<h2 class="mt-5 mb-2">
+						<h2 class="mt-5 mb-4">
 							Willkommen zurück,
-							<c:out value="${userPojo.username}"></c:out>
+							<c:out value="${userName}"></c:out>
 						</h2>
-						<p>Hier ist ein überblick über deine letzte Zahlung, sowie Top-Gruppe.</p>
-						<p>Du kannst hier auch eine Zahlung erstellen.</p>
+						<p>Hier ist ein überblick über deine letzte Zahlung und top Gruppe.</p>
+						<p style="margin-top: -0.6rem">Du kannst hier auch eine Zahlung erstellen.</p>
 					</div>
 				</div>
-				<div class="row">
-					<div class="bg-dark littleOverview">
-						<h5>Top-Gruppe:</h5>
-						<p>
-							GroupName <br> GroupDescription <br> GroupMembers <br>
-						</p>
-					</div>
-					<div class="bg-dark littleOverview">
-						<h5>Deine Letzte Zahlung:</h5>
-						<p>
-							Gruppe: <br> Beteiligte: <br> Betrag:
-						</p>
-					</div>
-					<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#newGroupModal">Neue Gruppe</button>
-					<!-- modal start -->
-					<div class="modal" id="newGroupModal">
-						<div class="modal-dialog">
-							<div class="modal-content">
-
-								<!-- Modal Header -->
-								<div class="modal-header">
-									<h4 class="modal-title mx-auto">Neue Gruppe Erstellen</h4>
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-								</div>
-								<form action="createGroup" method="POST">
-									<!-- Modal body -->
-									<div class="modal-body">Modal body..</div>
-
-									<!-- Modal footer -->
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger" data-dismiss="modal">Abbrechen</button>
-										<button type="submit" class="btn btn-primary" data-dismiss="modal">Erstellen</button>
-									</div>
-								</form>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="widget shadow">
+							<div class="text-center">
+								<h4>Deine Top-Gruppe</h4>
 							</div>
+							<p>
+								Name:
+								<c:out value="${groupname}"></c:out>
+								<br> Beschreibung:
+								<c:out value="${groupBio}"></c:out>
+								<br> Teilnehmer:
+								<c:out value="${groupParticipants}"></c:out>
+								<br>
+							</p>
+						</div>
+						<div class="widget shadow">
+							<div class="text-center">
+								<h4>Deine Letzte Zahlung</h4>
+							</div>
+							<p>
+								Gruppe:
+								<c:out value="${paymentGroup}"></c:out>
+								<br> Betrag:
+								<c:out value="${paymentAmount}"></c:out>
+							</p>
 						</div>
 					</div>
-					<!-- modal end -->
+				</div>
+				<div class="row m-5">
+					<div class="text-center mx-auto">
+						<button class="btn btn-secondary mr-5" type="button" data-toggle="modal" data-target="#newGroupModal">Neue Gruppe</button>
+						<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#newPaymentModal">Neue Zahlung</button>
+						<!-- modal gruppe start -->
+						<div class="modal fade" id="newGroupModal">
+							<form name="creatGroup" action="createGroup" method="POST">
+								<div class="modal-dialog">
+									<div class="modal-content">
+
+										<!-- Modal Header -->
+										<div class="modal-header">
+											<h4 class="modal-title mx-auto">Neue Gruppe Erstellen</h4>
+											<button type="button" class="close" data-dismiss="modal" onclick="deleteEntries()">&times;</button>
+										</div>
+										<!-- Modal body -->
+										<div class="modal-body">
+											<div class="form-group">
+												<label for="groupName">Gruppen Name:</label> <input type="text" class="form-control" id="groupName">
+											</div>
+											<div class="form-group">
+												<label for="groupDescription">Gruppen Beschreibung:</label> <input type="text" class="form-control"
+													id="groupDescription">
+											</div>
+											<div class="form-group">
+												<label for="groupParticipants">Teilnehmer :</label> <input type="text" class="form-control" id="groupParticipants"
+													onkeyup="searchUser()" name="participantsSearch">
+											</div>
+										</div>
+
+										<!-- Modal footer -->
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="deleteEntries()">Abbrechen</button>
+											<button type="submit" class="btn btn-primary">Gruppe erstellen</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<!-- modal end -->
+						<!-- modal zahlung start -->
+						<div class="modal fade" id="newPaymentModal">
+							<form name="createPayment" action="createPayment" method="POST">
+								<div class="modal-dialog">
+									<div class="modal-content">
+
+										<!-- Modal Header -->
+										<div class="modal-header">
+											<h4 class="modal-title mx-auto">Neue Zahlung Erstellen</h4>
+											<button type="button" class="close" data-dismiss="modal" onclick="deleteEntries()">&times;</button>
+										</div>
+										<!-- Modal body -->
+										<div class="modal-body">
+											<div class="form-group">
+												<label for="paymentName">Muster-Text:</label> <input type="text" class="form-control" id="groupName">
+											</div>
+											<div class="form-group">
+												<label for="groupDescription">Muster-Text:</label> <input type="text" class="form-control"
+													id="groupDescription">
+											</div>
+
+
+											<!-- Modal footer -->
+											<div class="modal-footer">
+												<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="deleteEntries()">Abbrechen</button>
+												<button type="submit" class="btn btn-primary">Zahlung erstellen</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<!-- modal end -->
+					</div>
 				</div>
 				<div class="placeholder mb-5"></div>
 			</div>

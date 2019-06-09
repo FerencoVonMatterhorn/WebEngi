@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession newSession = req.getSession(true);
 			newSession.setMaxInactiveInterval(10 * 60);
 			newSession.setAttribute("userID", user.get().getId());
+			newSession.setAttribute("userName", user.get().getUsername());
 
 			req.setAttribute("userPojo", user.get());
 			rd = req.getRequestDispatcher("indexLoggedIn.jsp");

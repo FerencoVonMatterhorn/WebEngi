@@ -8,22 +8,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
 <link rel="stylesheet" href="registrieren.css">
+<script type="text/javascript" src="../scripts.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-<script type="text/javascript">
-	function check_pass() {
-		if (document.getElementById('password1').value == document
-				.getElementById('password2').value) {
-			document.getElementById('submit').disabled = false;
-		} else {
-			document.getElementById('submit').disabled = true;
-		}
-	}
-</script>
 </head>
 <body>
 	<!--  Navigationbar  -->
@@ -123,7 +114,7 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> Password:</span>
 									</div>
-									<input type="password" class="form-control" name="password1" id="password1" onkeyup='check_pass();' required>
+									<input type="password" class="form-control" name="password1" id="password1" onkeyup='check_password()' required>
 								</div>
 							</div>
 							<!--  Sixth input  -->
@@ -132,7 +123,7 @@
 									<div class="input-group-prepend">
 										<span class="input-length input-group-text"> Repeat password:</span>
 									</div>
-									<input type="password" class="form-control" name="password2" id="password2" onkeyup='check_pass();' required>
+									<input type="password" class="form-control" name="password2" id="password2" onkeyup='check_password() ' required>
 								</div>
 							</div>
 							<span id="message"></span>

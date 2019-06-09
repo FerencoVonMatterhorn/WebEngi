@@ -41,8 +41,11 @@ public class DBActions {
 		return false;
 	}
 
-	public static Optional<UserPojo> login(String inUsername, String inPassword) {
-		Optional<UserPojo> user = findUser(inUsername);
+	public static Optional<UserPojo> login(String inUsernameOrEmail, String inPassword) {
+		Optional<UserPojo> user = findUserByName(inUsernameOrEmail);
+		if (!user.isPresent()) {
+			user = findUserByEmail(inUsernameOrEmail);
+		}
 		if (user.isPresent()) {
 			try {
 				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
@@ -72,7 +75,7 @@ public class DBActions {
 		session.close();
 	}
 
-	private static Optional<UserPojo> findUser(String inUsername) {
+	private static Optional<UserPojo> findUserByName(String inUsername) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query<?> query = session.createQuery("from USERS where USERNAME = :username");
@@ -82,7 +85,7 @@ public class DBActions {
 		return user;
 	}
 
-	private static Optional<UserPojo> findEmail(String inEmail) {
+	private static Optional<UserPojo> findUserByEmail(String inEmail) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query<?> query = session.createQuery("from USERS where EMAIL = :email");
@@ -93,6 +96,6 @@ public class DBActions {
 	}
 
 	private static boolean usernameOrEmailisPresent(String inUsername, String inEmail) {
-		return (findUser(inUsername).isPresent() || findEmail(inEmail).isPresent()) ? true : false;
+		return (findUserByName(inUsername).isPresent() || findUserByEmail(inEmail).isPresent()) ? true : false;
 	}
 }

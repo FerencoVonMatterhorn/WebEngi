@@ -5,7 +5,7 @@
 <html>
 <!-- META-DATA -->
 <head>
-<title>MyComp - einzelneGruppe</title>
+<title>MyWG - Zahlungen</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
 <link rel="stylesheet" href="paymentOverviewStyle.css">
@@ -33,7 +33,7 @@
 				</c:when>
 				<c:otherwise>
 					<!-- Home LoggedIn -->
-					<li class="nav-item"><a class="nav-link" href="../official/IndexLoggedIn.jsp">Home <i class="fas fa-home"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../official/indexLoggedIn.jsp">Home <i class="fas fa-home"></i></a></li>
 					<!--  Gruppen  -->
 					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
 					<!--  Zahlungen  -->
@@ -65,46 +65,54 @@
 	<div class="backgroundSide">
 		<div class="container-fluid">
 			<div class="backgroundMid">
+				<div class="container pt-5">
 
-				<c:set var="itemCount" value="${paymentOverview.listSize -1}" />
-				<c:set var="pageDefault" value="" />
+					<c:set var="itemCount" value="${paymentOverview.listSize -1}" />
+					<c:set var="pageDefault" value="" />
 
-				<c:forEach begin="1" end="${paymentOverview.pageSize}" var="i">
-					<c:set var="decr" value="${paymentOverview.pageSize+1-i}" />
+					<c:forEach begin="1" end="${paymentOverview.pageSize}" var="i">
+						<c:set var="decr" value="${paymentOverview.pageSize+1-i}" />
 
-					<c:if test="${decr eq 1}">
-						<c:set var="pageDefault" value="default" />
-					</c:if>
+						<c:if test="${decr eq 1}">
+							<c:set var="pageDefault" value="default" />
+						</c:if>
 
-					<div id="page${decr}" class="page ${pageDefault}">
-						<c:forEach begin="1" end="5" var="j">
-							<c:set var="decrItem" value="${5-j}" />
-							<c:set var="index" value="${itemCount - decrItem}" />
+						<div id="page${decr}" class="page ${pageDefault}">
+							<div class="row justify-content-center">
+								<c:forEach begin="1" end="5" var="j">
+									<c:set var="decrItem" value="${5-j}" />
+									<c:set var="index" value="${itemCount - decrItem}" />
 
-							<p class="bg-dark singlePaymentInOverview">
-								Beteiligte: Christian, Christian2, Kollerabs, Christian123 <br> Betrag:${paymentOverview.test.get(index)} <br>
-								Typ: <br> Erstellt am: <br>
-								<!-- if für Typ=Monatsabrechnung wenn -> Bezahlen bis -->
-								<button type="button">Zur Zahlung</button>
-							</p>
+									<p class="widget">
+										Beteiligte: Christian, Christian2, Kollerabs, Christian123 <br> Betrag:${paymentOverview.test.get(index)} <br>
+										Typ: <br> Erstellt am: <br>
+										<!-- if für Typ=Monatsabrechnung wenn -> Bezahlen bis -->
+										<button class="btn btn-secondary" type="button">Zur Zahlung</button>
+									</p>
 
 
+								</c:forEach>
+							</div>
+						</div>
+
+						<c:set var="itemCount" value="${itemCount -5}" />
+					</c:forEach>
+				</div>
+				<div class="row justify-content-center mb-5 mt-3">
+					<ul class="pagination">
+						<c:forEach begin="1" end="${paymentOverview.pageSize}" varStatus="loop">
+							<li class="page-item"><a class="page-link" href="#page${loop.index}">${loop.index}</a></li>
 						</c:forEach>
-					</div>
-
-					<c:set var="itemCount" value="${itemCount -5}" />
-				</c:forEach>
-
-				<nav> <c:forEach begin="1" end="${paymentOverview.pageSize}" varStatus="loop">
-					<a href="#page${loop.index}">${loop.index}</a>
-				</c:forEach> </nav>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a class="m-2" href="../official/imprint.jsp">Impressum</a> <a class="m-2" href="../official/privacyPolicy.jsp">Privace Policy</a>
+				<a class="m-2" href="../official/imprint.jsp">Impressum</a> <a class="m-2" href="../official/privacyPolicy.jsp">Privace
+					Policy</a>
 			</p>
 			<p>Ⓒ 2019 MyWG</p>
 		</div>

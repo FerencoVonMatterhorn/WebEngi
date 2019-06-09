@@ -12,3 +12,5 @@ Weitere können im [mainStyle.css](webContent/mainStyle.css) geschrieben werden.
 
 Wenn der Benutzer nicht angemeldet ist und eine andere Seite als die Startseite aufzurufen dann wird er zur startseite geleitet
 https://krazytech.com/programs/session-role-based-java-login-example
+
+<link rel="shortcut icon" href="your_image_path_and_name.ico"/>

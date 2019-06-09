@@ -68,7 +68,7 @@
 				</div>
 				<div class="row mx-auto justify-content-center mb-5">
 					<div class="card m-3" style="width: 400px">
-						<img class="card-img-top" src="../resources/p1.jpeg">
+						<img class="card-img-top" src="../resources/p1.jpeg" style="border-bottom: 2px solid black;">
 						<div class="card-body">
 							<h4 class="card-title">Bengt Joachimsohn</h4>
 							<p class="card-text">
@@ -79,22 +79,25 @@
 					</div>
 					<!-- Ferenc Horvay FIXME: Email einfüge, Text einfügen-->
 					<div class="card m-3" style="width: 400px">
-						<img class="card-img-top" src="../resources/p2.png">
+						<img class="card-img-top" src="../resources/p2.png" style="border-bottom: 2px solid black;">
 						<div class="card-body">
 							<h4 class="card-title">Ferenc Horvay</h4>
 							<p class="card-text">Some example text.</p>
-							<a href="#" class="btn btn-primary">Contact</a>
+							<a href="#" class="btn btn-primary">Email me</a>
 						</div>
 					</div>
 					<!-- Christian Koller FIXME: Email einfügen, Text einfügen-->
 					<div class="card m-3" style="width: 400px">
-						<img class="card-img-top" src="../resources/p3.jpeg">
+						<img class="card-img-top" src="../resources/p3.jpeg" style="border-bottom: 2px solid black;">
 						<div class="card-body">
 							<h4 class="card-title">Christian Koller</h4>
 							<p class="card-text">Some example text.</p>
-							<a href="mailto:" class="btn btn-primary">Contact</a>
+							<a href="mailto:" class="btn btn-primary">Email me</a>
 						</div>
 					</div>
+				</div>
+				<div class="row mx-auto justify-content-center">
+					<p>Angaben gemäß § 5 TMG</p>
 				</div>
 				<div class="row mx-auto justify-content-center">
 					<h1>Haftungsausschluss:</h1>
@@ -141,8 +144,7 @@
 						Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch
 						Spam-Mails, vor.</p>
 				</div>
-				<!-- FIXME: WO KOMME ICH HIN?! -->
-				<p>Angaben gemäß § 5 TMG</p>
+				<div class="placeholder mb-5"></div>
 			</div>
 		</div>
 	</div>

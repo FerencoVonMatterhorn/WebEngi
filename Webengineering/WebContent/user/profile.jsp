@@ -4,7 +4,7 @@
 <html>
 <!-- META-DATA -->
 <head>
-<title>MyComp - Profil</title>
+<title>MyWG - Profil</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
 <link rel="stylesheet" href="style.css">

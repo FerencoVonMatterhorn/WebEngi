@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean id="userPojo" class="main.java.pojos.UserPojo" scope="session"></jsp:useBean>
 <jsp:useBean id="groupPojo" class="main.java.pojos.GroupPojo" scope="session"></jsp:useBean>
+<jsp:useBean id="paymentPojo" class="main.java.pojos.PaymentPojo" scope="session"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -82,9 +83,9 @@
 							</div>
 							<p>
 								Gruppe:
-								<c:out value="${paymentGroup}"></c:out>
+								<c:out value="${paymentPojo.groupName}"></c:out>
 								<br> Betrag:
-								<c:out value="${paymentAmount}"></c:out>
+								<c:out value="${paymentPojo.amount} €"></c:out>
 							</p>
 						</div>
 					</div>

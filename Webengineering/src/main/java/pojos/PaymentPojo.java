@@ -1,14 +1,13 @@
 package main.java.pojos;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +28,9 @@ public class PaymentPojo {
 	private double amount;
 
 	@Column(name = "DATECREATED", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCreated;
+	private OffsetDateTime dateCreated;
+
+	@Transient
+	private String groupName;
 
 }

@@ -1,5 +1,6 @@
 package main.java.pojos;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -29,8 +30,7 @@ public class MonthlyPaymentPojo {
 	private double amount;
 
 	@Column(name = "DATECREATED", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCreated;
+	private OffsetDateTime dateCreated;
 
 	@Column(name = "DATEUNTIL", nullable = false)
 	@Temporal(TemporalType.DATE)

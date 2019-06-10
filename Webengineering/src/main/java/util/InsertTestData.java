@@ -1,15 +1,14 @@
 package main.java.util;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 
 import main.java.db.DBConfig;
 import main.java.pojos.GroupPojo;
-import main.java.pojos.UserPojo;
-import main.java.pojos.UserToGroupPojo;
+import main.java.pojos.PaymentPojo;
 
 public class InsertTestData {
 
@@ -41,6 +40,7 @@ public class InsertTestData {
 
 		for (GroupPojo groupPojo : testDataList) {
 			session.save(groupPojo);
+			System.out.println(groupPojo.getGroupID());
 
 		}
 
@@ -48,46 +48,28 @@ public class InsertTestData {
 		session.close();
 	}
 
-	public void testUserToGroup() {
+	public void insertPaymentTestData() {
 
 		Session session = DBConfig.getSessionFactory().openSession();
 
-		Query<?> query = session.createQuery("from USERTOGROUP where USERID = :userID");
-		query.setParameter("userID", 82);
+		session.beginTransaction();
 
-		UserToGroupPojo userToGroupPojo = (UserToGroupPojo) query.uniqueResult();
+		List<PaymentPojo> testDataList = new ArrayList<>();
 
-		query = session.createQuery("from GROUPS where GROUPID = :groupID");
-		query.setParameter("groupID", userToGroupPojo.getGroup().getGroupID());
-
-		GroupPojo groupPojo = (GroupPojo) query.uniqueResult();
-		session.close();
-
-		System.out.println(groupPojo.getGroupName());
-	}
-
-	public void getUsersTest() {
-
-		Session session = DBConfig.getSessionFactory().openSession();
-
-		Query<?> query = session.createQuery("from USERTOGROUP where GROUPID = :groupID");
-		query.setParameter("groupID", 67);
-
-		List<UserToGroupPojo> userList = (List<UserToGroupPojo>) query.getResultList();
-
-		List<UserPojo> userPojoList = new ArrayList<>();
-
-		for (UserToGroupPojo userToGroupPojo : userList) {
-			query = session.createQuery("from USERS where USERID = :userID");
-			query.setParameter("userID", userToGroupPojo.getUser().getId());
-
-			userPojoList.add((UserPojo) query.uniqueResult());
+		for (int i = 1; i <= 15; i++) {
+			PaymentPojo test = new PaymentPojo();
+			test.setAmount(100.00 + i);
+			test.setDateCreated(OffsetDateTime.now());
+			testDataList.add(test);
+			System.out.println(i);
 		}
 
-		for (UserPojo userPojo : userPojoList) {
-			System.out.println(userPojo.getEmail());
+		for (PaymentPojo paymentPojo : testDataList) {
+			session.save(paymentPojo);
+
 		}
 
+		session.getTransaction().commit();
 		session.close();
 	}
 

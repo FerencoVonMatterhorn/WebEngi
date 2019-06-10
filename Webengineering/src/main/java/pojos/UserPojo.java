@@ -10,12 +10,10 @@ import javax.persistence.Lob;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity(name = "USERS")
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 public class UserPojo {
 

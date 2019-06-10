@@ -107,15 +107,15 @@
 										<!-- Modal body -->
 										<div class="modal-body">
 											<div class="form-group">
-												<label for="groupName">Gruppen Name:</label> <input type="text" class="form-control" id="groupName">
+												<label for="groupName">Gruppen Name:</label> <input type="text" class="form-control" id="groupName" name="groupName">
 											</div>
 											<div class="form-group">
 												<label for="groupDescription">Gruppen Beschreibung:</label> <input type="text" class="form-control"
-													id="groupDescription">
+													id="groupDescription" name="groupDescription">
 											</div>
 											<div class="form-group">
 												<label for="groupParticipants">Teilnehmer:</label> <input type="text" class="form-control" id="groupParticipants"
-													name="participantsSearch">
+													name="groupParticipants">
 											</div>
 										</div>
 										<!-- Modal footer -->

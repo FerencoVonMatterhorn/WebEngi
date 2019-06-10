@@ -24,17 +24,11 @@ function validateRegistration() {
 }
 
 function validateNames(fname, lname, uname) {
-	if (fname.length > 0 && lname.length > 0 && uname.length > 0) {
-		return true;
-	}
-	return false;
+	return (fname.length > 0 && lname.length > 0 && uname.length > 0) ? true : false;
 }
 
 function validatePassword(password1, password2) {
-	if (password1 != password2) {
-		return false
-	}
-	return true;
+	return ((password1 != password2) || ((password1.length > 1) && (password2.length > 1))) ? false : true;
 }
 
 function validateEmail(email) {

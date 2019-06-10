@@ -4,11 +4,21 @@ import java.util.regex.Pattern;
 
 public class InputDataValidationUtil {
 
+	private static final String[] NO_ERROR = {};
+	private static final String[] INVALID_EMAIL = { "email-error", "Die angegebene Email-Adresse entspricht nihct dem Format" };
+	private static final String[] INVALID_PASSWORDS = { "password-error", "Die angegebenen Passwörter stimmen nicht überein" };
+
 	private InputDataValidationUtil() {
+
 	}
 
-	public static boolean validateRegistrationForm(String inEmail, String inPassword1, String inPassword2) {
-		return (emailIsValid(inEmail) && passwordsMatch(inPassword1, inPassword2)) ? true : false;
+	public static String[] validateRegistrationForm(String inEmail, String inPassword1, String inPassword2) {
+		if (!emailIsValid(inEmail)) {
+			return INVALID_EMAIL;
+		} else if (!passwordsMatch(inPassword1, inPassword2)) {
+			return INVALID_PASSWORDS;
+		}
+		return NO_ERROR;
 	}
 
 	private static boolean passwordsMatch(String inPassword1, String inPassword2) {

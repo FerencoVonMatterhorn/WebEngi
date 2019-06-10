@@ -2,7 +2,6 @@ package main.java.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,24 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.java.db.DBActions;
-import main.java.pojos.UserPojo;
 
 @SuppressWarnings("serial")
-@WebServlet("/official/IndexLoggedIn")
-public class IndexLoggedInServlet extends HttpServlet {
+@WebServlet("/official/createGroup")
+public class CreateGroupServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd;
-		UserPojo user = DBActions.findUserById((int) req.getSession().getAttribute("userID"));
-		req.setAttribute("userPojo", user);
-		// req.setAttribute("groupPojo",
-		// DBActions.indexLoggedInGroup(user.getId()));
-		rd = req.getRequestDispatcher("indexLoggedIn.jsp");
-		rd.forward(req, resp);
+		DBActions.createGroup(req.getParameter("groupName"), req.getParameter("groupDescription"), req.getParameter("groupParticipants"),
+				(int) req.getSession().getAttribute("userID"));
+		resp.sendRedirect(req.getContextPath() + "/official/IndexLoggedIn");
 	}
 
 }

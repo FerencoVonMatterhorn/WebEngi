@@ -19,6 +19,25 @@ public class DBActions {
 
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
+	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants, int inCreatorId) {
+		GroupPojo group = new GroupPojo();
+		group.setGroupName(inGroupName);
+		group.setGroupDescription(inGroupDescription);
+		saveGroup(group);
+
+		List<UserPojo> users = findUsersByName(inGroupParticipants);
+		users.add(findUserById(inCreatorId));
+
+		if (users.size() >= 2) {
+			for (UserPojo user : users) {
+				UserToGroupPojo userToGroup = new UserToGroupPojo();
+				userToGroup.setUser(user);
+				userToGroup.setGroup(group);
+				saveUserToGroup(userToGroup);
+			}
+		}
+	}
+
 	public static GroupPojo indexLoggedInGroup(int userID) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from USERTOGROUP where USERID = :userID");
@@ -86,7 +105,7 @@ public class DBActions {
 				user.setIterations(Integer.valueOf(iterationsSaltPassword[0]));
 				user.setSalt(iterationsSaltPassword[1]);
 				user.setPassword(iterationsSaltPassword[2]);
-				registerUser(user);
+				saveUser(user);
 
 				return true;
 			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
@@ -122,7 +141,15 @@ public class DBActions {
 	 * Helper methods. *
 	 *******************/
 
-	private static void registerUser(UserPojo inUser) {
+	private static void saveUserToGroup(UserToGroupPojo inUserToGroup) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(inUserToGroup);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	private static void saveUser(UserPojo inUser) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(inUser);
@@ -130,7 +157,15 @@ public class DBActions {
 		session.close();
 	}
 
-	public static UserPojo findUserByID(int inId) {
+	private static void saveGroup(GroupPojo inGroup) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(inGroup);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	public static UserPojo findUserById(int inId) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query<?> query = session.createQuery("from USERS where USERID = :id");
@@ -160,7 +195,40 @@ public class DBActions {
 		return user;
 	}
 
+	private static Optional<GroupPojo> findGroupByName(String inGroupName) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Query<?> query = session.createQuery("from GROUPS where GROUPNAME = :name");
+		query.setParameter("name", inGroupName);
+		Optional<GroupPojo> group = (Optional<GroupPojo>) query.uniqueResultOptional();
+		session.close();
+		return group;
+	}
+
+	private static List<UserPojo> findUsersByName(String inUsersStr) {
+		List<String> formattedUserStrings = UserStringsToList(inUsersStr);
+		List<UserPojo> users = new ArrayList<>();
+		for (String user : formattedUserStrings) {
+			Optional<UserPojo> foundUser = findUserByName(user);
+			if (foundUser.isPresent()) {
+				users.add(foundUser.get());
+			}
+		}
+		return users;
+	}
+
+	public static List<String> UserStringsToList(String inUsersStr) {
+		List<String> users = new ArrayList<>();
+		String[] userStrArr = inUsersStr.split(",");
+		for (int i = 0; i < userStrArr.length; i++) {
+			userStrArr[i] = userStrArr[i].trim();
+			users.add(userStrArr[i]);
+		}
+		return users;
+	}
+
 	private static boolean usernameOrEmailisPresent(String inUsername, String inEmail) {
 		return (findUserByName(inUsername).isPresent() || findUserByEmail(inEmail).isPresent()) ? true : false;
 	}
+
 }

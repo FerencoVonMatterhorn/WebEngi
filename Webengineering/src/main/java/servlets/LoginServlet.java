@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 			req.setAttribute("userPojo", user.get());
 			rd = req.getRequestDispatcher("indexLoggedIn.jsp");
 		} else {
-			// TODO: add mesage login was NOT successfull
+			req.setAttribute("message", "Benutzername oder Passwort ist falsch");
 			rd = req.getRequestDispatcher("index.jsp");
 		}
 		rd.forward(req, resp);

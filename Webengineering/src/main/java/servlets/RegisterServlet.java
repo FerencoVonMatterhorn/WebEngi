@@ -27,12 +27,17 @@ public class RegisterServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
-		if (DBActions.register(req.getParameter("fname"), req.getParameter("lname"), req.getParameter("uname"), //
-				req.getParameter("email"), req.getParameter("password2"))) {
-			// TODO: add message reg was succesfull
-			rd = req.getRequestDispatcher("index.jsp");
-		} else {
+		if (!req.getParameter("password1").equalsIgnoreCase(req.getParameter("password2"))) {
+			req.setAttribute("registrationUnsuccessful", "Die eingegebenen Passwörter stimmen nicht überein.");
 			rd = req.getRequestDispatcher("register.jsp");
+		} else {
+			if (DBActions.register(req.getParameter("fname"), req.getParameter("lname"), req.getParameter("uname"), //
+					req.getParameter("email"), req.getParameter("password2"))) {
+				rd = req.getRequestDispatcher("index.jsp");
+			} else {
+				req.setAttribute("registrationUnsuccessful", "Deine Registrierung war nicht erfolgreich, Benutzername oder Email ist schon vergeben.");
+				rd = req.getRequestDispatcher("register.jsp");
+			}
 		}
 		rd.forward(req, resp);
 

@@ -34,6 +34,16 @@ p {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", serif;
 }
 
+.message-error {
+	color: #e74c3c;
+	margin-bottom: 0.8rem;
+}
+
+.message-succes {
+	color: green;
+	margin-bottom: 0.8rem;
+}
+
 /* widgets */
 .widget {
 	background-color: #fff;
@@ -50,16 +60,15 @@ p {
 	text-decoration: underline;
 }
 
-
 /*  StandardLayout  */
 
 /*  Hintergrund  */
 .backgroundSide {
 	background-color: #fafafa;
 	height: 100%;
-	background-position: center;
+	/*background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover;*/
 }
 
 .backgroundMid {
@@ -67,9 +76,9 @@ p {
 	height: 100%;
 	width: 90%;
 	margin: auto;
-	background-position: center;
+	/*background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover;*/
 }
 
 /*  Footer  */

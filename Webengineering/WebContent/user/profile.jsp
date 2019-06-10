@@ -19,51 +19,36 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<!--  Navigationbar  -->
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!--  Navbar Toggle  -->
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<!--  Navbar Toggle END  -->
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
-		<!--  Navbar Items Links  -->
 		<ul class="navbar-nav">
 			<c:choose>
 				<c:when test="${empty userID}">
-					<!--  Home  -->
 					<li class="nav-item"><a class="nav-link" href="../official/index.jsp">Home <i class="fas fa-home"></i></a></li>
 				</c:when>
 				<c:otherwise>
-					<!-- Home LoggedIn -->
 					<li class="nav-item"><a class="nav-link" href="../official/indexLoggedIn.jsp">Home <i class="fas fa-home"></i></a></li>
-					<!--  Gruppen  -->
 					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
-					<!--  Zahlungen  -->
 					<li class="nav-item"><a class="nav-link" href="../payment/paymentOverview.jsp">Zahlungen <i class="fas fa-receipt"></i></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
-		<!--  Navbar Items Rechts  -->
 		<ul class="navbar-nav ml-auto">
 			<c:choose>
 				<c:when test="${empty userID}">
-					<!-- Registrieren -->
 					<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:when>
 				<c:otherwise>
-					<!--  Profil  -->
 					<li class="nav-item"><a class="nav-link active" href="#">Profil <i class="fas fa-user"></i></a></li>
-					<!-- Abmelden TODO: abmelden Servlet-->
 					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
-		<!--  Navbar Items END  -->
 	</div>
 	</nav>
-	<!-- Navigationbar END-->
-
-	<!-- BODY -->
 	<div class="backgroundSide">
 		<div class="container-fluid">
 			<div class="backgroundMid">
@@ -186,7 +171,8 @@
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a class="m-2" href="../official/imprint.jsp">Impressum</a> <a class="m-2" href="../official/privacyPolicy.jsp">Privace Policy</a>
+				<a class="m-2" href="../official/imprint.jsp">Impressum</a> <a class="m-2" href="../official/privacyPolicy.jsp">Privacy
+					Policy</a>
 			</p>
 			<p>Ⓒ 2019 MyWG</p>
 		</div>

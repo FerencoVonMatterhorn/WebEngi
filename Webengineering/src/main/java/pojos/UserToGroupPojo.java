@@ -21,15 +21,15 @@ public class UserToGroupPojo {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "GROUPID")
+	@JoinColumn(name = "GROUPID", nullable = false)
 	private GroupPojo group;
 
 	@ManyToOne
-	@JoinColumn(name = "USERID")
+	@JoinColumn(name = "USERID", nullable = false)
 	private UserPojo user;
 
 }

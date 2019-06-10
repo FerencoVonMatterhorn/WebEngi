@@ -17,13 +17,13 @@ public class GroupPojo {
 
 	@Id
 	@Column(name = "GROUPID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int GroupID;
 
-	@Column(name = "GROUPNAME")
+	@Column(name = "GROUPNAME", nullable = false)
 	private String GroupName;
 
-	@Column(name = "GROUPDESCRIPTION")
+	@Column(name = "GROUPDESCRIPTION", nullable = false)
 	private String GroupDescription;
 
 	@Transient

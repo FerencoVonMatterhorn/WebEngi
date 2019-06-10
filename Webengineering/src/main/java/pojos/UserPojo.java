@@ -20,29 +20,29 @@ import lombok.ToString;
 public class UserPojo {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "USERID")
 	private int id;
 
-	@Column(name = "USERNAME")
+	@Column(name = "USERNAME", nullable = false)
 	private String username;
 
-	@Column(name = "PASSWORD")
+	@Column(name = "PASSWORD", nullable = false)
 	private String password;
 
-	@Column(name = "SALT")
+	@Column(name = "SALT", nullable = false)
 	private String salt;
 
-	@Column(name = "ITERATIONS")
+	@Column(name = "ITERATIONS", nullable = false)
 	private int iterations;
 
-	@Column(name = "FIRSTNAME")
+	@Column(name = "FIRSTNAME", nullable = false)
 	private String firstName;
 
-	@Column(name = "LASTNAME")
+	@Column(name = "LASTNAME", nullable = false)
 	private String lastName;
 
-	@Column(name = "EMAIL")
+	@Column(name = "EMAIL", nullable = false)
 	private String email;
 
 	@Lob

@@ -13,15 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.java.beans.SingleGroupBean;
 
+@SuppressWarnings("serial")
 @WebServlet("/group/singlegroup")
 public class SingleGroupServlet extends HttpServlet {
 
-	public SingleGroupServlet() {
-		super();
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<String> users = new ArrayList<>();
 		users.add("CK");
 		users.add("CK2");
@@ -38,11 +40,6 @@ public class SingleGroupServlet extends HttpServlet {
 		dispatcher = req.getRequestDispatcher("groupSingle.jsp");
 
 		dispatcher.forward(req, resp);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
 	}
 
 }

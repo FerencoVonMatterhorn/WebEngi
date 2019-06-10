@@ -18,10 +18,6 @@ import main.java.pojos.UserPojo;
 @WebServlet("/official/Login")
 public class LoginServlet extends HttpServlet {
 
-	public LoginServlet() {
-		super();
-	}
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
@@ -30,24 +26,22 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Optional<UserPojo> user = DBActions.login(req.getParameter("emailOrName"), req.getParameter("password"));
-		RequestDispatcher rd;
 		if (user.isPresent()) {
 			HttpSession oldSession = req.getSession(false);
 			if (oldSession != null) {
 				oldSession.invalidate();
 			}
 			HttpSession newSession = req.getSession(true);
+			// Max time the user is logged in
 			newSession.setMaxInactiveInterval(10 * 60);
 			newSession.setAttribute("userID", user.get().getId());
-			newSession.setAttribute("userName", user.get().getUsername());
-
-			req.setAttribute("groupPojo", DBActions.indexLoggedInGroup(user.get().getId()));
-			req.setAttribute("userPojo", user.get());
-			rd = req.getRequestDispatcher("indexLoggedIn.jsp");
+			resp.sendRedirect(req.getContextPath() + "/official/IndexLoggedIn");
 		} else {
+			RequestDispatcher rd;
 			req.setAttribute("message", "Benutzername oder Passwort ist falsch");
 			rd = req.getRequestDispatcher("index.jsp");
+			rd.forward(req, resp);
 		}
-		rd.forward(req, resp);
+
 	}
 }

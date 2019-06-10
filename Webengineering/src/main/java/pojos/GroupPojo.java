@@ -9,7 +9,9 @@ import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 @Entity(name = "GROUPS")
 @Getter
 @Setter

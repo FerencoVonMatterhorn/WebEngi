@@ -20,7 +20,7 @@ public class InsertTestData {
 	public static void main(String[] args) {
 		InsertTestData insertTestData = new InsertTestData();
 
-		insertTestData.getUsersTest();
+		insertTestData.insertGroupTestData();
 	}
 
 	public void insertGroupTestData() {

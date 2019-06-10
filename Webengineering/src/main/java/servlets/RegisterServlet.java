@@ -15,10 +15,6 @@ import main.java.db.DBActions;
 @WebServlet("/official/Register")
 public class RegisterServlet extends HttpServlet {
 
-	public RegisterServlet() {
-		super();
-	}
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);

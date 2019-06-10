@@ -54,7 +54,7 @@
 					<div class="text-center mx-auto">
 						<h2 class="mt-5 mb-4">
 							Willkommen zurück,
-							<c:out value="${userName}"></c:out>
+							<c:out value="${userPojo.username}"></c:out>
 						</h2>
 						<p>Hier ist ein überblick über deine letzte Zahlung und top Gruppe.</p>
 						<p style="margin-top: -0.6rem">Du kannst hier auch eine Zahlung erstellen.</p>

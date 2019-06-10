@@ -11,11 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.java.beans.PaymentOverviewBean;
 
+@SuppressWarnings("serial")
 @WebServlet("/payment/paymentOverview")
 public class PaymentOverviewServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PaymentOverviewBean bean = new PaymentOverviewBean();
 
 		req.setAttribute("paymentOverview", bean);
@@ -23,11 +29,6 @@ public class PaymentOverviewServlet extends HttpServlet {
 		RequestDispatcher dispat = req.getRequestDispatcher("paymentOverview.jsp");
 
 		dispat.forward(req, resp);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
 	}
 
 }

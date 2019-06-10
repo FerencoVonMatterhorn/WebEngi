@@ -20,20 +20,13 @@ public class DBActions {
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
 	public static GroupPojo indexLoggedInGroup(int userID) {
-
-		System.out.println(userID);
-
 		Session session = sessionFactory.openSession();
-
 		Query<?> query = session.createQuery("from USERTOGROUP where USERID = :userID");
 		query.setParameter("userID", userID);
-
 		UserToGroupPojo userToGroupPojo = (UserToGroupPojo) query.uniqueResult();
-
 		if (userToGroupPojo == null) {
 			return new GroupPojo();
 		}
-
 		query = session.createQuery("from GROUPS where GROUPID = :groupID");
 		query.setParameter("groupID", userToGroupPojo.getGroup().getGroupID());
 
@@ -79,8 +72,7 @@ public class DBActions {
 		return group;
 	}
 
-	public static boolean register(String inFName, String inLName, String inUsername, String inEmail,
-			String inPassword) {
+	public static boolean register(String inFName, String inLName, String inUsername, String inEmail, String inPassword) {
 		if (!usernameOrEmailisPresent(inUsername, inEmail)) {
 			String iterationsSaltPassword[] = null;
 			try {
@@ -113,8 +105,7 @@ public class DBActions {
 		}
 		if (user.isPresent()) {
 			try {
-				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(),
-						user.get().getIterations())) {
+				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
 					return user;
 				} else {
 					return Optional.empty();
@@ -132,13 +123,21 @@ public class DBActions {
 	 *******************/
 
 	private static void registerUser(UserPojo inUser) {
-		System.out.println(inUser.toString());
-		System.out.println(inUser.hashCode());
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(inUser);
 		session.getTransaction().commit();
 		session.close();
+	}
+
+	public static UserPojo findUserByID(int inId) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Query<?> query = session.createQuery("from USERS where USERID = :id");
+		query.setParameter("id", inId);
+		UserPojo user = (UserPojo) query.uniqueResult();
+		session.close();
+		return user;
 	}
 
 	private static Optional<UserPojo> findUserByName(String inUsername) {

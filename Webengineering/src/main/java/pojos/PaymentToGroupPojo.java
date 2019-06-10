@@ -5,32 +5,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-@ToString
-@Entity(name = "GROUPS")
+@Entity(name = "PAYMENTTOGROUP")
 @Getter
 @Setter
 @NoArgsConstructor
-public class GroupPojo {
+public class PaymentToGroupPojo {
 
 	@Id
-	@Column(name = "GROUPID")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int GroupID;
+	@Column(name = "ID")
+	private int id;
 
-	@Column(name = "GROUPNAME", nullable = false)
-	private String GroupName;
+	@ManyToOne
+	@JoinColumn(name = "GROUPID", nullable = false)
+	private GroupPojo group;
 
-	@Column(name = "GROUPDESCRIPTION", nullable = false)
-	private String GroupDescription;
-
-	@Transient
-	private String users;
+	@ManyToOne
+	@JoinColumn(name = "PAYMENTID", nullable = false)
+	private PaymentPojo payment;
 
 }

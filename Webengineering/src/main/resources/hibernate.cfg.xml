@@ -17,9 +17,19 @@
 		<property name="connection.pool_size">1</property>
 		
 		<!-- Mapping for all POJOs -->
+		<!-- Object Mapping -->
 		<mapping class="main.java.pojos.GroupPojo" />
-		<mapping class="main.java.pojos.UserPojo" />
+		<mapping class="main.java.pojos.UserPojo" />	
+		<mapping class="main.java.pojos.MonthlyPaymentPojo" />
+		<mapping class="main.java.pojos.PaymentPojo" />
+		
+		<!-- Relation-Databases Mapping-->
 		<mapping class="main.java.pojos.UserToGroupPojo" />
+		<mapping class="main.java.pojos.MonthlyPaymentToGroupPojo" />
+		<mapping class="main.java.pojos.MonthlyPaymentToPaymentPojo" />
+		<mapping class="main.java.pojos.MonthlyPaymentToUserPojo" />
+		<mapping class="main.java.pojos.PaymentToGroupPojo" />
+		<mapping class="main.java.pojos.PaymentToUserPojo" />
 		
 	</session-factory>
 </hibernate-configuration>

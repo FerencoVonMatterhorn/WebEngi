@@ -23,8 +23,11 @@ public class IndexLoggedInServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
 		UserPojo user = DBActions.findUserByID((int) req.getSession().getAttribute("userID"));
+
+		req.setAttribute("paymentPojo", DBActions.getPaymentForIndexLoggedIn(user.getId()));
 		req.setAttribute("userPojo", user);
 		req.setAttribute("groupPojo", DBActions.indexLoggedInGroup(user.getId()));
+
 		rd = req.getRequestDispatcher("indexLoggedIn.jsp");
 		rd.forward(req, resp);
 	}

@@ -63,8 +63,8 @@
 
 						<div id="page${decr}" class="page ${pageDefault}">
 							<div class="row justify-content-center">
-								<c:forEach begin="1" end="5" var="j">
-									<c:set var="decrItem" value="${5-j}" />
+								<c:forEach begin="1" end="8" var="j">
+									<c:set var="decrItem" value="${8 - j}" />
 									<c:set var="index" value="${itemCount - decrItem}" />
 
 									<p class="widget">
@@ -79,7 +79,7 @@
 							</div>
 						</div>
 
-						<c:set var="itemCount" value="${itemCount -5}" />
+						<c:set var="itemCount" value="${itemCount - 8}" />
 					</c:forEach>
 				</div>
 				<div class="row justify-content-center mb-5 mt-3">

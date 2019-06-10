@@ -15,10 +15,10 @@ public class PaymentOverviewBean {
 	private int listSize;
 
 	public PaymentOverviewBean() {
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 16; i++) {
 			test.add(i);
 		}
-		pageSize = test.size() / 5;
+		pageSize = test.size() / 8;
 		listSize = test.size();
 	}
 

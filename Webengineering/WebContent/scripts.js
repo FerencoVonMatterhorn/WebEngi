@@ -7,6 +7,8 @@ function deleteEntries() {
 	document.getElementById("groupParticipants").value = "";
 }
 
+var passwordLength = 1;
+
 function validateRegistration() {
 	var email = document.getElementById("email").value;
 	var password1 = document.getElementById("password1").value;
@@ -15,7 +17,7 @@ function validateRegistration() {
 	var lname = document.getElementById("lname").value;
 	var uname = document.getElementById("uname").value;
 
-	if (validateEmail(email) && validatePassword(password1, password2)
+	if (validateEmail(email) && validatePasswords(password1, password2)
 			&& validateNames(fname, lname, uname)) {
 		document.getElementById('submit').disabled = false;
 	} else {
@@ -27,8 +29,9 @@ function validateNames(fname, lname, uname) {
 	return (fname.length > 0 && lname.length > 0 && uname.length > 0) ? true : false;
 }
 
-function validatePassword(password1, password2) {
-	return ((password1 != password2) || ((password1.length > 1) && (password2.length > 1))) ? false : true;
+
+function validatePasswords(password1, password2) {
+	return (((password1.length <= passwordLength) && (password2.length <= passwordLength)) || (password1 != password2)) ? false : true;
 }
 
 function validateEmail(email) {

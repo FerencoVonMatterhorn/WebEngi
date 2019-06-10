@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 public class InputDataValidationUtil {
 
 	private static final String[] NO_ERROR = {};
-	private static final String[] INVALID_EMAIL = { "email-error", "Die angegebene Email-Adresse entspricht nihct dem Format" };
-	private static final String[] INVALID_PASSWORDS = { "password-error", "Die angegebenen Passwörter stimmen nicht überein" };
+	private static final String[] INVALID_EMAIL = { "emailWasIncorrectlyFormatted", "Die angegebene Email-Adresse entspricht nicht dem Format" };
+	private static final String[] INVALID_PASSWORDS = { "passwordsDidNotMatch", "Die angegebenen Passwörter stimmen nicht überein" };
 
 	private InputDataValidationUtil() {
 

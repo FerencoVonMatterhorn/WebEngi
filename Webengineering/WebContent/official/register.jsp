@@ -91,6 +91,11 @@
 									</div>
 									<input type="email" class="form-control" name="email" id="email" onkeyup='validateRegistration()'>
 								</div>
+								<c:if test="${emailWasIncorrectlyFormatted ne null}">
+									<p class="message-error col">
+										<c:out value="${emailWasIncorrectlyFormatted}"></c:out>
+									</p>
+								</c:if>
 							</div>
 							<div class="form-group">
 								<div class="input-group">
@@ -108,7 +113,11 @@
 									<input type="password" class="form-control" name="password2" id="password2" onkeyup='validateRegistration()'>
 								</div>
 							</div>
-							<span id="message"></span>
+							<c:if test="${passwordsDidNotMatch ne null}">
+								<p class="message-error col">
+									<c:out value="${passwordsDidNotMatch}"></c:out>
+								</p>
+							</c:if>
 							<hr>
 							<div class="form-group">
 								<button id="submit" type="submit" class="btn btn-primary btn-block">Register</button>

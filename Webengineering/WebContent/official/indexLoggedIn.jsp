@@ -106,8 +106,8 @@
 				</div>
 				<div class="row m-5">
 					<div class="text-center mx-auto">
-						<button class="btn btn-secondary mr-5" type="button" data-toggle="modal" data-target="#newGroupModal">Neue Gruppe</button>
-						<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#newPaymentModal">Neue Zahlung</button>
+						<button class="btn btn-success mr-5" type="button" data-toggle="modal" data-target="#newGroupModal">Neue Gruppe</button>
+						<button class="btn btn-success" type="button" data-toggle="modal" data-target="#newPaymentModal">Neue Zahlung</button>
 						<!-- modal gruppe start -->
 						<div class="modal fade" id="newGroupModal">
 							<form name="creatGroup" action="createGroup" method="POST">
@@ -158,11 +158,10 @@
 										<!-- Modal body -->
 										<div class="modal-body">
 											<div class="form-group">
-												<label for="paymentName">Muster-Text:</label> <input type="text" class="form-control" id="groupName">
+												<label for="paymentName">Muster-Text:</label> <input type="text" class="form-control" id="paymentName">
 											</div>
 											<div class="form-group">
-												<label for="groupDescription">Muster-Text:</label> <input type="text" class="form-control"
-													id="groupDescription">
+												<label for="payment">Muster-Text:</label> <input type="text" class="form-control" id="payment">
 											</div>
 
 

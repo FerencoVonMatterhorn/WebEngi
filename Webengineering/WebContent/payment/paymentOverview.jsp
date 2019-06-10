@@ -87,7 +87,7 @@
 										Beteiligte: Christian, Christian2, Kollerabs, Christian123 <br> Betrag:${paymentOverview.test.get(index)} <br>
 										Typ: <br> Erstellt am: <br>
 										<!-- if für Typ=Monatsabrechnung wenn -> Bezahlen bis -->
-										<button class="btn btn-secondary" type="button">Zur Zahlung</button>
+										<button class="btn btn-success"type="button">Zur Zahlung</button>
 									</p>
 
 

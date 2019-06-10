@@ -30,7 +30,7 @@
 				</c:when>
 				<c:otherwise>
 					<!-- Home -->
-					<li class="nav-item"><a class="nav-link" href="indexLoggedin.jsp">Home <i class="fas fa-home"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="indexLoggedIn.jsp">Home <i class="fas fa-home"></i></a></li>
 					<!--  Gruppen  -->
 					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
 					<!--  Zahlungen  -->

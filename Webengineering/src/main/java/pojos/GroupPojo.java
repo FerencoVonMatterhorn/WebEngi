@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,5 +25,8 @@ public class GroupPojo {
 
 	@Column(name = "GROUPDESCRIPTION")
 	private String GroupDescription;
+
+	@Transient
+	private String users;
 
 }

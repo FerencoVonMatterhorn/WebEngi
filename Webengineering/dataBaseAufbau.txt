@@ -31,7 +31,7 @@ Gruppe-User-Relation:
 	ID, GroupID(foreignKey), UserID(foreignKey)
 	
 	CREATE TABLE UserToGroup(
-     ID int NOT NULL,
+	 ID int NOT NULL AUTO_INCREMENT,
      UserID int NOT NULL,
      GroupID int NOT NULL,
      FOREIGN KEY (UserID) REFERENCES Users(UserID),
@@ -62,7 +62,6 @@ Zahlung-Benutzer-Relation:
 	ID, PaymentID(foreignKey), UserID(foreignKey)
 	
 	CREATE TABLE UserToPayment(
-     ID int NOT NULL,
      UserID int NOT NULL,
      PaymentID int NOT NULL,
      FOREIGN KEY (UserID) REFERENCES Users(UserID),
@@ -74,7 +73,6 @@ Zahlung-Gruppe-Relation:
 	ID, PaymentID(foreignKey), GroupID(foreignKey)
 	
 	CREATE TABLE PaymentToGroup(
-     ID int NOT NULL AUTO_INCREMENT,
      PaymentID int,
      GroupID int,
      FOREIGN KEY (PaymentID) REFERENCES Payments(PaymentID),
@@ -86,7 +84,6 @@ Monatszahlung-Zahlung-Relation:
 	ID, IDMonatszahlung, IDZahlung
 	
 	CREATE TABLE MonthlyPaymentToPayment(
-     ID int NOT NULL,
      MonthlyPaymentID int NOT NULL,
      PaymentID int NOT NULL,
      FOREIGN KEY (MonthlyPaymentID) REFERENCES MonthlyPayments(MonthlyPaymentID),
@@ -96,7 +93,6 @@ Monatszahlung-Zahlung-Relation:
 MonatsZahlung-Gruppe Relation:
 
 	CREATE TABLE MonthlyPaymentToGroup(
-     ID int NOT NULL AUTO_INCREMENT,
      MonthlyPaymentID int,
      GroupID int,
      FOREIGN KEY (MonthlyPaymentID) REFERENCES MonthlyPayments(MonthlyPaymentID),
@@ -106,7 +102,6 @@ MonatsZahlung-Gruppe Relation:
 NonthlyPayment to User:
 
 CREATE TABLE UserToMonthlyPayment(
-     ID int NOT NULL,
      UserID int NOT NULL,
      MonthlyPaymentID int NOT NULL,
      FOREIGN KEY (UserID) REFERENCES Users(UserID),

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean id="userPojo" class="main.java.pojos.UserPojo" scope="session"></jsp:useBean>
+<jsp:useBean id="groupPojo" class="main.java.pojos.GroupPojo" scope="session"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- META-DATA -->
@@ -83,11 +84,11 @@
 							</div>
 							<p>
 								Name:
-								<c:out value="${groupname}"></c:out>
+								<c:out value="${groupPojo.groupName}"></c:out>
 								<br> Beschreibung:
-								<c:out value="${groupBio}"></c:out>
+								<c:out value="${groupPojo.groupDescription}"></c:out>
 								<br> Teilnehmer:
-								<c:out value="${groupParticipants}"></c:out>
+								<c:out value="${groupPojo.users}"></c:out>
 								<br>
 							</p>
 						</div>

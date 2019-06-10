@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 			newSession.setAttribute("userID", user.get().getId());
 			newSession.setAttribute("userName", user.get().getUsername());
 
+			req.setAttribute("groupPojo", DBActions.indexLoggedInGroup(user.get().getId()));
 			req.setAttribute("userPojo", user.get());
 			rd = req.getRequestDispatcher("indexLoggedIn.jsp");
 		} else {
@@ -49,5 +50,4 @@ public class LoginServlet extends HttpServlet {
 		}
 		rd.forward(req, resp);
 	}
-
 }

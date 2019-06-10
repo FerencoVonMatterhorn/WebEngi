@@ -12,23 +12,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "USERTOGROUP")
+@Entity(name = "MONTHLYPAYMENTTOGROUP")
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserToGroupPojo {
+public class MonthlyPaymentToGroupPojo {
 
 	@Id
-	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "ID")
 	private int id;
+
+	@ManyToOne
+	@JoinColumn(name = "MONTHLYPAYMENTID", nullable = false)
+	private MonthlyPaymentPojo monthlyPayment;
 
 	@ManyToOne
 	@JoinColumn(name = "GROUPID", nullable = false)
 	private GroupPojo group;
-
-	@ManyToOne
-	@JoinColumn(name = "USERID", nullable = false)
-	private UserPojo user;
 
 }

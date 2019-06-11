@@ -96,14 +96,14 @@
 						<button class="btn btn-success" type="button" data-toggle="modal" data-target="#newPaymentModal">Neue Zahlung</button>
 						<!-- modal gruppe start -->
 						<div class="modal fade" id="newGroupModal">
-							<form name="creatGroup" action="createGroup" method="POST">
+							<form name="createGroup" action="createGroup" method="POST">
 								<div class="modal-dialog">
 									<div class="modal-content">
 
 										<!-- Modal Header -->
 										<div class="modal-header">
 											<h4 class="modal-title mx-auto">Neue Gruppe Erstellen</h4>
-											<button type="button" class="close" data-dismiss="modal" onclick="deleteEntries()">&times;</button>
+											<button type="button" class="close" data-dismiss="modal" onclick="clearGroupModal()">&times;</button>
 										</div>
 										<!-- Modal body -->
 										<div class="modal-body">
@@ -121,7 +121,7 @@
 										</div>
 										<!-- Modal footer -->
 										<div class="modal-footer">
-											<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="deleteEntries()">Abbrechen</button>
+											<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clearGroupModal()">Abbrechen</button>
 											<button type="submit" class="btn btn-primary">Gruppe erstellen</button>
 										</div>
 									</div>
@@ -137,7 +137,7 @@
 										<!-- Modal Header -->
 										<div class="modal-header">
 											<h4 class="modal-title mx-auto">Neue Zahlung Erstellen</h4>
-											<button type="button" class="close" data-dismiss="modal" onclick="deleteEntries()">&times;</button>
+											<button type="button" class="close" data-dismiss="modal" onclick="clearPaymentModal()">&times;</button>
 										</div>
 										<!-- Modal body -->
 										<div class="modal-body">
@@ -149,7 +149,7 @@
 											</div>
 											<!-- Modal footer -->
 											<div class="modal-footer">
-												<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="deleteEntries()">Abbrechen</button>
+												<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clearPaymentModal()">Abbrechen</button>
 												<button type="submit" class="btn btn-primary">Zahlung erstellen</button>
 											</div>
 										</div>

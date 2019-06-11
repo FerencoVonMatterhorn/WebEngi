@@ -39,8 +39,18 @@ public class DBActions {
 		}
 	}
 
-	public static GroupPojo indexLoggedInGroup(int userID) {
+	public static PaymentPojo findPaymentForIndexLoggedInByUserId(int userID) {
+		Session session = sessionFactory.openSession();
+		PaymentPojo payment = findPaymentsDescendingByUserId(userID).get(0);
+		Query<?> query = session.createQuery("select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
+		String groupName = (String) query.uniqueResult();
+		payment.setGroupName(groupName);
+		return payment;
+	}
+
+	public static GroupPojo findGroupForIndexLoggedInByUserId(int userID) {
 		List<UserToGroupPojo> userToGroupList = findUserToGroupByUserId(userID);
+
 		if (userToGroupList.isEmpty()) {
 			return new GroupPojo();
 		}
@@ -209,15 +219,6 @@ public class DBActions {
 				.createQuery("from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
 		query.setParameter("userID", 114);
 		return (List<PaymentPojo>) query.getResultList();
-	}
-
-	public static PaymentPojo findPaymentForIndexLoggedInByUserId(int userID) {
-		Session session = sessionFactory.openSession();
-		PaymentPojo payment = findPaymentsDescendingByUserId(userID).get(0);
-		Query<?> query = session.createQuery("select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
-		String groupName = (String) query.uniqueResult();
-		payment.setGroupName(groupName);
-		return payment;
 	}
 
 	private static List<UserPojo> findUsersByName(String inUsersStr) {

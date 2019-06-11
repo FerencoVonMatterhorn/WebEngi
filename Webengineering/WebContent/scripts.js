@@ -1,10 +1,13 @@
-function deleteEntries() {
+function clearGroupModal() {
 	document.getElementById("groupName").value = "";
 	document.getElementById("groupDescription").value = "";
 	document.getElementById("groupParticipants").value = "";
-	document.getElementById("paymentName").value = "";
-	document.getElementById("groupParticipants").value = "";
-	document.getElementById("groupParticipants").value = "";
+}
+
+function clearPaymentModal() {
+	//document.getElementById("").value = "";
+	//document.getElementById("").value = "";
+	//document.getElementById("").value = "";
 }
 
 var passwordLength = 1;
@@ -26,12 +29,13 @@ function validateRegistration() {
 }
 
 function validateNames(fname, lname, uname) {
-	return (fname.length > 0 && lname.length > 0 && uname.length > 0) ? true : false;
+	return (fname.length > 0 && lname.length > 0 && uname.length > 0) ? true
+			: false;
 }
 
-
 function validatePasswords(password1, password2) {
-	return (((password1.length <= passwordLength) && (password2.length <= passwordLength)) || (password1 != password2)) ? false : true;
+	return (((password1.length <= passwordLength) && (password2.length <= passwordLength)) || (password1 != password2)) ? false
+			: true;
 }
 
 function validateEmail(email) {

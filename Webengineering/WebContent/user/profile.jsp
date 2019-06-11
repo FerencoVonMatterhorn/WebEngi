@@ -66,8 +66,8 @@
 									</div>
 									<div class="col-md-6">
 										<div class="profile-head">
-											<h5><c:out value="${userPojo.username}"></c:out></h5>
-											<h6>Web Developer and Designer</h6>
+											<h5><c:out value="${userPojo.firstName}"></c:out> <c:out value="${userPojo.lastName}"></c:out></h5>
+											<h6><c:out value="${userPojo.bio}"></c:out></h6>
 											<ul class="nav nav-tabs" id="myTab" role="tablist">
 												<li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
 													aria-controls="home" aria-selected="true">About</a></li>
@@ -92,7 +92,7 @@
 														<label>Username</label>
 													</div>
 													<div class="col-md-6">
-														<p>Kshiti123</p>
+														<p><c:out value="${userPojo.username}"></c:out></p>
 													</div>
 												</div>
 												<div class="row">
@@ -100,7 +100,7 @@
 														<label>Name</label>
 													</div>
 													<div class="col-md-6">
-														<p>Kshiti Ghelani</p>
+														<p><c:out value="${userPojo.firstName}"></c:out> <c:out value="${userPojo.lastName}"></c:out></p>
 													</div>
 												</div>
 												<div class="row">

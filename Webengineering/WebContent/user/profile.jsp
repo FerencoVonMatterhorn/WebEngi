@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="userPojo" class="main.java.pojos.UserPojo" scope="session"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- META-DATA -->
@@ -65,7 +66,7 @@
 									</div>
 									<div class="col-md-6">
 										<div class="profile-head">
-											<h5>Kshiti Ghelani</h5>
+											<h5><c:out value="${userPojo.username}"></c:out></h5>
 											<h6>Web Developer and Designer</h6>
 											<ul class="nav nav-tabs" id="myTab" role="tablist">
 												<li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
@@ -107,7 +108,7 @@
 														<label>Email</label>
 													</div>
 													<div class="col-md-6">
-														<p>kshitighelani@gmail.com</p>
+														<p><c:out value="${userPojo.email}"></c:out></p>
 													</div>
 												</div>
 											</div>

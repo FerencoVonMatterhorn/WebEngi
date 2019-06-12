@@ -33,4 +33,7 @@ public class PaymentPojo {
 	@Transient
 	private String groupName;
 
+	@Transient
+	private String users;
+
 }

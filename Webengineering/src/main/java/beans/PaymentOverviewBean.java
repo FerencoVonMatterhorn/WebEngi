@@ -29,6 +29,8 @@ public class PaymentOverviewBean {
 	public void calculatePages(int userID) {
 		long paymentsAmount = DBActions.getPaymentAmount(userID);
 
+		System.out.println(paymentsAmount);
+
 		pages = paymentsAmount % itemsPerPage == 0 ? paymentsAmount / itemsPerPage : paymentsAmount / itemsPerPage + 1;
 	}
 
@@ -36,6 +38,7 @@ public class PaymentOverviewBean {
 		int limitstart = shownPage == 1 ? 0 : itemsPerPage * (shownPage - 1);
 
 		payments = DBActions.getPaymentsForSpecificPage(limitstart, itemsPerPage, userID);
+		System.out.println(payments.size());
 
 	}
 

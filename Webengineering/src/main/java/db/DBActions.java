@@ -12,6 +12,7 @@ import org.hibernate.query.Query;
 
 import main.java.pojos.GroupPojo;
 import main.java.pojos.PaymentPojo;
+import main.java.pojos.PaymentToUserPojo;
 import main.java.pojos.UserPojo;
 import main.java.pojos.UserToGroupPojo;
 import main.java.util.PasswordUtil;
@@ -108,11 +109,22 @@ public class DBActions {
 
 		query.setParameter("paymentID", payment.getPaymentID());
 
-		String groupName = (String) query.uniqueResult();
+		String groupName = getGroupNameByPaymentId(payment.getPaymentID());
 
 		payment.setGroupName(groupName);
 
 		return payment;
+	}
+
+	private static String getGroupNameByPaymentId(int paymentID) {
+		Session session = sessionFactory.openSession();
+
+		Query<?> query = session.createQuery(
+				"select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
+
+		query.setParameter("paymentID", paymentID);
+
+		return (String) query.uniqueResult();
 	}
 
 	public static GroupPojo getUsersToGroup(GroupPojo group) {
@@ -155,6 +167,29 @@ public class DBActions {
 			}
 		}
 		return false;
+	}
+
+	private static List<PaymentToUserPojo> getPaymentToUserPojosByPaymentId(int paymentId) {
+
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("from PAYMENTTOUSER where PAYMENTID = :paymentID");
+		query.setParameter("paymentID", paymentId);
+		return (List<PaymentToUserPojo>) query.getResultList();
+
+	}
+
+	private static String getUsersToPayment(int paymentId) {
+		List<PaymentToUserPojo> paymentToUsers = getPaymentToUserPojosByPaymentId(paymentId);
+		List<UserPojo> userPojoList = new ArrayList<>();
+		for (PaymentToUserPojo paymentToUserPojo : paymentToUsers) {
+			userPojoList.add(findUserById(paymentToUserPojo.getUser().getId()));
+		}
+		StringBuilder builder = new StringBuilder();
+		for (UserPojo userPojo : userPojoList) {
+			builder.append(userPojo.getUsername() + ", ");
+		}
+		builder.delete(builder.length() - 2, builder.length() - 1);
+		return builder.toString();
 	}
 
 	public static Optional<UserPojo> login(String inUsernameOrEmail, String inPassword) {
@@ -336,6 +371,14 @@ public class DBActions {
 
 		query.setParameter("userID", userID);
 
-		return (List<PaymentPojo>) query.getResultList();
+		List<PaymentPojo> listPayments = (List<PaymentPojo>) query.getResultList();
+
+		for (PaymentPojo paymentPojo : listPayments) {
+			String paymentGroup = getGroupNameByPaymentId(paymentPojo.getPaymentID());
+			paymentPojo.setGroupName(paymentGroup);
+			paymentPojo.setUsers(getUsersToPayment(paymentPojo.getPaymentID()));
+		}
+
+		return listPayments;
 	}
 }

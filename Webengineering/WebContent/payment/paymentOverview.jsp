@@ -54,7 +54,8 @@
 					
 						<c:forEach items="${paymentOverview.payments}" var="payment">
 							<p class="widget">
-								Beteiligte: Christian, Christian2, Kollerabs, Christian123 <br> Betrag:<c:out value="${payment.getAmount()}"/> <br>
+								Gruppe: <c:out value="${payment.getGroupName()}"/><br>
+								Beteiligte: <c:out value="${payment.getUsers()}"/> <br> Betrag:<c:out value="${payment.getAmount()}"/> <br>
 								Typ: <br> Erstellt am: <c:out value="${payment.getDateCreated()}"/><br>
 								<!-- if für Typ=Monatsabrechnung wenn -> Bezahlen bis -->
 								<button class="btn btn-success"type="button">Zur Zahlung</button>

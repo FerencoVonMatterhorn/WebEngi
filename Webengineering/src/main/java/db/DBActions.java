@@ -357,7 +357,7 @@ public class DBActions {
 
 		query.setParameter("userID", userID);
 
-		return (long) query.uniqueResult();
+		return (Long) query.uniqueResult();
 	}
 
 	public static List<PaymentPojo> getPaymentsForSpecificPage(int offset, int limit, int userID) {

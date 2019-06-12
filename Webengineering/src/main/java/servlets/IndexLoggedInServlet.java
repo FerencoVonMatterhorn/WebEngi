@@ -26,9 +26,9 @@ public class IndexLoggedInServlet extends HttpServlet {
 
 		// req.setAttribute("paymentPojo",
 		// DBActions.findPaymentForIndexLoggedInByUserId(user.getId()));
-		req.setAttribute("paymentPojo", DBActions.getPaymentForIndexLoggedIn(user.getId()));
+		req.setAttribute("paymentPojo", DBActions.findPaymentForIndexLoggedInByUserId(user.getId()));
 		req.setAttribute("userPojo", user);
-		req.setAttribute("groupPojo", DBActions.indexLoggedInGroup(user.getId()));
+		req.setAttribute("groupPojo", DBActions.findGroupForIndexLoggedInByUserId(user.getId()));
 
 		rd = req.getRequestDispatcher("indexLoggedIn.jsp");
 		rd.forward(req, resp);

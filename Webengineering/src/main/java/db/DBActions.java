@@ -219,7 +219,7 @@ public class DBActions {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery(
 				"from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
-		query.setParameter("userID", 114);
+		query.setParameter("userID", userID);
 		return (List<PaymentPojo>) query.getResultList();
 	}
 

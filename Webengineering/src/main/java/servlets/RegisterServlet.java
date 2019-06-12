@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.java.db.DBActions;
+import main.java.util.InputDataValidationUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/official/Register")
@@ -23,8 +24,10 @@ public class RegisterServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
-		if (!req.getParameter("password1").equalsIgnoreCase(req.getParameter("password2"))) {
-			req.setAttribute("registrationUnsuccessful", "Die eingegebenen Passwörter stimmen nicht überein.");
+		String[] errormessage = InputDataValidationUtil.validateRegistrationForm(req.getParameter("email"), req.getParameter("password1"),
+				req.getParameter("password2"));
+		if (errormessage.length > 1) {
+			req.setAttribute(errormessage[0], errormessage[1]);
 			rd = req.getRequestDispatcher("register.jsp");
 		} else {
 			if (DBActions.register(req.getParameter("fname"), req.getParameter("lname"), req.getParameter("uname"), //

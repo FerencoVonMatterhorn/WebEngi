@@ -22,13 +22,13 @@ public class GroupOverviewServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		RequestDispatcher rd;
-//		UserPojo user = DBActions.findUserById((int) req.getSession().getAttribute("userID"));
-//
-//		req.setAttribute("userPojo", user);
-//
-//		rd = req.getRequestDispatcher("profile.jsp");
-//		rd.forward(req, resp);
+		RequestDispatcher rd;
+		UserPojo user = DBActions.findUserById((int) req.getSession().getAttribute("userID"));
+		
+		req.setAttribute("userPojo", user);
+
+		rd = req.getRequestDispatcher("groupOverview.jsp");
+		rd.forward(req, resp);
 	}
 
 }

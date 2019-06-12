@@ -19,7 +19,7 @@ public class InsertTestData {
 	public static void main(String[] args) {
 		InsertTestData insertTestData = new InsertTestData();
 
-		insertTestData.insertGroupTestData();
+		insertTestData.insertPaymentTestData();h
 	}
 
 	public void insertGroupTestData() {
@@ -30,7 +30,7 @@ public class InsertTestData {
 
 		List<GroupPojo> testDataList = new ArrayList<>();
 
-		for (int i = 1; i <= 15; i++) {
+		for (int i = 1; i <= 1; i++) {
 			GroupPojo test = new GroupPojo();
 			test.setGroupName("testGroup" + i);
 			test.setGroupDescription("TestGroup Data Test Data " + i);

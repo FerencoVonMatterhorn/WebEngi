@@ -72,7 +72,7 @@ public class DBActions {
 		Query<?> query = session.createQuery(
 				"from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
 
-		query.setParameter("userID", 114);
+		query.setParameter("userID", userID);
 
 		return (List<PaymentPojo>) query.getResultList();
 	}
@@ -80,10 +80,25 @@ public class DBActions {
 	public static PaymentPojo getPaymentForIndexLoggedIn(int userID) {
 		Session session = sessionFactory.openSession();
 
-		PaymentPojo payment = getPaymentsFromUserDesc(userID).get(0);
+		List<PaymentPojo> listPayments = getPaymentsFromUserDesc(userID);
+
+		int counter = 1;
+		for (PaymentPojo paymentPojo : listPayments) {
+			System.out.println(counter + " : " + paymentPojo.getPaymentID());
+			counter++;
+		}
+
+		PaymentPojo payment;
+		if (listPayments.isEmpty()) {
+			payment = new PaymentPojo();
+		} else {
+			payment = listPayments.get(0);
+		}
 
 		Query<?> query = session.createQuery(
-				"select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
+				"select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
+
+		query.setParameter("paymentID", payment.getPaymentID());
 
 		String groupName = (String) query.uniqueResult();
 
@@ -215,5 +230,31 @@ public class DBActions {
 
 	private static boolean usernameOrEmailisPresent(String inUsername, String inEmail) {
 		return (findUserByName(inUsername).isPresent() || findUserByEmail(inEmail).isPresent()) ? true : false;
+	}
+
+	public static long getPaymentAmount(int userID) {
+
+		Session session = sessionFactory.openSession();
+
+		Query<?> query = session.createQuery(
+				"select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
+
+		query.setParameter("userID", userID);
+
+		return (long) query.uniqueResult();
+	}
+
+	public static List<PaymentPojo> getPaymentsForSpecificPage(int offset, int limit, int userID) {
+		Session session = sessionFactory.openSession();
+
+		Query<?> query = session.createQuery(
+				"FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
+
+		query.setMaxResults(limit);
+		query.setFirstResult(offset);
+
+		query.setParameter("userID", userID);
+
+		return (List<PaymentPojo>) query.getResultList();
 	}
 }

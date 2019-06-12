@@ -220,7 +220,14 @@ public class DBActions {
 		Query<?> query = session.createQuery(
 				"from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
 		query.setParameter("userID", userID);
-		return (List<PaymentPojo>) query.getResultList();
+
+		List<PaymentPojo> paymentList = (List<PaymentPojo>) query.getResultList();
+
+		if (paymentList.isEmpty()) {
+			paymentList.add(new PaymentPojo());
+		}
+
+		return paymentList;
 	}
 
 	public static PaymentPojo findPaymentForIndexLoggedInByUserId(int userID) {

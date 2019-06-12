@@ -122,6 +122,13 @@ public class DBActions {
 		return Optional.empty();
 	}
 
+	public static List<String> searchForUser(String inSearchQuery) {
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("SELECT u.username from USERS u where u.username LIKE :username");
+		query.setParameter("username", inSearchQuery + "%");
+		return (List<String>) query.getResultList();
+	}
+
 	/*******************
 	 * Helper methods. *
 	 *******************/

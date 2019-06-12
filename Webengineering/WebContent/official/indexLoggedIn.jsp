@@ -96,7 +96,7 @@
 						<button class="btn btn-success" type="button" data-toggle="modal" data-target="#newPaymentModal">Neue Zahlung</button>
 						<!-- modal gruppe start -->
 						<div class="modal fade" id="newGroupModal">
-							<form name="createGroup" action="createGroup" method="POST">
+							<form name="createGroup" action="createGroup" method="POST" autocomplete="off">
 								<div class="modal-dialog">
 									<div class="modal-content">
 
@@ -115,9 +115,10 @@
 													id="groupDescription" name="groupDescription">
 											</div>
 											<div class="form-group">
-												<label for="groupParticipants">Teilnehmer:</label> <input type="text" class="form-control" id="groupParticipants"
-													name="groupParticipants">
+												<label for="groupParticipants">Teilnehmer:</label> <input type="text" class="form-control autocomplete"
+													id="groupParticipants" name="groupParticipants">
 											</div>
+											<p id="testOut"></p>
 										</div>
 										<!-- Modal footer -->
 										<div class="modal-footer">
@@ -173,5 +174,9 @@
 		</div>
 	</div>
 </body>
+<script>
+	var inp = document.getElementById("groupParticipants");
+	searchUser(inp, inp.value);
+</script>
 </html>
 

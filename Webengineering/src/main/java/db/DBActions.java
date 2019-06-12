@@ -41,8 +41,9 @@ public class DBActions {
 		}
 	}
 
-	public static GroupPojo indexLoggedInGroup(int userID) {
+	public static GroupPojo findGroupForIndexLoggedInByUserId(int userID) {
 		List<UserToGroupPojo> userToGroupList = findUserToGroupByUserId(userID);
+
 		if (userToGroupList.isEmpty()) {
 			return new GroupPojo();
 		}
@@ -51,80 +52,6 @@ public class DBActions {
 			return new GroupPojo();
 		}
 		return getUsersToGroup(groupPojo);
-	}
-
-	private static List<UserToGroupPojo> getUserToGroupByGroupID(int groupID) {
-
-		Session session = sessionFactory.openSession();
-
-		Query<?> query = session.createQuery("from USERTOGROUP where GROUPID = :groupID");
-		query.setParameter("groupID", groupID);
-
-		return (List<UserToGroupPojo>) query.getResultList();
-
-	}
-
-	private static List<UserToGroupPojo> getUserToGroupByUserID(int userID) {
-
-		Session session = sessionFactory.openSession();
-
-		Query<?> query = session.createQuery("from USERTOGROUP where USERID = :userID");
-		query.setParameter("userID", userID);
-
-		return (List<UserToGroupPojo>) query.getResultList();
-
-	}
-
-	private static List<PaymentPojo> getPaymentsFromUserDesc(int userID) {
-		Session session = sessionFactory.openSession();
-
-		Query<?> query = session.createQuery(
-				"from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
-
-		query.setParameter("userID", userID);
-
-		return (List<PaymentPojo>) query.getResultList();
-	}
-
-	public static PaymentPojo getPaymentForIndexLoggedIn(int userID) {
-		Session session = sessionFactory.openSession();
-
-		List<PaymentPojo> listPayments = getPaymentsFromUserDesc(userID);
-
-		int counter = 1;
-		for (PaymentPojo paymentPojo : listPayments) {
-			System.out.println(counter + " : " + paymentPojo.getPaymentID());
-			counter++;
-		}
-
-		PaymentPojo payment;
-		if (listPayments.isEmpty()) {
-			payment = new PaymentPojo();
-		} else {
-			payment = listPayments.get(0);
-		}
-
-		Query<?> query = session.createQuery(
-				"select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
-
-		query.setParameter("paymentID", payment.getPaymentID());
-
-		String groupName = getGroupNameByPaymentId(payment.getPaymentID());
-
-		payment.setGroupName(groupName);
-
-		return payment;
-	}
-
-	private static String getGroupNameByPaymentId(int paymentID) {
-		Session session = sessionFactory.openSession();
-
-		Query<?> query = session.createQuery(
-				"select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
-
-		query.setParameter("paymentID", paymentID);
-
-		return (String) query.uniqueResult();
 	}
 
 	public static GroupPojo getUsersToGroup(GroupPojo group) {
@@ -169,29 +96,6 @@ public class DBActions {
 		return false;
 	}
 
-	private static List<PaymentToUserPojo> getPaymentToUserPojosByPaymentId(int paymentId) {
-
-		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("from PAYMENTTOUSER where PAYMENTID = :paymentID");
-		query.setParameter("paymentID", paymentId);
-		return (List<PaymentToUserPojo>) query.getResultList();
-
-	}
-
-	private static String getUsersToPayment(int paymentId) {
-		List<PaymentToUserPojo> paymentToUsers = getPaymentToUserPojosByPaymentId(paymentId);
-		List<UserPojo> userPojoList = new ArrayList<>();
-		for (PaymentToUserPojo paymentToUserPojo : paymentToUsers) {
-			userPojoList.add(findUserById(paymentToUserPojo.getUser().getId()));
-		}
-		StringBuilder builder = new StringBuilder();
-		for (UserPojo userPojo : userPojoList) {
-			builder.append(userPojo.getUsername() + ", ");
-		}
-		builder.delete(builder.length() - 2, builder.length() - 1);
-		return builder.toString();
-	}
-
 	public static Optional<UserPojo> login(String inUsernameOrEmail, String inPassword) {
 		Optional<UserPojo> user = findUserByName(inUsernameOrEmail);
 		if (!user.isPresent()) {
@@ -211,6 +115,13 @@ public class DBActions {
 			}
 		}
 		return Optional.empty();
+	}
+
+	public static List<String> searchForUser(String inSearchQuery) {
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("SELECT u.username from USERS u where u.username LIKE :username");
+		query.setParameter("username", inSearchQuery + "%");
+		return (List<String>) query.getResultList();
 	}
 
 	/*******************
@@ -381,4 +292,39 @@ public class DBActions {
 
 		return listPayments;
 	}
+
+	private static List<PaymentToUserPojo> getPaymentToUserPojosByPaymentId(int paymentId) {
+
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("from PAYMENTTOUSER where PAYMENTID = :paymentID");
+		query.setParameter("paymentID", paymentId);
+		return (List<PaymentToUserPojo>) query.getResultList();
+
+	}
+
+	private static String getUsersToPayment(int paymentId) {
+		List<PaymentToUserPojo> paymentToUsers = getPaymentToUserPojosByPaymentId(paymentId);
+		List<UserPojo> userPojoList = new ArrayList<>();
+		for (PaymentToUserPojo paymentToUserPojo : paymentToUsers) {
+			userPojoList.add(findUserById(paymentToUserPojo.getUser().getId()));
+		}
+		StringBuilder builder = new StringBuilder();
+		for (UserPojo userPojo : userPojoList) {
+			builder.append(userPojo.getUsername() + ", ");
+		}
+		builder.delete(builder.length() - 2, builder.length() - 1);
+		return builder.toString();
+	}
+
+	private static String getGroupNameByPaymentId(int paymentID) {
+		Session session = sessionFactory.openSession();
+
+		Query<?> query = session.createQuery(
+				"select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
+
+		query.setParameter("paymentID", paymentID);
+
+		return (String) query.uniqueResult();
+	}
+
 }

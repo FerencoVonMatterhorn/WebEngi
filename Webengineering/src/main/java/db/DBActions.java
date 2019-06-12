@@ -120,6 +120,23 @@ public class DBActions {
 		return (List<String>) query.getResultList();
 	}
 
+	public static long getPaymentAmount(int userID) {
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
+		query.setParameter("userID", userID);
+		return (long) query.uniqueResult();
+	}
+
+	public static List<PaymentPojo> getPaymentsForSpecificPage(int offset, int limit, int userID) {
+		Session session = sessionFactory.openSession();
+		Query<?> query = session
+				.createQuery("FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
+		query.setMaxResults(limit);
+		query.setFirstResult(offset);
+		query.setParameter("userID", userID);
+		return (List<PaymentPojo>) query.getResultList();
+	}
+
 	/*******************
 	 * Helper methods. *
 	 *******************/

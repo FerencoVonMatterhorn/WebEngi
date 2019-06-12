@@ -50,44 +50,39 @@
 		<div class="container-fluid">
 			<div class="backgroundMid">
 				<div class="container pt-5">
-
-					<c:set var="itemCount" value="${paymentOverview.listSize -1}" />
-					<c:set var="pageDefault" value="" />
-
-					<c:forEach begin="1" end="${paymentOverview.pageSize}" var="i">
-						<c:set var="decr" value="${paymentOverview.pageSize+1-i}" />
-
-						<c:if test="${decr eq 1}">
-							<c:set var="pageDefault" value="default" />
-						</c:if>
-
-						<div id="page${decr}" class="page ${pageDefault}">
-							<div class="row justify-content-center">
-								<c:forEach begin="1" end="8" var="j">
-									<c:set var="decrItem" value="${8 - j}" />
-									<c:set var="index" value="${itemCount - decrItem}" />
-
-									<p class="widget">
-										Beteiligte: Christian, Christian2, Kollerabs, Christian123 <br> Betrag:${paymentOverview.test.get(index)} <br>
-										Typ: <br> Erstellt am: <br>
-										<!-- if für Typ=Monatsabrechnung wenn -> Bezahlen bis -->
-										<button class="btn btn-success"type="button">Zur Zahlung</button>
-									</p>
-
-
-								</c:forEach>
-							</div>
-						</div>
-
-						<c:set var="itemCount" value="${itemCount - 8}" />
-					</c:forEach>
+					<div class="row justify-content-center">
+					
+						<c:forEach items="${paymentOverview.payments}" var="payment">
+							<p class="widget">
+								Gruppe: <c:out value="${payment.getGroupName()}"/><br>
+								Beteiligte: <c:out value="${payment.getUsers()}"/> <br> Betrag:<c:out value="${payment.getAmount()}"/> <br>
+								Typ: <br> Erstellt am: <c:out value="${payment.getDateCreated()}"/><br>
+								<!-- if für Typ=Monatsabrechnung wenn -> Bezahlen bis -->
+								<button class="paymentBtn btn btn-success"type="button">Zur Zahlung</button>
+							</p>
+						</c:forEach>
+								
+					</div>	
 				</div>
 				<div class="row justify-content-center mb-5 mt-3">
-					<ul class="pagination">
-						<c:forEach begin="1" end="${paymentOverview.pageSize}" varStatus="loop">
-							<li class="page-item"><a class="page-link" href="#page${loop.index}">${loop.index}</a></li>
-						</c:forEach>
-					</ul>
+				
+					<script language="javascript" type="text/javascript">
+					
+					function setPageSite(page){
+						document.getElementById('page').value = page;
+					}
+					</script>
+				
+					<div class="row">
+						<form>
+							<ul class="pagination">
+								<c:forEach begin="1" end="${paymentOverview.pages}" varStatus="loop">
+									<input type="hidden" name="page" id="page" value="1" />
+									<li class="page-item"><button type="submit" class="page-link" onclick="setPageSite(${loop.index})"><c:out value="${loop.index}"/></button></li>
+								</c:forEach>
+							</ul>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -95,7 +90,7 @@
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a class="m-2" href="../official/imprint.jsp">Impressum</a> <a class="m-2" href="../official/privacyPolicy.jsp">Privacy
+				<a class="m-2" href="../official/imprint.jsp"">Impressum</a> <a class="m-2" href="../official/privacyPolicy.jsp">Privacy
 					Policy</a>
 			</p>
 			<p>Ⓒ 2019 MyWG</p>

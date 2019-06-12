@@ -228,6 +228,17 @@ public class DBActions {
 		return (List<PaymentPojo>) query.getResultList();
 	}
 
+
+	public static PaymentPojo findPaymentForIndexLoggedInByUserId(int userID) {
+		Session session = sessionFactory.openSession();
+		PaymentPojo payment = findPaymentsDescendingByUserId(userID).get(0);
+		Query<?> query = session.createQuery(
+				"select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
+		String groupName = (String) query.uniqueResult();
+		payment.setGroupName(groupName);
+		return payment;
+	}
+
 	private static List<UserPojo> findUsersByName(String inUsersStr) {
 		List<String> formattedUserStrings = UserStringsToList(inUsersStr);
 		List<UserPojo> users = new ArrayList<>();

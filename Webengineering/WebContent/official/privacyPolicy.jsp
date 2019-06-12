@@ -34,7 +34,7 @@
 					<!--  Gruppen  -->
 					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
 					<!--  Zahlungen  -->
-					<li class="nav-item"><a class="nav-link" href="../payment/paymentOverview.jsp">Zahlungen <i class="fas fa-receipt"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../payment/paymentOverview">Zahlungen <i class="fas fa-receipt"></i></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

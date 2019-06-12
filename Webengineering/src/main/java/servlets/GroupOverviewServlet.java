@@ -13,8 +13,9 @@ import main.java.db.DBActions;
 import main.java.pojos.UserPojo;
 
 @SuppressWarnings("serial")
-@WebServlet("/official/IndexLoggedIn")
-public class IndexLoggedInServlet extends HttpServlet {
+@WebServlet("/group/GroupOverviewServlet")
+public class GroupOverviewServlet extends HttpServlet {
+       
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
@@ -23,14 +24,10 @@ public class IndexLoggedInServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
 		UserPojo user = DBActions.findUserById((int) req.getSession().getAttribute("userID"));
-
-		// req.setAttribute("paymentPojo",
-		// DBActions.findPaymentForIndexLoggedInByUserId(user.getId()));
-		req.setAttribute("paymentPojo", DBActions.getPaymentForIndexLoggedIn(user.getId()));
+		
 		req.setAttribute("userPojo", user);
-		req.setAttribute("groupPojo", DBActions.indexLoggedInGroup(user.getId()));
 
-		rd = req.getRequestDispatcher("indexLoggedIn.jsp");
+		rd = req.getRequestDispatcher("groupOverview.jsp");
 		rd.forward(req, resp);
 	}
 

@@ -19,7 +19,7 @@ public class InsertTestData {
 	public static void main(String[] args) {
 		InsertTestData insertTestData = new InsertTestData();
 
-		insertTestData.insertGroupTestData();
+		insertTestData.insertPaymentTestData();
 	}
 
 	public void insertGroupTestData() {
@@ -30,7 +30,7 @@ public class InsertTestData {
 
 		List<GroupPojo> testDataList = new ArrayList<>();
 
-		for (int i = 1; i <= 15; i++) {
+		for (int i = 1; i <= 1; i++) {
 			GroupPojo test = new GroupPojo();
 			test.setGroupName("testGroup" + i);
 			test.setGroupDescription("TestGroup Data Test Data " + i);
@@ -56,7 +56,13 @@ public class InsertTestData {
 
 		List<PaymentPojo> testDataList = new ArrayList<>();
 
-		for (int i = 1; i <= 15; i++) {
+		for (int i = 1; i <= 14; i++) {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			PaymentPojo test = new PaymentPojo();
 			test.setAmount(100.00 + i);
 			test.setDateCreated(OffsetDateTime.now());

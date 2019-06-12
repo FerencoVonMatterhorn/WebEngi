@@ -58,7 +58,7 @@
 								Beteiligte: <c:out value="${payment.getUsers()}"/> <br> Betrag:<c:out value="${payment.getAmount()}"/> <br>
 								Typ: <br> Erstellt am: <c:out value="${payment.getDateCreated()}"/><br>
 								<!-- if für Typ=Monatsabrechnung wenn -> Bezahlen bis -->
-								<button class="btn btn-success"type="button">Zur Zahlung</button>
+								<button class="paymentBtn btn btn-success"type="button">Zur Zahlung</button>
 							</p>
 						</c:forEach>
 								
@@ -78,7 +78,7 @@
 							<ul class="pagination">
 								<c:forEach begin="1" end="${paymentOverview.pages}" varStatus="loop">
 									<input type="hidden" name="page" id="page" value="1" />
-									<li class="page-item"><button type="submit" onclick="setPageSite(${loop.index})"><c:out value="${loop.index}"/></button></li>
+									<li class="page-item"><button type="submit" class="page-link" onclick="setPageSite(${loop.index})"><c:out value="${loop.index}"/></button></li>
 								</c:forEach>
 							</ul>
 						</form>

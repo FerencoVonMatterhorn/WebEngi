@@ -40,7 +40,7 @@
 							<i class="fas fa-users"></i>
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="../payment/paymentOverview.jsp">Zahlungen <i
+						href="../payment/paymentOverview">Zahlungen <i
 							class="fas fa-receipt"></i></a></li>
 				</c:otherwise>
 			</c:choose>

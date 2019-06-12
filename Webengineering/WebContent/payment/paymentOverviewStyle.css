@@ -26,7 +26,7 @@
 	left: 13em;
 }
 
-button{
+.paymentBtn{
 	background-color: #4CAF50;
 	border: hidden;
   	color: white;

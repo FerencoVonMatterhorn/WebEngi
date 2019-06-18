@@ -12,19 +12,15 @@ public class DBConfig {
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 
 	public static SessionFactory buildSessionFactory() {
-		try {
-			// Build a SessionFactory object from session-factory config
-			// defined in the hibernate.cfg.xml file. In this file we
-			// register the JDBC connection information, connection pool,
-			// the hibernate dialect that we used and the mapping to our
-			// hbm.xml file for each pojo (plain old java object).
+		// Build a SessionFactory object from session-factory config
+		// defined in the hibernate.cfg.xml file. In this file we
+		// register the JDBC connection information, connection pool,
+		// the hibernate dialect that we used and the mapping to our
+		// hbm.xml file for each pojo (plain old java object).
 
-			Configuration config = new Configuration();
-			return config.configure().buildSessionFactory();
-		} catch (Throwable e) {
-			System.err.println("Error in creating SessionFactory object." + e.getMessage());
-			throw new ExceptionInInitializerError(e);
-		}
+		Configuration config = new Configuration();
+		return config.configure().buildSessionFactory();
+
 	}
 
 	public static SessionFactory getSessionFactory() {
@@ -34,5 +30,4 @@ public class DBConfig {
 	public void shutdown() {
 		getSessionFactory().close();
 	}
-
 }

@@ -15,12 +15,13 @@ import main.java.pojos.UserPojo;
 @SuppressWarnings("serial")
 @WebServlet("/user/profile")
 public class ProfileServlet extends HttpServlet {
-       
 
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
 		UserPojo user = DBActions.findUserById((int) req.getSession().getAttribute("userID"));

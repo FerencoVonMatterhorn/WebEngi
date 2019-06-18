@@ -15,16 +15,17 @@ import main.java.pojos.UserPojo;
 @SuppressWarnings("serial")
 @WebServlet("/group/GroupOverviewServlet")
 public class GroupOverviewServlet extends HttpServlet {
-       
 
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
 		UserPojo user = DBActions.findUserById((int) req.getSession().getAttribute("userID"));
-		
+
 		req.setAttribute("userPojo", user);
 
 		rd = req.getRequestDispatcher("groupOverview.jsp");

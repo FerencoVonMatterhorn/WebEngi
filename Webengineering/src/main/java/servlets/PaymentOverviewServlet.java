@@ -25,13 +25,11 @@ public class PaymentOverviewServlet extends HttpServlet {
 
 		PaymentOverviewBean bean = (PaymentOverviewBean) req.getAttribute("paymentOverview");
 		if (bean == null) {
-
 			bean = new PaymentOverviewBean();
 			req.setAttribute("paymentOverview", bean);
 		}
 
 		int userID = (int) req.getSession().getAttribute("userID");
-
 		String page = req.getParameter("page");
 		if (page != null) {
 			bean.setShownPage(Integer.parseInt(page));

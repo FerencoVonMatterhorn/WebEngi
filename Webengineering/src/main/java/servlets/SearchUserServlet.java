@@ -17,6 +17,7 @@ import main.java.db.DBActions;
 @WebServlet("/official/searchUser")
 public class SearchUserServlet extends HttpServlet {
 
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String query = req.getHeader("searchQuery");
 		List<String> result = DBActions.searchForUser(query);
@@ -26,6 +27,7 @@ public class SearchUserServlet extends HttpServlet {
 		resp.getWriter().write(resultJson);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

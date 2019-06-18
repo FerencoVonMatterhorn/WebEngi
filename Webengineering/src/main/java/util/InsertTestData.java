@@ -13,7 +13,7 @@ import main.java.pojos.PaymentPojo;
 public class InsertTestData {
 
 	public InsertTestData() {
-
+		// may be empty
 	}
 
 	public static void main(String[] args) {
@@ -60,7 +60,6 @@ public class InsertTestData {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			PaymentPojo test = new PaymentPojo();

@@ -14,10 +14,12 @@ import main.java.db.DBActions;
 @WebServlet("/official/createGroup")
 public class CreateGroupServlet extends HttpServlet {
 
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		DBActions.createGroup(req.getParameter("groupName"), req.getParameter("groupDescription"), req.getParameter("groupParticipants"),
 				(int) req.getSession().getAttribute("userID"));

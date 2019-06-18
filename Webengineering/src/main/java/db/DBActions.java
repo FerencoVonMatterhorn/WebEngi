@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -19,10 +23,12 @@ import main.java.util.PasswordUtil;
 
 public class DBActions {
 
+	// TODO: make Markers somewhere
+	private static final Marker testMarker = MarkerManager.getMarker("TEST");
+	private static final Logger logger = LogManager.getLogger(DBActions.class);
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
-	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants,
-			int inCreatorId) {
+	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants, int inCreatorId) {
 		GroupPojo group = new GroupPojo();
 		group.setGroupName(inGroupName);
 		group.setGroupDescription(inGroupDescription);
@@ -69,10 +75,9 @@ public class DBActions {
 		return group;
 	}
 
-	public static boolean register(String inFName, String inLName, String inUsername, String inEmail,
-			String inPassword) {
+	public static boolean register(String inFName, String inLName, String inUsername, String inEmail, String inPassword) {
 		if (!usernameOrEmailisPresent(inUsername, inEmail)) {
-			String iterationsSaltPassword[] = null;
+			String[] iterationsSaltPassword = null;
 			try {
 				iterationsSaltPassword = PasswordUtil.generateHashedPassword(inPassword).split(":");
 				UserPojo user = new UserPojo();
@@ -97,14 +102,14 @@ public class DBActions {
 	}
 
 	public static Optional<UserPojo> login(String inUsernameOrEmail, String inPassword) {
+		logger.info(testMarker, "Logging in.");
 		Optional<UserPojo> user = findUserByName(inUsernameOrEmail);
 		if (!user.isPresent()) {
 			user = findUserByEmail(inUsernameOrEmail);
 		}
 		if (user.isPresent()) {
 			try {
-				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(),
-						user.get().getIterations())) {
+				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
 					return user;
 				} else {
 					return Optional.empty();
@@ -217,8 +222,8 @@ public class DBActions {
 
 	private static List<PaymentPojo> findPaymentsDescendingByUserId(int userID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery(
-				"from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
+		Query<?> query = session
+				.createQuery("from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
 		query.setParameter("userID", userID);
 
 		List<PaymentPojo> paymentList = (List<PaymentPojo>) query.getResultList();
@@ -233,15 +238,14 @@ public class DBActions {
 	public static PaymentPojo findPaymentForIndexLoggedInByUserId(int userID) {
 		Session session = sessionFactory.openSession();
 		PaymentPojo payment = findPaymentsDescendingByUserId(userID).get(0);
-		Query<?> query = session.createQuery(
-				"select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
+		Query<?> query = session.createQuery("select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
 		String groupName = (String) query.uniqueResult();
 		payment.setGroupName(groupName);
 		return payment;
 	}
 
 	private static List<UserPojo> findUsersByName(String inUsersStr) {
-		List<String> formattedUserStrings = UserStringsToList(inUsersStr);
+		List<String> formattedUserStrings = userStringsToList(inUsersStr);
 		List<UserPojo> users = new ArrayList<>();
 		for (String user : formattedUserStrings) {
 			Optional<UserPojo> foundUser = findUserByName(user);
@@ -252,7 +256,7 @@ public class DBActions {
 		return users;
 	}
 
-	public static List<String> UserStringsToList(String inUsersStr) {
+	public static List<String> userStringsToList(String inUsersStr) {
 		List<String> users = new ArrayList<>();
 		String[] userStrArr = inUsersStr.split(",");
 		for (int i = 0; i < userStrArr.length; i++) {
@@ -270,8 +274,7 @@ public class DBActions {
 
 		Session session = sessionFactory.openSession();
 
-		Query<?> query = session.createQuery(
-				"select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
+		Query<?> query = session.createQuery("select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
 
 		query.setParameter("userID", userID);
 
@@ -281,8 +284,8 @@ public class DBActions {
 	public static List<PaymentPojo> getPaymentsForSpecificPage(int offset, int limit, int userID) {
 		Session session = sessionFactory.openSession();
 
-		Query<?> query = session.createQuery(
-				"FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
+		Query<?> query = session
+				.createQuery("FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
 
 		query.setMaxResults(limit);
 		query.setFirstResult(offset);
@@ -325,12 +328,8 @@ public class DBActions {
 
 	private static String getGroupNameByPaymentId(int paymentID) {
 		Session session = sessionFactory.openSession();
-
-		Query<?> query = session.createQuery(
-				"select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
-
+		Query<?> query = session.createQuery("select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
 		query.setParameter("paymentID", paymentID);
-
 		return (String) query.uniqueResult();
 	}
 

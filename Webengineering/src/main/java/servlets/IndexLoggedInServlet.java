@@ -16,17 +16,16 @@ import main.java.pojos.UserPojo;
 @WebServlet("/official/IndexLoggedIn")
 public class IndexLoggedInServlet extends HttpServlet {
 
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
 		UserPojo user = DBActions.findUserById((int) req.getSession().getAttribute("userID"));
 
-		// req.setAttribute("paymentPojo",
-		// DBActions.findPaymentForIndexLoggedInByUserId(user.getId()));
-		req.setAttribute("paymentPojo", DBActions.findPaymentForIndexLoggedInByUserId(user.getId()));
 		req.setAttribute("userPojo", user);
 		req.setAttribute("groupPojo", DBActions.findGroupForIndexLoggedInByUserId(user.getId()));
 

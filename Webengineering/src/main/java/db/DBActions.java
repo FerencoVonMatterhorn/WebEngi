@@ -28,7 +28,8 @@ public class DBActions {
 	private static final Logger logger = LogManager.getLogger(DBActions.class);
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
-	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants, int inCreatorId) {
+	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants,
+			int inCreatorId) {
 		GroupPojo group = new GroupPojo();
 		group.setGroupName(inGroupName);
 		group.setGroupDescription(inGroupDescription);
@@ -75,7 +76,8 @@ public class DBActions {
 		return group;
 	}
 
-	public static boolean register(String inFName, String inLName, String inUsername, String inEmail, String inPassword) {
+	public static boolean register(String inFName, String inLName, String inUsername, String inEmail,
+			String inPassword) {
 		if (!usernameOrEmailisPresent(inUsername, inEmail)) {
 			String[] iterationsSaltPassword = null;
 			try {
@@ -109,7 +111,8 @@ public class DBActions {
 		}
 		if (user.isPresent()) {
 			try {
-				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
+				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(),
+						user.get().getIterations())) {
 					return user;
 				} else {
 					return Optional.empty();
@@ -222,8 +225,8 @@ public class DBActions {
 
 	private static List<PaymentPojo> findPaymentsDescendingByUserId(int userID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session
-				.createQuery("from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
+		Query<?> query = session.createQuery(
+				"from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
 		query.setParameter("userID", userID);
 
 		List<PaymentPojo> paymentList = (List<PaymentPojo>) query.getResultList();
@@ -238,7 +241,8 @@ public class DBActions {
 	public static PaymentPojo findPaymentForIndexLoggedInByUserId(int userID) {
 		Session session = sessionFactory.openSession();
 		PaymentPojo payment = findPaymentsDescendingByUserId(userID).get(0);
-		Query<?> query = session.createQuery("select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
+		Query<?> query = session.createQuery(
+				"select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
 		String groupName = (String) query.uniqueResult();
 		payment.setGroupName(groupName);
 		return payment;
@@ -274,7 +278,8 @@ public class DBActions {
 
 		Session session = sessionFactory.openSession();
 
-		Query<?> query = session.createQuery("select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
+		Query<?> query = session.createQuery(
+				"select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
 
 		query.setParameter("userID", userID);
 
@@ -284,8 +289,8 @@ public class DBActions {
 	public static List<PaymentPojo> getPaymentsForSpecificPage(int offset, int limit, int userID) {
 		Session session = sessionFactory.openSession();
 
-		Query<?> query = session
-				.createQuery("FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
+		Query<?> query = session.createQuery(
+				"FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
 
 		query.setMaxResults(limit);
 		query.setFirstResult(offset);
@@ -328,7 +333,8 @@ public class DBActions {
 
 	private static String getGroupNameByPaymentId(int paymentID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
+		Query<?> query = session.createQuery(
+				"select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
 		query.setParameter("paymentID", paymentID);
 		return (String) query.uniqueResult();
 	}

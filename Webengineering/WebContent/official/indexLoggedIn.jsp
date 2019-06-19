@@ -111,8 +111,8 @@
 												<label for="groupName">Gruppen Name:</label> <input type="text" class="form-control" id="groupName" name="groupName">
 											</div>
 											<div class="form-group">
-												<label for="groupDescription">Gruppen Beschreibung:</label> <input type="text" class="form-control"
-													id="groupDescription" name="groupDescription">
+												<label for="groupDescription">Gruppen Beschreibung:</label>
+												<textarea class="form-control" id="groupDescription" name="groupDescription"></textarea>
 											</div>
 											<div class="form-group">
 												<label for="groupParticipants">Teilnehmer:</label> <input type="text" class="form-control autocomplete"
@@ -124,35 +124,6 @@
 										<div class="modal-footer">
 											<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clearGroupModal()">Abbrechen</button>
 											<button type="submit" class="btn btn-primary">Gruppe erstellen</button>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-						<!-- modal end -->
-						<!-- modal zahlung start -->
-						<div class="modal fade" id="newPaymentModal">
-							<form name="createPayment" action="createPayment" method="POST">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<!-- Modal Header -->
-										<div class="modal-header">
-											<h4 class="modal-title mx-auto">Neue Zahlung Erstellen</h4>
-											<button type="button" class="close" data-dismiss="modal" onclick="clearPaymentModal()">&times;</button>
-										</div>
-										<!-- Modal body -->
-										<div class="modal-body">
-											<div class="form-group">
-												<label for="paymentName">Muster-Text:</label> <input type="text" class="form-control" id="paymentName">
-											</div>
-											<div class="form-group">
-												<label for="payment">Muster-Text:</label> <input type="text" class="form-control" id="payment">
-											</div>
-											<!-- Modal footer -->
-											<div class="modal-footer">
-												<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clearPaymentModal()">Abbrechen</button>
-												<button type="submit" class="btn btn-primary">Zahlung erstellen</button>
-											</div>
 										</div>
 									</div>
 								</div>

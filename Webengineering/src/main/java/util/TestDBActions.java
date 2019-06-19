@@ -68,8 +68,8 @@ public class TestDBActions {
 	public void testJoin() {
 		Session session = DBConfig.getSessionFactory().openSession();
 
-		Query<?> query = session.createQuery(
-				"from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
+		Query<?> query = session
+				.createQuery("from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
 
 		query.setParameter("userID", 114);
 

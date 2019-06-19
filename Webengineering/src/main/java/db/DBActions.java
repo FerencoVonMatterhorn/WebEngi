@@ -23,8 +23,9 @@ import main.java.util.PasswordUtil;
 
 public class DBActions {
 
-	// TODO: make Markers somewhere
-	private static final Marker testMarker = MarkerManager.getMarker("TEST");
+	private static final Marker LOGIN_MARKER = MarkerManager.getMarker("Login");
+	private static final Marker REGISTER_MARKER = MarkerManager.getMarker("Register");
+
 	private static final Logger logger = LogManager.getLogger(DBActions.class);
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
@@ -37,6 +38,7 @@ public class DBActions {
 		List<UserPojo> users = findUsersByName(inGroupParticipants);
 		users.add(findUserById(inCreatorId));
 
+		logger.info("Creating group {} with participants {}", inGroupName, inGroupParticipants);
 		if (users.size() >= 2) {
 			for (UserPojo user : users) {
 				UserToGroupPojo userToGroup = new UserToGroupPojo();
@@ -90,19 +92,19 @@ public class DBActions {
 				user.setSalt(iterationsSaltPassword[1]);
 				user.setPassword(iterationsSaltPassword[2]);
 				saveUser(user);
-
+				logger.info(REGISTER_MARKER, "Succesfully Registered user: name - {} {}, username - {}, email - {}.", user.getFirstName(), user.getLastName(),
+						user.getUsername(), user.getEmail());
 				return true;
 			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-				e.printStackTrace();
-				// TODO: Log this
+				logger.error("Error when registering.");
 				return false;
 			}
 		}
+		logger.info("Error while registering.");
 		return false;
 	}
 
 	public static Optional<UserPojo> login(String inUsernameOrEmail, String inPassword) {
-		logger.info(testMarker, "Logging in.");
 		Optional<UserPojo> user = findUserByName(inUsernameOrEmail);
 		if (!user.isPresent()) {
 			user = findUserByEmail(inUsernameOrEmail);
@@ -110,15 +112,14 @@ public class DBActions {
 		if (user.isPresent()) {
 			try {
 				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
+					logger.info(LOGIN_MARKER, "User {} was succesfully logged in.", inUsernameOrEmail);
 					return user;
-				} else {
-					return Optional.empty();
 				}
 			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-				e.printStackTrace();
-				// TODO: Log this
+				logger.error(LOGIN_MARKER, "Error while trying to login {}.", inUsernameOrEmail, e);
 			}
 		}
+		logger.info(LOGIN_MARKER, "User {} was not Logged in.", inUsernameOrEmail);
 		return Optional.empty();
 	}
 
@@ -126,7 +127,9 @@ public class DBActions {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("SELECT u.username from USERS u where u.username LIKE :username");
 		query.setParameter("username", inSearchQuery + "%");
-		return (List<String>) query.getResultList();
+		List<String> userlist = (List<String>) query.getResultList();
+		session.close();
+		return userlist;
 	}
 
 	/*******************

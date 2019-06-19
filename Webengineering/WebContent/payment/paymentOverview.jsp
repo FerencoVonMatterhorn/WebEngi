@@ -90,7 +90,7 @@
 	<div class="container-fluid footer">
 		<div class="footerCompany col-xs-6 mt-3">
 			<p>
-				<a class="m-2" href="../official/imprint.jsp"">Impressum</a> <a class="m-2" href="../official/privacyPolicy.jsp">Privacy
+				<a class="m-2" href="../official/imprint.jsp">Impressum</a> <a class="m-2" href="../official/privacyPolicy.jsp">Privacy
 					Policy</a>
 			</p>
 			<p>Ⓒ 2019 MyWG</p>

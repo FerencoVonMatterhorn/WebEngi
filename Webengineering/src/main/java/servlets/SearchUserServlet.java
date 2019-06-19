@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import main.java.db.DBActions;
+import main.java.db.DBUserActions;
 
 @SuppressWarnings("serial")
 @WebServlet("/official/searchUser")
@@ -20,7 +21,7 @@ public class SearchUserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String query = req.getHeader("searchQuery");
-		List<String> result = DBActions.searchForUser(query);
+		List<String> result = DBUserActions.searchForUser(query);
 		String resultJson = new Gson().toJson(result);
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");

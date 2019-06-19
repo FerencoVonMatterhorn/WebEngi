@@ -47,7 +47,7 @@
 				</c:when>
 				<c:otherwise>
 					<!--  Profil  -->
-					<li class="nav-item"><a class="nav-link" href="../user/profile.jsp">Profil <i class="fas fa-user"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../user/profile">Profil <i class="fas fa-user"></i></a></li>
 					<!-- Abmelden TODO: abmelden Servlet-->
 					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:otherwise>

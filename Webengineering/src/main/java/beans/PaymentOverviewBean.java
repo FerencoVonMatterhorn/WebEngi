@@ -6,6 +6,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.db.DBActions;
+import main.java.db.DBPaymentActions;
 import main.java.pojos.PaymentPojo;
 
 @Setter
@@ -27,7 +28,7 @@ public class PaymentOverviewBean {
 	}
 
 	public void calculatePages(int userID) {
-		long paymentsAmount = DBActions.getPaymentAmount(userID);
+		long paymentsAmount = DBPaymentActions.getPaymentAmount(userID);
 
 		System.out.println(paymentsAmount);
 
@@ -37,7 +38,7 @@ public class PaymentOverviewBean {
 	public void getPaymentsForPage(int userID) {
 		int limitstart = shownPage == 1 ? 0 : itemsPerPage * (shownPage - 1);
 
-		payments = DBActions.getPaymentsForSpecificPage(limitstart, itemsPerPage, userID);
+		payments = DBPaymentActions.getPaymentsForSpecificPage(limitstart, itemsPerPage, userID);
 		System.out.println(payments.size());
 
 	}

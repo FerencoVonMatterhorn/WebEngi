@@ -26,7 +26,7 @@
 			<c:choose>
 				<c:when test="${empty userID}">
 					<!--  Home  -->
-					<li class="nav-item"><a class="nav-link active" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
+					<li class="nav-item"><a class="nav-link active" href="../official/index">Home <i class="fas fa-home"></i></a></li>
 				</c:when>
 				<c:otherwise>
 					<!-- Home -->

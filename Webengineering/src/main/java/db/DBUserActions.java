@@ -11,6 +11,7 @@ import org.hibernate.query.Query;
 import main.java.pojos.UserPojo;
 
 public class DBUserActions {
+
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
 	static void saveUser(UserPojo inUser) {
@@ -83,7 +84,6 @@ public class DBUserActions {
 	}
 
 	static boolean usernameOrEmailisPresent(String inUsername, String inEmail) {
-		return (DBUserActions.findUserByName(inUsername).isPresent()
-				|| DBUserActions.findUserByEmail(inEmail).isPresent()) ? true : false;
+		return (DBUserActions.findUserByName(inUsername).isPresent() || DBUserActions.findUserByEmail(inEmail).isPresent()) ? true : false;
 	}
 }

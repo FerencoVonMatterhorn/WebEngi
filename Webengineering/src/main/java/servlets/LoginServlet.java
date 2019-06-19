@@ -18,6 +18,9 @@ import main.java.pojos.UserPojo;
 @WebServlet("/official/Login")
 public class LoginServlet extends HttpServlet {
 
+	// Die maximale Zeit die der Benutzer angemeldet ist.
+	private static final int LOGIN_TIME = 10 * 60;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
@@ -32,8 +35,7 @@ public class LoginServlet extends HttpServlet {
 				oldSession.invalidate();
 			}
 			HttpSession newSession = req.getSession(true);
-			// Max time the user is logged in
-			newSession.setMaxInactiveInterval(10 * 60);
+			newSession.setMaxInactiveInterval(LOGIN_TIME);
 			newSession.setAttribute("userID", user.get().getId());
 			resp.sendRedirect(req.getContextPath() + "/official/IndexLoggedIn");
 		} else {
@@ -42,6 +44,5 @@ public class LoginServlet extends HttpServlet {
 			rd = req.getRequestDispatcher("index.jsp");
 			rd.forward(req, resp);
 		}
-
 	}
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.java.db.DBActions;
+import main.java.db.DBUserActions;
 import main.java.pojos.UserPojo;
 
 @SuppressWarnings("serial")
@@ -24,7 +25,7 @@ public class ProfileServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
-		UserPojo user = DBActions.findUserById((int) req.getSession().getAttribute("userID"));
+		UserPojo user = DBUserActions.findUserById((int) req.getSession().getAttribute("userID"));
 
 		req.setAttribute("userPojo", user);
 

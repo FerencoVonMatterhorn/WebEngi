@@ -19,7 +19,7 @@ import lombok.Setter;
 public class MonthlyPaymentToGroupPojo {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private int id;
 

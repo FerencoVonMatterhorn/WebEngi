@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.java.db.DBActions;
+import main.java.db.DBGroupActions;
 
 @SuppressWarnings("serial")
 @WebServlet("/official/createGroup")
@@ -21,7 +22,7 @@ public class CreateGroupServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		DBActions.createGroup(req.getParameter("groupName"), req.getParameter("groupDescription"), req.getParameter("groupParticipants"),
+		DBGroupActions.createGroup(req.getParameter("groupName"), req.getParameter("groupDescription"), req.getParameter("groupParticipants"),
 				(int) req.getSession().getAttribute("userID"));
 		resp.sendRedirect(req.getContextPath() + "/official/IndexLoggedIn");
 	}

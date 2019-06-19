@@ -26,7 +26,7 @@
 		<ul class="navbar-nav">
 			<c:choose>
 				<c:when test="${empty userID}">
-					<li class="nav-item"><a class="nav-link" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../official/index">Home <i class="fas fa-home"></i></a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="nav-item"><a class="nav-link active" href="#">Home <i class="fas fa-home"></i></a></li>

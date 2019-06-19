@@ -1,6 +1,5 @@
 package main.java.db;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +15,7 @@ public class DBGroupActions {
 
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
-	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants,
-			int inCreatorId) {
+	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants, int inCreatorId) {
 		GroupPojo group = new GroupPojo();
 		group.setGroupName(inGroupName);
 		group.setGroupDescription(inGroupDescription);
@@ -26,7 +24,8 @@ public class DBGroupActions {
 		List<UserPojo> users = DBUserActions.findUsersByName(inGroupParticipants);
 		users.add(DBUserActions.findUserById(inCreatorId));
 
-//		logger.info("Creating group {} with participants {}", inGroupName, inGroupParticipants);
+		// logger.info("Creating group {} with participants {}", inGroupName,
+		// inGroupParticipants);
 		if (users.size() >= 2) {
 			for (UserPojo user : users) {
 				UserToGroupPojo userToGroup = new UserToGroupPojo();
@@ -49,8 +48,6 @@ public class DBGroupActions {
 		}
 		return DBActions.getUsersToGroup(groupPojo);
 	}
-
-	
 
 	private static Optional<GroupPojo> findGroupByName(String inGroupName) {
 		Session session = sessionFactory.openSession();
@@ -81,8 +78,7 @@ public class DBGroupActions {
 
 	static String getGroupNameByPaymentId(int paymentID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery(
-				"select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
+		Query<?> query = session.createQuery("select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
 		query.setParameter("paymentID", paymentID);
 		return (String) query.uniqueResult();
 	}

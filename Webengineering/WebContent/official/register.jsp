@@ -6,7 +6,6 @@
 <title>MyWG - Registrieren</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
-<link rel="stylesheet" href="registrieren.css">
 <script type="text/javascript" src="../scripts.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -24,7 +23,7 @@
 		<ul class="navbar-nav">
 			<c:choose>
 				<c:when test="${empty userID}">
-					<li class="nav-item"><a class="nav-link active" href="index.jsp">Home <i class="fas fa-home"></i></a></li>
+					<li class="nav-item"><a class="nav-link active" href="../official/index">Home <i class="fas fa-home"></i></a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="nav-item"><a class="nav-link" href="../official/IndexLoggedIn">Home <i class="fas fa-home"></i></a></li>
@@ -63,7 +62,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-length input-group-text"> Vorname:</span>
+										<span class="register-input-length input-group-text"> Vorname:</span>
 									</div>
 									<input type="text" class="form-control" name="fname" id="fname" onkeyup='validateRegistration()'>
 								</div>
@@ -71,7 +70,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-length input-group-text"> Nachname:</span>
+										<span class="register-input-length input-group-text"> Nachname:</span>
 									</div>
 									<input type="text" class="form-control" name="lname" id="lname" onkeyup='validateRegistration()'>
 								</div>
@@ -79,7 +78,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-length input-group-text"> Benutzername:</span>
+										<span class="register-input-length input-group-text"> Benutzername:</span>
 									</div>
 									<input type="text" class="form-control" name="uname" id="uname" onkeyup='validateRegistration()'>
 								</div>
@@ -87,7 +86,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-length input-group-text"> Email-Addresse:</span>
+										<span class="register-input-length input-group-text"> Email-Addresse:</span>
 									</div>
 									<input type="email" class="form-control" name="email" id="email" onkeyup='validateRegistration()'>
 								</div>
@@ -100,7 +99,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-length input-group-text"> Passwort:</span>
+										<span class="register-input-length input-group-text"> Passwort:</span>
 									</div>
 									<input type="password" class="form-control" name="password1" id="password1" onkeyup='validateRegistration()'>
 								</div>
@@ -108,7 +107,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-length input-group-text"> Passwort wiederholen:</span>
+										<span class="register-input-length input-group-text"> Passwort wiederholen:</span>
 									</div>
 									<input type="password" class="form-control" name="password2" id="password2" onkeyup='validateRegistration()'>
 								</div>

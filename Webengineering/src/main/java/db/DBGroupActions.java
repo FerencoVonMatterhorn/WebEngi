@@ -3,6 +3,8 @@ package main.java.db;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -12,6 +14,8 @@ import main.java.pojos.UserPojo;
 import main.java.pojos.UserToGroupPojo;
 
 public class DBGroupActions {
+
+	private static final Logger logger = LogManager.getLogger(DBGroupActions.class);
 
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
@@ -24,8 +28,7 @@ public class DBGroupActions {
 		List<UserPojo> users = DBUserActions.findUsersByName(inGroupParticipants);
 		users.add(DBUserActions.findUserById(inCreatorId));
 
-		// logger.info("Creating group {} with participants {}", inGroupName,
-		// inGroupParticipants);
+		logger.info("Creating group {} with participants {}", inGroupName, inGroupParticipants);
 		if (users.size() >= 2) {
 			for (UserPojo user : users) {
 				UserToGroupPojo userToGroup = new UserToGroupPojo();

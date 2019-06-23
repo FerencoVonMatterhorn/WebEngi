@@ -2,6 +2,8 @@ package main.java.db;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -9,6 +11,8 @@ import org.hibernate.query.Query;
 import main.java.pojos.PaymentPojo;
 
 public class DBPaymentActions {
+
+	private static final Logger logger = LogManager.getLogger(DBPaymentActions.class);
 
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 

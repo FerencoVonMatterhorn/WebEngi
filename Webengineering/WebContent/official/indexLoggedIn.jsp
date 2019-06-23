@@ -93,7 +93,6 @@
 				<div class="row m-5">
 					<div class="text-center mx-auto">
 						<button class="btn btn-success mr-5" type="button" data-toggle="modal" data-target="#newGroupModal">Neue Gruppe</button>
-						<button class="btn btn-success" type="button" data-toggle="modal" data-target="#newPaymentModal">Neue Zahlung</button>
 						<!-- modal gruppe start -->
 						<div class="modal fade" id="newGroupModal">
 							<form name="createGroup" action="createGroup" method="POST" autocomplete="off">
@@ -144,10 +143,10 @@
 			<p>Ⓒ 2019 MyWG</p>
 		</div>
 	</div>
+	<script type="text/javascript">
+		var inp = document.getElementById("groupParticipants");
+		searchUserForGroup(inp, inp.value);
+	</script>
 </body>
-<script>
-	var inp = document.getElementById("groupParticipants");
-	searchUser(inp, inp.value);
-</script>
 </html>
 

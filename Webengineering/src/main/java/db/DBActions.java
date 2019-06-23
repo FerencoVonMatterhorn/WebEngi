@@ -8,25 +8,21 @@ import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Marker;
-import org.apache.logging.log4j.MarkerManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import main.java.pojos.GroupPojo;
-import main.java.pojos.PaymentPojo;
 import main.java.pojos.PaymentToUserPojo;
 import main.java.pojos.UserPojo;
 import main.java.pojos.UserToGroupPojo;
+import main.java.util.MarkerUtil;
 import main.java.util.PasswordUtil;
 
-public class DBActions {
+public class DBActions extends MarkerUtil {
 
-	private static final Marker LOGIN_MARKER = MarkerManager.getMarker("Login");
-	private static final Marker REGISTER_MARKER = MarkerManager.getMarker("Register");
+	private static final Logger log = LogManager.getLogger(DBActions.class);
 
-	private static final Logger logger = LogManager.getLogger(DBActions.class);
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
 	public static GroupPojo getUsersToGroup(GroupPojo group) {
@@ -44,8 +40,7 @@ public class DBActions {
 		return group;
 	}
 
-	public static boolean register(String inFName, String inLName, String inUsername, String inEmail,
-			String inPassword) {
+	public static boolean register(String inFName, String inLName, String inUsername, String inEmail, String inPassword) {
 		if (!DBUserActions.usernameOrEmailisPresent(inUsername, inEmail)) {
 			String[] iterationsSaltPassword = null;
 			try {
@@ -60,15 +55,15 @@ public class DBActions {
 				user.setSalt(iterationsSaltPassword[1]);
 				user.setPassword(iterationsSaltPassword[2]);
 				DBUserActions.saveUser(user);
-				logger.info(REGISTER_MARKER, "Succesfully Registered user: name - {} {}, username - {}, email - {}.",
-						user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail());
+				log.info(REGISTER_MARKER, "Succesfully Registered user: name - {} {}, username - {}, email - {}.", user.getFirstName(), user.getLastName(),
+						user.getUsername(), user.getEmail());
 				return true;
 			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-				logger.error("Error when registering.");
+				log.error("Error when registering.");
 				return false;
 			}
 		}
-		logger.info("Error while registering.");
+		log.info("Error while registering.");
 		return false;
 	}
 
@@ -79,15 +74,15 @@ public class DBActions {
 		}
 		if (user.isPresent()) {
 			try {
-				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(),
-						user.get().getIterations())) {
+				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
+					log.info(LOGIN_MARKER, "User {} was succesfully logged in.", user.get().getUsername());
 					return user;
 				}
 			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-				logger.error(LOGIN_MARKER, "Error while trying to login {}.", inUsernameOrEmail, e);
+				log.error(LOGIN_MARKER, "Error while trying to login {}.", inUsernameOrEmail, e);
 			}
 		}
-		logger.info(LOGIN_MARKER, "User {} was not Logged in.", inUsernameOrEmail);
+		log.info(LOGIN_MARKER, "User {} was not Logged in.", inUsernameOrEmail);
 		return Optional.empty();
 	}
 
@@ -116,8 +111,6 @@ public class DBActions {
 		query.setParameter("groupID", groupID);
 		return (List<UserToGroupPojo>) query.getResultList();
 	}
-
-	
 
 	private static List<PaymentToUserPojo> getPaymentToUserPojosByPaymentId(int paymentId) {
 

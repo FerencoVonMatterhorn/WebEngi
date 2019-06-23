@@ -8,6 +8,7 @@
 <title>MyComp - einzelneGruppe</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
+<script type="text/javascript" src="../scripts.js"></script>
 <link rel="stylesheet" href="singleGroupStyle.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -107,39 +108,53 @@
 						Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
 						<button type="Button">Zur Zahlung</button>
 					</p>
-					<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#paymentModal">Neue Zahlung
-						hinzufügen</button>
+					<button class="btn btn-success" type="button" data-toggle="modal" data-target="#newPaymentModal">Neue Zahlung</button>
 				</div>
-			</div>
-			<!-- modal zahlung start -->
-			<div class="modal fade" id="newPaymentModal">
-				<form name="createPayment" action="createPayment" method="POST">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<!-- Modal Header -->
-							<div class="modal-header">
-								<h4 class="modal-title mx-auto">Neue Zahlung Erstellen</h4>
-								<button type="button" class="close" data-dismiss="modal" onclick="clearPaymentModal()">&times;</button>
-							</div>
-							<!-- Modal body -->
-							<div class="modal-body">
-								<div class="form-group">
-									<label for="paymentName">Muster-Text:</label> <input type="text" class="form-control" id="paymentName">
+				<!-- modal zahlung start -->
+				<div class="modal fade" id="newPaymentModal">
+					<form name="createPayment" action="createPayment" method="POST">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title mx-auto">Neue Zahlung Erstellen</h4>
+									<button type="button" class="close" data-dismiss="modal" onclick="clearPaymentModal()">&times;</button>
 								</div>
-								<div class="form-group">
-									<label for="payment">Muster-Text:</label> <input type="text" class="form-control" id="payment">
-								</div>
-								<!-- Modal footer -->
-								<div class="modal-footer">
-									<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clearPaymentModal()">Abbrechen</button>
-									<button type="submit" class="btn btn-primary">Zahlung erstellen</button>
+								<!-- Modal body -->
+								<div class="modal-body">
+									<div class="form-group">
+										<label for="paymentName">Zahlungsname:</label> <input type="text" class="form-control" id="paymentName"
+											name="paymentName">
+									</div>
+									<div class="form-group">
+										<label for="paymentdescription">Zahlungsbeschreibung:</label> <input type="text" class="form-control"
+											id="paymentdescription" name="paymentdescription">
+									</div>
+									<hr>
+									<p class="text-center">Teilnehmer</p>
+									<div class="row mx-1 pb-3 text-center">
+										<!-- LEFT -->
+										<div class="col-md-* mr-1" id="leftModal">
+											<input type="text" class="form-control autocomplete" id="P1" name="P1" placeholder="Name">
+										</div>
+										<!-- RIGHT -->
+										<div class="col-md-*" id="rightModal">
+											<input type="text" class="form-control" id="P1P" name="P1P" placeholder="Beteiligung in %">
+										</div>
+									</div>
+									<a class="btn btn-secondary mb-4" style="color: #fff" onclick="addUser()">Teilnehmer Hinzufügen</a>
+									<!-- Modal footer -->
+									<div class="modal-footer">
+										<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clearPaymentModal()">Abbrechen</button>
+										<button type="submit" class="btn btn-primary">Zahlung erstellen</button>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
+				<!-- modal end -->
 			</div>
-			<!-- modal end -->
 		</div>
 	</div>
 	<div class="container-fluid footer">

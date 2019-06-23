@@ -31,4 +31,7 @@ public class PaymentToUserPojo {
 	@JoinColumn(name = "PAYMENTID", nullable = false)
 	private PaymentPojo payment;
 
+	//@Column(name = "PERCENTAGE", nullable = false)
+	//private double percentage;
+
 }

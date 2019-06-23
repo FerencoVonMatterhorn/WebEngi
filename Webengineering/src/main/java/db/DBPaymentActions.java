@@ -27,7 +27,7 @@ public class DBPaymentActions {
 		if (paymentList.isEmpty()) {
 			paymentList.add(new PaymentPojo());
 		}
-
+		session.close();
 		return paymentList;
 	}
 
@@ -37,40 +37,33 @@ public class DBPaymentActions {
 		Query<?> query = session.createQuery("select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
 		String groupName = (String) query.uniqueResult();
 		payment.setGroupName(groupName);
+		session.close();
 		return payment;
 	}
 
 	public static long getPaymentAmount(int userID) {
-
 		Session session = sessionFactory.openSession();
-
 		Query<?> query = session.createQuery("select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
-
 		query.setParameter("userID", userID);
-
-		return (Long) query.uniqueResult();
+		Long count = (Long) query.uniqueResult();
+		session.close();
+		return count;
 	}
 
 	public static List<PaymentPojo> getPaymentsForSpecificPage(int offset, int limit, int userID) {
 		Session session = sessionFactory.openSession();
-
 		Query<?> query = session
 				.createQuery("FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
-
 		query.setMaxResults(limit);
 		query.setFirstResult(offset);
-
 		query.setParameter("userID", userID);
-
 		List<PaymentPojo> listPayments = (List<PaymentPojo>) query.getResultList();
-
 		for (PaymentPojo paymentPojo : listPayments) {
 			String paymentGroup = DBGroupActions.getGroupNameByPaymentId(paymentPojo.getPaymentID());
 			paymentPojo.setGroupName(paymentGroup);
 			paymentPojo.setUsers(DBActions.getUsersToPayment(paymentPojo.getPaymentID()));
 		}
-
+		session.close();
 		return listPayments;
 	}
-
 }

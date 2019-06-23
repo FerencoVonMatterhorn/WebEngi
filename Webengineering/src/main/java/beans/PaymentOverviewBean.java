@@ -5,7 +5,6 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
-import main.java.db.DBActions;
 import main.java.db.DBPaymentActions;
 import main.java.pojos.PaymentPojo;
 
@@ -30,7 +29,7 @@ public class PaymentOverviewBean {
 	public void calculatePages(int userID) {
 		long paymentsAmount = DBPaymentActions.getPaymentAmount(userID);
 
-		System.out.println(paymentsAmount);
+		System.out.println(paymentsAmount);// TODO remove this or log it.
 
 		pages = paymentsAmount % itemsPerPage == 0 ? paymentsAmount / itemsPerPage : paymentsAmount / itemsPerPage + 1;
 	}
@@ -39,7 +38,7 @@ public class PaymentOverviewBean {
 		int limitstart = shownPage == 1 ? 0 : itemsPerPage * (shownPage - 1);
 
 		payments = DBPaymentActions.getPaymentsForSpecificPage(limitstart, itemsPerPage, userID);
-		System.out.println(payments.size());
+		System.out.println(payments.size()); // TODO remove this or log it.
 
 	}
 

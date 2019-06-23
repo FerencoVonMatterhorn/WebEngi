@@ -112,7 +112,7 @@
 				</div>
 				<!-- modal zahlung start -->
 				<div class="modal fade" id="newPaymentModal">
-					<form name="createPayment" action="createPayment" method="POST">
+					<form name="createPayment" action="createPayment" method="POST" autocomplete="off">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<!-- Modal Header -->
@@ -165,6 +165,10 @@
 			<p>Ⓒ 2019 MyWG</p>
 		</div>
 	</div>
+	<script type="text/javascript">
+		var inp = document.getElementById("P1");
+		searchUserForPayment(inp, inp.value);
+	</script>
 </body>
 </html>
 

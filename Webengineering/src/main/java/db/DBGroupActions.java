@@ -1,7 +1,6 @@
 package main.java.db;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -52,16 +51,6 @@ public class DBGroupActions {
 		return DBActions.getUsersToGroup(groupPojo);
 	}
 
-	private static Optional<GroupPojo> findGroupByName(String inGroupName) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		Query<?> query = session.createQuery("from GROUPS where GROUPNAME = :name");
-		query.setParameter("name", inGroupName);
-		Optional<GroupPojo> group = (Optional<GroupPojo>) query.uniqueResultOptional();
-		session.close();
-		return group;
-	}
-
 	private static final GroupPojo findGroupById(final int groupId) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from GROUPS where GROUPID = :groupID");
@@ -83,6 +72,8 @@ public class DBGroupActions {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
 		query.setParameter("paymentID", paymentID);
-		return (String) query.uniqueResult();
+		String payment = (String) query.uniqueResult();
+		session.close();
+		return payment;
 	}
 }

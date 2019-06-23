@@ -19,11 +19,10 @@ function addUser() {
 	newPercent.setAttribute("placeholder", "Beteiligung in %");
 	newUser.setAttribute("type", "text");
 	
-	
-	//TODO add actionlistener to newUser
-	
 	left.appendChild(newUser);
 	right.appendChild(newPercent);
+
+	searchUserForPayment(newUser, newUser.value);
 }
 
 function searchUserForGroup(inp, search) {

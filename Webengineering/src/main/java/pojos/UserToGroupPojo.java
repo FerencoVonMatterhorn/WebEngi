@@ -20,7 +20,7 @@ public class UserToGroupPojo {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 
 	@ManyToOne

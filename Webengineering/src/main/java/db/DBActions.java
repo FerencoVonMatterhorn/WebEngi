@@ -102,22 +102,27 @@ public class DBActions extends MarkerUtil {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from USERTOGROUP where USERID = :userID");
 		query.setParameter("userID", userID);
-		return (List<UserToGroupPojo>) query.getResultList();
+		List<UserToGroupPojo> pojos = (List<UserToGroupPojo>) query.getResultList();
+		session.close();
+		return pojos;
 	}
 
 	static List<UserToGroupPojo> findUserToGroupByGroupId(int groupID) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from USERTOGROUP where GROUPID = :groupID");
 		query.setParameter("groupID", groupID);
-		return (List<UserToGroupPojo>) query.getResultList();
+		List<UserToGroupPojo> pojos = (List<UserToGroupPojo>) query.getResultList();
+		session.close();
+		return pojos;
 	}
 
 	private static List<PaymentToUserPojo> getPaymentToUserPojosByPaymentId(int paymentId) {
-
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from PAYMENTTOUSER where PAYMENTID = :paymentID");
 		query.setParameter("paymentID", paymentId);
-		return (List<PaymentToUserPojo>) query.getResultList();
+		List<PaymentToUserPojo> pojos = (List<PaymentToUserPojo>) query.getResultList();
+		session.close();
+		return pojos;
 
 	}
 

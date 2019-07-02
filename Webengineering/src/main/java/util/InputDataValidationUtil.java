@@ -9,9 +9,6 @@ public class InputDataValidationUtil {
 	private static final String[] REGISTRATION_NO_ERROR = {};
 	private static final String[] REGISTRATION_INVALID_EMAIL = { "emailWasIncorrectlyFormatted", "Die angegebene Email-Adresse entspricht nicht dem Format" };
 	private static final String[] REGISTRATION_INVALID_PASSWORDS = { "passwordsDidNotMatch", "Die angegebenen Passwörter stimmen nicht überein" };
-	private static final String[] PAYMENT_VALUE_IS_NAN = { "PaymentValueIsNaN", "Bitte geben Sie nur Zahlen ein für den Betrag." };
-	private static final String[] PAYMENT_NULL_VALUE = { "PaymentHasNullValue", "Bitte füllen Sie alle Felder aus." };
-	private static final String[] PAYMENT_INCORRECT_PERCENT = { "PaymentPercentIsIncorrect", "Die Prozentfelder müssen 100% ergeben." };
 
 	private InputDataValidationUtil() {
 
@@ -45,36 +42,4 @@ public class InputDataValidationUtil {
 		}
 		return usersAndPercent;
 	}
-
-	public static String[] validatePaymentModal(Map<String, String> modalValues) {
-		if (!modalValues.get("paymentValue").matches("[0-9{0,}]")) {
-			return PAYMENT_VALUE_IS_NAN;
-		}
-		if (!valuesAreNotNull(modalValues)) {
-			return PAYMENT_NULL_VALUE;
-		}
-		if (!percentageIsCorrect(modalValues)) {
-			return PAYMENT_INCORRECT_PERCENT;
-		}
-		return REGISTRATION_NO_ERROR;
-	}
-
-	private static boolean percentageIsCorrect(Map<String, String> modalValues) {
-		Map<String, String> usersAndPercent = getUserStrings(modalValues);
-		int percent = 0;
-		for (String key : usersAndPercent.keySet()) {
-			percent += Integer.valueOf(usersAndPercent.get(key));
-		}
-		return (percent != 100) ? false : true;
-	}
-
-	private static boolean valuesAreNotNull(Map<String, String> modalValues) {
-		for (String key : modalValues.keySet()) {
-			if (modalValues.get(key) == null) {
-				return false;
-			}
-		}
-		return true;
-	}
-
 }

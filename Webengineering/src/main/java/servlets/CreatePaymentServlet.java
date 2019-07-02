@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.util.InputDataValidationUtil;
+import main.java.db.DBPaymentActions;
 
 @SuppressWarnings("serial")
 @WebServlet("/group/createPayment")
@@ -40,13 +40,8 @@ public class CreatePaymentServlet extends HttpServlet {
 		modalValues.put("userId", userId);
 		modalValues.put("groupId", groupId);
 
-		String[] errorMessage = InputDataValidationUtil.validatePaymentModal(modalValues);
-		if (errorMessage.length > 1) {
-			req.setAttribute(errorMessage[0], errorMessage[1]);
-			rd = req.getRequestDispatcher(""); // TODO: an singleGroupServlet
-												// leiten wo es herkommt.
-		}
-
-		// DBPaymentActions.createPayment(modalValues);
+		DBPaymentActions.createPayment(modalValues);
+		rd = req.getRequestDispatcher("");
+		rd.forward(req, resp);
 	}
 }

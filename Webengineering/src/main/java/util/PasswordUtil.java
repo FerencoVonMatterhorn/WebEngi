@@ -54,7 +54,7 @@ public class PasswordUtil {
 		String hex = bi.toString(16);
 		int paddingLength = (array.length * 2) - hex.length();
 		if (paddingLength > 0) {
-			// DONOT: Change this part.
+			// Don't change this, it works.
 			return String.format("%0" + paddingLength + "d", 0) + hex;
 		} else {
 			return hex;

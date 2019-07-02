@@ -67,18 +67,12 @@ public class TestDBActions {
 
 	public void testJoin() {
 		Session session = DBConfig.getSessionFactory().openSession();
-
 		Query<?> query = session
 				.createQuery("from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
-
 		query.setParameter("userID", 114);
-
 		List<PaymentPojo> listPayments = (List<PaymentPojo>) query.getResultList();
-
 		for (PaymentPojo paymentPojo : listPayments) {
 			System.out.println(paymentPojo.getAmount());
 		}
-
 	}
-
 }

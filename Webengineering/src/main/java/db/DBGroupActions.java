@@ -2,8 +2,9 @@ package main.java.db;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -13,6 +14,8 @@ import main.java.pojos.UserPojo;
 import main.java.pojos.UserToGroupPojo;
 
 public class DBGroupActions {
+
+	private static final Logger logger = LogManager.getLogger(DBGroupActions.class);
 
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
@@ -25,8 +28,7 @@ public class DBGroupActions {
 		List<UserPojo> users = DBUserActions.findUsersByName(inGroupParticipants);
 		users.add(DBUserActions.findUserById(inCreatorId));
 
-		// logger.info("Creating group {} with participants {}", inGroupName,
-		// inGroupParticipants);
+		logger.info("Creating group {} with participants {}", inGroupName, inGroupParticipants);
 		if (users.size() >= 2) {
 			for (UserPojo user : users) {
 				UserToGroupPojo userToGroup = new UserToGroupPojo();
@@ -61,17 +63,7 @@ public class DBGroupActions {
 
 	
 	
-	private static Optional<GroupPojo> findGroupByName(String inGroupName) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		Query<?> query = session.createQuery("from GROUPS where GROUPNAME = :name");
-		query.setParameter("name", inGroupName);
-		Optional<GroupPojo> group = (Optional<GroupPojo>) query.uniqueResultOptional();
-		session.close();
-		return group;
-	}
-
-	private static final GroupPojo findGroupById(final int groupId) {
+	static final GroupPojo findGroupById(final int groupId) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from GROUPS where GROUPID = :groupID");
 		query.setParameter("groupID", groupId);
@@ -92,7 +84,9 @@ public class DBGroupActions {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
 		query.setParameter("paymentID", paymentID);
-		return (String) query.uniqueResult();
+		String payment = (String) query.uniqueResult();
+		session.close();
+		return payment;
 	}
 
 	public static List<GroupPojo> getGroupsForGroupOverview(int userID) {

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -11,6 +13,8 @@ import org.hibernate.query.Query;
 import main.java.pojos.UserPojo;
 
 public class DBUserActions {
+
+	private static final Logger logger = LogManager.getLogger(DBUserActions.class);
 
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
@@ -33,6 +37,7 @@ public class DBUserActions {
 	}
 
 	static Optional<UserPojo> findUserByName(String inUsername) {
+		logger.info("Looking for User by Username: {}", inUsername);
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query<?> query = session.createQuery("from USERS where USERNAME = :username");

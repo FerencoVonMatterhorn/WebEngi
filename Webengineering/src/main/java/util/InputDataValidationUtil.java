@@ -1,12 +1,14 @@
 package main.java.util;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class InputDataValidationUtil {
 
-	private static final String[] NO_ERROR = {};
-	private static final String[] INVALID_EMAIL = { "emailWasIncorrectlyFormatted", "Die angegebene Email-Adresse entspricht nicht dem Format" };
-	private static final String[] INVALID_PASSWORDS = { "passwordsDidNotMatch", "Die angegebenen Passwörter stimmen nicht überein" };
+	private static final String[] REGISTRATION_NO_ERROR = {};
+	private static final String[] REGISTRATION_INVALID_EMAIL = { "emailWasIncorrectlyFormatted", "Die angegebene Email-Adresse entspricht nicht dem Format" };
+	private static final String[] REGISTRATION_INVALID_PASSWORDS = { "passwordsDidNotMatch", "Die angegebenen Passwörter stimmen nicht überein" };
 
 	private InputDataValidationUtil() {
 
@@ -14,11 +16,11 @@ public class InputDataValidationUtil {
 
 	public static String[] validateRegistrationForm(String inEmail, String inPassword1, String inPassword2) {
 		if (!emailIsValid(inEmail)) {
-			return INVALID_EMAIL;
+			return REGISTRATION_INVALID_EMAIL;
 		} else if (!passwordsMatch(inPassword1, inPassword2)) {
-			return INVALID_PASSWORDS;
+			return REGISTRATION_INVALID_PASSWORDS;
 		}
-		return NO_ERROR;
+		return REGISTRATION_NO_ERROR;
 	}
 
 	private static boolean passwordsMatch(String inPassword1, String inPassword2) {
@@ -31,4 +33,13 @@ public class InputDataValidationUtil {
 		return pattern.matcher(inEmail).matches() ? true : false;
 	}
 
+	public static Map<String, String> getUserStrings(Map<String, String> modalValues) {
+		Map<String, String> usersAndPercent = new HashMap<>();
+		for (String key : modalValues.keySet()) {
+			if (key.matches("(P[0-9]{1,})")) {
+				usersAndPercent.put(key, modalValues.get(key));
+			}
+		}
+		return usersAndPercent;
+	}
 }

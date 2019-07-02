@@ -19,7 +19,7 @@ import lombok.Setter;
 public class PaymentToUserPojo {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "ID")
 	private int id;
 
@@ -31,7 +31,7 @@ public class PaymentToUserPojo {
 	@JoinColumn(name = "PAYMENTID", nullable = false)
 	private PaymentPojo payment;
 
-	//@Column(name = "PERCENTAGE", nullable = false)
-	//private double percentage;
+	// @Column(name = "PERCENTAGE", nullable = false)
+	// private double percentage;
 
 }

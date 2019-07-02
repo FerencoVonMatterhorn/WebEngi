@@ -1,5 +1,6 @@
 package main.java.db;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +49,18 @@ public class DBGroupActions {
 		}
 		return DBActions.getUsersToGroup(groupPojo);
 	}
+	
+	public static List<UserToGroupPojo> getGroupsfromUser(int userID){
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("SELECT GroupID from UserToGroups WHERE USERID = :UserID");
+		query.setParameter("userID", userID);
+		List<UserToGroupPojo> userToGroupList = (List<UserToGroupPojo>) query.getResultList();
+		session.close();
+		return userToGroupList;
+	}
 
+	
+	
 	private static Optional<GroupPojo> findGroupByName(String inGroupName) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -82,4 +94,14 @@ public class DBGroupActions {
 		query.setParameter("paymentID", paymentID);
 		return (String) query.uniqueResult();
 	}
+
+	public static List<GroupPojo> getGroupsForGroupOverview(int userID) {
+		List<GroupPojo> groups = new ArrayList<>();
+		List<UserToGroupPojo> userToGroupList = getGroupsfromUser(userID);
+		for (UserToGroupPojo userToGroupPojo : userToGroupList) {
+			groups.add(findGroupById(userToGroupPojo.getGroup().getGroupID()));
+		}
+		return groups;
+	}
+
 }

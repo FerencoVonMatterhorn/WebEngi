@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.java.beans.GroupOverViewBean;
 import main.java.db.DBActions;
+import main.java.db.DBGroupActions;
 import main.java.db.DBUserActions;
 import main.java.pojos.UserPojo;
 
@@ -25,12 +27,12 @@ public class GroupOverviewServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
-		UserPojo user = DBUserActions.findUserById((int) req.getSession().getAttribute("userID"));
-
-		req.setAttribute("userPojo", user);
-
+		GroupOverViewBean gOBean = new GroupOverViewBean();
+		int userID = (int) req.getSession().getAttribute("userID");
+		gOBean.setGroups(DBGroupActions.getGroupsForGroupOverview(userID));
 		rd = req.getRequestDispatcher("groupOverview.jsp");
 		rd.forward(req, resp);
 	}
+	
 
 }

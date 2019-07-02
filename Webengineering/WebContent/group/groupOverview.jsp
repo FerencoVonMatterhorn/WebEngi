@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="groupOverView" class="main.java.beans.GroupOverViewBean" scope="session"></jsp:useBean>
+<jsp:useBean id="groupOverView"
+	class="main.java.beans.GroupOverViewBean" scope="session"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -77,66 +78,28 @@
 									sizes to see it in action.</p>
 							</div>
 							<div class="row">
-								<div class="col-6 col-lg-4">
-									<div class="widget">
-										<h2>Gruppe 1</h2>
-										<p>Donec id elit non mi porta gravida at eget metus. Fusce
-											dapibus, tellus ac cursus commodo, tortor mauris condimentum
-											nibh, ut fermentum massa justo sit amet risus. Etiam porta
-											sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-										<p>
-											<a class="btn btn-secondary" href="#" role="button">Mehr
-												anzeigen &raquo;</a>
-										</p>
-									</div>
-								</div>
-								<!--/span-->
-								<div class="col-6 col-lg-4">
-									<div class="widget">
-										<h2>Gruppe 2</h2>
-										<p>Donec id elit non mi porta gravida at eget metus. Fusce
-											dapibus, tellus ac cursus commodo, tortor mauris condimentum
-											nibh, ut fermentum massa justo sit amet risus. Etiam porta
-											sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-										<p>
-											<a class="btn btn-secondary" href="#" role="button">Mehr
-												anzeigen &raquo;</a>
-										</p>
-									</div>
-								</div>
-								<!--/span-->
-								<div class="col-6 col-lg-4">
-									<div class="widget">
-										<h2>Gruppe 3</h2>
-										<p>Donec id elit non mi porta gravida at eget metus. Fusce
-											dapibus, tellus ac cursus commodo, tortor mauris condimentum
-											nibh, ut fermentum massa justo sit amet risus. Etiam porta
-											sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-										<p>
-											<a class="btn btn-secondary" href="#" role="button">Mehr
-												anzeigen &raquo;</a>
-										</p>
-									</div>
-								</div>
 								<c:forEach items="${groupOverView.groups}" var="group">
 									<div class="col-6 col-lg-4">
-										<div>
-											<h2>
-												<c:out value="${group.getGroupName()}"/>
-											</h2>
-											<p>
-												<c:out value="${group.getGroupDescription()}"/>											
-											</p>
+										<div class="widget">
+											<div>
+												<h2>
+													<c:out value="${group.getGroupName()}" />
+												</h2>
+												<p>
+													<c:out value="${group.getGroupDescription()}" />
+												</p>
+												<p>
+													<a class="btn btn-secondary" href="#" role="button">Mehr
+														anzeigen &raquo;</a>
+												</p>
+											</div>
 										</div>
 									</div>
 								</c:forEach>
 							</div>
-							<!--/row-->
 						</div>
 					</div>
-					<!--/row-->
 				</div>
-				<!--/.container-->
 			</div>
 		</div>
 	</div>

@@ -37,6 +37,7 @@ public class DBUserActions {
 	}
 
 	static Optional<UserPojo> findUserByName(String inUsername) {
+		logger.info("Looking for User by Username: {}", inUsername);
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query<?> query = session.createQuery("from USERS where USERNAME = :username");

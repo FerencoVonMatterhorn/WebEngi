@@ -1,6 +1,9 @@
 package main.java.db;
 
+import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,6 +12,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import main.java.pojos.PaymentPojo;
+import main.java.pojos.PaymentToGroupPojo;
+import main.java.pojos.PaymentToUserPojo;
+import main.java.pojos.UserPojo;
+import main.java.util.InputDataValidationUtil;
 
 public class DBPaymentActions {
 
@@ -65,5 +72,53 @@ public class DBPaymentActions {
 		}
 		session.close();
 		return listPayments;
+	}
+
+	public static void createPayment(Map<String, String> modalValues) {
+		PaymentPojo payment = new PaymentPojo();
+		payment.setAmount(Double.valueOf(modalValues.get("paymentValue")));
+		payment.setDateCreated(OffsetDateTime.now());
+		payment.setGroupName(DBGroupActions.findGroupById(Integer.valueOf(modalValues.get("groupId"))).getGroupName());
+		savePayment(payment);
+		// TODO: prozente beachten?
+		Map<String, String> users = InputDataValidationUtil.getUserStrings(modalValues);
+		for (String userString : users.keySet()) {
+			Optional<UserPojo> user = DBUserActions.findUserByName(modalValues.get(userString));
+			if (!user.isPresent()) {
+				// TODO: fehler meldung ausgeben.
+			}
+			PaymentToUserPojo paymentToUser = new PaymentToUserPojo();
+			paymentToUser.setPayment(payment);
+			paymentToUser.setUser(user.get());
+			savePaymentToUser(paymentToUser);
+		}
+		PaymentToGroupPojo paymentToGroup = new PaymentToGroupPojo();
+		paymentToGroup.setGroup(DBGroupActions.findGroupById(Integer.valueOf(modalValues.get("groupId"))));
+		paymentToGroup.setPayment(payment);
+		savePaymentToGroup(paymentToGroup);
+	}
+
+	private static void savePaymentToGroup(PaymentToGroupPojo inPaymentToGroup) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(inPaymentToGroup);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	private static void savePaymentToUser(PaymentToUserPojo inPaymentToUser) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(inPaymentToUser);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	private static void savePayment(PaymentPojo inPayment) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(inPayment);
+		session.getTransaction().commit();
+		session.close();
 	}
 }

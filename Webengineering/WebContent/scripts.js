@@ -1,24 +1,60 @@
+function checkPaymentModal() {
+	var paymentName = document.getElementById("paymentName");
+	var paymentDescription = document.getElementById("paymentdescription");
+	var paymentValue = document.getElementById("paymentValue");
+
+	if (!PercentageIsCorrect() || ValuesAreNull(paymentDescription, paymentName, paymentValue) || !paymentValueIsNumber(paymentValue)) {
+		document.getElementById("submitPayment").disabled = true;
+	} else {
+		document.getElementById("submitPayment").disabled = false;
+	}
+}
+
+function paymentValueIsNumber(payment) {
+	var re = /^\d+$/;
+	return re.test(payment.value);
+}
+
+function ValuesAreNull(a, b, c) {
+	return (a.value == null && b.value == null && c.value == null) ? true : false;
+}
+
+function PercentageIsCorrect() {
+	var i = 1;
+	var fieldsTotalValue = 0; 
+	do {
+		fieldsTotalValue += parseInt(document.getElementById("P" + i + "P").value); 
+		i++;
+	} while (document.getElementById("P" + i + "P") != null);
+
+	if(fieldsTotalValue != 100){
+		return false;
+	}
+	return true;
+}
+
 function addUser() {
 	var left, right, newUser, newPercent;
 	left = document.getElementById("leftModal");
 	right = document.getElementById("rightModal");
-	
+
 	var userNum = left.childNodes.length - 1;
-	
+
 	newUser = document.createElement("input");
 	newUser.setAttribute("id", userNum);
 	newUser.setAttribute("name", "P" + userNum);
 	newUser.setAttribute("class", "mt-2 form-control autocomplete");
 	newUser.setAttribute("type", "text");
 	newUser.setAttribute("placeholder", "Name");
-	
+
 	newPercent = document.createElement("input");
-	newPercent.setAttribute("id", userNum);
-	newPercent.setAttribute("name", "P" + userNum +"P");
+	newPercent.setAttribute("id", "P" + userNum + "P");
+	newPercent.setAttribute("name", "P" + userNum + "P");
 	newPercent.setAttribute("class", "mt-2 form-control");
 	newPercent.setAttribute("placeholder", "Beteiligung in %");
+	newPercent.setAttribute("onkeyup", "checkPaymentModal()")
 	newUser.setAttribute("type", "text");
-	
+
 	left.appendChild(newUser);
 	right.appendChild(newPercent);
 
@@ -211,8 +247,8 @@ function clearGroupModal() {
 function clearPaymentModal() {
 	document.getElementById("paymentName").value = "";
 	document.getElementById("paymentdescription").value = "";
-	
-	//TODO get all childnodes & delete them
+
+	// TODO get all childnodes & delete them
 	document.getElementById("P1").value = "";
 	document.getElementById("P1P").value = "";
 }

@@ -3,7 +3,6 @@
 <jsp:useBean id="singleGroup" class="main.java.beans.SingleGroupBean" scope="session"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- META-DATA -->
 <head>
 <title>MyComp - einzelneGruppe</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,12 +17,10 @@
 	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
-	<!--  Navigationbar  -->
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!--  Navbar Toggle  -->
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<!--  Navbar Toggle END  -->
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
 		<!--  Navbar Items Links  -->
 		<ul class="navbar-nav">
@@ -123,13 +120,18 @@
 								<!-- Modal body -->
 								<div class="modal-body">
 									<div class="form-group">
-										<label for="paymentName">Zahlungsname:</label> <input type="text" class="form-control" id="paymentName"
-											name="paymentName">
+										<label for="paymentName">Name:</label> <input type="text" class="form-control" id="paymentName" name="paymentName"
+											onkeyup="checkPaymentModal()">
 									</div>
 									<div class="form-group">
-										<label for="paymentdescription">Zahlungsbeschreibung:</label> <input type="text" class="form-control"
-											id="paymentdescription" name="paymentdescription">
+										<label for="paymentValue">Betrag:</label> <input type="text" class="form-control" id="paymentValue" name="paymentValue"
+											onkeyup="checkPaymentModal()">
 									</div>
+									<div class="form-group">
+										<label for="paymentdescription">Beschreibung:</label> <input type="text" class="form-control" id="paymentdescription"
+											name="paymentdescription" onkeyup="checkPaymentModal()">
+									</div>
+
 									<hr>
 									<p class="text-center">Teilnehmer</p>
 									<div class="row mx-1 pb-3 text-center">
@@ -139,14 +141,15 @@
 										</div>
 										<!-- RIGHT -->
 										<div class="col-md-*" id="rightModal">
-											<input type="text" class="form-control" id="P1P" name="P1P" placeholder="Beteiligung in %">
+											<input type="text" class="form-control" id="P1P" name="P1P" placeholder="Beteiligung in %"
+												onkeyup="checkPaymentModal()">
 										</div>
 									</div>
 									<a class="btn btn-secondary mb-4" style="color: #fff" onclick="addUser()">Teilnehmer Hinzufügen</a>
 									<!-- Modal footer -->
 									<div class="modal-footer">
 										<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clearPaymentModal()">Abbrechen</button>
-										<button type="submit" class="btn btn-primary">Zahlung erstellen</button>
+										<button id="submitPayment" type="submit" class="btn btn-primary">Zahlung erstellen</button>
 									</div>
 								</div>
 							</div>

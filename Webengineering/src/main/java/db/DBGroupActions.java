@@ -51,18 +51,16 @@ public class DBGroupActions {
 		}
 		return DBActions.getUsersToGroup(groupPojo);
 	}
-	
-	public static List<UserToGroupPojo> getGroupsfromUser(int userID){
+
+	public static List<UserToGroupPojo> getGroupsfromUser(int userID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("SELECT GroupID from UserToGroups WHERE USERID = :UserID");
-		query.setParameter("userID", userID);
+		Query<?> query = session.createQuery("from USERTOGROUP WHERE USERID = :UserID");
+		query.setParameter("UserID", userID);
 		List<UserToGroupPojo> userToGroupList = (List<UserToGroupPojo>) query.getResultList();
 		session.close();
 		return userToGroupList;
 	}
 
-	
-	
 	static final GroupPojo findGroupById(final int groupId) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from GROUPS where GROUPID = :groupID");

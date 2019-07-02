@@ -30,7 +30,7 @@
 				</c:when>
 				<c:otherwise>
 					<li class="nav-item"><a class="nav-link active" href="#">Home <i class="fas fa-home"></i></a></li>
-					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../group/groupOverview">Gruppen <i class="fas fa-users"></i></a></li>
 					<li class="nav-item"><a class="nav-link" href="../payment/paymentOverview">Zahlungen <i class="fas fa-receipt"></i></a></li>
 				</c:otherwise>
 			</c:choose>

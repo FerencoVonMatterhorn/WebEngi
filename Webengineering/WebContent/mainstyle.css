@@ -35,39 +35,41 @@ p {
 }
 
 .register-input-length {
-    justify-content: center;
-    width: 13rem;
+	justify-content: center;
+	width: 13rem;
 }
 
 /* autocomplete / Live search */
-
 .autocomplete {
 	position: relative;
 	display: inline-block;
 }
 
 .autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  top: 100%;
-  left: 0;
-  right: 0;
+	position: absolute;
+	border: 1px solid #d4d4d4;
+	border-bottom: none;
+	border-top: none;
+	z-index: 99;
+	top: 100%;
+	left: 0;
+	right: 0;
 }
+
 .autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff; 
-  border-bottom: 1px solid #d4d4d4; 
+	padding: 10px;
+	cursor: pointer;
+	background-color: #fff;
+	border-bottom: 1px solid #d4d4d4;
 }
+
 .autocomplete-items div:hover {
-  background-color: #e9e9e9; 
+	background-color: #e9e9e9;
 }
+
 .autocomplete-active {
-  background-color: DodgerBlue !important; 
-  color: #ffffff; 
+	background-color: DodgerBlue !important;
+	color: #ffffff;
 }
 
 /* messeges */
@@ -93,15 +95,20 @@ p {
 	font-size: 1rem;
 }
 
+.widget h2 {
+	text-align: center;
+}
+
 .widget h4 {
 	text-decoration: underline;
 }
 
+
 .overviewHeader {
 	background-color: #fff;
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
-  border-radius: 0.3rem;
+	padding: 2rem 1rem;
+	margin-bottom: 2rem;
+	border-radius: 0.3rem;
 }
 
 /*  StandardLayout  */

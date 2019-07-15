@@ -32,7 +32,6 @@ public class SinglePaymentServlet extends HttpServlet {
 		for (PaymentPojo payment : bean.getPayments()) {
 			if (payment.getPaymentID() == neededPaymentID) {
 				req.getSession().setAttribute("payment", payment);
-
 				req.getSession().setAttribute("singlePaymentBean", new SinglePaymentBean(payment));
 			}
 		}

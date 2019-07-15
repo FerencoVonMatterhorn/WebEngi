@@ -1,13 +1,10 @@
 package main.java.db;
 
 import java.time.OffsetDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -20,7 +17,9 @@ import main.java.util.InputDataValidationUtil;
 
 public class DBPaymentActions {
 
-	private static final Logger logger = LogManager.getLogger(DBPaymentActions.class);
+	private DBPaymentActions() {
+		// May be empty.
+	}
 
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
@@ -89,7 +88,6 @@ public class DBPaymentActions {
 	}
 
 	public static void createPayment(Map<String, String> modalValues) {
-		System.out.println(Arrays.asList(modalValues).toString());
 		PaymentPojo payment = new PaymentPojo();
 		payment.setAmount(Double.valueOf(modalValues.get("paymentValue")));
 		payment.setDateCreated(OffsetDateTime.now());
@@ -101,14 +99,13 @@ public class DBPaymentActions {
 		Map<String, String> users = InputDataValidationUtil.getUserStrings(modalValues);
 		for (String userString : users.keySet()) {
 			Optional<UserPojo> user = DBUserActions.findUserByName(modalValues.get(userString));
-			if (!user.isPresent()) {
-				// TODO: fehler meldung ausgeben.
+			if (user.isPresent()) {
+				PaymentToUserPojo paymentToUser = new PaymentToUserPojo();
+				paymentToUser.setPayment(payment);
+				paymentToUser.setUser(user.get());
+				paymentToUser.setPercentage(Integer.parseInt(modalValues.get(userString + "P")));
+				savePaymentToUser(paymentToUser);
 			}
-			PaymentToUserPojo paymentToUser = new PaymentToUserPojo();
-			paymentToUser.setPayment(payment);
-			paymentToUser.setUser(user.get());
-			paymentToUser.setPercentage(Integer.parseInt(modalValues.get(userString + "P")));
-			savePaymentToUser(paymentToUser);
 		}
 		PaymentToGroupPojo paymentToGroup = new PaymentToGroupPojo();
 		paymentToGroup.setGroup(DBGroupActions.findGroupById(Integer.valueOf(modalValues.get("groupId"))));

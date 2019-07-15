@@ -23,6 +23,7 @@ public class CreatePaymentServlet extends HttpServlet {
 		doPost(req, resp);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Map<String, String> modalValues = new HashMap<>();
 		RequestDispatcher rd;
@@ -41,7 +42,7 @@ public class CreatePaymentServlet extends HttpServlet {
 		modalValues.put("groupId", groupId);
 
 		DBPaymentActions.createPayment(modalValues);
-		rd = req.getRequestDispatcher(""); // TODO
+		rd = req.getRequestDispatcher(""); // TODO: forward to where?
 		rd.forward(req, resp);
 	}
 }

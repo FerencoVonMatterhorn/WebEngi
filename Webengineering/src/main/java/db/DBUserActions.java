@@ -14,6 +14,10 @@ import main.java.pojos.UserPojo;
 
 public class DBUserActions {
 
+	private DBUserActions() {
+		// May be empty.
+	}
+
 	private static final Logger logger = LogManager.getLogger(DBUserActions.class);
 
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();

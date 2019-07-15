@@ -1,6 +1,5 @@
 package main.java.db;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +13,10 @@ import main.java.pojos.UserPojo;
 import main.java.pojos.UserToGroupPojo;
 
 public class DBGroupActions {
+
+	private DBGroupActions() {
+		// May be empty.
+	}
 
 	private static final Logger logger = LogManager.getLogger(DBGroupActions.class);
 
@@ -55,16 +58,6 @@ public class DBGroupActions {
 		return DBActions.getUsersToGroup(groupPojo);
 	}
 
-	public static List<GroupPojo> getGroupsfromUser(int userID) {
-		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
-		query.setParameter("UserID", userID);
-		System.out.println(userID);
-		List<GroupPojo> userToGroupList = (List<GroupPojo>) query.getResultList();
-		session.close();
-		return userToGroupList;
-	}
-
 	static final GroupPojo findGroupById(final int groupId) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from GROUPS where GROUPID = :groupID");
@@ -92,8 +85,11 @@ public class DBGroupActions {
 	}
 
 	public static List<GroupPojo> getGroupsForGroupOverview(int userID) {
-		List<GroupPojo> groups = getGroupsfromUser(userID);
-		System.out.println(groups.size());
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
+		query.setParameter("UserID", userID);
+		List<GroupPojo> groups = (List<GroupPojo>) query.getResultList();
+		session.close();
 		return groups;
 	}
 

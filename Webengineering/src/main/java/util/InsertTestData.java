@@ -59,7 +59,7 @@ public class InsertTestData {
 
 		List<PaymentToUserPojo> testDataList = new ArrayList<>();
 
-		for (int i = 389; i <= 402; i++) {
+		for (int i = 431; i <= 444; i++) {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -68,6 +68,7 @@ public class InsertTestData {
 			PaymentToUserPojo test = new PaymentToUserPojo();
 			test.setPayment(DBPaymentActions.findPaymentById(i));
 			test.setUser(DBUserActions.findUserById(114));
+			test.setPercentage(50);
 			testDataList.add(test);
 			System.out.println(i);
 		}

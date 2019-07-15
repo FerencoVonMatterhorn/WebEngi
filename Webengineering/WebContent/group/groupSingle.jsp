@@ -33,7 +33,7 @@
 					<!-- Home -->
 					<li class="nav-item"><a class="nav-link" href="../official/IndexLoggedIn">Home <i class="fas fa-home"></i></a></li>
 					<!--  Gruppen  -->
-					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../group/groupOverview">Gruppen <i class="fas fa-users"></i></a></li>
 					<!--  Zahlungen  -->
 					<li class="nav-item"><a class="nav-link" href="../payment/paymentOverview">Zahlungen <i class="fas fa-receipt"></i></a></li>
 				</c:otherwise>
@@ -48,7 +48,7 @@
 				</c:when>
 				<c:otherwise>
 					<!--  Profil  -->
-					<li class="nav-item"><a class="nav-link" href="../user/profile.jsp">Profil <i class="fas fa-user"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../user/profile">Profil <i class="fas fa-user"></i></a></li>
 					<!-- Abmelden TODO: abmelden Servlet-->
 					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
 				</c:otherwise>

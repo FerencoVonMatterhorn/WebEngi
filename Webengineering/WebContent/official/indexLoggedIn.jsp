@@ -30,7 +30,7 @@
 				</c:when>
 				<c:otherwise>
 					<li class="nav-item"><a class="nav-link active" href="#">Home <i class="fas fa-home"></i></a></li>
-					<li class="nav-item"><a class="nav-link" href="../group/groupOverview.jsp">Gruppen <i class="fas fa-users"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../group/groupOverview">Gruppen <i class="fas fa-users"></i></a></li>
 					<li class="nav-item"><a class="nav-link" href="../payment/paymentOverview">Zahlungen <i class="fas fa-receipt"></i></a></li>
 				</c:otherwise>
 			</c:choose>
@@ -93,7 +93,6 @@
 				<div class="row m-5">
 					<div class="text-center mx-auto">
 						<button class="btn btn-success mr-5" type="button" data-toggle="modal" data-target="#newGroupModal">Neue Gruppe</button>
-						<button class="btn btn-success" type="button" data-toggle="modal" data-target="#newPaymentModal">Neue Zahlung</button>
 						<!-- modal gruppe start -->
 						<div class="modal fade" id="newGroupModal">
 							<form name="createGroup" action="createGroup" method="POST" autocomplete="off">
@@ -108,7 +107,7 @@
 										<!-- Modal body -->
 										<div class="modal-body">
 											<div class="form-group">
-												<label for="groupName">Gruppen Name:</label> <input type="text" class="form-control" id="groupName" name="groupName">
+												<label for="groupName">Gruppen Name:</label> <input type="text" class="form-control" id="groupName" name="groupName" required>
 											</div>
 											<div class="form-group">
 												<label for="groupDescription">Gruppen Beschreibung:</label>
@@ -144,10 +143,10 @@
 			<p>Ⓒ 2019 MyWG</p>
 		</div>
 	</div>
+	<script type="text/javascript">
+		var inp = document.getElementById("groupParticipants");
+		searchUserForGroup(inp, inp.value);
+	</script>
 </body>
-<script>
-	var inp = document.getElementById("groupParticipants");
-	searchUser(inp, inp.value);
-</script>
 </html>
 

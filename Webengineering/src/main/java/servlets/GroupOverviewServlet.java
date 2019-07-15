@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.db.DBActions;
-import main.java.db.DBUserActions;
-import main.java.pojos.UserPojo;
+import main.java.beans.GroupOverViewBean;
+import main.java.db.DBGroupActions;
 
 @SuppressWarnings("serial")
-@WebServlet("/group/GroupOverviewServlet")
+@WebServlet("/group/groupOverview")
 public class GroupOverviewServlet extends HttpServlet {
 
 	@Override
@@ -25,10 +24,12 @@ public class GroupOverviewServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
-		UserPojo user = DBUserActions.findUserById((int) req.getSession().getAttribute("userID"));
+		int userID = (int) req.getSession().getAttribute("userID");
 
-		req.setAttribute("userPojo", user);
-
+		GroupOverViewBean gOBean = new GroupOverViewBean();
+		gOBean.setGroups(DBGroupActions.getGroupsForGroupOverview(userID));
+		req.setAttribute("groupOverView", gOBean);
+		// TODO: check if empty s. paymentoverview
 		rd = req.getRequestDispatcher("groupOverview.jsp");
 		rd.forward(req, resp);
 	}

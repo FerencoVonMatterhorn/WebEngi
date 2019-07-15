@@ -41,7 +41,7 @@ public class CreatePaymentServlet extends HttpServlet {
 		modalValues.put("groupId", groupId);
 
 		DBPaymentActions.createPayment(modalValues);
-		rd = req.getRequestDispatcher("");
+		rd = req.getRequestDispatcher(""); // TODO
 		rd.forward(req, resp);
 	}
 }

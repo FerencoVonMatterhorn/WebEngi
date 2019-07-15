@@ -32,6 +32,6 @@ public class PaymentToUserPojo {
 	private PaymentPojo payment;
 
 	@Column(name = "PERCENTAGE", nullable = false)
-	private double percentage;
+	private int percentage;
 
 }

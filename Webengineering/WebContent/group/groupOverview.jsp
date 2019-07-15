@@ -68,36 +68,42 @@
 	<div class="backgroundSide">
 		<div class="container-fluid">
 			<div class="backgroundMid">
-				<div class="container">
-					<div class="row row-offcanvas row-offcanvas-right">
-						<div class="col-12 col-md-9">
-							<div class="overviewHeader">
-								<h1>Gruppenübersicht</h1>
-								<p>This is an example to show the potential of an offcanvas
-									layout pattern in Bootstrap. Try some responsive-range viewport
-									sizes to see it in action.</p>
-							</div>
-							<div class="row">
-								<c:forEach items="${groupOverView.groups}" var="group">
-									<div class="col-6 col-lg-4">
-										<div class="widget">
-											<div>
-												<h2>
-													<c:out value="${group.getGroupName()}" />
-												</h2>
-												<p>
-													<c:out value="${group.getGroupDescription()}" />
-												</p>
-												<p>
-													<a class="btn btn-secondary" href="#" role="button">Mehr
-														anzeigen &raquo;</a>
-												</p>
-											</div>
+				<div class="container ">
+					<div class="overviewHeader">
+						<h1>Gruppenübersicht</h1>
+						<p>This is an example to show the potential of an offcanvas
+							layout pattern in Bootstrap. Try some responsive-range viewport
+							sizes to see it in action.</p>
+					</div>
+					<div class="row justify-content-center">
+						<c:forEach items="${groupOverView.groups}" var="group">
+
+							<div class="widget col-lg-10">
+								<div>
+									<h2>
+										<c:out value="${group.getGroupName()}" />
+									</h2>
+									<hr>
+									<p>
+										Beschreibung: <br>
+										<c:out value="${group.getGroupDescription()}" />
+									</p>
+									<hr>
+									<p>
+										Teilnehmer: <br>
+										<c:out value="${group.getUsers()}" />
+									</p>
+									<form action="../group/singleGroup" method="post">
+										<input type="hidden" name="groupID" id="goupIDHidden" />
+										<div class="text-center">
+											<button type="submit"
+												onclick="setGroupID(${group.getGroupID()})"
+												class="btn btn-success">Mehr anzeigen</button>
 										</div>
-									</div>
-								</c:forEach>
+									</form>
+								</div>
 							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>

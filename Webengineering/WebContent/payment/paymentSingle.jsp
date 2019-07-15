@@ -42,7 +42,7 @@
 					<li class="nav-item"><a class="nav-link"
 						href="../official/IndexLoggedIn">Home <i class="fas fa-home"></i></a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="../group/groupOverview.jsp">Gruppen <i
+						href="../group/groupOverview">Gruppen <i
 							class="fas fa-users"></i></a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../payment/paymentOverview">Zahlungen <i

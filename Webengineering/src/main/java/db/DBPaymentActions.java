@@ -25,8 +25,8 @@ public class DBPaymentActions {
 
 	private static List<PaymentPojo> findPaymentsDescendingByUserId(int userID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session
-				.createQuery("from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
+		Query<?> query = session.createQuery(
+				"from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
 		query.setParameter("userID", userID);
 
 		List<PaymentPojo> paymentList = (List<PaymentPojo>) query.getResultList();
@@ -41,7 +41,8 @@ public class DBPaymentActions {
 	public static PaymentPojo findPaymentForIndexLoggedInByUserId(int userID) {
 		Session session = sessionFactory.openSession();
 		PaymentPojo payment = findPaymentsDescendingByUserId(userID).get(0);
-		Query<?> query = session.createQuery("select GroupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
+		Query<?> query = session.createQuery(
+				"select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
 		String groupName = (String) query.uniqueResult();
 		payment.setGroupName(groupName);
 		session.close();
@@ -50,7 +51,8 @@ public class DBPaymentActions {
 
 	public static long getPaymentAmount(int userID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
+		Query<?> query = session.createQuery(
+				"select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
 		query.setParameter("userID", userID);
 		Long count = (Long) query.uniqueResult();
 		session.close();
@@ -59,8 +61,8 @@ public class DBPaymentActions {
 
 	public static List<PaymentPojo> getPaymentsForSpecificPage(int offset, int limit, int userID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session
-				.createQuery("FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
+		Query<?> query = session.createQuery(
+				"FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
 		query.setMaxResults(limit);
 		query.setFirstResult(offset);
 		query.setParameter("userID", userID);

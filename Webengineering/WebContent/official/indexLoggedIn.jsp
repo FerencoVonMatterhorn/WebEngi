@@ -107,7 +107,7 @@
 										<!-- Modal body -->
 										<div class="modal-body">
 											<div class="form-group">
-												<label for="groupName">Gruppen Name:</label> <input type="text" class="form-control" id="groupName" name="groupName">
+												<label for="groupName">Gruppen Name:</label> <input type="text" class="form-control" id="groupName" name="groupName" required>
 											</div>
 											<div class="form-group">
 												<label for="groupDescription">Gruppen Beschreibung:</label>

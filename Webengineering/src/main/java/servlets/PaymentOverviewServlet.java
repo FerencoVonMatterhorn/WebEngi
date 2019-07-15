@@ -23,10 +23,10 @@ public class PaymentOverviewServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		PaymentOverviewBean bean = (PaymentOverviewBean) req.getAttribute("paymentOverview");
+		PaymentOverviewBean bean = (PaymentOverviewBean) req.getSession().getAttribute("paymentOverview");
 		if (bean == null) {
 			bean = new PaymentOverviewBean();
-			req.setAttribute("paymentOverview", bean);
+			req.getSession().setAttribute("paymentOverview", bean);
 		}
 
 		int userID = (int) req.getSession().getAttribute("userID");

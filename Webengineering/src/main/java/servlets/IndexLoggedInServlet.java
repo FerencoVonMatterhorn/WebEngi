@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.db.DBActions;
 import main.java.db.DBGroupActions;
+import main.java.db.DBPaymentActions;
 import main.java.db.DBUserActions;
 import main.java.pojos.UserPojo;
 
@@ -30,6 +30,7 @@ public class IndexLoggedInServlet extends HttpServlet {
 
 		req.setAttribute("userPojo", user);
 		req.setAttribute("groupPojo", DBGroupActions.findGroupForIndexLoggedInByUserId(user.getId()));
+		req.setAttribute("paymentPojo", DBPaymentActions.findPaymentForIndexLoggedInByUserId(user.getId()));
 
 		rd = req.getRequestDispatcher("indexLoggedIn.jsp");
 		rd.forward(req, resp);

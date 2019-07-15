@@ -26,7 +26,10 @@ public class DBGroupActions {
 		saveGroup(group);
 
 		List<UserPojo> users = DBUserActions.findUsersByName(inGroupParticipants);
-		users.add(DBUserActions.findUserById(inCreatorId));
+		UserPojo creator = DBUserActions.findUserById(inCreatorId);
+		if (!users.contains(creator)) {
+			users.add(creator);
+		}
 
 		logger.info("Creating group {} with participants {}", inGroupName, inGroupParticipants);
 		if (users.size() >= 2) {
@@ -93,6 +96,7 @@ public class DBGroupActions {
 		for (UserToGroupPojo userToGroupPojo : userToGroupList) {
 			groups.add(findGroupById(userToGroupPojo.getGroup().getGroupID()));
 		}
+		System.out.println("test");
 		return groups;
 	}
 

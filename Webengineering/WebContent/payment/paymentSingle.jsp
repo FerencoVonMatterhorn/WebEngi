@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean id="payment" class="main.java.pojos.PaymentPojo"
 	scope="session"></jsp:useBean>
+<jsp:useBean id="singlePaymentBean"
+	class="main.java.beans.SinglePaymentBean" scope="session"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!--  META-DATA  -->
@@ -72,7 +74,9 @@
 				<div class="container">
 					<!--  row Überschrift  -->
 					<div class="row justify-content-center">
-						<h1 class="pt-5 text-center"><c:out  value="${payment.getPaymentDescription()}" /></h1>
+						<h1 class="pt-5 text-center">
+							<c:out value="${payment.getPaymentDescription()}" />
+						</h1>
 					</div>
 					<!--  row Überschrift END  -->
 					<!--  row Table  -->
@@ -84,14 +88,23 @@
 									<th>% Anteil</th>
 									<th>Betrag</th>
 								</tr>
-								<tr>
-									<th><c:out value="${payment.getUsers()}" /></th>
-									<th>% Anteil</th>
-									<th><c:out value="${payment.getAmount()}" /></th>
-								</tr>
+
 							</thead>
 							<tbody>
-								<!--  ENDE DER DYNAMISCHEN ERSTELLUNG  -->
+								<c:forEach items="${singlePaymentBean.paymentToUserPojosList}"
+									var="paymentToUser">
+									<tr>
+										<td><c:out value="${singlePaymentBean.findUserNameByPtO(paymentToUser)}" /></td>
+										<td><c:out value="${paymentToUser.getPercentage()}" /></td>
+										<td><c:out value="${singlePaymentBean.getSingleAmount(paymentToUser)}" /></td>
+									</tr>
+								</c:forEach>
+								
+								<tr>
+										<td></td>
+										<td></td>
+										<td><c:out value="${singlePaymentBean.getPayment().getAmount()}" /></td>
+									</tr>
 							</tbody>
 						</table>
 					</div>

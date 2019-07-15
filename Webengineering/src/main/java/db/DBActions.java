@@ -13,6 +13,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import main.java.pojos.GroupPojo;
+import main.java.pojos.PaymentPojo;
 import main.java.pojos.PaymentToUserPojo;
 import main.java.pojos.UserPojo;
 import main.java.pojos.UserToGroupPojo;
@@ -38,6 +39,15 @@ public class DBActions extends MarkerUtil {
 		builder.delete(builder.length() - 2, builder.length() - 1);
 		group.setUsers(builder.toString());
 		return group;
+	}
+
+	public static List<UserPojo> getUsersToPayment(PaymentPojo payment) {
+		List<PaymentToUserPojo> userList = DBActions.getPaymentToUserPojosByPaymentId(payment.getPaymentID());
+		List<UserPojo> userPojoList = new ArrayList<>();
+		for (PaymentToUserPojo userToGroupPojo : userList) {
+			userPojoList.add(DBUserActions.findUserById(userToGroupPojo.getUser().getId()));
+		}
+		return userPojoList;
 	}
 
 	public static boolean register(String inFName, String inLName, String inUsername, String inEmail,
@@ -118,7 +128,7 @@ public class DBActions extends MarkerUtil {
 		return pojos;
 	}
 
-	private static List<PaymentToUserPojo> getPaymentToUserPojosByPaymentId(int paymentId) {
+	public static List<PaymentToUserPojo> getPaymentToUserPojosByPaymentId(int paymentId) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from PAYMENTTOUSER where PAYMENTID = :paymentID");
 		query.setParameter("paymentID", paymentId);

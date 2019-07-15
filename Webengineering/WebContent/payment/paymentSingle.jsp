@@ -72,8 +72,7 @@
 				<div class="container">
 					<!--  row Überschrift  -->
 					<div class="row justify-content-center">
-						<h1 class="pt-5 text-center">Hier kommt die
-							Zahlungsüberschrift mit JSP hin</h1>
+						<h1 class="pt-5 text-center"><c:out  value="${payment.getPaymentDescription()}" /></h1>
 					</div>
 					<!--  row Überschrift END  -->
 					<!--  row Table  -->

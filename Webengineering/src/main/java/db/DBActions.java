@@ -40,7 +40,8 @@ public class DBActions extends MarkerUtil {
 		return group;
 	}
 
-	public static boolean register(String inFName, String inLName, String inUsername, String inEmail, String inPassword) {
+	public static boolean register(String inFName, String inLName, String inUsername, String inEmail,
+			String inPassword) {
 		if (!DBUserActions.usernameOrEmailisPresent(inUsername, inEmail)) {
 			String[] iterationsSaltPassword = null;
 			try {
@@ -55,8 +56,8 @@ public class DBActions extends MarkerUtil {
 				user.setSalt(iterationsSaltPassword[1]);
 				user.setPassword(iterationsSaltPassword[2]);
 				DBUserActions.saveUser(user);
-				log.info(REGISTER_MARKER, "Succesfully Registered user: name - {} {}, username - {}, email - {}.", user.getFirstName(), user.getLastName(),
-						user.getUsername(), user.getEmail());
+				log.info(REGISTER_MARKER, "Succesfully Registered user: name - {} {}, username - {}, email - {}.",
+						user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail());
 				return true;
 			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
 				log.error("Error when registering.");
@@ -74,7 +75,8 @@ public class DBActions extends MarkerUtil {
 		}
 		if (user.isPresent()) {
 			try {
-				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(), user.get().getIterations())) {
+				if (PasswordUtil.validatePassword(inPassword, user.get().getPassword(), user.get().getSalt(),
+						user.get().getIterations())) {
 					log.info(LOGIN_MARKER, "User {} was succesfully logged in.", user.get().getUsername());
 					return user;
 				}

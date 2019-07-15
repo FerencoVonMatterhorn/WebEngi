@@ -23,6 +23,19 @@ public class DBPaymentActions {
 
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
+	public static PaymentPojo findPaymentById(int paymentID) {
+
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("from PAYMENTS where PAYMENTID = :paymentID");
+		query.setParameter("paymentID", paymentID);
+
+		PaymentPojo payment = (PaymentPojo) query.uniqueResult();
+
+		session.close();
+		return payment;
+
+	}
+
 	private static List<PaymentPojo> findPaymentsDescendingByUserId(int userID) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery(

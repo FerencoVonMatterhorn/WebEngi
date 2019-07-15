@@ -57,8 +57,9 @@ public class DBGroupActions {
 
 	public static List<GroupPojo> getGroupsfromUser(int userID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("from GROUPS where GROUPID in (from USERTOGROUP where USERID = :UserID)");
+		Query<?> query = session.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
 		query.setParameter("UserID", userID);
+		System.out.println(userID);
 		List<GroupPojo> userToGroupList = (List<GroupPojo>) query.getResultList();
 		session.close();
 		return userToGroupList;

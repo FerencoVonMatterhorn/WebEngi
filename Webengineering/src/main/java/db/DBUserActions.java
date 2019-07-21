@@ -1,6 +1,7 @@
 package main.java.db;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,6 +82,23 @@ public class DBUserActions {
 			users.add(userStrArr[i]);
 		}
 		return users;
+	}
+
+	/**
+	 * Do not use this method, throws Hibernate error. Hibernate has some errors
+	 * since v5
+	 */
+	@Deprecated
+	public static List<String> searchForUserForPayment(String inUsername, String inGroupId) {
+		System.out.println(inUsername);
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery(
+				"SELECT u.username FROM USERS u WHERE u.id IN (SELECT utg.user FROM USERTOGROUP utg WHERE utg.group = :groupId AND utg.user IN(SELECT iu.id from USERS iu where iu.username LIKE :username))");
+		query.setParameter("username", inUsername + "%");
+		query.setParameter("groupId", inGroupId);
+		System.out.println(Arrays.toString(query.getResultList().toArray()));
+		session.close();
+		return null;
 	}
 
 	public static List<String> searchForUser(String inSearchQuery) {

@@ -36,7 +36,7 @@ public class CreatePaymentServlet extends HttpServlet {
 		}
 
 		String userId = (String) req.getSession().getAttribute("UserID");
-		String groupId = "332"; // TODO: get the groupID?
+		String groupId = "1011"; // TODO: get the groupID?
 
 		modalValues.put("userId", userId);
 		modalValues.put("groupId", groupId);

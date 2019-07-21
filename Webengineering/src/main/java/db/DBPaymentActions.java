@@ -9,6 +9,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import main.java.pojos.GroupPojo;
+import main.java.pojos.MonthlyPaymentPojo;
+import main.java.pojos.MonthlyPaymentToGroupPojo;
+import main.java.pojos.MonthlyPaymentToPaymentPojo;
 import main.java.pojos.PaymentPojo;
 import main.java.pojos.PaymentToGroupPojo;
 import main.java.pojos.PaymentToUserPojo;
@@ -95,7 +99,6 @@ public class DBPaymentActions {
 		payment.setPaymentDescription(modalValues.get("paymentdescription"));
 		savePayment(payment);
 
-		// TODO: prozente beachten?
 		Map<String, String> users = InputDataValidationUtil.getUserStrings(modalValues);
 		for (String userString : users.keySet()) {
 			Optional<UserPojo> user = DBUserActions.findUserByName(modalValues.get(userString));
@@ -111,6 +114,81 @@ public class DBPaymentActions {
 		paymentToGroup.setGroup(DBGroupActions.findGroupById(Integer.valueOf(modalValues.get("groupId"))));
 		paymentToGroup.setPayment(payment);
 		savePaymentToGroup(paymentToGroup);
+
+		MonthlyPaymentPojo mpp = getMonthlyPaymentById(getRecentMonthlyPaymentbyGroupId(Integer.valueOf(modalValues.get("groupId"))));
+		MonthlyPaymentToPaymentPojo mptpp = new MonthlyPaymentToPaymentPojo();
+		mptpp.setMonthlyPayment(mpp);
+		mptpp.setPayment(payment);
+		saveMonthlyPaymentToPayment(mptpp);
+	}
+
+	private static MonthlyPaymentPojo getMonthlyPaymentById(int inrecentMonthlyPaymentID) {
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("from MONTHLYPAYMENTS WHERE MONTHLYPAYMENTID = :MonthlyPaymentId");
+		query.setParameter("MonthlyPaymentId", inrecentMonthlyPaymentID);
+		MonthlyPaymentPojo mpp = (MonthlyPaymentPojo) query.uniqueResult();
+		session.close();
+		return mpp;
+	}
+
+	public static int getRecentMonthlyPaymentbyGroupId(int groupID) {
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("select monthlyPayment from MONTHLYPAYMENTTOGROUP where GROUPID = :groupID ORDER BY ID DESC");
+		query.setParameter("groupID", groupID);
+		int monthlyID = query.getFirstResult();
+		session.close();
+		return monthlyID;
+	}
+
+	public static void updateMonthlyPayment(int inUserId) {
+		List<GroupPojo> groups = DBGroupActions.findAllGroupsByUserId(inUserId);
+		for (GroupPojo groupPojo : groups) {
+			MonthlyPaymentPojo oldMonthlyPayment = getMonthlyPaymentById(getRecentMonthlyPaymentbyGroupId(groupPojo.getGroupID()));
+			if (oldMonthlyPayment == null) {
+				oldMonthlyPayment = new MonthlyPaymentPojo();
+				oldMonthlyPayment.setDateCreated(OffsetDateTime.now());
+				oldMonthlyPayment.setDateUntil(OffsetDateTime.now().plusMonths(1).plusDays(7));
+				MonthlyPaymentToGroupPojo mptg = new MonthlyPaymentToGroupPojo();
+				mptg.setGroup(groupPojo);
+				mptg.setMonthlyPayment(oldMonthlyPayment);
+				saveMonthlyPayment(oldMonthlyPayment);
+				saveMonthlyPaymentToGroup(mptg);
+			}
+			if (!oldMonthlyPayment.getDateCreated().getMonth().equals(OffsetDateTime.now().getMonth())) {
+				MonthlyPaymentPojo newMonthlyPayment = new MonthlyPaymentPojo();
+				newMonthlyPayment.setDateCreated(OffsetDateTime.now());
+				newMonthlyPayment.setDateUntil(OffsetDateTime.now().plusMonths(1).plusDays(7));
+				MonthlyPaymentToGroupPojo mptg = new MonthlyPaymentToGroupPojo();
+				mptg.setMonthlyPayment(newMonthlyPayment);
+				mptg.setGroup(groupPojo);
+				saveMonthlyPayment(newMonthlyPayment);
+				saveMonthlyPaymentToGroup(mptg);
+			}
+		}
+	}
+
+	private static void saveMonthlyPaymentToGroup(MonthlyPaymentToGroupPojo inMonthlyPaymentToGroup) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(inMonthlyPaymentToGroup);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	private static void saveMonthlyPayment(MonthlyPaymentPojo inMonthlyPaymentPojo) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(inMonthlyPaymentPojo);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	private static void saveMonthlyPaymentToPayment(MonthlyPaymentToPaymentPojo inMonthlyPaymentToPayment) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(inMonthlyPaymentToPayment);
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	private static void savePaymentToGroup(PaymentToGroupPojo inPaymentToGroup) {

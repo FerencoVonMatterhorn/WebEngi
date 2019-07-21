@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import main.java.db.DBActions;
+import main.java.db.DBPaymentActions;
 import main.java.pojos.UserPojo;
 
 @SuppressWarnings("serial")
@@ -34,9 +35,12 @@ public class LoginServlet extends HttpServlet {
 			if (oldSession != null) {
 				oldSession.invalidate();
 			}
+			// User logged in
 			HttpSession newSession = req.getSession(true);
 			newSession.setMaxInactiveInterval(LOGIN_TIME);
 			newSession.setAttribute("userID", user.get().getId());
+			// MonthlyPaymentUpdate
+			DBPaymentActions.updateMonthlyPayment(user.get().getId());
 			resp.sendRedirect(req.getContextPath() + "/official/IndexLoggedIn");
 		} else {
 			RequestDispatcher rd;

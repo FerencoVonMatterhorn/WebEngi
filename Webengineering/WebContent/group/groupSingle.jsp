@@ -137,7 +137,7 @@
 									<div class="row mx-1 pb-3 text-center">
 										<!-- LEFT -->
 										<div class="col-md-* mr-1" id="leftModal">
-											<input type="text" class="form-control autocomplete" id="P1" name="P1" placeholder="Name">
+											<input type="text" class="form-control autocomplete" id="P1" name="P1" placeholder="Name" onkeyup="searchUserForPayment(this, this.value)">
 										</div>
 										<!-- RIGHT -->
 										<div class="col-md-*" id="rightModal">
@@ -170,7 +170,10 @@
 	</div>
 	<script type="text/javascript">
 		var inp = document.getElementById("P1");
-		searchUserForPayment(inp, inp.value);
+		inp.addEventListener("onkeyup", function(e) {
+			alert("TEST")
+			//searchUserForPayment(inp, inp.value);
+		});
 	</script>
 </body>
 </html>

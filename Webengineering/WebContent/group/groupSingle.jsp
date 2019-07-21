@@ -25,6 +25,14 @@
 	crossorigin="anonymous">
 </head>
 <body>
+
+	<script language="javascript" type="text/javascript">
+					
+					function setMonthlyPaymentID(monthlyPaymentID){
+						document.getElementById('monthlyPaymentID').value = monthlyPaymentID;
+					}
+	</script>
+
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!--  Navbar Toggle  -->
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
@@ -84,48 +92,36 @@
 			<div class="backgroundMid">
 				<div class="container">
 					<div class="overviewHeader">
-						<h1><u>Gruppendaten:</u></h1>
+						<h1>
+							<u>Gruppendaten:</u>
+						</h1>
 						<p>
-							Name: <c:out value="${singleGroup.getName()}"></c:out>
-							<br>
-							Beschreibung: <c:out value="${singleGroup.getDescription()}"></c:out>
-							<br>
-							Teilnehmer: <c:out value="${singleGroup.getUsers()}"></c:out>
-							<br>
-							<br>
-							<button type="button">Teilnehmer Hinzufügen</button>
+							Name:
+							<c:out value="${singleGroup.getName()}"></c:out>
+							<br> Beschreibung:
+							<c:out value="${singleGroup.getDescription()}"></c:out>
+							<br> Teilnehmer:
+							<c:out value="${singleGroup.getUsers()}"></c:out><br/>
+							<button class="btn btn-success" type="button" data-toggle="modal"
+							data-target="#newPaymentModal">Neue Zahlung</button>
 
 						</p>
 					</div>
 					<div class="widget justify-content-center">
-						<h5>Letzte Zahlungen der Gruppe:</h5>
-						<p class="singlePaymentFromOverview">
-							Beteiligte: CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
-							<button type="Button">Zur Zahlung</button>
-							<br>
-						</p>
-						<p class="singlePaymentFromOverview">
-							Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
-							<button type="Button">Zur Zahlung</button>
-							<br>
-						</p>
-						<p class="singlePaymentFromOverview">
-							Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
-							<button type="Button">Zur Zahlung</button>
-							<br>
-						</p>
-						<p class="singlePaymentFromOverview">
-							Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
-							<button type="Button">Zur Zahlung</button>
-							<br>
-						</p>
-						<p class="singlePaymentFromOverview">
-							Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
-							<button type="Button">Zur Zahlung</button>
-						</p>
-						<button class="btn btn-success" type="button" data-toggle="modal"
-							data-target="#newPaymentModal">Neue Zahlung</button>
 
+						<h5>Monatszahlungen der Gruppe:</h5>
+						<form action="../payment/MonthlyPayment">
+							<input type="hidden" name="monthlyPaymentID"
+								id="monthlyPaymentID" />
+							<c:forEach items="${singleGroup.getMonthlyPayments() }" var="monthlyPayment">
+								<p class="singlePaymentFromOverview">
+									Erstellungs Datum: <c:out value="${monthlyPayment.getDateCreated() }" />  <br>
+									Zu Zahlen bis: <c:out value="${monthlyPayment.getDateUntil() }" />  <br>
+									<button type="submit" onclick="setMonthlyPaymentID(${monthlyPayment.getMonthlyPaymentID()})">Zur Zahlung</button>
+									<br>
+								</p>
+							</c:forEach>
+						</form>
 
 					</div>
 				</div>

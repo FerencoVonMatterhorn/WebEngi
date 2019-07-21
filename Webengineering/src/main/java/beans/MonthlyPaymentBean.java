@@ -18,9 +18,10 @@ public class MonthlyPaymentBean {
 	private List<PaymentPojo> payments;
 	private List<PaymentToUserPojo> paymentToUser = new ArrayList<>();
 
-	public MonthlyPaymentBean(int groupID, int userID) {
+	public MonthlyPaymentBean(int monthlyPaymentID, int userID) {
 
-		int monthlyPaymentID = DBPaymentActions.getRecentMonthlyPaymentID(groupID);
+		// int monthlyPaymentID =
+		// DBPaymentActions.getRecentMonthlyPaymentID(groupID);
 
 		this.payments = DBPaymentActions.getPaymentsForMonthlyPaymentByUserID(monthlyPaymentID, userID);
 

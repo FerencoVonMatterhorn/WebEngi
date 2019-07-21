@@ -21,10 +21,13 @@ public class MonthlyPaymentServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int groupID = 332;// TODO: IDS ÜBERNEHMEN
-		int userID = 114;
+		// int groupID = 332;// TODO: IDS ÜBERNEHMEN
 
-		MonthlyPaymentBean bean = new MonthlyPaymentBean(groupID, userID);
+		int userID = (int) req.getSession().getAttribute("userID");
+
+		int monthlyPaymentID = Integer.parseInt(req.getParameter("monthlyPaymentID"));
+
+		MonthlyPaymentBean bean = new MonthlyPaymentBean(monthlyPaymentID, userID);
 
 		req.setAttribute("monthlyPayment", bean);
 

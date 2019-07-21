@@ -1,8 +1,6 @@
 package main.java.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,15 +25,16 @@ public class SingleGroupServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		GroupPojo group = DBActions.getUsersToGroup(DBGroupActions.findGroupById(Integer.parseInt(req.getParameter("groupID"))));
-		SingleGroupBean singleBean = new SingleGroupBean();
+
+		GroupPojo group = DBActions
+				.getUsersToGroup(DBGroupActions.findGroupById(Integer.parseInt(req.getParameter("groupID"))));
+		SingleGroupBean singleBean = new SingleGroupBean(group.getGroupID());
 		singleBean.setName(group.getGroupName());
 		singleBean.setDescription(group.getGroupDescription());
 		singleBean.setUsers(group.getUsers());
-		
+
 		req.setAttribute("singleGroup", singleBean);
-		RequestDispatcher dispatcher =  req.getRequestDispatcher("groupSingle.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("groupSingle.jsp");
 		dispatcher.forward(req, resp);
 	}
 

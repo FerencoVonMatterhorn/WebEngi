@@ -179,19 +179,24 @@ public class DBPaymentActions {
 		Query<?> query = session.createQuery(
 				"select monthlyPayment from MONTHLYPAYMENTTOGROUP where GROUPID = :groupID ORDER BY ID DESC");
 		query.setParameter("groupID", groupID);
-		int monthlyID = ((MonthlyPaymentPojo) query.getResultList().get(0)).getMonthlyPaymentID();
-		session.close();
+		try {
+			int monthlyID = ((MonthlyPaymentPojo) query.getResultList().get(0)).getMonthlyPaymentID();
+			System.out.println(monthlyID);
+			session.close();
+			return monthlyID;
+		} catch (IndexOutOfBoundsException e) {
+			session.close();
+			return -1;
+		}
 
-		System.out.println(monthlyID);
-		return monthlyID;
 	}
 
 	public static void updateMonthlyPayment(int inUserId) {
 		List<GroupPojo> groups = DBGroupActions.findAllGroupsByUserId(inUserId);
 		for (GroupPojo groupPojo : groups) {
-			MonthlyPaymentPojo oldMonthlyPayment = getMonthlyPaymentById(
-					getRecentMonthlyPaymentbyGroupId(groupPojo.getGroupID()));
-			if (oldMonthlyPayment == null) {
+			int monthlyPaymentID = getRecentMonthlyPaymentbyGroupId(groupPojo.getGroupID());
+
+			if (monthlyPaymentID == -1) {
 				MonthlyPaymentPojo newPojo = new MonthlyPaymentPojo();
 				newPojo.setDateCreated(OffsetDateTime.now());
 				newPojo.setDateUntil(OffsetDateTime.now().plusMonths(1).plusDays(7));
@@ -200,7 +205,8 @@ public class DBPaymentActions {
 				mptg.setMonthlyPayment(newPojo);
 				saveMonthlyPayment(newPojo);
 				saveMonthlyPaymentToGroup(mptg);
-			} else if (!oldMonthlyPayment.getDateCreated().getMonth().equals(OffsetDateTime.now().getMonth())) {
+			} else if (!getMonthlyPaymentById(monthlyPaymentID).getDateCreated().getMonth()
+					.equals(OffsetDateTime.now().getMonth())) {
 				MonthlyPaymentPojo newMonthlyPayment = new MonthlyPaymentPojo();
 				newMonthlyPayment.setDateCreated(OffsetDateTime.now());
 				newMonthlyPayment.setDateUntil(OffsetDateTime.now().plusMonths(1).plusDays(7));

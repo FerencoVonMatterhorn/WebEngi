@@ -2,10 +2,6 @@ package main.java.db;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-<<<<<<< HEAD
-import java.util.Enumeration;
-=======
->>>>>>> branch 'master' of https://github.com/FerencoVonMatterhorn/WebEngi.git
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -122,7 +118,7 @@ public class DBUserActions {
 
 	public static void updateProfile(Map<String, String> modalValues) {
 		UserPojo user = findUserById(Integer.valueOf(modalValues.get("userID")));
-		
+
 		for (String input : modalValues.keySet()) {
 			System.err.println(modalValues.get(input));
 			if (!modalValues.get(input).isEmpty()) {
@@ -132,13 +128,13 @@ public class DBUserActions {
 					break;
 				case "lastName":
 					user.setLastName(modalValues.get(input));
-				break;
+					break;
 				case "userName":
-				user.setUsername(modalValues.get(input));
-				break;
+					user.setUsername(modalValues.get(input));
+					break;
 				case "eMail":
-				user.setEmail(modalValues.get(input));
-				break;
+					user.setEmail(modalValues.get(input));
+					break;
 				}
 			}
 		}

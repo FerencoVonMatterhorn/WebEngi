@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean id="singleGroup" class="main.java.beans.SingleGroupBean" scope="session"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,13 +44,15 @@
 			<c:choose>
 				<c:when test="${empty userID}">
 					<!-- Registrieren -->
-					<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i class="fas fa-sign-in-alt"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="register.jsp">Registrieren <i class="fas fa-sign-in-alt"></i>
+					</a></li>
 				</c:when>
 				<c:otherwise>
 					<!--  Profil  -->
 					<li class="nav-item"><a class="nav-link" href="../user/profile">Profil <i class="fas fa-user"></i></a></li>
 					<!-- Abmelden TODO: abmelden Servlet-->
-					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="../signOut">Abmelden <i class="fas fa-sign-in-alt"></i>
+					</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -64,49 +65,48 @@
 	<div class="backgroundSide">
 		<div class="container-fluid">
 			<div class="backgroundMid">
-
-				<div class="overView group bg-dark">
-					<h5>Gruppendaten:</h5>
-					<p>
-						<c:out value="${singleGroup.name}"></c:out>
-						<br>
-						<c:out value="${singleGroup.description}"></c:out>
-						<br>
-						<c:out value="${singleGroup.users}"></c:out>
-						<br>
-						<button type="button">Teilnehmer Hinzufügen</button>
-
-					</p>
-				</div>
-
-				<div class="overView payment bg-dark">
-
-					<h5>Letzte Zahlungen der Gruppe:</h5>
-					<p class="singlePaymentFromOverview">
-						Beteiligte: CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
-						<button type="Button">Zur Zahlung</button>
-						<br>
-					</p>
-					<p class="singlePaymentFromOverview">
-						Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
-						<button type="Button">Zur Zahlung</button>
-						<br>
-					</p>
-					<p class="singlePaymentFromOverview">
-						Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
-						<button type="Button">Zur Zahlung</button>
-						<br>
-					</p>
-					<p class="singlePaymentFromOverview">
-						Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
-						<button type="Button">Zur Zahlung</button>
-						<br>
-					</p>
-					<p class="singlePaymentFromOverview">
-						Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
-						<button type="Button">Zur Zahlung</button>
-					</p>
-					<button class="btn btn-success" type="button" data-toggle="modal" data-target="#newPaymentModal">Neue Zahlung</button>
+				<div class="container">
+					<div class="overviewHeader">
+						<h1>
+							<c:out value="${singleGroup.getName()}"></c:out>
+							:
+						</h1>
+						<p>
+							<br> Beschreibung:
+							<c:out value="${singleGroup.getDescription()}"></c:out>
+							<br> Teilnehmer:
+							<c:out value="${singleGroup.getUsers()}"></c:out>
+							<br> <br>
+						</p>
+					</div>
+					<div class="widget justify-content-center">
+						<h5>Letzte Zahlungen der Gruppe:</h5>
+						<p class="singlePaymentFromOverview">
+							Beteiligte: CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
+							<button type="Button">Zur Zahlung</button>
+							<br>
+						</p>
+						<p class="singlePaymentFromOverview">
+							Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
+							<button type="Button">Zur Zahlung</button>
+							<br>
+						</p>
+						<p class="singlePaymentFromOverview">
+							Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
+							<button type="Button">Zur Zahlung</button>
+							<br>
+						</p>
+						<p class="singlePaymentFromOverview">
+							Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
+							<button type="Button">Zur Zahlung</button>
+							<br>
+						</p>
+						<p class="singlePaymentFromOverview">
+							Beteiligte:CK, CK2, CK3, CK4, CK5, CK6 <br> Betrag:500€ <br>
+							<button type="Button">Zur Zahlung</button>
+						</p>
+						<button class="btn btn-success" type="button" data-toggle="modal" data-target="#newPaymentModal">Neue Zahlung</button>
+					</div>
 				</div>
 				<!-- modal zahlung start -->
 				<div class="modal fade" id="newPaymentModal">
@@ -138,7 +138,7 @@
 									<div class="row mx-1 pb-3 text-center">
 										<!-- LEFT -->
 										<div class="col-md-* mr-1" id="leftModal">
-											<input type="text" class="form-control autocomplete" id="P1" name="P1" placeholder="Name" onkeyup="searchUserForPayment(this, this.value)">
+											<input type="text" class="form-control autocomplete" id="P1" name="P1" placeholder="Name">
 										</div>
 										<!-- RIGHT -->
 										<div class="col-md-*" id="rightModal">
@@ -171,11 +171,7 @@
 	</div>
 	<script type="text/javascript">
 		var inp = document.getElementById("P1");
-		inp.addEventListener("onkeyup", function(e) {
-			alert("TEST")
-			//searchUserForPayment(inp, inp.value);
-		});
+		searchUserForPayment(inp, inp.value);
 	</script>
 </body>
 </html>
-

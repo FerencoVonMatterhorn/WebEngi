@@ -145,22 +145,20 @@ public class DBPaymentActions {
 		for (GroupPojo groupPojo : groups) {
 			MonthlyPaymentPojo oldMonthlyPayment = getMonthlyPaymentById(getRecentMonthlyPaymentbyGroupId(groupPojo.getGroupID()));
 			if (oldMonthlyPayment == null) {
-				oldMonthlyPayment = new MonthlyPaymentPojo();
-				oldMonthlyPayment.setDateCreated(OffsetDateTime.now());
-				oldMonthlyPayment.setDateUntil(OffsetDateTime.now().plusMonths(1).plusDays(7));
+				MonthlyPaymentPojo newPojo = new MonthlyPaymentPojo();
+				newPojo.setDateCreated(OffsetDateTime.now());
+				newPojo.setDateUntil(OffsetDateTime.now().plusMonths(1).plusDays(7));
 				MonthlyPaymentToGroupPojo mptg = new MonthlyPaymentToGroupPojo();
 				mptg.setGroup(groupPojo);
-				mptg.setMonthlyPayment(oldMonthlyPayment);
-				saveMonthlyPayment(oldMonthlyPayment);
+				mptg.setMonthlyPayment(newPojo);
+				saveMonthlyPayment(newPojo);
 				saveMonthlyPaymentToGroup(mptg);
-			}
-			if (!oldMonthlyPayment.getDateCreated().getMonth().equals(OffsetDateTime.now().getMonth())) {
+			} else if (!oldMonthlyPayment.getDateCreated().getMonth().equals(OffsetDateTime.now().getMonth())) {
 				MonthlyPaymentPojo newMonthlyPayment = new MonthlyPaymentPojo();
 				newMonthlyPayment.setDateCreated(OffsetDateTime.now());
 				newMonthlyPayment.setDateUntil(OffsetDateTime.now().plusMonths(1).plusDays(7));
 				MonthlyPaymentToGroupPojo mptg = new MonthlyPaymentToGroupPojo();
 				mptg.setMonthlyPayment(newMonthlyPayment);
-				mptg.setGroup(groupPojo);
 				saveMonthlyPayment(newMonthlyPayment);
 				saveMonthlyPaymentToGroup(mptg);
 			}

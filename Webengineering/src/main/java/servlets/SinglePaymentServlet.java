@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.beans.PaymentOverviewBean;
 import main.java.beans.SinglePaymentBean;
+import main.java.db.DBPaymentActions;
 import main.java.pojos.PaymentPojo;
 
 @WebServlet("/payment/SinglePayment")
@@ -23,19 +23,21 @@ public class SinglePaymentServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<<<<<<< HEAD
 		req.setCharacterEncoding("UTF-8");
 		PaymentOverviewBean bean = (PaymentOverviewBean) req.getSession().getAttribute("paymentOverview");
 
+=======
+>>>>>>> branch 'master' of https://github.com/FerencoVonMatterhorn/WebEngi.git
 		String paymentIDString = req.getParameter("paymentID");
 
 		int neededPaymentID = Integer.parseInt(paymentIDString);
 
-		for (PaymentPojo payment : bean.getPayments()) {
-			if (payment.getPaymentID() == neededPaymentID) {
-				req.getSession().setAttribute("payment", payment);
-				req.getSession().setAttribute("singlePaymentBean", new SinglePaymentBean(payment));
-			}
-		}
+		PaymentPojo paymentPojo = DBPaymentActions.findPaymentById(neededPaymentID);
+
+		req.getSession().setAttribute("payment", paymentPojo);
+
+		req.getSession().setAttribute("singlePaymentBean", new SinglePaymentBean(paymentPojo));
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("paymentSingle.jsp");
 

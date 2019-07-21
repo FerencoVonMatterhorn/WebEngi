@@ -21,13 +21,13 @@ function ValuesAreNull(a, b, c) {
 
 function PercentageIsCorrect() {
 	var i = 1;
-	var fieldsTotalValue = 0; 
+	var fieldsTotalValue = 0;
 	do {
-		fieldsTotalValue += parseInt(document.getElementById("P" + i + "P").value); 
+		fieldsTotalValue += parseInt(document.getElementById("P" + i + "P").value);
 		i++;
 	} while (document.getElementById("P" + i + "P") != null);
 
-	if(fieldsTotalValue != 100){
+	if (fieldsTotalValue != 100) {
 		return false;
 	}
 	return true;
@@ -41,7 +41,7 @@ function addUser() {
 	var userNum = left.childNodes.length - 1;
 
 	newUser = document.createElement("input");
-	newUser.setAttribute("id", userNum);
+	newUser.setAttribute("id", "P" + userNum);
 	newUser.setAttribute("name", "P" + userNum);
 	newUser.setAttribute("class", "mt-2 form-control autocomplete");
 	newUser.setAttribute("type", "text");

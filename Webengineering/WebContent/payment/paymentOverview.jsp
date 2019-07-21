@@ -38,6 +38,7 @@
 						document.getElementById('paymentIDHidden').value = paymentId;
 					}
 	</script>
+
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!--  Navbar Toggle  -->
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">

@@ -42,8 +42,7 @@
 					<li class="nav-item"><a class="nav-link"
 						href="../official/IndexLoggedIn">Home <i class="fas fa-home"></i></a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="../group/groupOverview">Gruppen <i
-							class="fas fa-users"></i></a></li>
+						href="../group/groupOverview">Gruppen <i class="fas fa-users"></i></a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../payment/paymentOverview">Zahlungen <i
 							class="fas fa-receipt"></i></a></li>
@@ -81,7 +80,7 @@
 					<!--  row Überschrift END  -->
 					<!--  row Table  -->
 					<div class="row col-10 mx-auto mt-5 mb-5">
-						<table class="table table-hover table-striped">
+						<table class="table table-striped bg-dark text-white">
 							<thead>
 								<tr>
 									<th>Beteiligter</th>
@@ -94,17 +93,20 @@
 								<c:forEach items="${singlePaymentBean.paymentToUserPojosList}"
 									var="paymentToUser">
 									<tr>
-										<td><c:out value="${singlePaymentBean.findUserNameByPtO(paymentToUser)}" /></td>
+										<td><c:out
+												value="${singlePaymentBean.findUserNameByPtO(paymentToUser)}" /></td>
 										<td><c:out value="${paymentToUser.getPercentage()}" /></td>
-										<td><c:out value="${singlePaymentBean.getSingleAmount(paymentToUser)}" /></td>
+										<td><c:out
+												value="${singlePaymentBean.getSingleAmount(paymentToUser)}" /></td>
 									</tr>
 								</c:forEach>
-								
+
 								<tr>
-										<td></td>
-										<td></td>
-										<td><c:out value="${singlePaymentBean.getPayment().getAmount()}" /></td>
-									</tr>
+									<td></td>
+									<td></td>
+									<td><c:out
+											value="${singlePaymentBean.getPayment().getAmount()}" /></td>
+								</tr>
 							</tbody>
 						</table>
 					</div>

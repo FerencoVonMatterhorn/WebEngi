@@ -136,7 +136,6 @@ public class DBActions {
 		List<PaymentToUserPojo> pojos = (List<PaymentToUserPojo>) query.getResultList();
 		session.close();
 		return pojos;
-
 	}
 
 	static String getUsersToPayment(int paymentId) {
@@ -151,6 +150,18 @@ public class DBActions {
 		}
 		builder.delete(builder.length() - 2, builder.length() - 1);
 		return builder.toString();
+	}
+
+	public static PaymentToUserPojo getPaymentToUserPojosByPaymentIdAndUserID(int paymentID, int userID) {
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("from PAYMENTTOUSER where PAYMENTID = :paymentID AND USERID = :userID");
+		query.setParameter("paymentID", paymentID);
+		query.setParameter("userID", userID);
+
+		PaymentToUserPojo pojo = (PaymentToUserPojo) query.uniqueResult();
+
+		session.close();
+		return pojo;
 	}
 
 }

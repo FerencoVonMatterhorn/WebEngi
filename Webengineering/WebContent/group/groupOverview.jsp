@@ -21,6 +21,14 @@
 	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
 	crossorigin="anonymous">
+<!-- JavaScript -->	
+<script language="javascript" type="text/javascript">
+					
+					function setGroupID(groupID){
+						document.getElementById('groupIDHidden').value = groupID;
+					}
+	</script>
+<!-- JavaScript -->	
 </head>
 <body>
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!--  Navbar Toggle  -->
@@ -70,41 +78,40 @@
 			<div class="backgroundMid">
 				<div class="container ">
 					<div class="overviewHeader">
-						<h1>Gruppenübersicht</h1>
-						<p>This is an example to show the potential of an offcanvas
-							layout pattern in Bootstrap. Try some responsive-range viewport
-							sizes to see it in action.</p>
-					</div>
-					<div class="row justify-content-center">
-						<c:forEach items="${groupOverView.groups}" var="group">
+						<h1>
+							<u>Gruppenübersicht</u>
+						</h1>
+						<p>Hier ist eine Übersicht aller Gruppen, an denen sie
+							Teilhaben</p>
 
-							<div class="widget col-lg-10">
-								<div>
-									<h2>
-										<c:out value="${group.getGroupName()}" />
-									</h2>
-									<hr>
-									<p>
-										Beschreibung: <br>
-										<c:out value="${group.getGroupDescription()}" />
-									</p>
-									<hr>
-									<p>
-										Teilnehmer: <br>
-										<c:out value="${group.getUsers()}" />
-									</p>
-									<form action="../group/singleGroup" method="post">
-										<input type="hidden" name="groupID" id="goupIDHidden" />
-										<div class="text-center">
-											<button type="submit"
-												onclick="setGroupID(${group.getGroupID()})"
-												class="btn btn-success">Mehr anzeigen</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</c:forEach>
 					</div>
+					<form action="../group/singlegroup">
+						<div class="row justify-content-center">
+							<input type="hidden" name="groupID" id="groupIDHidden" />
+							<c:forEach items="${groupOverView.groups}" var="group">
+								<div class="widget col-lg-10">
+									<div>
+										<h2>
+											<c:out value="${group.getGroupName()}" />
+										</h2>
+										<hr>
+										<p>
+											Beschreibung: <br>
+											<c:out value="${group.getGroupDescription()}" />
+										</p>
+										<hr>
+										<p>
+											Teilnehmer: <br>
+											<c:out value="${group.getUsers()}" />
+										</p>
+									</div>
+									<button type="submit"
+										onclick="setGroupID(${group.getGroupID()})"
+										class="btn btn-success">Mehr anzeigen</button>
+								</div>
+							</c:forEach>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

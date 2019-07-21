@@ -54,8 +54,7 @@
 					<li class="nav-item"><a class="nav-link"
 						href="../official/IndexLoggedIn">Home <i class="fas fa-home"></i></a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="../group/groupOverview">Gruppen <i
-							class="fas fa-users"></i></a></li>
+						href="../group/groupOverview">Gruppen <i class="fas fa-users"></i></a></li>
 					<li class="nav-item"><a class="nav-link active" href="#">Zahlungen
 							<i class="fas fa-receipt"></i>
 					</a></li>
@@ -83,8 +82,12 @@
 	<div class="backgroundSide">
 		<div class="container-fluid">
 			<div class="backgroundMid">
-				<div class="container pt-5">
-
+				<div class="container ">
+					<div class="overviewHeader">
+						<h1><u>Zahlungen</u></h1>
+						<p>Hier ist eine Übersicht aller Zahlungen, an denen sie
+							Teilhaben</p>
+					</div>
 					<form action="../payment/SinglePayment">
 						<div class="row justify-content-center">
 							<input type="hidden" name="paymentID" id="paymentIDHidden" />

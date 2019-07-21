@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.db.DBActions;
 import main.java.db.DBUserActions;
 import main.java.pojos.UserPojo;
 

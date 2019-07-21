@@ -28,18 +28,12 @@ public class PaymentOverviewBean {
 
 	public void calculatePages(int userID) {
 		long paymentsAmount = DBPaymentActions.getPaymentAmount(userID);
-
-		System.out.println(paymentsAmount);// TODO remove this or log it.
-
 		pages = paymentsAmount % itemsPerPage == 0 ? paymentsAmount / itemsPerPage : paymentsAmount / itemsPerPage + 1;
 	}
 
 	public void getPaymentsForPage(int userID) {
 		int limitstart = shownPage == 1 ? 0 : itemsPerPage * (shownPage - 1);
-
 		payments = DBPaymentActions.getPaymentsForSpecificPage(limitstart, itemsPerPage, userID);
-		System.out.println(payments.size()); // TODO remove this or log it.
-
 	}
 
 }

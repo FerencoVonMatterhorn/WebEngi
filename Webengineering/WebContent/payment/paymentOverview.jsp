@@ -83,8 +83,12 @@
 	<div class="backgroundSide">
 		<div class="container-fluid">
 			<div class="backgroundMid">
-				<div class="container pt-5">
-
+				<div class="container ">
+					<div class="overviewHeader">
+						<h1><u>Zahlungen</u></h1>
+						<p>Hier ist eine Übersicht aller Zahlungen, an denen sie
+							Teilhaben</p>
+					</div>
 					<form action="../payment/SinglePayment">
 						<div class="row justify-content-center">
 							<input type="hidden" name="paymentID" id="paymentIDHidden" />

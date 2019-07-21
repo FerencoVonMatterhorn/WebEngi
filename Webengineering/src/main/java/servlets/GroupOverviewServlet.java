@@ -1,6 +1,8 @@
 package main.java.servlets;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,15 +29,15 @@ public class GroupOverviewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd;
 		int userID = (int) req.getSession().getAttribute("userID");
-		
+
 		GroupOverViewBean gOBean = new GroupOverViewBean();
-		gOBean.setGroups(DBGroupActions.getGroupsForGroupOverview(userID));
-		for (GroupPojo group: gOBean.getGroups()) {
+		List<GroupPojo> groups = DBGroupActions.getGroupsForGroupOverview(userID);
+		Collections.reverse(groups);
+		gOBean.setGroups(groups);
+		for (GroupPojo group : gOBean.getGroups()) {
 			group.setUsers(DBActions.getUsersToGroup(group).getUsers());
 		}
-		System.out.println(gOBean.getGroups().get(0).getUsers());
 		req.setAttribute("groupOverView", gOBean);
-		// TODO: check if empty s. paymentoverview
 		rd = req.getRequestDispatcher("groupOverview.jsp");
 		rd.forward(req, resp);
 	}

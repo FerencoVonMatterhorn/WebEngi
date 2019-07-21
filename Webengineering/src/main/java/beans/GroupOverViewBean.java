@@ -17,7 +17,7 @@ public class GroupOverViewBean {
 	private int shownPage;
 
 	public GroupOverViewBean() {
-
+		// may be empty.
 	}
 
 }

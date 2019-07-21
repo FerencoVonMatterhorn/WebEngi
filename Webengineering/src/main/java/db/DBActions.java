@@ -136,7 +136,6 @@ public class DBActions {
 		List<PaymentToUserPojo> pojos = (List<PaymentToUserPojo>) query.getResultList();
 		session.close();
 		return pojos;
-
 	}
 
 	static String getUsersToPayment(int paymentId) {

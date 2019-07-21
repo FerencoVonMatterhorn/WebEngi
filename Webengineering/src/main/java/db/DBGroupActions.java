@@ -58,6 +58,15 @@ public class DBGroupActions {
 		return DBActions.getUsersToGroup(groupPojo);
 	}
 
+	public static List<GroupPojo> findAllGroupsByUserId(int inUserId) {
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
+		query.setParameter("UserID", inUserId);
+		List<GroupPojo> groups = (List<GroupPojo>) query.getResultList();
+		session.close();
+		return groups;
+	}
+
 	public static final GroupPojo findGroupById(final int groupId) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from GROUPS where GROUPID = :groupID");
@@ -65,14 +74,6 @@ public class DBGroupActions {
 		GroupPojo group = (GroupPojo) query.getSingleResult();
 		session.close();
 		return group;
-	}
-
-	private static void saveGroup(GroupPojo inGroup) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.save(inGroup);
-		session.getTransaction().commit();
-		session.close();
 	}
 
 	static String getGroupNameByPaymentId(int paymentID) {
@@ -91,6 +92,14 @@ public class DBGroupActions {
 		List<GroupPojo> groups = (List<GroupPojo>) query.getResultList();
 		session.close();
 		return groups;
+	}
+
+	private static void saveGroup(GroupPojo inGroup) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(inGroup);
+		session.getTransaction().commit();
+		session.close();
 	}
 
 }

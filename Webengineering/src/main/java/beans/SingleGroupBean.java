@@ -19,9 +19,13 @@ public class SingleGroupBean {
 
 	private String users;
 
+	private int groupID;
+
 	private List<MonthlyPaymentPojo> monthlyPayments;
 
 	public SingleGroupBean(int groupID) {
+
+		this.groupID = groupID;
 
 		this.monthlyPayments = DBPaymentActions.getAllMonthlyPaymentsToGroup(groupID);
 

@@ -36,13 +36,14 @@ public class CreatePaymentServlet extends HttpServlet {
 		}
 
 		String userId = (String) req.getSession().getAttribute("UserID");
-		String groupId = "332"; // TODO: get the groupID?
+		String groupId = req.getParameter("groupID");
 
 		modalValues.put("userId", userId);
 		modalValues.put("groupId", groupId);
 
-		DBPaymentActions.createPayment(modalValues);
-		rd = req.getRequestDispatcher(""); // TODO: forward to where?
+		int paymentID = DBPaymentActions.createPayment(modalValues);
+
+		rd = req.getRequestDispatcher("../payment/SinglePayment?paymentID=" + paymentID);
 		rd.forward(req, resp);
 	}
 }

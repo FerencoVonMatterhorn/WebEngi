@@ -67,7 +67,7 @@ public class DBGroupActions {
 		return groups;
 	}
 
-	static final GroupPojo findGroupById(final int groupId) {
+	public static final GroupPojo findGroupById(final int groupId) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from GROUPS where GROUPID = :groupID");
 		query.setParameter("groupID", groupId);

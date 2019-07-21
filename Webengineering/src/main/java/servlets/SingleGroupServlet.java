@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.java.beans.SingleGroupBean;
+import main.java.db.DBActions;
+import main.java.db.DBGroupActions;
+import main.java.pojos.GroupPojo;
 
 @SuppressWarnings("serial")
 @WebServlet("/group/singlegroup")
@@ -24,21 +27,15 @@ public class SingleGroupServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<String> users = new ArrayList<>();
-		users.add("CK");
-		users.add("CK2");
-
-		SingleGroupBean singleGroupBean = new SingleGroupBean();
-		singleGroupBean.setName("TestName");
-		singleGroupBean.setDescription("TestDescription");
-		singleGroupBean.setUsers(users);
-
-		req.setAttribute("singleGroup", singleGroupBean);
-
-		RequestDispatcher dispatcher;
-
-		dispatcher = req.getRequestDispatcher("groupSingle.jsp");
-
+		
+		GroupPojo group = DBActions.getUsersToGroup(DBGroupActions.findGroupById(Integer.parseInt(req.getParameter("groupID"))));
+		SingleGroupBean singleBean = new SingleGroupBean();
+		singleBean.setName(group.getGroupName());
+		singleBean.setDescription(group.getGroupDescription());
+		singleBean.setUsers(group.getUsers());
+		
+		req.setAttribute("singleGroup", singleBean);
+		RequestDispatcher dispatcher =  req.getRequestDispatcher("groupSingle.jsp");
 		dispatcher.forward(req, resp);
 	}
 

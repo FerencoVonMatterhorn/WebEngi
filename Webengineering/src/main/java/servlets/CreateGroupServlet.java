@@ -21,6 +21,7 @@ public class CreateGroupServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		DBGroupActions.createGroup(req.getParameter("groupName"), req.getParameter("groupDescription"), req.getParameter("groupParticipants"),
 				(int) req.getSession().getAttribute("userID"));
 		resp.sendRedirect(req.getContextPath() + "/official/IndexLoggedIn");

@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		Optional<UserPojo> user = DBActions.login(req.getParameter("emailOrName"), req.getParameter("password"));
 		if (user.isPresent()) {
 			HttpSession oldSession = req.getSession(false);

@@ -1,7 +1,10 @@
 package main.java.db;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
@@ -93,6 +96,37 @@ public class DBUserActions {
 	}
 
 	static boolean usernameOrEmailisPresent(String inUsername, String inEmail) {
-		return (DBUserActions.findUserByName(inUsername).isPresent() || DBUserActions.findUserByEmail(inEmail).isPresent()) ? true : false;
+		return (DBUserActions.findUserByName(inUsername).isPresent()
+				|| DBUserActions.findUserByEmail(inEmail).isPresent()) ? true : false;
 	}
+
+	public static void updateProfile(Map<String, String> modalValues) {
+		UserPojo user = findUserById(Integer.valueOf(modalValues.get("userID")));
+		
+		for (String input : modalValues.keySet()) {
+			System.err.println(modalValues.get(input));
+			if (!modalValues.get(input).isEmpty()) {
+				switch (input) {
+				case "firstName":
+					user.setFirstName(modalValues.get(input));
+					break;
+				case "lastName":
+					user.setLastName(modalValues.get(input));
+				break;
+				case "userName":
+				user.setUsername(modalValues.get(input));
+				break;
+				case "eMail":
+				user.setEmail(modalValues.get(input));
+				break;
+				}
+			}
+		}
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(user);
+		session.getTransaction().commit();
+		session.close();
+	}
+
 }

@@ -27,13 +27,12 @@ public class SingleGroupServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		req.setCharacterEncoding("UTF-8");
 		GroupPojo group = DBActions.getUsersToGroup(DBGroupActions.findGroupById(Integer.parseInt(req.getParameter("groupID"))));
 		SingleGroupBean singleBean = new SingleGroupBean();
 		singleBean.setName(group.getGroupName());
 		singleBean.setDescription(group.getGroupDescription());
 		singleBean.setUsers(group.getUsers());
-		
 		req.setAttribute("singleGroup", singleBean);
 		RequestDispatcher dispatcher =  req.getRequestDispatcher("groupSingle.jsp");
 		dispatcher.forward(req, resp);

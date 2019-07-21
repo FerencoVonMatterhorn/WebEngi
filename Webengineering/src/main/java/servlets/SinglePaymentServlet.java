@@ -23,6 +23,7 @@ public class SinglePaymentServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		PaymentOverviewBean bean = (PaymentOverviewBean) req.getSession().getAttribute("paymentOverview");
 
 		String paymentIDString = req.getParameter("paymentID");

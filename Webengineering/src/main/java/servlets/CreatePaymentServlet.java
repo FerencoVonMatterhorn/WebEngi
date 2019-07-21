@@ -25,6 +25,7 @@ public class CreatePaymentServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		Map<String, String> modalValues = new HashMap<>();
 		RequestDispatcher rd;
 

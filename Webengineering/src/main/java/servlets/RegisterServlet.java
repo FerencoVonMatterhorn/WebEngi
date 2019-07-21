@@ -23,6 +23,7 @@ public class RegisterServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		RequestDispatcher rd;
 		String[] errormessage = InputDataValidationUtil.validateRegistrationForm(req.getParameter("email"), req.getParameter("password1"),
 				req.getParameter("password2"));

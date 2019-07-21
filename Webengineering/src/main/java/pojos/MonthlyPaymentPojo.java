@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "NONTHLYPAYMENTS")
+@Entity(name = "MONTHLYPAYMENTS")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,9 +25,6 @@ public class MonthlyPaymentPojo {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "MONTHLYPAYMENTID")
 	private int monthlyPaymentID;
-
-	@Column(name = "AMOUNT", nullable = false)
-	private double amount;
 
 	@Column(name = "DATECREATED", nullable = false)
 	private OffsetDateTime dateCreated;

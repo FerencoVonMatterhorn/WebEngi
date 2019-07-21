@@ -38,6 +38,7 @@
 						document.getElementById('paymentIDHidden').value = paymentId;
 					}
 	</script>
+
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!--  Navbar Toggle  -->
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#collapsibleNavbar">
@@ -54,8 +55,7 @@
 					<li class="nav-item"><a class="nav-link"
 						href="../official/IndexLoggedIn">Home <i class="fas fa-home"></i></a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="../group/groupOverview">Gruppen <i
-							class="fas fa-users"></i></a></li>
+						href="../group/groupOverview">Gruppen <i class="fas fa-users"></i></a></li>
 					<li class="nav-item"><a class="nav-link active" href="#">Zahlungen
 							<i class="fas fa-receipt"></i>
 					</a></li>

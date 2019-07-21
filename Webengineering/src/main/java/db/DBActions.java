@@ -152,4 +152,16 @@ public class DBActions extends MarkerUtil {
 		return builder.toString();
 	}
 
+	public static PaymentToUserPojo getPaymentToUserPojosByPaymentIdAndUserID(int paymentID, int userID) {
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("from PAYMENTTOUSER where PAYMENTID = :paymentID AND USERID = :userID");
+		query.setParameter("paymentID", paymentID);
+		query.setParameter("userID", userID);
+
+		PaymentToUserPojo pojo = (PaymentToUserPojo) query.uniqueResult();
+
+		session.close();
+		return pojo;
+	}
+
 }

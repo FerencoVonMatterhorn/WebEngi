@@ -29,4 +29,49 @@ public class MonthlyPaymentPojo {
 	@Column(name = "DATEUNTIL", nullable = false)
 	private OffsetDateTime dateUntil;
 
+	public String formatDateCreated() {
+		OffsetDateTime dateTime = this.getDateCreated();
+
+		StringBuilder builder = new StringBuilder();
+
+		builder.append(dateTime.getDayOfMonth());
+
+		builder.append(".");
+
+		builder.append(dateTime.getMonth().getValue());
+
+		builder.append(".");
+
+		builder.append(dateTime.getYear());
+
+		builder.append(" ");
+
+		builder.append(dateTime.getHour());
+
+		builder.append(":");
+
+		builder.append(dateTime.getMinute());
+
+		return builder.toString();
+	}
+
+	public String formatDateUntil() {
+
+		OffsetDateTime dateTime = this.getDateUntil();
+
+		StringBuilder builder = new StringBuilder();
+
+		builder.append(dateTime.getDayOfMonth());
+
+		builder.append(".");
+
+		builder.append(dateTime.getMonth().getValue());
+
+		builder.append(".");
+
+		builder.append(dateTime.getYear());
+
+		return builder.toString();
+	}
+
 }

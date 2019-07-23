@@ -27,6 +27,19 @@ public class DBPaymentActions {
 
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
+	public static MonthlyPaymentPojo findMonthlyPaymentByID(int monthlyPaymentID) {
+
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("from MONTHLYPAYMENTS where MONTHLYPAYMENTID = :monthlyPaymentID");
+		query.setParameter("monthlyPaymentID", monthlyPaymentID);
+
+		MonthlyPaymentPojo pojo = (MonthlyPaymentPojo) query.uniqueResult();
+
+		session.close();
+		return pojo;
+
+	}
+
 	public static List<MonthlyPaymentPojo> getAllMonthlyPaymentsToGroup(int groupID) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery(

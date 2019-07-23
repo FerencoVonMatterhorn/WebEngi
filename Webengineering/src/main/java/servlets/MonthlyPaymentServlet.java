@@ -21,7 +21,6 @@ public class MonthlyPaymentServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// int groupID = 332;// TODO: IDS ÜBERNEHMEN
 
 		int userID = (int) req.getSession().getAttribute("userID");
 

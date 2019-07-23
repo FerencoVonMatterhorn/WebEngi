@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import main.java.db.DBActions;
 import main.java.db.DBPaymentActions;
+import main.java.pojos.MonthlyPaymentPojo;
 import main.java.pojos.PaymentPojo;
 import main.java.pojos.PaymentToUserPojo;
 
@@ -17,11 +18,11 @@ import main.java.pojos.PaymentToUserPojo;
 public class MonthlyPaymentBean {
 	private List<PaymentPojo> payments;
 	private List<PaymentToUserPojo> paymentToUser = new ArrayList<>();
+	private MonthlyPaymentPojo monthlyPayment;
 
 	public MonthlyPaymentBean(int monthlyPaymentID, int userID) {
 
-		// int monthlyPaymentID =
-		// DBPaymentActions.getRecentMonthlyPaymentID(groupID);
+		this.monthlyPayment = DBPaymentActions.findMonthlyPaymentByID(monthlyPaymentID);
 
 		this.payments = DBPaymentActions.getPaymentsForMonthlyPaymentByUserID(monthlyPaymentID, userID);
 

@@ -98,8 +98,8 @@
 								id="monthlyPaymentID" />
 							<c:forEach items="${singleGroup.getMonthlyPayments() }" var="monthlyPayment">
 								<p class="singlePaymentFromOverview">
-									Erstellungs Datum: <c:out value="${monthlyPayment.getDateCreated() }" />  <br>
-									Zu Zahlen bis: <c:out value="${monthlyPayment.getDateUntil() }" />  <br>
+									Erstellungs Datum: <c:out value="${monthlyPayment.formatDateCreated() }" />  <br>
+									Zu Zahlen bis: <c:out value="${monthlyPayment.formatDateUntil() }" />  <br>
 									<button type="submit" onclick="setMonthlyPaymentID(${monthlyPayment.getMonthlyPaymentID()})">Zur Zahlung</button>
 									<br>
 								</p>

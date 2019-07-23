@@ -81,7 +81,7 @@
 					<!--  row Überschrift  -->
 					<div class="row justify-content-center">
 						<h1 class="pt-5 text-center">
-							<c:out value="MonthlyPayment" />
+							Monatszahlung vom <c:out value = "${monthlyPayment.getMonthlyPayment().getDateCreated().getMonth().getValue() }"/>.<c:out value="${monthlyPayment.getMonthlyPayment().getDateCreated().getYear()}"/>
 						</h1>
 					</div>
 					<!--  row Überschrift END  -->

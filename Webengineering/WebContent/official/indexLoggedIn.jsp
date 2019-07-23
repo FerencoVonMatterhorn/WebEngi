@@ -152,7 +152,7 @@
 											<div class="form-group">
 												<label for="groupParticipants">Teilnehmer:</label> <input
 													type="text" class="form-control autocomplete"
-													id="groupParticipants" name="groupParticipants">
+													id="groupParticipants" name="groupParticipants" required>
 											</div>
 											<p id="testOut"></p>
 										</div>

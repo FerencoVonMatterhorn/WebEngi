@@ -31,7 +31,7 @@ public class DBPaymentActions {
 		session.close();
 		return pojo;
 	}
-
+	
 	public static List<MonthlyPaymentPojo> getAllMonthlyPaymentsToGroup(int groupID) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery(
@@ -148,7 +148,7 @@ public class DBPaymentActions {
 		paymentToGroup.setPayment(payment);
 		savePaymentToGroup(paymentToGroup);
 
-		MonthlyPaymentPojo mpp = findMonthlyPaymentById(
+		MonthlyPaymentPojo mpp = findMonthlyPaymentByID(
 				findRecentMonthlyPaymentbyGroupId(Integer.valueOf(modalValues.get("groupId"))));
 		MonthlyPaymentToPaymentPojo mptpp = new MonthlyPaymentToPaymentPojo();
 		mptpp.setMonthlyPayment(mpp);
@@ -158,14 +158,7 @@ public class DBPaymentActions {
 		return payment.getPaymentID();
 	}
 
-	private static MonthlyPaymentPojo findMonthlyPaymentById(int inrecentMonthlyPaymentID) {
-		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("from MONTHLYPAYMENTS WHERE MONTHLYPAYMENTID = :MonthlyPaymentId");
-		query.setParameter("MonthlyPaymentId", inrecentMonthlyPaymentID);
-		MonthlyPaymentPojo mpp = (MonthlyPaymentPojo) query.uniqueResult();
-		session.close();
-		return mpp;
-	}
+	
 
 	public static int findRecentMonthlyPaymentbyGroupId(int groupID) {
 		Session session = sessionFactory.openSession();
@@ -198,7 +191,7 @@ public class DBPaymentActions {
 				mptg.setMonthlyPayment(newPojo);
 				saveMonthlyPayment(newPojo);
 				saveMonthlyPaymentToGroup(mptg);
-			} else if (!findMonthlyPaymentById(monthlyPaymentID).getDateCreated().getMonth()
+			} else if (!findMonthlyPaymentByID(monthlyPaymentID).getDateCreated().getMonth()
 					.equals(OffsetDateTime.now().getMonth())) {
 				MonthlyPaymentPojo newMonthlyPayment = new MonthlyPaymentPojo();
 				newMonthlyPayment.setDateCreated(OffsetDateTime.now());

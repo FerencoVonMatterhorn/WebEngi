@@ -1,7 +1,6 @@
 package main.java.db;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -92,7 +91,7 @@ public class DBUserActions {
 
 	static boolean usernameOrEmailisPresent(String inUsername, String inEmail) {
 		return (DBUserActions.findUserByName(inUsername).isPresent()
-				|| DBUserActions.findUserByEmail(inEmail).isPresent()) ? true : false;
+				|| DBUserActions.findUserByEmail(inEmail).isPresent());
 	}
 
 	public static void updateProfile(Map<String, String> modalValues) {
@@ -112,6 +111,8 @@ public class DBUserActions {
 					break;
 				case "eMail":
 					user.setEmail(modalValues.get(input));
+					break;
+				default:
 					break;
 				}
 			}

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.db.DBPaymentActions;
+import main.java.util.PaymentUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/group/createPayment")
@@ -38,7 +38,7 @@ public class CreatePaymentServlet extends HttpServlet {
 		String groupId = req.getParameter("groupID");
 		modalValues.put("userId", userId);
 		modalValues.put("groupId", groupId);
-		int paymentID = DBPaymentActions.createPayment(modalValues);
+		int paymentID = PaymentUtil.createPayment(modalValues);
 		rd = req.getRequestDispatcher("../payment/SinglePayment?paymentID=" + paymentID);
 		rd.forward(req, resp);
 	}

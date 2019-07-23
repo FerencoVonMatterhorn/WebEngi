@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.java.beans.MonthlyPaymentBean;
 
+@SuppressWarnings("serial")
 @WebServlet("/payment/MonthlyPayment")
 public class MonthlyPaymentServlet extends HttpServlet {
 

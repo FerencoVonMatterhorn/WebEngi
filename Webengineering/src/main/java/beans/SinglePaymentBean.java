@@ -10,6 +10,7 @@ import main.java.db.DBActions;
 import main.java.pojos.PaymentPojo;
 import main.java.pojos.PaymentToUserPojo;
 import main.java.pojos.UserPojo;
+import main.java.util.ActionUtil;
 
 @Getter
 @Setter
@@ -33,7 +34,7 @@ public class SinglePaymentBean {
 	}
 
 	public void findUsersToPayment() {
-		userPojosList = DBActions.getUsersToPayment(this.payment);
+		userPojosList = ActionUtil.getUsersToPayment(this.payment);
 
 	}
 

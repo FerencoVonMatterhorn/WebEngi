@@ -21,7 +21,7 @@ public class PaymentOverviewBean {
 
 
 	public void calculatePages(int userID) {
-		long paymentsAmount = DBPaymentActions.getPaymentAmount(userID);
+		long paymentsAmount = DBPaymentActions.getAmountOfPayments(userID);
 		pages = paymentsAmount % itemsPerPage == 0 ? paymentsAmount / itemsPerPage : paymentsAmount / itemsPerPage + 1;
 	}
 

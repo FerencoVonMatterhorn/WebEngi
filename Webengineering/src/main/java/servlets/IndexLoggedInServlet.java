@@ -9,10 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.db.DBGroupActions;
 import main.java.db.DBPaymentActions;
 import main.java.db.DBUserActions;
 import main.java.pojos.UserPojo;
+import main.java.util.GroupUtil;
+import main.java.util.PaymentUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/official/IndexLoggedIn")
@@ -27,11 +28,11 @@ public class IndexLoggedInServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		RequestDispatcher rd;
-		UserPojo user = DBUserActions.findUserById((int) req.getSession().getAttribute("userID"));
+		UserPojo user = DBUserActions.findUserByID((int) req.getSession().getAttribute("userID"));
 		req.setAttribute("userPojo", user);
-		req.setAttribute("groupPojo", DBGroupActions.findGroupForIndexLoggedInByUserId(user.getId()));
-		req.setAttribute("paymentPojo", DBPaymentActions.findPaymentForIndexLoggedInByUserId(user.getId()));
-		DBPaymentActions.updateMonthlyPayment((int) req.getSession().getAttribute("userID"));
+		req.setAttribute("groupPojo", GroupUtil.findGroupForIndexLoggedInByUserID(user.getId()));
+		req.setAttribute("paymentPojo", DBPaymentActions.findPaymentForIndexLoggedInByUserID(user.getId()));
+		PaymentUtil.updateMonthlyPayment((int) req.getSession().getAttribute("userID"));
 		rd = req.getRequestDispatcher("indexLoggedIn.jsp");
 		rd.forward(req, resp);
 	}

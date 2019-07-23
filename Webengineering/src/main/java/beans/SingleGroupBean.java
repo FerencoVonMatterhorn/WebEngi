@@ -27,7 +27,7 @@ public class SingleGroupBean {
 
 		this.groupID = groupID;
 
-		this.monthlyPayments = DBPaymentActions.getAllMonthlyPaymentsToGroup(groupID);
+		this.monthlyPayments = DBPaymentActions.findAllMonthlyPaymentsToGroup(groupID);
 
 	}
 

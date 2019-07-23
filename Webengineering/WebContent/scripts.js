@@ -16,7 +16,7 @@ function paymentValueIsNumber(payment) {
 }
 
 function ValuesAreNull(a, b, c) {
-	return (a.value == null && b.value == null && c.value == null) ? true : false;
+	return (a.value == null && b.value == null && c.value == null);
 }
 
 function PercentageIsCorrect() {
@@ -247,8 +247,6 @@ function clearGroupModal() {
 function clearPaymentModal() {
 	document.getElementById("paymentName").value = "";
 	document.getElementById("paymentdescription").value = "";
-
-	// TODO get all childnodes & delete them
 	document.getElementById("P1").value = "";
 	document.getElementById("P1P").value = "";
 }
@@ -271,11 +269,11 @@ function validateRegistration() {
 }
 
 function validateNames(fname, lname, uname) {
-	return (fname.length > 0 && lname.length > 0 && uname.length > 0) ? true : false;
+	return (fname.length > 0 && lname.length > 0 && uname.length > 0);
 }
 
 function validatePasswords(password1, password2) {
-	return (((password1.length <= passwordLength) && (password2.length <= passwordLength)) || (password1 != password2)) ? false : true;
+	return (((password1.length <= passwordLength) && (password2.length <= passwordLength)) || (password1 != password2));
 }
 
 function validateEmail(email) {

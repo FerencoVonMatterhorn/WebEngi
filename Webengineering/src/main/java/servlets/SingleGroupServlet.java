@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.java.beans.SingleGroupBean;
-import main.java.db.DBActions;
 import main.java.db.DBGroupActions;
 import main.java.pojos.GroupPojo;
+import main.java.util.ActionUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/group/singlegroup")
@@ -27,7 +27,7 @@ public class SingleGroupServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		int groupID = Integer.parseInt(req.getParameter("groupID"));
-		GroupPojo group = DBActions.getUsersToGroup(DBGroupActions.findGroupById(groupID));
+		GroupPojo group = ActionUtil.addUsersToGroupPojo(DBGroupActions.findGroupByID(groupID));
 		SingleGroupBean singleBean = new SingleGroupBean(group.getGroupID());
 		singleBean.setName(group.getGroupName());
 		singleBean.setDescription(group.getGroupDescription());

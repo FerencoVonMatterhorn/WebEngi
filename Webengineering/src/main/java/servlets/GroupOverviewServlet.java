@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.java.beans.GroupOverViewBean;
-import main.java.db.DBActions;
 import main.java.db.DBGroupActions;
 import main.java.pojos.GroupPojo;
+import main.java.util.ActionUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/group/groupOverview")
@@ -31,11 +31,11 @@ public class GroupOverviewServlet extends HttpServlet {
 		RequestDispatcher rd;
 		int userID = (int) req.getSession().getAttribute("userID");
 		GroupOverViewBean gOBean = new GroupOverViewBean();
-		List<GroupPojo> groups = DBGroupActions.getGroupsForGroupOverview(userID);
+		List<GroupPojo> groups = DBGroupActions.findGroupsForGroupOverview(userID);
 		Collections.reverse(groups);
 		gOBean.setGroups(groups);
 		for (GroupPojo group : gOBean.getGroups()) {
-			group.setUsers(DBActions.getUsersToGroup(group).getUsers());
+			group.setUsers(ActionUtil.addUsersToGroupPojo(group).getUsers());
 		}
 		req.setAttribute("groupOverView", gOBean);
 		rd = req.getRequestDispatcher("groupOverview.jsp");

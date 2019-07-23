@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.db.DBGroupActions;
+import main.java.util.GroupUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/official/createGroup")
@@ -26,7 +26,7 @@ public class CreateGroupServlet extends HttpServlet {
 		String groupDescription = req.getParameter("groupDescription");
 		String groupParticipants = req.getParameter("groupParticipants");
 		int userID = (int) req.getSession().getAttribute("userID");
-		DBGroupActions.createGroup(groupName, groupDescription, groupParticipants, userID);
+		GroupUtil.createGroup(groupName, groupDescription, groupParticipants, userID);
 		resp.sendRedirect(req.getContextPath() + "/official/IndexLoggedIn");
 	}
 

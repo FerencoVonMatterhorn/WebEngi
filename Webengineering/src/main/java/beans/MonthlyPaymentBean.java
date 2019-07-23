@@ -24,10 +24,10 @@ public class MonthlyPaymentBean {
 
 		this.monthlyPayment = DBPaymentActions.findMonthlyPaymentByID(monthlyPaymentID);
 
-		this.payments = DBPaymentActions.getPaymentsForMonthlyPaymentByUserID(monthlyPaymentID, userID);
+		this.payments = DBPaymentActions.findPaymentsForMonthlyPaymentByUserID(monthlyPaymentID, userID);
 
 		for (PaymentPojo paymentPojo : this.payments) {
-			paymentToUser.add(DBActions.getPaymentToUserPojosByPaymentIdAndUserID(paymentPojo.getPaymentID(), userID));
+			paymentToUser.add(DBActions.findPaymentToUserPojosByPaymentIdAndUserID(paymentPojo.getPaymentID(), userID));
 		}
 	}
 

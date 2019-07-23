@@ -6,11 +6,13 @@ import java.util.regex.Pattern;
 
 public class InputDataValidationUtil {
 
+	private InputDataValidationUtil() {
+		// May be empty.
+	}
+
 	private static final String[] REGISTRATION_NO_ERROR = {};
-	private static final String[] REGISTRATION_INVALID_EMAIL = { "emailWasIncorrectlyFormatted",
-			"Die angegebene Email-Adresse entspricht nicht dem Format" };
-	private static final String[] REGISTRATION_INVALID_PASSWORDS = { "passwordsDidNotMatch",
-			"Die angegebenen Passwörter stimmen nicht überein" };
+	private static final String[] REGISTRATION_INVALID_EMAIL = { "emailWasIncorrectlyFormatted", "Die angegebene Email-Adresse entspricht nicht dem Format" };
+	private static final String[] REGISTRATION_INVALID_PASSWORDS = { "passwordsDidNotMatch", "Die angegebenen Passwörter stimmen nicht überein" };
 
 	public static String[] validateRegistrationForm(String inEmail, String inPassword1, String inPassword2) {
 		if (!emailIsValid(inEmail)) {

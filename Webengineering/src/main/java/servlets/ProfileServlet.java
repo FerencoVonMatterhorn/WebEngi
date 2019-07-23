@@ -25,7 +25,7 @@ public class ProfileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		RequestDispatcher rd;
-		UserPojo user = DBUserActions.findUserById((int) req.getSession().getAttribute("userID"));
+		UserPojo user = DBUserActions.findUserByID((int) req.getSession().getAttribute("userID"));
 		req.setAttribute("userPojo", user);
 		rd = req.getRequestDispatcher("profile.jsp");
 		rd.forward(req, resp);

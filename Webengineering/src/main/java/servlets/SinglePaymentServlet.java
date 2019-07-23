@@ -26,7 +26,7 @@ public class SinglePaymentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		int neededPaymentID = Integer.parseInt(req.getParameter("paymentID"));
-		PaymentPojo paymentPojo = DBPaymentActions.findPaymentById(neededPaymentID);
+		PaymentPojo paymentPojo = DBPaymentActions.findPaymentByID(neededPaymentID);
 		req.getSession().setAttribute("payment", paymentPojo);
 		req.getSession().setAttribute("singlePaymentBean", new SinglePaymentBean(paymentPojo));
 		RequestDispatcher dispatcher = req.getRequestDispatcher("paymentSingle.jsp");

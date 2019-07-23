@@ -12,21 +12,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.db.DBUserActions;
+import main.java.util.UserUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/user/EditProfile")
 public class EditProfileServlet extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		Map<String, String> modalValues = new HashMap<>();
 		Enumeration<String> params = request.getParameterNames();
@@ -36,7 +34,7 @@ public class EditProfileServlet extends HttpServlet {
 			modalValues.put(paramName, paramValue);
 		}
 		modalValues.put("userID", String.valueOf(request.getSession().getAttribute("userID")));
-		DBUserActions.updateProfile(modalValues);
+		UserUtil.updateProfile(modalValues);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("profile");
 		dispatcher.forward(request, response);
 	}

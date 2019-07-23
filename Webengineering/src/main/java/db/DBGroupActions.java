@@ -9,96 +9,60 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import main.java.pojos.GroupPojo;
-import main.java.pojos.UserPojo;
-import main.java.pojos.UserToGroupPojo;
 
 public class DBGroupActions {
+
+	private DBGroupActions() {
+		// May be empty.
+	}
 
 	private static final Logger logger = LogManager.getLogger(DBGroupActions.class);
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
-	//TODO Gruppe mit sich selber erstellen
-	//TODO Ignoriern von selbst hinzufügen (string) in groupparticipans
-	//TODO in Utils verschieben
-	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants,
-			int inCreatorId) {
-		GroupPojo group = new GroupPojo();
-		group.setGroupName(inGroupName);
-		group.setGroupDescription(inGroupDescription);
-		saveGroup(group);
-
-		List<UserPojo> users = DBUserActions.findUsersByName(inGroupParticipants);
-		UserPojo creator = DBUserActions.findUserById(inCreatorId);
-		if (!users.contains(creator)) {
-			users.add(creator);
-		}
-
-		logger.info("Creating group {} with participants {}", inGroupName, inGroupParticipants);
-		if (users.size() >= 2) {
-			for (UserPojo user : users) {
-				UserToGroupPojo userToGroup = new UserToGroupPojo();
-				userToGroup.setUser(user);
-				userToGroup.setGroup(group);
-				DBActions.saveUserToGroup(userToGroup);
-			}
-		}
-	}
-
-	//TODO in utils verschieben
-	public static GroupPojo findGroupForIndexLoggedInByUserId(int userID) {
-		List<UserToGroupPojo> userToGroupList = DBActions.findUserToGroupByUserId(userID);
-
-		if (userToGroupList.isEmpty()) {
-			return new GroupPojo();
-		}
-		GroupPojo groupPojo = findGroupById(userToGroupList.get(0).getGroup().getGroupID());
-		if (groupPojo == null) {
-			return new GroupPojo();
-		}
-		return DBActions.getUsersToGroup(groupPojo);
-	}
-
-	
-	public static List<GroupPojo> findAllGroupsByUserId(int inUserId) {
-		Session session = sessionFactory.openSession();
-		Query<?> query = session
-				.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
-		query.setParameter("UserID", inUserId);
-		List<GroupPojo> groups = (List<GroupPojo>) query.getResultList();
-		session.close();
-		return groups;
-	}
-
-	public static final GroupPojo findGroupById(final int groupId) {
+	public static final GroupPojo findGroupByID(final int inGroupID) {
+		logger.info("Looking for Group with GroupID: {}", inGroupID);
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from GROUPS where GROUPID = :groupID");
-		query.setParameter("groupID", groupId);
+		query.setParameter("groupID", inGroupID);
 		GroupPojo group = (GroupPojo) query.uniqueResult();
 		session.close();
 		return group;
 	}
 
-	static String getGroupNameByPaymentId(int paymentID) {
+	static String findGroupNameByPaymentID(int inPaymentID) {
+		logger.info("Looking for Groupname for PaymentID: {}", inPaymentID);
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery(
-				"select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
-		query.setParameter("paymentID", paymentID);
+		Query<?> query = session.createQuery("select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
+		query.setParameter("paymentID", inPaymentID);
 		String payment = (String) query.uniqueResult();
 		session.close();
 		return payment;
 	}
 
-	public static List<GroupPojo> getGroupsForGroupOverview(int userID) {
+	// TODO: duplicate of findAllGroupsByUserID?!
+	public static List<GroupPojo> findGroupsForGroupOverview(int inUserID) {
+		logger.info("Looking for all groups for User with UserID: {}", inUserID);
 		Session session = sessionFactory.openSession();
-		Query<?> query = session
-				.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
-		query.setParameter("UserID", userID);
+		Query<?> query = session.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
+		query.setParameter("UserID", inUserID);
 		List<GroupPojo> groups = (List<GroupPojo>) query.getResultList();
 		session.close();
 		return groups;
 	}
 
-	private static void saveGroup(GroupPojo inGroup) {
+	// TODO: duplicate of findGroupsForGroupOverview?!
+	public static List<GroupPojo> findAllGroupsByUserID(int inUserID) {
+		logger.info("Looking for all groups for User with UserID: {}", inUserID);
+		Session session = sessionFactory.openSession();
+		Query<?> query = session.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
+		query.setParameter("UserID", inUserID);
+		List<GroupPojo> groups = (List<GroupPojo>) query.getResultList();
+		session.close();
+		return groups;
+	}
+
+	public static void saveGroup(GroupPojo inGroup) {
+		logger.info("Saving Group: {}", inGroup);
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(inGroup);

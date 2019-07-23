@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.db.DBActions;
+import main.java.util.ActionUtil;
 import main.java.util.InputDataValidationUtil;
 
 @SuppressWarnings("serial")
@@ -21,7 +21,6 @@ public class RegisterServlet extends HttpServlet {
 		doPost(req, resp);
 	}
 
-	//TODO nochmal anschauen ? --> Verständnis mäßig 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -32,8 +31,8 @@ public class RegisterServlet extends HttpServlet {
 			req.setAttribute(errormessage[0], errormessage[1]);
 			rd = req.getRequestDispatcher("register.jsp");
 		} else {
-			if (DBActions.register(req.getParameter("fname"), req.getParameter("lname"), req.getParameter("uname"), //
-					req.getParameter("email"), req.getParameter("password2"))) {
+			if (ActionUtil.register(req.getParameter("fname"), req.getParameter("lname"), req.getParameter("uname"), req.getParameter("email"),
+					req.getParameter("password2"))) {
 				rd = req.getRequestDispatcher("index.jsp");
 			} else {
 				req.setAttribute("registrationUnsuccessful", "Deine Registrierung war nicht erfolgreich, Benutzername oder Email ist schon vergeben.");

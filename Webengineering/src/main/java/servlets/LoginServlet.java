@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import main.java.db.DBActions;
 import main.java.pojos.UserPojo;
+import main.java.util.ActionUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/official/Login")
@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		Optional<UserPojo> user = DBActions.login(req.getParameter("emailOrName"), req.getParameter("password"));
+		Optional<UserPojo> user = ActionUtil.login(req.getParameter("emailOrName"), req.getParameter("password"));
 		if (user.isPresent()) {
 			HttpSession oldSession = req.getSession(false);
 			if (oldSession != null) {

@@ -10,10 +10,6 @@ import javax.crypto.spec.PBEKeySpec;
 
 public class PasswordUtil {
 
-	private PasswordUtil() {
-		// Constructor may be empty.
-	}
-
 	public static String generateHashedPassword(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		int iterations = ((int) (Math.random() * 500) + 1000);
 		char[] chars = password.toCharArray();

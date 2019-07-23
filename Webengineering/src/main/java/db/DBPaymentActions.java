@@ -21,23 +21,15 @@ import main.java.util.InputDataValidationUtil;
 
 public class DBPaymentActions {
 
-	private DBPaymentActions() {
-		// May be empty.
-	}
-
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
 	public static MonthlyPaymentPojo findMonthlyPaymentByID(int monthlyPaymentID) {
-
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from MONTHLYPAYMENTS where MONTHLYPAYMENTID = :monthlyPaymentID");
 		query.setParameter("monthlyPaymentID", monthlyPaymentID);
-
 		MonthlyPaymentPojo pojo = (MonthlyPaymentPojo) query.uniqueResult();
-
 		session.close();
 		return pojo;
-
 	}
 
 	public static List<MonthlyPaymentPojo> getAllMonthlyPaymentsToGroup(int groupID) {
@@ -45,9 +37,7 @@ public class DBPaymentActions {
 		Query<?> query = session.createQuery(
 				"from MONTHLYPAYMENTS where MONTHLYPAYMENTID in (select monthlyPayment from MONTHLYPAYMENTTOGROUP where GROUPID = :groupID) ORDER BY MONTHLYPAYMENTID DESC");
 		query.setParameter("groupID", groupID);
-
 		List<MonthlyPaymentPojo> pojosList = (List<MonthlyPaymentPojo>) query.getResultList();
-
 		session.close();
 		return pojosList;
 	}
@@ -57,38 +47,29 @@ public class DBPaymentActions {
 		Query<?> query = session.createQuery(
 				"select monthlyPayment from MONTHLYPAYMENTTOGROUP where GROUPID = :groupID ORDER BY ID DESC");
 		query.setParameter("groupID", groupID);
-
 		int monthlyID = ((MonthlyPaymentPojo) query.uniqueResult()).getMonthlyPaymentID();
-
 		session.close();
 		return monthlyID;
 	}
 
 	public static List<PaymentPojo> getPaymentsForMonthlyPaymentByUserID(int monthlyPaymentID, int userID) {
-
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery(
 				"from PAYMENTS where PAYMENTID in (select payment from MONTHLYPAYMENTTOPAYMENT where MONTHLYPAYMENTID = :monthlyPaymentID ) AND PAYMENTID in (select payment from PAYMENTTOUSER where USERID = :userID)");
 		query.setParameter("monthlyPaymentID", monthlyPaymentID);
 		query.setParameter("userID", userID);
-
 		List<PaymentPojo> payments = (List<PaymentPojo>) query.getResultList();
-
 		session.close();
 		return payments;
 	}
 
 	public static PaymentPojo findPaymentById(int paymentID) {
-
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from PAYMENTS where PAYMENTID = :paymentID");
 		query.setParameter("paymentID", paymentID);
-
 		PaymentPojo payment = (PaymentPojo) query.uniqueResult();
-
 		session.close();
 		return payment;
-
 	}
 
 	private static List<PaymentPojo> findPaymentsDescendingByUserId(int userID) {
@@ -96,9 +77,7 @@ public class DBPaymentActions {
 		Query<?> query = session.createQuery(
 				"from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
 		query.setParameter("userID", userID);
-
 		List<PaymentPojo> paymentList = (List<PaymentPojo>) query.getResultList();
-
 		if (paymentList.isEmpty()) {
 			paymentList.add(new PaymentPojo());
 		}
@@ -127,7 +106,7 @@ public class DBPaymentActions {
 		return count;
 	}
 
-	public static List<PaymentPojo> getPaymentsForSpecificPage(int offset, int limit, int userID) {
+	public static List<PaymentPojo> findPaymentsForSpecificPage(int offset, int limit, int userID) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery(
 				"FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
@@ -143,7 +122,8 @@ public class DBPaymentActions {
 		session.close();
 		return listPayments;
 	}
-
+	
+	//TODO in utils verschieben
 	public static int createPayment(Map<String, String> modalValues) {
 		PaymentPojo payment = new PaymentPojo();
 		payment.setAmount(Double.valueOf(modalValues.get("paymentValue")));
@@ -168,8 +148,8 @@ public class DBPaymentActions {
 		paymentToGroup.setPayment(payment);
 		savePaymentToGroup(paymentToGroup);
 
-		MonthlyPaymentPojo mpp = getMonthlyPaymentById(
-				getRecentMonthlyPaymentbyGroupId(Integer.valueOf(modalValues.get("groupId"))));
+		MonthlyPaymentPojo mpp = findMonthlyPaymentById(
+				findRecentMonthlyPaymentbyGroupId(Integer.valueOf(modalValues.get("groupId"))));
 		MonthlyPaymentToPaymentPojo mptpp = new MonthlyPaymentToPaymentPojo();
 		mptpp.setMonthlyPayment(mpp);
 		mptpp.setPayment(payment);
@@ -178,7 +158,7 @@ public class DBPaymentActions {
 		return payment.getPaymentID();
 	}
 
-	private static MonthlyPaymentPojo getMonthlyPaymentById(int inrecentMonthlyPaymentID) {
+	private static MonthlyPaymentPojo findMonthlyPaymentById(int inrecentMonthlyPaymentID) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from MONTHLYPAYMENTS WHERE MONTHLYPAYMENTID = :MonthlyPaymentId");
 		query.setParameter("MonthlyPaymentId", inrecentMonthlyPaymentID);
@@ -187,14 +167,13 @@ public class DBPaymentActions {
 		return mpp;
 	}
 
-	public static int getRecentMonthlyPaymentbyGroupId(int groupID) {
+	public static int findRecentMonthlyPaymentbyGroupId(int groupID) {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery(
 				"select monthlyPayment from MONTHLYPAYMENTTOGROUP where GROUPID = :groupID ORDER BY ID DESC");
 		query.setParameter("groupID", groupID);
 		try {
 			int monthlyID = ((MonthlyPaymentPojo) query.getResultList().get(0)).getMonthlyPaymentID();
-			System.out.println(monthlyID);
 			session.close();
 			return monthlyID;
 		} catch (IndexOutOfBoundsException e) {
@@ -203,11 +182,12 @@ public class DBPaymentActions {
 		}
 
 	}
-
+	
+	//TODO in utils verschieben
 	public static void updateMonthlyPayment(int inUserId) {
 		List<GroupPojo> groups = DBGroupActions.findAllGroupsByUserId(inUserId);
 		for (GroupPojo groupPojo : groups) {
-			int monthlyPaymentID = getRecentMonthlyPaymentbyGroupId(groupPojo.getGroupID());
+			int monthlyPaymentID = findRecentMonthlyPaymentbyGroupId(groupPojo.getGroupID());
 
 			if (monthlyPaymentID == -1) {
 				MonthlyPaymentPojo newPojo = new MonthlyPaymentPojo();
@@ -218,7 +198,7 @@ public class DBPaymentActions {
 				mptg.setMonthlyPayment(newPojo);
 				saveMonthlyPayment(newPojo);
 				saveMonthlyPaymentToGroup(mptg);
-			} else if (!getMonthlyPaymentById(monthlyPaymentID).getDateCreated().getMonth()
+			} else if (!findMonthlyPaymentById(monthlyPaymentID).getDateCreated().getMonth()
 					.equals(OffsetDateTime.now().getMonth())) {
 				MonthlyPaymentPojo newMonthlyPayment = new MonthlyPaymentPojo();
 				newMonthlyPayment.setDateCreated(OffsetDateTime.now());

@@ -28,13 +28,10 @@ public class IndexLoggedInServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		RequestDispatcher rd;
 		UserPojo user = DBUserActions.findUserById((int) req.getSession().getAttribute("userID"));
-
 		req.setAttribute("userPojo", user);
 		req.setAttribute("groupPojo", DBGroupActions.findGroupForIndexLoggedInByUserId(user.getId()));
 		req.setAttribute("paymentPojo", DBPaymentActions.findPaymentForIndexLoggedInByUserId(user.getId()));
-
 		DBPaymentActions.updateMonthlyPayment((int) req.getSession().getAttribute("userID"));
-
 		rd = req.getRequestDispatcher("indexLoggedIn.jsp");
 		rd.forward(req, resp);
 	}

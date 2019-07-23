@@ -16,25 +16,17 @@ import main.java.db.DBActions;
 import main.java.db.DBUserActions;
 import main.java.pojos.UserPojo;
 
-/**
- * Servlet implementation class EditProfileServlet
- */
+@SuppressWarnings("serial")
 @WebServlet("/user/EditProfile")
 public class EditProfileServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		Map<String, String> modalValues = new HashMap<>();
 		Enumeration<String> params = request.getParameterNames();
@@ -45,8 +37,7 @@ public class EditProfileServlet extends HttpServlet {
 		}
 		modalValues.put("userID", String.valueOf(request.getSession().getAttribute("userID")));
 		DBUserActions.updateProfile(modalValues);
-		RequestDispatcher dispatcher =  request.getRequestDispatcher("profile");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("profile");
 		dispatcher.forward(request, response);
 	}
-
 }

@@ -28,18 +28,14 @@ public class PaymentOverviewServlet extends HttpServlet {
 			bean = new PaymentOverviewBean();
 			req.getSession().setAttribute("paymentOverview", bean);
 		}
-
 		int userID = (int) req.getSession().getAttribute("userID");
 		String page = req.getParameter("page");
 		if (page != null) {
 			bean.setShownPage(Integer.parseInt(page));
 		}
-
 		bean.calculatePages(userID);
 		bean.getPaymentsForPage(userID);
-
 		RequestDispatcher dispat = req.getRequestDispatcher("paymentOverview.jsp");
-
 		dispat.forward(req, resp);
 	}
 

@@ -21,17 +21,11 @@ public class MonthlyPaymentServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		int userID = (int) req.getSession().getAttribute("userID");
-
 		int monthlyPaymentID = Integer.parseInt(req.getParameter("monthlyPaymentID"));
-
 		MonthlyPaymentBean bean = new MonthlyPaymentBean(monthlyPaymentID, userID);
-
 		req.setAttribute("monthlyPayment", bean);
-
 		RequestDispatcher dispatcher = req.getRequestDispatcher("monthlyPayment.jsp");
-
 		dispatcher.forward(req, resp);
 	}
 

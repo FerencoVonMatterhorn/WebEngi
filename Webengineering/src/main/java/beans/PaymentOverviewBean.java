@@ -4,27 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import main.java.db.DBPaymentActions;
 import main.java.pojos.PaymentPojo;
 
+@NoArgsConstructor
 @Setter
 @Getter
 public class PaymentOverviewBean {
 
 	private List<PaymentPojo> payments = new ArrayList<>();
-	private List<Integer> test = new ArrayList<>();
 	private int itemsPerPage = 8;
 	private long pages;
-	private int shownPage;
+	private int shownPage=1;
 
-	public PaymentOverviewBean() {
-		shownPage = 1;
-
-		for (int i = 0; i < 15; i++) {
-			test.add(i);
-		}
-	}
 
 	public void calculatePages(int userID) {
 		long paymentsAmount = DBPaymentActions.getPaymentAmount(userID);
@@ -33,7 +27,7 @@ public class PaymentOverviewBean {
 
 	public void getPaymentsForPage(int userID) {
 		int limitstart = shownPage == 1 ? 0 : itemsPerPage * (shownPage - 1);
-		payments = DBPaymentActions.getPaymentsForSpecificPage(limitstart, itemsPerPage, userID);
+		payments = DBPaymentActions.findPaymentsForSpecificPage(limitstart, itemsPerPage, userID);
 	}
 
 }

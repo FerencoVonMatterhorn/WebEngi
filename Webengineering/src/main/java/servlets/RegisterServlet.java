@@ -21,6 +21,7 @@ public class RegisterServlet extends HttpServlet {
 		doPost(req, resp);
 	}
 
+	//TODO nochmal anschauen ? --> Verständnis mäßig 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");

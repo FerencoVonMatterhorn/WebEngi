@@ -28,22 +28,17 @@ public class CreatePaymentServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		Map<String, String> modalValues = new HashMap<>();
 		RequestDispatcher rd;
-
 		Enumeration<String> params = req.getParameterNames();
 		while (params.hasMoreElements()) {
 			String paramName = params.nextElement();
 			String paramValue = req.getParameter(paramName);
 			modalValues.put(paramName, paramValue);
 		}
-
 		String userId = (String) req.getSession().getAttribute("UserID");
 		String groupId = req.getParameter("groupID");
-
 		modalValues.put("userId", userId);
 		modalValues.put("groupId", groupId);
-
 		int paymentID = DBPaymentActions.createPayment(modalValues);
-
 		rd = req.getRequestDispatcher("../payment/SinglePayment?paymentID=" + paymentID);
 		rd.forward(req, resp);
 	}

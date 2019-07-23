@@ -26,9 +26,7 @@ public class ProfileServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		RequestDispatcher rd;
 		UserPojo user = DBUserActions.findUserById((int) req.getSession().getAttribute("userID"));
-
 		req.setAttribute("userPojo", user);
-
 		rd = req.getRequestDispatcher("profile.jsp");
 		rd.forward(req, resp);
 	}

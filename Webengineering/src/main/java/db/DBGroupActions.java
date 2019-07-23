@@ -14,15 +14,14 @@ import main.java.pojos.UserToGroupPojo;
 
 public class DBGroupActions {
 
-	private DBGroupActions() {
-		// May be empty.
-	}
-
 	private static final Logger logger = LogManager.getLogger(DBGroupActions.class);
-
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
-	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants, int inCreatorId) {
+	//TODO Gruppe mit sich selber erstellen
+	//TODO Ignoriern von selbst hinzufügen (string) in groupparticipans
+	//TODO in Utils verschieben
+	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants,
+			int inCreatorId) {
 		GroupPojo group = new GroupPojo();
 		group.setGroupName(inGroupName);
 		group.setGroupDescription(inGroupDescription);
@@ -45,6 +44,7 @@ public class DBGroupActions {
 		}
 	}
 
+	//TODO in utils verschieben
 	public static GroupPojo findGroupForIndexLoggedInByUserId(int userID) {
 		List<UserToGroupPojo> userToGroupList = DBActions.findUserToGroupByUserId(userID);
 
@@ -58,9 +58,11 @@ public class DBGroupActions {
 		return DBActions.getUsersToGroup(groupPojo);
 	}
 
+	
 	public static List<GroupPojo> findAllGroupsByUserId(int inUserId) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
+		Query<?> query = session
+				.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
 		query.setParameter("UserID", inUserId);
 		List<GroupPojo> groups = (List<GroupPojo>) query.getResultList();
 		session.close();
@@ -71,14 +73,15 @@ public class DBGroupActions {
 		Session session = sessionFactory.openSession();
 		Query<?> query = session.createQuery("from GROUPS where GROUPID = :groupID");
 		query.setParameter("groupID", groupId);
-		GroupPojo group = (GroupPojo) query.getSingleResult();
+		GroupPojo group = (GroupPojo) query.uniqueResult();
 		session.close();
 		return group;
 	}
 
 	static String getGroupNameByPaymentId(int paymentID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
+		Query<?> query = session.createQuery(
+				"select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
 		query.setParameter("paymentID", paymentID);
 		String payment = (String) query.uniqueResult();
 		session.close();
@@ -87,7 +90,8 @@ public class DBGroupActions {
 
 	public static List<GroupPojo> getGroupsForGroupOverview(int userID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
+		Query<?> query = session
+				.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
 		query.setParameter("UserID", userID);
 		List<GroupPojo> groups = (List<GroupPojo>) query.getResultList();
 		session.close();

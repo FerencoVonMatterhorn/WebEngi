@@ -39,7 +39,6 @@ public class LoginServlet extends HttpServlet {
 			HttpSession newSession = req.getSession(true);
 			newSession.setMaxInactiveInterval(LOGIN_TIME);
 			newSession.setAttribute("userID", user.get().getId());
-			// MonthlyPaymentUpdate
 			resp.sendRedirect(req.getContextPath() + "/official/IndexLoggedIn");
 		} else {
 			RequestDispatcher rd;

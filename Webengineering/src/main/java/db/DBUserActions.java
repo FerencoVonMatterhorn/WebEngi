@@ -16,12 +16,7 @@ import main.java.pojos.UserPojo;
 
 public class DBUserActions {
 
-	private DBUserActions() {
-		// May be empty.
-	}
-
 	private static final Logger logger = LogManager.getLogger(DBUserActions.class);
-
 	private static final SessionFactory sessionFactory = DBConfig.getSessionFactory();
 
 	static void saveUser(UserPojo inUser) {
@@ -33,8 +28,8 @@ public class DBUserActions {
 	}
 
 	public static UserPojo findUserById(int inId) {
+		logger.info("Looking for User by ID: {}", inId);
 		Session session = sessionFactory.openSession();
-		session.beginTransaction();
 		Query<?> query = session.createQuery("from USERS where USERID = :id");
 		query.setParameter("id", inId);
 		UserPojo user = (UserPojo) query.uniqueResult();
@@ -45,7 +40,6 @@ public class DBUserActions {
 	static Optional<UserPojo> findUserByName(String inUsername) {
 		logger.info("Looking for User by Username: {}", inUsername);
 		Session session = sessionFactory.openSession();
-		session.beginTransaction();
 		Query<?> query = session.createQuery("from USERS where USERNAME = :username");
 		query.setParameter("username", inUsername);
 		Optional<UserPojo> user = (Optional<UserPojo>) query.uniqueResultOptional();
@@ -54,8 +48,8 @@ public class DBUserActions {
 	}
 
 	static Optional<UserPojo> findUserByEmail(String inEmail) {
+		logger.info("Looking for User by EMail: {}", inEmail);
 		Session session = sessionFactory.openSession();
-		session.beginTransaction();
 		Query<?> query = session.createQuery("from USERS where EMAIL = :email");
 		query.setParameter("email", inEmail);
 		Optional<UserPojo> user = (Optional<UserPojo>) query.uniqueResultOptional();
@@ -64,6 +58,7 @@ public class DBUserActions {
 	}
 
 	static List<UserPojo> findUsersByName(String inUsersStr) {
+		logger.info("Looking for Users by Name: {}", inUsersStr);
 		List<String> formattedUserStrings = userStringsToList(inUsersStr);
 		List<UserPojo> users = new ArrayList<>();
 		for (String user : formattedUserStrings) {
@@ -75,6 +70,7 @@ public class DBUserActions {
 		return users;
 	}
 
+	// TODO in utils verschieben
 	public static List<String> userStringsToList(String inUsersStr) {
 		List<String> users = new ArrayList<>();
 		String[] userStrArr = inUsersStr.split(",");
@@ -83,23 +79,6 @@ public class DBUserActions {
 			users.add(userStrArr[i]);
 		}
 		return users;
-	}
-
-	/**
-	 * Do not use this method, throws Hibernate error. Hibernate has some errors
-	 * since v5
-	 */
-	@Deprecated
-	public static List<String> searchForUserForPayment(String inUsername, String inGroupId) {
-		System.out.println(inUsername);
-		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery(
-				"SELECT u.username FROM USERS u WHERE u.id IN (SELECT utg.user FROM USERTOGROUP utg WHERE utg.group = :groupId AND utg.user IN(SELECT iu.id from USERS iu where iu.username LIKE :username))");
-		query.setParameter("username", inUsername + "%");
-		query.setParameter("groupId", inGroupId);
-		System.out.println(Arrays.toString(query.getResultList().toArray()));
-		session.close();
-		return null;
 	}
 
 	public static List<String> searchForUser(String inSearchQuery) {
@@ -120,7 +99,6 @@ public class DBUserActions {
 		UserPojo user = findUserById(Integer.valueOf(modalValues.get("userID")));
 
 		for (String input : modalValues.keySet()) {
-			System.err.println(modalValues.get(input));
 			if (!modalValues.get(input).isEmpty()) {
 				switch (input) {
 				case "firstName":

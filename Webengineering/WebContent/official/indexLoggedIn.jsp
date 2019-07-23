@@ -7,10 +7,12 @@
 	scope="session"></jsp:useBean>
 <jsp:useBean id="paymentPojo" class="main.java.pojos.PaymentPojo"
 	scope="session"></jsp:useBean>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>MyWG - Home</title>
+<link rel="shortcut icon" href="../resources/iconForREal.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
 <script type="text/javascript" src="../scripts.js"></script>

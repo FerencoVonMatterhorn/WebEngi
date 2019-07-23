@@ -30,7 +30,6 @@ public class GroupOverviewServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		RequestDispatcher rd;
 		int userID = (int) req.getSession().getAttribute("userID");
-
 		GroupOverViewBean gOBean = new GroupOverViewBean();
 		List<GroupPojo> groups = DBGroupActions.getGroupsForGroupOverview(userID);
 		Collections.reverse(groups);
@@ -42,5 +41,4 @@ public class GroupOverviewServlet extends HttpServlet {
 		rd = req.getRequestDispatcher("groupOverview.jsp");
 		rd.forward(req, resp);
 	}
-
 }

@@ -33,7 +33,6 @@ public class PaymentUtil {
 		payment.setPaymentDescription(inModalValues.get("paymentdescription"));
 		DBPaymentActions.savePayment(payment);
 
-		// TODO: look at this, this doesn't seem right!
 		Map<String, String> users = InputDataValidationUtil.getUserStrings(inModalValues);
 		for (String userString : users.keySet()) {
 			Optional<UserPojo> user = DBUserActions.findUserByName(inModalValues.get(userString));
@@ -45,8 +44,6 @@ public class PaymentUtil {
 				DBPaymentActions.savePaymentToUser(paymentToUser);
 			}
 		}
-
-		// TODO: end
 
 		PaymentToGroupPojo paymentToGroup = new PaymentToGroupPojo();
 		paymentToGroup.setGroup(DBGroupActions.findGroupByID(groupId));

@@ -20,8 +20,9 @@ public class GroupUtil {
 		// May be empty.
 	}
 
-	// TODO Gruppe mit sich selber erstellen
-	// TODO Ignoriern von selbst hinzufügen (string) in groupparticipans
+	// TODO Ignoriern von selbst hinzufügen (string) in groupparticipans (kann
+	// jemand hier einmal hin gucken, komme irgendwie nicht darauf wieso das
+	// nicht so klappt?)
 	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants, int inCreatorID) {
 		GroupPojo group = new GroupPojo();
 		group.setGroupName(inGroupName);
@@ -35,13 +36,11 @@ public class GroupUtil {
 		}
 
 		logger.info("Creating group {} with participants {}", inGroupName, inGroupParticipants);
-		if (users.size() >= 2) {
-			for (UserPojo user : users) {
-				UserToGroupPojo userToGroup = new UserToGroupPojo();
-				userToGroup.setUser(user);
-				userToGroup.setGroup(group);
-				DBActions.saveUserToGroup(userToGroup);
-			}
+		for (UserPojo user : users) {
+			UserToGroupPojo userToGroup = new UserToGroupPojo();
+			userToGroup.setUser(user);
+			userToGroup.setGroup(group);
+			DBActions.saveUserToGroup(userToGroup);
 		}
 	}
 

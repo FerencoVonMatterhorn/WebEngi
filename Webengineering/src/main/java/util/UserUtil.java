@@ -45,7 +45,6 @@ public class UserUtil {
 		return users;
 	}
 
-	// TODO: in util verschieben
 	/**
 	 * @param inUsername
 	 * @param inEmail
@@ -55,7 +54,6 @@ public class UserUtil {
 		return (DBUserActions.findUserByName(inUsername).isPresent() || DBUserActions.findUserByEmail(inEmail).isPresent());
 	}
 
-	// TODO: in util verschieben
 	/**
 	 * Updatet die Informationen des Benutzers in der DB
 	 * 

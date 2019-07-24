@@ -6,7 +6,7 @@
 <title>MyWG - Impressum</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../mainstyle.css">
-<link rel="shortcut icon" href="../resources/iconForREal.png"/>
+<link rel="shortcut icon" href="../resources/iconForREal.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -59,10 +59,9 @@
 							<p class="card-text">
 								Adresse: Kiefernweg 11, 76149 Karlsruhe <br>Tlf. Nr.:+0049 157-789-948 32<br>Role: Frontend-Management x)
 							</p>
-							<a href="mailto:bengt@joachimsohn.de" class="btn btn-primary">Email me</a>
+							<a href="#" class="btn btn-primary">Email me</a>
 						</div>
 					</div>
-					<!-- Ferenc Horvay FIXME: Email einfüge, Text einfügen-->
 					<div class="card m-3" style="width: 400px">
 						<img class="card-img-top" src="../resources/p2.png" style="border-bottom: 2px solid black;">
 						<div class="card-body">
@@ -71,13 +70,12 @@
 							<a href="#" class="btn btn-primary">Email me</a>
 						</div>
 					</div>
-					<!-- Christian Koller FIXME: Email einfügen, Text einfügen-->
 					<div class="card m-3" style="width: 400px">
 						<img class="card-img-top" src="../resources/p3.jpeg" style="border-bottom: 2px solid black;">
 						<div class="card-body">
 							<h4 class="card-title">Christian Koller</h4>
 							<p class="card-text">Some example text.</p>
-							<a href="mailto:" class="btn btn-primary">Email me</a>
+							<a href="#" class="btn btn-primary">Email me</a>
 						</div>
 					</div>
 				</div>

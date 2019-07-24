@@ -1,6 +1,5 @@
 package main.java.db;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,7 +9,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import main.java.pojos.PaymentToUserPojo;
-import main.java.pojos.UserPojo;
 import main.java.pojos.UserToGroupPojo;
 
 public class DBActions {
@@ -68,26 +66,6 @@ public class DBActions {
 		List<PaymentToUserPojo> pojos = (List<PaymentToUserPojo>) query.getResultList();
 		session.close();
 		return pojos;
-	}
-
-	// TODO in utils verschieben
-	/**
-	 * @param inPaymentID
-	 *            Die Zahlungs ID zu der Benutzer gesucht werden sollen
-	 * @return Gibt alle Benutzer einer Zahlung als String zurück
-	 */
-	static String getUsersToPayment(int inPaymentID) {
-		List<PaymentToUserPojo> paymentToUsers = getPaymentToUserPojosByPaymentId(inPaymentID);
-		List<UserPojo> userPojoList = new ArrayList<>();
-		for (PaymentToUserPojo paymentToUserPojo : paymentToUsers) {
-			userPojoList.add(DBUserActions.findUserByID(paymentToUserPojo.getUser().getId()));
-		}
-		StringBuilder builder = new StringBuilder();
-		for (UserPojo userPojo : userPojoList) {
-			builder.append(userPojo.getUsername() + ", ");
-		}
-		builder.delete(builder.length() - 2, builder.length() - 1);
-		return builder.toString();
 	}
 
 	/**

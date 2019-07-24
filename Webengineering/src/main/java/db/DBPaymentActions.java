@@ -14,6 +14,7 @@ import main.java.pojos.MonthlyPaymentToPaymentPojo;
 import main.java.pojos.PaymentPojo;
 import main.java.pojos.PaymentToGroupPojo;
 import main.java.pojos.PaymentToUserPojo;
+import main.java.util.ActionUtil;
 
 public class DBPaymentActions {
 
@@ -123,7 +124,7 @@ public class DBPaymentActions {
 		for (PaymentPojo paymentPojo : listPayments) {
 			String paymentGroup = DBGroupActions.findGroupNameByPaymentID(paymentPojo.getPaymentID());
 			paymentPojo.setGroupName(paymentGroup);
-			paymentPojo.setUsers(DBActions.getUsersToPayment(paymentPojo.getPaymentID()));
+			paymentPojo.setUsers(ActionUtil.getUsersToPayment(paymentPojo.getPaymentID()));
 		}
 		session.close();
 		return listPayments;

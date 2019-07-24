@@ -132,4 +132,23 @@ public class ActionUtil {
 		inGroupPojo.setUsers(builder.toString());
 		return inGroupPojo;
 	}
+
+	/**
+	 * @param inPaymentID
+	 *            Die Zahlungs ID zu der Benutzer gesucht werden sollen
+	 * @return Gibt alle Benutzer einer Zahlung als String zurück
+	 */
+	public static String getUsersToPayment(int inPaymentID) {
+		List<PaymentToUserPojo> paymentToUsers = DBActions.getPaymentToUserPojosByPaymentId(inPaymentID);
+		List<UserPojo> userPojoList = new ArrayList<>();
+		for (PaymentToUserPojo paymentToUserPojo : paymentToUsers) {
+			userPojoList.add(DBUserActions.findUserByID(paymentToUserPojo.getUser().getId()));
+		}
+		StringBuilder builder = new StringBuilder();
+		for (UserPojo userPojo : userPojoList) {
+			builder.append(userPojo.getUsername() + ", ");
+		}
+		builder.delete(builder.length() - 2, builder.length() - 1);
+		return builder.toString();
+	}
 }

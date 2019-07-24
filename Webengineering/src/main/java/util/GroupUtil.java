@@ -20,9 +20,6 @@ public class GroupUtil {
 		// May be empty.
 	}
 
-	// TODO Ignoriern von selbst hinzufügen (string) in groupparticipans (kann
-	// jemand hier einmal hin gucken, komme irgendwie nicht darauf wieso das
-	// nicht so klappt?)
 	public static void createGroup(String inGroupName, String inGroupDescription, String inGroupParticipants, int inCreatorID) {
 		GroupPojo group = new GroupPojo();
 		group.setGroupName(inGroupName);
@@ -31,7 +28,7 @@ public class GroupUtil {
 
 		List<UserPojo> users = UserUtil.findUsersByName(inGroupParticipants);
 		UserPojo creator = DBUserActions.findUserByID(inCreatorID);
-		if (!users.contains(creator)) {
+		if (users.stream().noneMatch(u -> u.getId() == creator.getId())) {
 			users.add(creator);
 		}
 

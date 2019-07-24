@@ -59,13 +59,11 @@ public class PaymentUtil {
 		return payment.getPaymentID();
 	}
 
-	// TODO Logging
-	// TODO: optimize code?
+	// TODO Logging / code comment
 	public static void updateMonthlyPayment(int inUserID) {
 		List<GroupPojo> groups = DBGroupActions.findAllGroupsByUserID(inUserID);
 		for (GroupPojo groupPojo : groups) {
 			int monthlyPaymentID = DBPaymentActions.findRecentMonthlyPaymentbyGroupID(groupPojo.getGroupID());
-
 			if (monthlyPaymentID == -1) {
 				MonthlyPaymentPojo newPojo = new MonthlyPaymentPojo();
 				newPojo.setDateCreated(OffsetDateTime.now());

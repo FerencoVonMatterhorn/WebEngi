@@ -23,7 +23,6 @@ public class PaymentUtil {
 		// May be empty.
 	}
 
-	// TODO: logging
 	public static int createPayment(Map<String, String> inModalValues) {
 		int groupId = Integer.parseInt(inModalValues.get("groupId"));
 		PaymentPojo payment = new PaymentPojo();
@@ -59,7 +58,6 @@ public class PaymentUtil {
 		return payment.getPaymentID();
 	}
 
-	// TODO Logging / code comment
 	public static void updateMonthlyPayment(int inUserID) {
 		List<GroupPojo> groups = DBGroupActions.findAllGroupsByUserID(inUserID);
 		for (GroupPojo groupPojo : groups) {

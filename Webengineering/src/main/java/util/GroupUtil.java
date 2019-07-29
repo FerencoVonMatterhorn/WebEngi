@@ -41,8 +41,6 @@ public class GroupUtil {
 		}
 	}
 
-	// TODO überprüfen ob das hier richtig ist
-	// TODO: logging?
 	public static GroupPojo findGroupForIndexLoggedInByUserID(int inUserId) {
 		List<UserToGroupPojo> userToGroupList = DBActions.findUserToGroupByUserId(inUserId);
 

@@ -90,23 +90,35 @@
 						</article>
 					</div>
 				</div>
-
-
-				<div id="myCarousel" class="carousel slide container" data-ride="carousel">
+				<div id="myCarousel" class="carousel slide container bilder" data-ride="carousel">
 					<ul class="carousel-indicators">
 						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 						<li data-target="#myCarousel" data-slide-to="1"></li>
+						<li data-target="#myCarousel" data-slide-to="2"></li>
+						<li data-target="#myCarousel" data-slide-to="3"></li>
+						<li data-target="#myCarousel" data-slide-to="4"></li>
+						<li data-target="#myCarousel" data-slide-to="5"></li>
 					</ul>
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="../resources/test1.jpg" width="1100" height="500">
+							<img src="../resources/Gruppenuebersicht.png" width="1100" height="500">
 							<div class="carousel-caption">
-								<h3>Wir haben die richtige Lösung!</h3>
-								<p>Auf einen Blick haben Sie alle ihre Rehcnungen, die diesen Monat anstehen!</p>
 							</div>
 						</div>
 						<div class="carousel-item">
-							<img src="../resources/test2.jpg" width="1100" height="500">
+							<img src="../resources/HygieneGruppe.png" width="1100" height="500">
+						</div>
+						<div class="carousel-item">
+							<img src="../resources/MonatsZahlung7.png" width="1100" height="500">
+						</div>
+						<div class="carousel-item">
+							<img src="../resources/testZahlung.png" width="1100" height="500">
+						</div>
+						<div class="carousel-item">
+							<img src="../resources/Wilkommen.png" width="1100" height="500">
+						</div>
+						<div class="carousel-item">
+							<img src="../resources/Zahlungen.png" width="1100" height="500">
 						</div>
 					</div>
 					<a class="carousel-control-prev" href="#myCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span>

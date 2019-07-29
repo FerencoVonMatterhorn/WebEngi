@@ -155,3 +155,9 @@ p {
 	font-size: 0.9rem;
 	font-weight: normal;
 }
+
+
+.carousel-inner{
+	border: black solid 4px;
+	border-radius: 5px;
+}

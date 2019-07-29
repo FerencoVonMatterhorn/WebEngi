@@ -48,7 +48,8 @@ public class DBPaymentActions {
 	public static int findRecentMonthlyPaymentID(int inGroupID) {
 		logger.info("Looking for recent MonthlyPayment with GroupID: {}", inGroupID);
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("select monthlyPayment from MONTHLYPAYMENTTOGROUP where GROUPID = :groupID ORDER BY ID DESC");
+		Query<?> query = session.createQuery(
+				"select monthlyPayment from MONTHLYPAYMENTTOGROUP where GROUPID = :groupID ORDER BY ID DESC");
 		query.setParameter("groupID", inGroupID);
 		int monthlyID = ((MonthlyPaymentPojo) query.uniqueResult()).getMonthlyPaymentID();
 		session.close();
@@ -77,12 +78,14 @@ public class DBPaymentActions {
 		return payment;
 	}
 
-	// TODO: HARDCODED FIX THIS!!!!
 	public static PaymentPojo findPaymentForIndexLoggedInByUserID(int inUserID) {
 		Session session = sessionFactory.openSession();
 		PaymentPojo payment = findPaymentsDescendingByUserID(inUserID).get(0);
-		Query<?> query = session.createQuery("select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = 177)");
+		Query<?> query = session.createQuery(
+				"select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
+		query.setParameter("paymentID", payment.getPaymentID());
 		String groupName = (String) query.uniqueResult();
+
 		payment.setGroupName(groupName);
 		session.close();
 		return payment;
@@ -91,18 +94,18 @@ public class DBPaymentActions {
 	public static long getAmountOfPayments(int inUserID) {
 		logger.info("Looking for amount of Payment for User with UserID: {}", inUserID);
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
+		Query<?> query = session.createQuery(
+				"select count(*) FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID)");
 		query.setParameter("userID", inUserID);
 		Long count = (Long) query.uniqueResult();
 		session.close();
 		return count;
 	}
 
-	// TODO: DUPLICATE OF findPaymentsForSpecificPage?!?
 	private static List<PaymentPojo> findPaymentsDescendingByUserID(int inUserID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session
-				.createQuery("from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
+		Query<?> query = session.createQuery(
+				"from PAYMENTS where PAYMENTID in (select payment from PAYMENTTOUSER where userID = :userID) order by DATECREATED DESC");
 		query.setParameter("userID", inUserID);
 		List<PaymentPojo> paymentList = (List<PaymentPojo>) query.getResultList();
 		if (paymentList.isEmpty()) {
@@ -112,11 +115,10 @@ public class DBPaymentActions {
 		return paymentList;
 	}
 
-	// TODO: DUPLICATE OF findPaymentsDescendingByUserID?!
 	public static List<PaymentPojo> findPaymentsForSpecificPage(int inOffset, int inLimit, int uinUserID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session
-				.createQuery("FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
+		Query<?> query = session.createQuery(
+				"FROM PAYMENTS WHERE PAYMENTID IN (SELECT payment FROM PAYMENTTOUSER WHERE USERID = :userID) ORDER BY DATECREATED DESC");
 		query.setMaxResults(inLimit);
 		query.setFirstResult(inOffset);
 		query.setParameter("userID", uinUserID);
@@ -132,7 +134,8 @@ public class DBPaymentActions {
 
 	public static int findRecentMonthlyPaymentbyGroupID(int inGroupID) {
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("select monthlyPayment from MONTHLYPAYMENTTOGROUP where GROUPID = :groupID ORDER BY ID DESC");
+		Query<?> query = session.createQuery(
+				"select monthlyPayment from MONTHLYPAYMENTTOGROUP where GROUPID = :groupID ORDER BY ID DESC");
 		query.setParameter("groupID", inGroupID);
 		try {
 			int monthlyID = ((MonthlyPaymentPojo) query.getResultList().get(0)).getMonthlyPaymentID();

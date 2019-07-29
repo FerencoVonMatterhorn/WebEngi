@@ -32,29 +32,19 @@ public class DBGroupActions {
 	static String findGroupNameByPaymentID(int inPaymentID) {
 		logger.info("Looking for Groupname for PaymentID: {}", inPaymentID);
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
+		Query<?> query = session.createQuery(
+				"select groupName FROM GROUPS WHERE GROUPID IN (SELECT group FROM PAYMENTTOGROUP WHERE PAYMENTID = :paymentID)");
 		query.setParameter("paymentID", inPaymentID);
 		String payment = (String) query.uniqueResult();
 		session.close();
 		return payment;
 	}
 
-	// TODO: duplicate of findAllGroupsByUserID?!
-	public static List<GroupPojo> findGroupsForGroupOverview(int inUserID) {
-		logger.info("Looking for all groups for User with UserID: {}", inUserID);
-		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
-		query.setParameter("UserID", inUserID);
-		List<GroupPojo> groups = (List<GroupPojo>) query.getResultList();
-		session.close();
-		return groups;
-	}
-
-	// TODO: duplicate of findGroupsForGroupOverview?!
 	public static List<GroupPojo> findAllGroupsByUserID(int inUserID) {
 		logger.info("Looking for all groups for User with UserID: {}", inUserID);
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
+		Query<?> query = session
+				.createQuery("from GROUPS where GROUPID in (select group from USERTOGROUP where USERID = :UserID)");
 		query.setParameter("UserID", inUserID);
 		List<GroupPojo> groups = (List<GroupPojo>) query.getResultList();
 		session.close();

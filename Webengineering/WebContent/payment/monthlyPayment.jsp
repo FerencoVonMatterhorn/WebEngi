@@ -63,7 +63,7 @@
 			<div class="backgroundMid">
 				<div class="container">
 					<!--  row Überschrift  -->
-					<div class="row justify-content-center">
+					<div class="justify-content-center overviewHeader">
 						<h1 class="pt-5 text-center">
 							Monatszahlung vom
 							<c:out value="${monthlyPayment.getMonthlyPayment().getDateCreated().getMonth().getValue() }" />

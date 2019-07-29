@@ -273,7 +273,7 @@ function validateNames(fname, lname, uname) {
 }
 
 function validatePasswords(password1, password2) {
-	return (((password1.length <= passwordLength) && (password2.length <= passwordLength)) || (password1 != password2));
+	return !(((password1.length <= passwordLength) && (password2.length <= passwordLength)) || (password1 != password2));
 }
 
 function validateEmail(email) {

@@ -31,7 +31,7 @@ public class GroupOverviewServlet extends HttpServlet {
 		RequestDispatcher rd;
 		int userID = (int) req.getSession().getAttribute("userID");
 		GroupOverViewBean gOBean = new GroupOverViewBean();
-		List<GroupPojo> groups = DBGroupActions.findGroupsForGroupOverview(userID);
+		List<GroupPojo> groups = DBGroupActions.findAllGroupsByUserID(userID);
 		Collections.reverse(groups);
 		gOBean.setGroups(groups);
 		for (GroupPojo group : gOBean.getGroups()) {

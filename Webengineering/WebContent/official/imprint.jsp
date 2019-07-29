@@ -66,7 +66,7 @@
 						<img class="card-img-top" src="../resources/p2.png" style="border-bottom: 2px solid black;">
 						<div class="card-body">
 							<h4 class="card-title">Ferenc Horvay</h4>
-							<p class="card-text">Some example text.</p>
+							<p class="card-text">Adresse: Fichtenweg 31, 76149 Karlsruhe <br>Tlf. Nr.:+0049 171-234-141 9<br>Role: Frontend-Management x)</p>
 							<a href="#" class="btn btn-primary">Email me</a>
 						</div>
 					</div>
@@ -74,7 +74,7 @@
 						<img class="card-img-top" src="../resources/p3.jpeg" style="border-bottom: 2px solid black;">
 						<div class="card-body">
 							<h4 class="card-title">Christian Koller</h4>
-							<p class="card-text">Some example text.</p>
+							<p class="card-text">Adresse: Großschneidersweg 9, 76149 Karlsruhe <br>Tlf. Nr.:+0049 176-189-644 83<br>Role: Frontend-Management x)</p>
 							<a href="#" class="btn btn-primary">Email me</a>
 						</div>
 					</div>

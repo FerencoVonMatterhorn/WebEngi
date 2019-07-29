@@ -15,10 +15,9 @@ import main.java.pojos.PaymentPojo;
 public class PaymentOverviewBean {
 
 	private List<PaymentPojo> payments = new ArrayList<>();
-	private int itemsPerPage = 8;
+	private int itemsPerPage = 9;
 	private long pages;
-	private int shownPage=1;
-
+	private int shownPage = 1;
 
 	public void calculatePages(int userID) {
 		long paymentsAmount = DBPaymentActions.getAmountOfPayments(userID);

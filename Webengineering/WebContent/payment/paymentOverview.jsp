@@ -87,8 +87,8 @@
 										<c:out value="${payment.getUsers()}" />
 										<br> Betrag:
 										<c:out value="${payment.getAmount()}" />
-										<br> Typ: <br> Erstellt am:
-										<c:out value="${payment.getDateCreated()}" />
+									 	<br> Erstellt am:
+										<c:out value="${payment.formatDateCreated()}" />
 										<br>
 										<!-- if für Typ=Monatsabrechnung wenn -> Bezahlen bis -->
 									</p>

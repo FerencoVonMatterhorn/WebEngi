@@ -41,4 +41,30 @@ public class PaymentPojo {
 	@Transient
 	private String users;
 
+	public String formatDateCreated() {
+		OffsetDateTime dateTime = this.getDateCreated();
+
+		StringBuilder builder = new StringBuilder();
+
+		builder.append(dateTime.getDayOfMonth());
+
+		builder.append(".");
+
+		builder.append(dateTime.getMonth().getValue());
+
+		builder.append(".");
+
+		builder.append(dateTime.getYear());
+
+		builder.append(" ");
+
+		builder.append(dateTime.getHour());
+
+		builder.append(":");
+
+		builder.append(dateTime.getMinute());
+
+		return builder.toString();
+	}
+
 }

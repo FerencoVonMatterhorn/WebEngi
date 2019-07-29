@@ -28,7 +28,7 @@ public class DBActions {
 	public static List<UserToGroupPojo> findUserToGroupByUserId(int inUserID) {
 		logger.info("Looking for UserToGroup with UserID {}", inUserID);
 		Session session = sessionFactory.openSession();
-		Query<?> query = session.createQuery("from USERTOGROUP where USERID = :userID");
+		Query<?> query = session.createQuery("from USERTOGROUP where USERID = :userID ORDER BY ID DESC");
 		query.setParameter("userID", inUserID);
 		List<UserToGroupPojo> pojos = (List<UserToGroupPojo>) query.getResultList();
 		session.close();
